@@ -1,0 +1,2238 @@
+/* ============================================================
+   REUSE CONNECT
+   BUYER MARKETPLACE - LARGE FONT UPDATE
+   NOTE:
+   Font sizes were enlarged for readability.
+   Layout, colors, spacing, responsive behavior, and functionality
+   were preserved.
+============================================================ */
+
+.buyer-marketplace {
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f8f8ff;
+  color: #29206d;
+}
+
+
+/* ============================================================
+   PAGE HEADING
+============================================================ */
+
+.marketplace-heading {
+  margin-bottom: 18px;
+}
+
+.marketplace-heading h1 {
+  margin: 0;
+  color: #30247a;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.marketplace-heading p {
+  margin: 5px 0 0;
+  color: #6864a5;
+  font-size: 17px;
+}
+
+
+/* ============================================================
+   FILTER PANEL
+============================================================ */
+
+.marketplace-filter-panel {
+  background: #ffffff;
+  border: 1px solid #e6e3f6;
+  border-radius: 14px;
+  padding: 13px 14px 10px;
+  box-shadow: 0 2px 10px rgba(52, 37, 126, 0.05);
+  margin-bottom: 20px;
+}
+
+.marketplace-filter-row {
+  display: grid;
+  grid-template-columns:
+    minmax(250px, 1.8fr)
+    minmax(135px, 0.9fr)
+    minmax(135px, 0.9fr)
+    minmax(135px, 0.9fr)
+    minmax(135px, 0.9fr)
+    126px;
+  gap: 10px;
+  align-items: end;
+}
+
+
+/* ============================================================
+   SEARCH
+============================================================ */
+
+.marketplace-search {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e4e0f5;
+  border-radius: 9px;
+  padding: 0 13px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.marketplace-search svg {
+  flex-shrink: 0;
+  color: #4b35b9;
+}
+
+.marketplace-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #30247a;
+  font-size: 15px;
+}
+
+.marketplace-search input::placeholder {
+  color: #9893c0;
+}
+
+
+/* ============================================================
+   SELECT
+============================================================ */
+
+.marketplace-select {
+  min-width: 0;
+}
+
+.marketplace-select label {
+  display: block;
+  margin: 0 0 4px 3px;
+  color: #33287c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  height: 48px;
+  padding: 0 30px 0 11px;
+  border: 1px solid #e4e0f5;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #65619d;
+  outline: none;
+  appearance: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.select-wrapper svg {
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3e2da0;
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   SEARCH BUTTON
+============================================================ */
+
+.marketplace-search-button {
+  height: 39px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(
+    135deg,
+    #6634d5,
+    #4d24b9
+  );
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.marketplace-search-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 13px rgba(83, 42, 192, 0.22);
+}
+
+
+/* ============================================================
+   TABS
+============================================================ */
+
+.marketplace-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.marketplace-tab {
+  min-height: 36px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 9px;
+  background: #faf9ff;
+  color: #523fa4;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.marketplace-tab:hover {
+  background: #f0ecff;
+}
+
+.marketplace-tab.active {
+  background: linear-gradient(
+    135deg,
+    #6532d4,
+    #4b23b6
+  );
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+============================================================ */
+
+.marketplace-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 322px;
+  gap: 18px;
+  align-items: start;
+}
+
+.marketplace-main-column {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   FEATURED HEADING
+============================================================ */
+
+.featured-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 11px;
+}
+
+.featured-heading > div {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.featured-heading h2 {
+  margin: 0;
+  color: #25206e;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.featured-heading span {
+  color: #9893c0;
+  font-size: 15px;
+}
+
+
+/* ============================================================
+   REFRESH BUTTON (UPDATED DESIGN)
+============================================================ */
+
+.marketplace-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #ffffff;
+  color: #523fa4;
+  border: 1px solid #e2ddf4;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.marketplace-refresh-btn:hover:not(:disabled) {
+  background: #f5f1ff;
+  border-color: #c4b5fd;
+}
+
+.marketplace-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   PRODUCT GRID
+============================================================ */
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+
+/* ============================================================
+   PRODUCT CARD
+============================================================ */
+
+.marketplace-product-card {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e6e2f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(49, 34, 122, 0.05);
+  min-width: 0;
+  transition: 0.2s ease;
+}
+
+.marketplace-product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(50, 34, 128, 0.1);
+}
+
+
+/* ============================================================
+   PRODUCT IMAGE
+============================================================ */
+
+.product-image-container {
+  position: relative;
+  height: 112px;
+  margin: 6px 6px 0;
+  border-radius: 7px;
+  overflow: hidden;
+  background: #f2effb;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-status {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #4e2db9;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.product-status.donated {
+  background: #17986f;
+}
+
+.product-status.trade {
+  background: #392da0;
+}
+
+
+/* ============================================================
+   WISHLIST ICON
+============================================================ */
+
+.product-wishlist {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #5a3fc1;
+  cursor: pointer;
+}
+
+.product-wishlist.active {
+  color: #e03b65;
+}
+
+.product-wishlist:hover {
+  transform: scale(1.06);
+}
+
+
+/* ============================================================
+   PRODUCT BODY
+============================================================ */
+
+.product-card-body {
+  padding: 9px 9px 10px;
+}
+
+.product-name {
+  overflow: hidden;
+  margin: 0 0 3px;
+  color: #272071;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-category {
+  display: block;
+  margin-bottom: 4px;
+  color: #817cac;
+  font-size: 13px;
+}
+
+.product-condition {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: #e5f8ed;
+  color: #219565;
+  font-size: 12px;
+}
+
+.product-price {
+  display: block;
+  margin-bottom: 5px;
+  color: #25206f;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.trade-price {
+  color: #4a36ae;
+}
+
+.donated-price {
+  color: #16956b;
+}
+
+.product-location {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #7772a5;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+.product-location svg {
+  color: #7463c5;
+  flex-shrink: 0;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #6e699e;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.product-rating svg {
+  color: #efa91c;
+}
+
+
+/* ============================================================
+   CARD ACTIONS
+============================================================ */
+
+.product-actions {
+  display: grid;
+  grid-template-columns: 32px 32px minmax(0, 1fr);
+  gap: 5px;
+}
+
+.product-icon-button {
+  height: 27px;
+  padding: 0;
+  border: 1px solid #e2ddf4;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #4a32ae;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.product-icon-button:hover {
+  background: #f5f1ff;
+}
+
+.product-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.view-details-button {
+  height: 27px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(
+    135deg,
+    #6431d1,
+    #4c25b6
+  );
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-details-button:hover {
+  background: #4120a7;
+}
+
+
+/* ============================================================
+   RIGHT COLUMN
+============================================================ */
+
+.marketplace-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* ============================================================
+   SECOND LIFE
+============================================================ */
+
+.second-life-card {
+  min-height: 125px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e2dff6;
+  border-radius: 12px;
+  padding: 17px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    135deg,
+    #f0ebff,
+    #fbfaff
+  );
+}
+
+.second-life-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 8px;
+  color: #33247d;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.second-life-card p {
+  position: relative;
+  z-index: 2;
+  width: 70%;
+  margin: 0;
+  color: #726ca2;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.second-life-decoration {
+  position: absolute;
+  right: 15px;
+  bottom: -12px;
+  font-size: 75px;
+  opacity: 0.12;
+}
+
+
+/* ============================================================
+   QUICK LINKS
+============================================================ */
+
+.quick-links-card,
+.why-card {
+  background: #ffffff;
+  border: 1px solid #e5e1f5;
+  border-radius: 12px;
+  padding: 13px;
+}
+
+.quick-links-card h3,
+.why-card h3 {
+  margin: 0 0 11px;
+  color: #312476;
+  font-size: 17px;
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.quick-links-grid button {
+  min-height: 59px;
+  border: 1px solid #e7e3f4;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #382a8b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.quick-links-grid button:hover {
+  background: #f7f4ff;
+}
+
+.quick-links-grid svg {
+  color: #5135bb;
+}
+
+
+/* ============================================================
+   WHY
+============================================================ */
+
+.why-item {
+  display: flex;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.why-item:last-child {
+  margin-bottom: 0;
+}
+
+.why-icon {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f0edff;
+  color: #4e35b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+
+.why-item strong {
+  display: block;
+  color: #40318e;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.why-item span {
+  display: block;
+  color: #8580ae;
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   TOTAL REUSED
+============================================================ */
+
+.total-reused-card {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e5e1f5;
+  border-radius: 12px;
+  padding: 13px;
+  box-sizing: border-box;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.total-reused-card span {
+  display: block;
+  color: #7772a3;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.total-reused-card strong {
+  display: block;
+  color: #30247c;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.total-reused-card small {
+  color: #9893b8;
+  font-size: 11px;
+}
+
+.total-reused-icon {
+  color: #3aa77b;
+  font-size: 43px;
+  opacity: 0.2;
+}
+
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+
+.marketplace-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 17px;
+  color: #817da9;
+  font-size: 13px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-buttons button {
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  border: 1px solid #e1ddf3;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #4c3aa8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.pagination-buttons button.active {
+  background: #5530bd;
+  color: #ffffff;
+  border-color: #5530bd;
+}
+
+.pagination-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   LOADING / EMPTY / ERROR
+============================================================ */
+
+.marketplace-loading,
+.marketplace-empty {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #e5e1f5;
+  border-radius: 12px;
+  color: #817ca9;
+}
+
+.marketplace-loading p,
+.marketplace-empty p {
+  font-size: 15px;
+}
+
+.marketplace-empty h3 {
+  margin: 10px 0 0;
+  color: #35287f;
+  font-size: 20px;
+}
+
+.marketplace-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #e7e2f6;
+  border-top-color: #5630bd;
+  border-radius: 50%;
+  animation: marketplace-spin 0.8s linear infinite;
+}
+
+@keyframes marketplace-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.marketplace-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #f0d8de;
+  border-radius: 9px;
+  background: #fff8fa;
+  color: #a84b62;
+  font-size: 15px;
+}
+
+.marketplace-error button {
+  margin-left: auto;
+  border: none;
+  background: #5731b9;
+  color: #ffffff;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   TOAST
+============================================================ */
+
+.marketplace-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  padding: 12px 17px;
+  border-radius: 8px;
+  background: #33247c;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(30, 20, 90, 0.2);
+  font-size: 15px;
+}
+
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+.marketplace-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(27, 19, 75, 0.48);
+}
+
+.marketplace-modal {
+  position: relative;
+  width: min(850px, 95vw);
+  max-height: 90vh;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 43% 57%;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(25, 16, 79, 0.3);
+}
+
+/* Specific class for the Buy Now Modal Form to make it wider and single column */
+.buy-now-modal {
+  width: min(750px, 95vw) !important;
+  grid-template-columns: 1fr !important;
+}
+
+.modal-close {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #45329b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-image {
+  min-height: 440px;
+  background: #f3f0fb;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  display: block;
+  object-fit: cover;
+}
+
+.modal-content {
+  padding: 35px 30px;
+}
+
+.modal-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #4d2cb5;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modal-status.donated {
+  background: #18956d;
+}
+
+.modal-status.trade {
+  background: #4130a1;
+}
+
+.modal-content h2 {
+  margin: 12px 0 4px;
+  color: #302275;
+  font-size: 26px;
+}
+
+.modal-category {
+  color: #817aa9;
+  font-size: 15px;
+}
+
+.modal-price {
+  margin: 16px 0;
+  color: #302275;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.modal-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.modal-information > div {
+  padding: 10px;
+  border: 1px solid #e9e5f5;
+  border-radius: 8px;
+}
+
+.modal-information span {
+  display: block;
+  margin-bottom: 3px;
+  color: #8a84ae;
+  font-size: 13px;
+}
+
+.modal-information strong {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #43328d;
+  font-size: 15px;
+}
+
+.modal-information svg {
+  color: #efa91c;
+}
+
+.modal-description h3 {
+  margin: 0 0 6px;
+  color: #382982;
+  font-size: 15px;
+}
+
+.modal-description p {
+  margin: 0;
+  color: #77719f;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.modal-seller {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.seller-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eeeafd;
+  color: #5038ae;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-seller span {
+  display: block;
+  color: #8882ac;
+  font-size: 12px;
+}
+
+.modal-seller strong {
+  display: block;
+  color: #3c2c89;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.modal-wishlist,
+.modal-cart {
+  height: 40px;
+  padding: 0 15px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-wishlist {
+  border: 1px solid #ddd8f0;
+  background: #ffffff;
+  color: #4d37a5;
+}
+
+.modal-cart {
+  flex: 1;
+  border: none;
+  background: #5430bc;
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1350px) {
+
+  .marketplace-filter-row {
+    grid-template-columns:
+      minmax(210px, 1.5fr)
+      repeat(4, minmax(110px, 1fr))
+      110px;
+  }
+
+  .marketplace-content {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 1100px) {
+
+  .marketplace-filter-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .marketplace-search {
+    grid-column: span 3;
+  }
+
+  .marketplace-search-button {
+    width: 100%;
+  }
+
+  .marketplace-content {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-right-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 750px) {
+
+  .buyer-marketplace {
+    padding: 0;
+  }
+
+  .marketplace-filter-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .marketplace-search {
+    grid-column: span 2;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .marketplace-right-column {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-modal {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-image,
+  .modal-image img {
+    min-height: 260px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .marketplace-filter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-search {
+    grid-column: auto;
+  }
+
+  .marketplace-tabs {
+    overflow-x: auto;
+  }
+
+  .marketplace-tab {
+    flex-shrink: 0;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-pagination {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+}
+/* ============================================================
+   BUY NOW BUTTON
+   ============================================================ */
+
+.marketplace-buy-now-btn {
+  border: 1px solid #2f6b4f;
+  background: #2f6b4f;
+  color: #ffffff;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.marketplace-buy-now-btn:hover:not(:disabled) {
+  background: #275c43;
+  border-color: #275c43;
+}
+
+.marketplace-buy-now-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   MODAL BUY NOW
+   ============================================================ */
+
+.marketplace-modal-buy-btn {
+  border: none;
+  background: #2f6b4f;
+  color: #ffffff;
+  min-height: 43px;
+  padding: 0 17px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.marketplace-modal-buy-btn:hover:not(:disabled) {
+  background: #275c43;
+}
+
+.marketplace-modal-buy-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   SPINNER
+   ============================================================ */
+
+.marketplace-spin {
+  animation: marketplaceSpin 0.8s linear infinite;
+}
+
+@keyframes marketplaceSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   MARKETPLACE ACTION ROW
+   KEEP EXISTING DESIGN
+============================================================ */
+
+.product-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  flex-wrap: nowrap;
+}
+
+.product-actions > button {
+  flex-shrink: 0;
+}
+
+.product-icon-button {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd8ee;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #5f4ac4;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.product-icon-button:hover:not(:disabled) {
+  background: #f5f1ff;
+  border-color: #6b50ce;
+}
+
+.product-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   VIEW DETAILS — ICON ONLY
+============================================================ */
+
+.view-details-button {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd8ee;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #5f4ac4;
+
+  font-size: 0;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.view-details-button:hover {
+  background: #f5f1ff;
+  border-color: #6b50ce;
+}
+
+.view-details-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+/* ============================================================
+   BUY NOW
+============================================================ */
+
+.marketplace-buy-now-btn {
+  height: 30px;
+  min-height: 30px;
+
+  padding: 0 9px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border: 1px solid #2f6b4f;
+  border-radius: 7px;
+
+  background: #2f6b4f;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.marketplace-buy-now-btn:hover:not(:disabled) {
+  background: #275c43;
+  border-color: #275c43;
+}
+
+.marketplace-buy-now-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   STATUS BADGES
+============================================================ */
+
+.product-status.available,
+.modal-status.available {
+  background: #e8f7ef;
+  color: #2f7a4d;
+}
+
+.product-status.sold,
+.modal-status.sold {
+  background: #fbe9e9;
+  color: #b53d3d;
+}
+
+.product-status.reserved,
+.modal-status.reserved {
+  background: #fff4dc;
+  color: #9a6a14;
+}
+
+.product-status.unavailable,
+.modal-status.unavailable {
+  background: #eeeeF3;
+  color: #77758a;
+}
+
+
+/* ============================================================
+   FORM MODAL OVERLAY
+============================================================ */
+
+.marketplace-form-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(
+    35,
+    27,
+    82,
+    0.48
+  );
+}
+
+
+/* ============================================================
+   BUY NOW MODAL
+============================================================ */
+
+.marketplace-form-modal,
+.marketplace-message-modal {
+  width: min(
+    540px,
+    100%
+  );
+
+  max-height: calc(
+    100vh - 40px
+  );
+
+  overflow-y: auto;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 20px 60px
+    rgba(
+      34,
+      25,
+      84,
+      0.25
+    );
+}
+
+.marketplace-message-modal {
+  width: min(
+    500px,
+    100%
+  );
+}
+
+
+/* ============================================================
+   MODAL HEADER
+============================================================ */
+
+.marketplace-form-modal-header {
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #eeeaf6;
+}
+
+.marketplace-form-modal-header h2 {
+  margin: 0 0 4px;
+
+  color: #211c65;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.marketplace-form-modal-header p {
+  margin: 0;
+
+  color: #85819f;
+
+  font-size: 15px;
+}
+
+.marketplace-form-modal-header > button {
+  width: 31px;
+  height: 31px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #77738f;
+
+  cursor: pointer;
+}
+
+.marketplace-form-modal-header > button:hover {
+  background: #f4f1fa;
+  color: #4e43a0;
+}
+
+
+/* ============================================================
+   PRODUCT PREVIEW
+============================================================ */
+
+.buy-form-product {
+  margin: 16px 20px;
+
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  border: 1px solid #e7e2f1;
+  border-radius: 10px;
+
+  background: #faf9fd;
+}
+
+.buy-form-image,
+.message-item-image {
+  width: 72px;
+  height: 72px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #f0edf7;
+
+  color: #756ba0;
+}
+
+.buy-form-image img,
+.message-item-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.buy-form-product > div:last-child,
+.message-item-preview > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.buy-form-product strong,
+.message-item-preview strong {
+  color: #30276e;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.buy-form-product span,
+.message-item-preview span {
+  color: #6043c6;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.buy-form-product small {
+  color: #85819f;
+
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   FORM
+============================================================ */
+
+.marketplace-buy-form,
+.marketplace-message-modal form {
+  padding: 0 20px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+.marketplace-buy-form label,
+.marketplace-message-modal label {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.marketplace-buy-form label > span,
+.marketplace-message-modal label > span {
+  color: #4d4770;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.marketplace-buy-form input,
+.marketplace-buy-form select,
+.marketplace-buy-form textarea,
+.marketplace-message-modal textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ded9eb;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #30276e;
+
+  outline: none;
+
+  padding: 9px 10px;
+
+  font-family: inherit;
+  font-size: 15px;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.marketplace-buy-form input,
+.marketplace-buy-form select {
+  height: 38px;
+}
+
+.marketplace-buy-form textarea,
+.marketplace-message-modal textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.marketplace-buy-form input:focus,
+.marketplace-buy-form select:focus,
+.marketplace-buy-form textarea:focus,
+.marketplace-message-modal textarea:focus {
+  border-color: #755bd1;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      117,
+      91,
+      209,
+      0.09
+    );
+}
+
+
+/* ============================================================
+   TOTAL
+============================================================ */
+
+.buy-form-total {
+  margin-top: 2px;
+  padding-top: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid #eeeaf6;
+}
+
+.buy-form-total span {
+  color: #716c8d;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.buy-form-total strong {
+  color: #30276e;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   MODAL ACTIONS
+============================================================ */
+
+.marketplace-form-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  padding-top: 4px;
+}
+
+.marketplace-modal-cancel,
+.marketplace-modal-confirm {
+  min-height: 38px;
+
+  padding: 0 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.marketplace-modal-cancel {
+  border: 1px solid #ded9eb;
+
+  background: #ffffff;
+
+  color: #6d678a;
+}
+
+.marketplace-modal-cancel:hover:not(:disabled) {
+  background: #f8f6fc;
+}
+
+.marketplace-modal-confirm {
+  border: 1px solid #6043c6;
+
+  background: #6043c6;
+
+  color: #ffffff;
+}
+
+.marketplace-modal-confirm:hover:not(:disabled) {
+  background: #5034ae;
+}
+
+.marketplace-modal-cancel:disabled,
+.marketplace-modal-confirm:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   MESSAGE PREVIEW
+============================================================ */
+
+.message-item-preview {
+  margin: 16px 20px;
+
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  border: 1px solid #e7e2f1;
+  border-radius: 10px;
+
+  background: #faf9fd;
+}
+
+
+/* ============================================================
+   MODAL MESSAGE BUTTON (ICON ONLY)
+============================================================ */
+
+.modal-message-btn {
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  padding: 0;
+  border: 1px solid #ddd8f0;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #4d37a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.modal-message-btn:hover {
+  background: #f5f1ff;
+  border-color: #6b50ce;
+}
+
+
+/* ============================================================
+   PAYMENT METHOD RADIO BUTTONS & CONDITIONAL FIELDS
+============================================================ */
+
+.payment-method-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4d4770;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 12px;
+  border: 1px solid #e7e2f1;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.radio-label:hover {
+  background: #faf9fd;
+  border-color: #c4b5fd;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: #6043c6;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Shipping Details Grid */
+.shipping-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Conditional Payment Details Grid */
+.payment-details-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+  background: #faf9fd;
+  border: 1px solid #e7e2f1;
+  border-radius: 8px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 520px) {
+
+  .product-actions {
+    gap: 4px;
+  }
+
+  .product-icon-button,
+  .view-details-button {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+
+  .marketplace-buy-now-btn {
+    padding: 0 7px;
+    font-size: 13px;
+  }
+
+  .marketplace-form-modal-overlay {
+    padding: 10px;
+  }
+
+  .shipping-grid,
+  .payment-method-options,
+  .payment-details-form {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+
+}
+
+/* ============================================================
+   ITEM RATING COUNT
+   Keeps the existing Marketplace design unchanged.
+============================================================ */
+
+.product-rating .rating-count {
+  color: #9893c0;
+  margin-left: 1px;
+}
+
+.modal-rating-count {
+  color: #9893c0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   BUYER QUANTITY CONTROL
+============================================================ */
+
+.marketplace-quantity-control {
+  width: 150px;
+  height: 36px;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 38px;
+  align-items: center;
+  border: 1px solid #d9d3ea;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.marketplace-quantity-button {
+  width: 38px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: #faf9ff;
+  color: #4f3697;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.marketplace-quantity-button:hover:not(:disabled) {
+  background: #f0ebff;
+  color: #5a27c8;
+}
+
+.marketplace-quantity-button:disabled {
+  color: #b9b4c8;
+  background: #f7f6fa;
+  cursor: not-allowed;
+}
+
+.marketplace-quantity-control input {
+  width: 100%;
+  height: 34px;
+  min-width: 0;
+  padding: 0 5px;
+  border: 0;
+  border-left: 1px solid #eeeaf5;
+  border-right: 1px solid #eeeaf5;
+  border-radius: 0;
+  background: #fff;
+  color: #30276e;
+  outline: none;
+  text-align: center;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.marketplace-quantity-control input::-webkit-outer-spin-button,
+.marketplace-quantity-control input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.marketplace-quantity-control input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Per-size stock buttons */
+.size-option { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
+.size-option small { font-size: 14px; line-height: 1.2; opacity: .75; }
+.size-option:disabled { opacity: .45; cursor: not-allowed; text-decoration: line-through; }
+
+
+/* ============================================================
+   BUY NOW CARD BUTTON - FIT FIX
+   Keeps the larger font while preventing the button text from
+   being clipped inside the compact product-card action row.
+============================================================ */
+
+.product-actions {
+  grid-template-columns: 30px 30px minmax(0, 1fr);
+  gap: 4px;
+}
+
+.product-icon-button,
+.view-details-button {
+  min-width: 0;
+}
+
+.marketplace-buy-now-btn {
+  width: 100%;
+  min-width: 0;
+  height: 30px;
+  min-height: 30px;
+  padding: 0 5px;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marketplace-buy-now-btn span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.marketplace-buy-now-btn svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 520px) {
+  .product-actions {
+    grid-template-columns: 28px 28px minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .marketplace-buy-now-btn {
+    width: 100%;
+    padding: 0 4px;
+    font-size: 13px;
+  }
+}
+
+
+/* ============================================================
+   BUYER MARKETPLACE - PRODUCT CARD SPACING & BUY NOW FIX
+   Final override:
+   - Adds breathing room around the product-card grid.
+   - Keeps the 4-column layout.
+   - Makes the two icon buttons fixed-width.
+   - Lets Buy Now use the remaining card width.
+   - Prevents Buy Now text from being clipped.
+============================================================ */
+
+.marketplace-main-column {
+  min-width: 0;
+  padding: 0 8px 18px;
+  box-sizing: border-box;
+}
+
+.marketplace-grid {
+  width: 100%;
+  padding: 4px 2px 10px;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+.marketplace-product-card {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.product-card-body {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.product-actions {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+
+.product-actions > button {
+  min-width: 0;
+  flex-shrink: 1;
+  box-sizing: border-box;
+}
+
+.product-icon-button,
+.view-details-button {
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+}
+
+.marketplace-buy-now-btn {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  height: 30px;
+  min-height: 30px;
+  padding: 0 7px;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.marketplace-buy-now-btn span {
+  display: inline-block;
+  min-width: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.marketplace-buy-now-btn svg {
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  flex: 0 0 13px;
+}
+
+@media (max-width: 1100px) {
+  .marketplace-main-column {
+    padding: 0 6px 18px;
+  }
+}
+
+@media (max-width: 750px) {
+  .marketplace-main-column {
+    padding: 0 4px 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .marketplace-grid {
+    padding: 4px 0 10px;
+  }
+
+  .product-actions {
+    gap: 4px;
+  }
+
+  .product-icon-button,
+  .view-details-button {
+    width: 28px;
+    min-width: 28px;
+    max-width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .marketplace-buy-now-btn {
+    height: 28px;
+    min-height: 28px;
+    padding: 0 5px;
+    font-size: 13px;
+  }
+}

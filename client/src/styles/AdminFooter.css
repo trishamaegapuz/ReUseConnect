@@ -1,0 +1,98 @@
+/* ============================================================
+   ADMIN FOOTER
+   ============================================================ */
+
+.admin-footer {
+  width: 100%;
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 20px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-top: 1px solid #e7e4f2;
+
+  color: #777493;
+  font-size: 11px;
+  line-height: 1.4;
+
+  flex-shrink: 0;
+
+  /*
+    Keeps the footer visually attached to the
+    bottom of the admin content area while scrolling.
+  */
+  position: sticky;
+  bottom: 0;
+
+  z-index: 20;
+}
+
+
+/* ============================================================
+   FOOTER CONTENT
+   ============================================================ */
+
+.admin-footer-content {
+  width: 100%;
+  max-width: 1400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   COPYRIGHT TEXT
+   ============================================================ */
+
+.admin-footer p {
+  margin: 0;
+  padding: 0;
+
+  color: #777493;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   BRAND NAME
+   ============================================================ */
+
+.admin-footer strong {
+  color: #5e30cf;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .admin-footer {
+    min-height: 48px;
+
+    padding: 11px 15px;
+
+    font-size: 10px;
+  }
+
+  .admin-footer p {
+    font-size: 10px;
+  }
+
+}

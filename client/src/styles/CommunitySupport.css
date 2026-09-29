@@ -1,0 +1,1902 @@
+/* ============================================================
+   REUSE CONNECT
+   COMMUNITY & SUPPORT
+   ============================================================ */
+
+.community-support-page {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   ALERT
+   ============================================================ */
+
+.cs-alert {
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 14px;
+
+  padding: 9px 12px;
+
+  border-radius: 8px;
+
+  box-sizing: border-box;
+
+  font-size: 14px;
+}
+
+.cs-alert button {
+  margin-left: auto;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.cs-alert.error {
+  color: #bd3150;
+  background: #fff0f3;
+  border: 1px solid #ffd3dc;
+}
+
+.cs-alert.success {
+  color: #21805e;
+  background: #edf9f4;
+  border: 1px solid #ccefe0;
+}
+
+
+/* ============================================================
+   KPI
+   ============================================================ */
+
+.cs-kpi-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 14px;
+}
+
+.cs-kpi-card {
+  min-height: 116px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 18px;
+
+  border: 1px solid #e3e0f3;
+
+  border-radius: 10px;
+
+  box-sizing: border-box;
+}
+
+.cs-kpi-card.purple {
+  background: #f8f5ff;
+}
+
+.cs-kpi-card.green {
+  background: #f2fbf8;
+}
+
+.cs-kpi-card.orange {
+  background: #fff8ee;
+}
+
+.cs-kpi-card.blue {
+  background: #f1f6ff;
+}
+
+.cs-kpi-icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.cs-kpi-card.purple
+.cs-kpi-icon {
+  background: #e8ddff;
+  color: #6330d3;
+}
+
+.cs-kpi-card.green
+.cs-kpi-icon {
+  background: #d9f2e8;
+  color: #239879;
+}
+
+.cs-kpi-card.orange
+.cs-kpi-icon {
+  background: #ffe8ca;
+  color: #e68b1b;
+}
+
+.cs-kpi-card.blue
+.cs-kpi-icon {
+  background: #dceaff;
+  color: #287fd7;
+}
+
+.cs-kpi-card span {
+  display: block;
+
+  color: #35315e;
+
+  font-size: 14px;
+}
+
+.cs-kpi-card strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #10165f;
+
+  font-size: 30px;
+
+  line-height: 1.1;
+}
+
+
+/* ============================================================
+   MAIN GRID
+   ============================================================ */
+
+.cs-main-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    350px;
+
+  gap: 14px;
+
+  align-items: start;
+}
+
+
+/* ============================================================
+   MAIN CARD
+   ============================================================ */
+
+.cs-main-card {
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e0ef;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   TABS
+   ============================================================ */
+
+.cs-tabs {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 7px 10px;
+
+  border-bottom: 1px solid #eeeaf7;
+}
+
+.cs-tabs button {
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 15px;
+
+  border: 1px solid transparent;
+
+  border-radius: 7px;
+
+  background: #f7f5fc;
+
+  color: #5a567c;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.cs-tabs button:hover {
+  background: #eee9ff;
+}
+
+.cs-tabs button.active {
+  background: #6330d3;
+
+  color: #ffffff;
+}
+
+.cs-tab-count {
+  min-width: 19px;
+  height: 19px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e84263;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   SECTION HEADING
+   ============================================================ */
+
+.cs-section-heading {
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 13px 16px;
+
+  box-sizing: border-box;
+}
+
+.cs-section-heading h2 {
+  margin: 0;
+
+  color: #11175f;
+
+  font-size: 20px;
+
+  line-height: 1.2;
+}
+
+.cs-section-heading p {
+  margin: 5px 0 0;
+
+  color: #77749a;
+
+  font-size: 13px;
+}
+
+.cs-heading-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.cs-refresh-button {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ded9ee;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #5e597e;
+
+  cursor: pointer;
+}
+
+.cs-refresh-button:hover {
+  background: #f6f2ff;
+  color: #6330d3;
+}
+
+.cs-primary-button {
+  min-height: 36px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 0 13px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #6330d3;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.cs-primary-button:hover {
+  background: #5524bf;
+}
+
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+
+.cs-filter-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 1fr)
+    150px
+    140px;
+
+  gap: 8px;
+
+  padding: 10px 12px;
+
+  border-top: 1px solid #eeeaf7;
+
+  border-bottom: 1px solid #eeeaf7;
+}
+
+.cs-search {
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 10px;
+
+  border: 1px solid #dfdbea;
+
+  border-radius: 7px;
+
+  color: #6e6a90;
+
+  background: #ffffff;
+}
+
+.cs-search input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #3d395d;
+
+  font-size: 13px;
+}
+
+.cs-search input::placeholder {
+  color: #aaa6bd;
+}
+
+.cs-filter-row select {
+  height: 36px;
+
+  padding: 0 9px;
+
+  border: 1px solid #dfdbea;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #5b577b;
+
+  outline: none;
+
+  font-size: 13px;
+}
+
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+
+.cs-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.cs-table {
+  width: 100%;
+
+  min-width: 1050px;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.cs-table th {
+  height: 40px;
+
+  padding: 0 8px;
+
+  background: #f6f5fc;
+
+  color: #56537a;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.cs-table td {
+  min-height: 68px;
+
+  padding: 11px 9px;
+
+  border-bottom: 1px solid #f0eef6;
+
+  color: #555171;
+
+  font-size: 13px;
+
+  vertical-align: middle;
+}
+
+.cs-table tbody tr:hover {
+  background: #fcfbff;
+}
+
+.cs-table th:nth-child(1),
+.cs-table td:nth-child(1) {
+  width: 32px;
+}
+
+.cs-table th:last-child,
+.cs-table td:last-child {
+  width: 105px;
+}
+
+
+/* ============================================================
+   USER
+   ============================================================ */
+
+.cs-user-cell {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+}
+
+.cs-avatar {
+  width: 31px;
+  height: 31px;
+
+  flex: 0 0 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eee8ff;
+
+  color: #5e30cf;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.cs-avatar.large {
+  width: 42px;
+  height: 42px;
+
+  flex-basis: 42px;
+
+  font-size: 14px;
+}
+
+.cs-user-cell > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-user-cell strong {
+  color: #343153;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.cs-user-cell small {
+  margin-top: 3px;
+
+  color: #88849c;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* ============================================================
+   POST
+   ============================================================ */
+
+.cs-post-cell,
+.cs-ticket-table-cell {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-post-cell strong,
+.cs-ticket-table-cell strong {
+  color: #363354;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.cs-post-cell span,
+.cs-ticket-table-cell span {
+  margin-top: 3px;
+
+  color: #85819b;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   CATEGORY
+   ============================================================ */
+
+.cs-category {
+  display: inline-flex;
+
+  width: fit-content;
+
+  padding: 5px 8px;
+
+  border-radius: 5px;
+
+  background: #eee8ff;
+
+  color: #5e30cf;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.cs-status {
+  display: inline-flex;
+
+  width: fit-content;
+
+  padding: 5px 8px;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.cs-status.active,
+.cs-status.resolved {
+  background: #e2f5eb;
+  color: #21875f;
+}
+
+.cs-status.pending {
+  background: #fff0d9;
+  color: #d27b13;
+}
+
+.cs-status.in_progress,
+.cs-status.under_review {
+  background: #e7efff;
+  color: #3975bd;
+}
+
+.cs-status.closed,
+.cs-status.hidden,
+.cs-status.dismissed {
+  background: #ffe7ec;
+  color: #d83d5e;
+}
+
+
+/* ============================================================
+   PRIORITY
+   ============================================================ */
+
+.cs-priority {
+  display: inline-flex;
+
+  width: fit-content;
+
+  padding: 5px 7px;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.cs-priority.low {
+  background: #edf6ff;
+  color: #4280b7;
+}
+
+.cs-priority.normal {
+  background: #f1eff8;
+  color: #67627f;
+}
+
+.cs-priority.high {
+  background: #fff0d9;
+  color: #d27b13;
+}
+
+.cs-priority.urgent {
+  background: #ffe5ea;
+  color: #d83d5e;
+}
+
+
+/* ============================================================
+   DATE
+   ============================================================ */
+
+.cs-date-cell {
+  display: flex;
+  flex-direction: column;
+
+  color: #68647f;
+
+  font-size: 12px;
+}
+
+.cs-date-cell small {
+  margin-top: 3px;
+
+  color: #9691a8;
+
+  font-size: 11px;
+}
+
+
+/* ============================================================
+   ACTION ICONS
+   ============================================================ */
+
+.cs-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 4px;
+}
+
+.cs-actions button {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2deef;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #5d587c;
+
+  cursor: pointer;
+}
+
+.cs-actions button:hover {
+  background: #f4f0ff;
+
+  color: #6330d3;
+
+  border-color: #d9d0f0;
+}
+
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+
+.cs-loading {
+  min-height: 320px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #777493;
+
+  font-size: 13px;
+}
+
+.cs-spinner {
+  color: #6330d3;
+
+  animation:
+    cs-spin 0.8s linear infinite;
+}
+
+@keyframes cs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   EMPTY
+   ============================================================ */
+
+.cs-empty-state {
+  min-height: 320px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 30px;
+}
+
+.cs-empty-state > div {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+
+  border-radius: 50%;
+
+  background: #f0ebff;
+
+  color: #6330d3;
+}
+
+.cs-empty-state strong {
+  color: #44415f;
+
+  font-size: 14px;
+}
+
+.cs-empty-state span {
+  max-width: 330px;
+
+  margin-top: 5px;
+
+  color: #85819a;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+
+.cs-pagination {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 8px 12px;
+
+  border-top: 1px solid #eeeaf7;
+}
+
+.cs-pagination > span {
+  color: #77738e;
+
+  font-size: 11px;
+}
+
+.cs-pagination > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+}
+
+.cs-pagination button {
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e3dfef;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #5b577c;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.cs-pagination button.active {
+  background: #6330d3;
+
+  border-color: #6330d3;
+
+  color: #ffffff;
+}
+
+.cs-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   SIDE COLUMN
+   ============================================================ */
+
+.cs-side-column {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+
+/* ============================================================
+   SIDE CARD
+   ============================================================ */
+
+.cs-side-card {
+  background: #ffffff;
+
+  border: 1px solid #e2e0ef;
+
+  border-radius: 10px;
+
+  padding: 14px;
+
+  box-sizing: border-box;
+}
+
+.cs-side-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 11px;
+}
+
+.cs-side-heading h3 {
+  margin: 0;
+
+  color: #15185e;
+
+  font-size: 16px;
+}
+
+.cs-side-heading button {
+  border: none;
+
+  background: transparent;
+
+  color: #6330d3;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   RECENT TICKETS
+   ============================================================ */
+
+.cs-ticket-list {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.cs-ticket-item {
+  min-height: 61px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border-bottom: 1px solid #f0eef6;
+}
+
+.cs-ticket-item:last-child {
+  border-bottom: none;
+}
+
+.cs-ticket-icon {
+  width: 31px;
+  height: 31px;
+
+  flex: 0 0 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.cs-ticket-icon.pending {
+  background: #fff0d9;
+  color: #d27b13;
+}
+
+.cs-ticket-icon.in_progress {
+  background: #e7efff;
+  color: #3975bd;
+}
+
+.cs-ticket-icon.resolved {
+  background: #e2f5eb;
+  color: #21875f;
+}
+
+.cs-ticket-icon.closed {
+  background: #ffe7ec;
+  color: #d83d5e;
+}
+
+.cs-ticket-info {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-ticket-info strong {
+  color: #3a365b;
+
+  font-size: 12px;
+}
+
+.cs-ticket-info span {
+  margin-top: 2px;
+
+  color: #5e5a79;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.cs-ticket-info small {
+  margin-top: 3px;
+
+  color: #9994aa;
+
+  font-size: 10px;
+}
+
+.cs-mini-status {
+  padding: 4px 6px;
+
+  border-radius: 4px;
+
+  font-size: 10px;
+
+  white-space: nowrap;
+}
+
+.cs-mini-status.pending {
+  background: #fff0d9;
+  color: #d27b13;
+}
+
+.cs-mini-status.in_progress {
+  background: #e7efff;
+  color: #3975bd;
+}
+
+.cs-mini-status.resolved {
+  background: #e2f5eb;
+  color: #21875f;
+}
+
+.cs-mini-status.closed {
+  background: #ffe7ec;
+  color: #d83d5e;
+}
+
+.cs-side-empty {
+  padding: 25px 10px;
+
+  text-align: center;
+
+  color: #85819a;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   QUICK ACTIONS
+   ============================================================ */
+
+.cs-quick-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 8px;
+}
+
+.cs-quick-grid button {
+  min-height: 91px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  gap: 4px;
+
+  padding: 9px;
+
+  border: 1px solid #e3dfef;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.cs-quick-grid button:hover {
+  background: #faf8ff;
+
+  border-color: #d8cff1;
+}
+
+.cs-quick-grid button > div {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+}
+
+.cs-quick-grid .purple {
+  background: #eee8ff;
+  color: #6330d3;
+}
+
+.cs-quick-grid .green {
+  background: #e3f5ed;
+  color: #21875f;
+}
+
+.cs-quick-grid .orange {
+  background: #fff0d9;
+  color: #d27b13;
+}
+
+.cs-quick-grid .blue {
+  background: #e4efff;
+  color: #3975bd;
+}
+
+.cs-quick-grid strong {
+  color: #403c61;
+
+  font-size: 12px;
+
+  line-height: 1.3;
+}
+
+.cs-quick-grid span {
+  color: #8a869d;
+
+  font-size: 11px;
+
+  line-height: 1.3;
+}
+
+
+/* ============================================================
+   SAFETY CARD
+   ============================================================ */
+
+.cs-safety-card {
+  min-height: 70px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border: 1px solid #e1daf7;
+
+  border-radius: 9px;
+
+  background: #f7f4ff;
+}
+
+.cs-safety-card > div {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ebe4ff;
+
+  color: #6330d3;
+}
+
+.cs-safety-card p {
+  margin: 0;
+
+  color: #66618a;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.cs-modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 200;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(
+    28,
+    18,
+    67,
+    0.45
+  );
+
+  box-sizing: border-box;
+}
+
+.cs-modal {
+  width: min(
+    560px,
+    100%
+  );
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(
+      32,
+      18,
+      78,
+      0.25
+    );
+}
+
+.cs-modal.medium {
+  width: min(
+    650px,
+    100%
+  );
+}
+
+.cs-modal.detail {
+  width: min(
+    620px,
+    100%
+  );
+}
+
+.cs-modal-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border-bottom: 1px solid #eeeaf7;
+}
+
+.cs-modal-header h2 {
+  margin: 0;
+
+  color: #171a61;
+
+  font-size: 20px;
+}
+
+.cs-modal-header p {
+  margin: 5px 0 0;
+
+  color: #77738f;
+
+  font-size: 12px;
+}
+
+.cs-modal-header > button {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #f4f2f9;
+
+  color: #65617f;
+
+  cursor: pointer;
+}
+
+.cs-modal form {
+  padding: 18px;
+}
+
+.cs-modal form label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  margin-bottom: 13px;
+
+  color: #555174;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.cs-modal input,
+.cs-modal textarea,
+.cs-modal select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ddd9eb;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #39355b;
+
+  font-family: inherit;
+
+  font-size: 13px;
+}
+
+.cs-modal input,
+.cs-modal select {
+  height: 37px;
+
+  padding: 0 10px;
+}
+
+.cs-modal textarea {
+  min-height: 120px;
+
+  padding: 10px;
+
+  resize: vertical;
+}
+
+.cs-modal input:focus,
+.cs-modal textarea:focus,
+.cs-modal select:focus {
+  border-color: #7951da;
+
+  box-shadow:
+    0 0 0 2px #eee8ff;
+}
+
+.cs-modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  margin-top: 17px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #eeeaf7;
+}
+
+.cs-modal-actions button {
+  min-height: 36px;
+
+  padding: 0 15px;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.cs-modal-actions .secondary {
+  border: 1px solid #ddd8eb;
+
+  background: #ffffff;
+
+  color: #5e5979;
+}
+
+.cs-modal-actions .primary {
+  border: 1px solid #6330d3;
+
+  background: #6330d3;
+
+  color: #ffffff;
+}
+
+.cs-modal-actions button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   DETAIL CONTENT
+   ============================================================ */
+
+.cs-detail-content {
+  padding: 18px;
+}
+
+.cs-detail-user {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 17px;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid #eeeaf7;
+}
+
+.cs-detail-user > div:last-child {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.cs-detail-user strong {
+  color: #373354;
+
+  font-size: 14px;
+}
+
+.cs-detail-user span {
+  margin-top: 3px;
+
+  color: #85819a;
+
+  font-size: 12px;
+}
+
+.cs-detail-field {
+  margin-bottom: 14px;
+}
+
+.cs-detail-field label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #8a859e;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
+}
+
+.cs-detail-field strong {
+  color: #3d395d;
+
+  font-size: 14px;
+}
+
+.cs-detail-field > span {
+  color: #5e5a78;
+
+  font-size: 13px;
+}
+
+.cs-detail-field p {
+  margin: 0;
+
+  padding: 11px;
+
+  border-radius: 7px;
+
+  background: #f8f7fb;
+
+  color: #5e5a78;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.cs-detail-meta-row {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 8px;
+}
+
+.cs-detail-meta-row span {
+  padding: 6px 8px;
+
+  border-radius: 5px;
+
+  background: #f2eff9;
+
+  color: #625d7d;
+
+  font-size: 11px;
+}
+
+.cs-detail-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 7px;
+
+  padding: 13px 18px;
+
+  border-top: 1px solid #eeeaf7;
+}
+
+.cs-detail-actions button {
+  min-height: 34px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 0 11px;
+
+  border: 1px solid #ddd8eb;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #5e5979;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.cs-detail-actions button:hover {
+  background: #f5f1ff;
+
+  color: #6330d3;
+}
+
+.cs-detail-actions button.danger:hover {
+  background: #fff0f3;
+
+  color: #d83d5e;
+}
+
+
+/* ============================================================
+   BANNED USERS
+   ============================================================ */
+
+.cs-banned-list {
+  padding: 10px 18px 18px;
+}
+
+.cs-banned-user {
+  min-height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border-bottom: 1px solid #f0eef6;
+}
+
+.cs-banned-user:last-child {
+  border-bottom: none;
+}
+
+.cs-banned-user > div:nth-child(2) {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.cs-banned-user strong {
+  color: #39355a;
+
+  font-size: 13px;
+}
+
+.cs-banned-user span {
+  margin-top: 3px;
+
+  color: #85819a;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.cs-banned-user small {
+  padding: 5px 7px;
+
+  border-radius: 5px;
+
+  background: #ffe7ec;
+
+  color: #d83d5e;
+
+  font-size: 10px;
+}
+
+.cs-empty-modal {
+  min-height: 220px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  color: #85819a;
+}
+
+.cs-empty-modal svg {
+  margin-bottom: 9px;
+
+  color: #6330d3;
+}
+
+.cs-empty-modal strong {
+  color: #4b4769;
+
+  font-size: 14px;
+}
+
+.cs-empty-modal span {
+  max-width: 280px;
+
+  margin-top: 5px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.cs-checkbox-label {
+  flex-direction: row !important;
+
+  align-items: center;
+
+  gap: 8px !important;
+
+  cursor: pointer;
+}
+
+.cs-checkbox-label input {
+  width: 15px;
+
+  height: 15px;
+
+  accent-color: #6330d3;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1200px) {
+
+  .cs-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-side-column {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .cs-filter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-side-column {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .cs-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-tabs {
+    overflow-x: auto;
+  }
+
+  .cs-section-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .cs-heading-actions {
+    width: 100%;
+  }
+
+  .cs-primary-button {
+    flex: 1;
+
+    justify-content: center;
+  }
+
+  .cs-pagination {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .cs-quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

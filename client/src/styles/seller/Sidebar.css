@@ -1,0 +1,358 @@
+/* ============================================================
+   REUSE CONNECT
+   SELLER SIDEBAR
+   ============================================================ */
+
+
+.seller-sidebar {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 232px;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    linear-gradient(
+      180deg,
+      #21154f 0%,
+      #241550 45%,
+      #17103c 100%
+    );
+
+  color: #ffffff;
+
+  z-index: 1000;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.seller-sidebar-logo {
+
+  height: 94px;
+
+  display: flex;
+  align-items: center;
+
+  padding:
+    0 24px;
+
+  box-sizing: border-box;
+
+}
+
+
+.seller-logo-mark {
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  margin-right: 10px;
+
+}
+
+
+.seller-logo-text {
+
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+
+}
+
+
+.seller-logo-title {
+
+  font-size: 27px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+}
+
+
+.seller-logo-subtitle {
+
+  margin-top: 5px;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  opacity: 0.9;
+
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.seller-sidebar-nav {
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding:
+    4px 10px;
+
+  box-sizing: border-box;
+
+}
+
+
+.seller-sidebar-link {
+
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  padding:
+    0 16px;
+
+  border-radius: 8px;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.seller-sidebar-link:hover {
+
+  background:
+    rgba(111, 65, 230, 0.32);
+
+  color: #ffffff;
+
+}
+
+
+.seller-sidebar-link-active {
+
+  background:
+    linear-gradient(
+      90deg,
+      #6330db 0%,
+      #5630cf 100%
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 18px
+    rgba(67, 32, 166, 0.35);
+
+}
+
+
+.seller-sidebar-link-active:hover {
+
+  background:
+    linear-gradient(
+      90deg,
+      #6c37e6 0%,
+      #5b32d5 100%
+    );
+
+}
+
+
+.seller-sidebar-icon {
+
+  flex-shrink: 0;
+
+}
+
+
+/* ============================================================
+   BOTTOM
+   ============================================================ */
+
+.seller-sidebar-bottom {
+
+  padding:
+    12px 10px 22px;
+
+}
+
+
+.seller-logout-button {
+
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  padding:
+    0 16px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color:
+    rgba(255, 255, 255, 0.88);
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+}
+
+
+.seller-logout-button:hover {
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .seller-sidebar {
+
+    width: 210px;
+
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .seller-sidebar {
+
+    width: 74px;
+
+  }
+
+
+  .seller-sidebar-logo {
+
+    justify-content: center;
+
+    padding: 0;
+
+  }
+
+
+  .seller-logo-text {
+
+    display: none;
+
+  }
+
+
+  .seller-sidebar-link {
+
+    justify-content: center;
+
+    padding: 0;
+
+  }
+
+
+  .seller-sidebar-link span {
+
+    display: none;
+
+  }
+
+
+  .seller-logout-button {
+
+    justify-content: center;
+
+    padding: 0;
+
+  }
+
+
+  .seller-logout-button span {
+
+    display: none;
+
+  }
+
+}
+/* ============================================================
+   SELLER SIDEBAR POSITION
+   ============================================================ */
+
+.seller-sidebar {
+  position: fixed !important;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 190px !important;
+  min-width: 190px !important;
+  max-width: 190px !important;
+
+  height: 100vh;
+
+  z-index: 1000;
+
+  box-sizing: border-box;
+}

@@ -1,0 +1,32 @@
+.admin-app {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background: #f7f7fb;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
+}
+
+.admin-content {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+
+  padding: 20px;
+  box-sizing: border-box;
+}

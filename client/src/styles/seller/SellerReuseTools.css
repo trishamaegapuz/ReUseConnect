@@ -1,0 +1,1503 @@
+.seller-reuse-tools {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px 20px 30px;
+  box-sizing: border-box;
+  color: #17215c;
+  background: #ffffff;
+}
+
+.seller-reuse-tools * {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.reuse-hero {
+  width: 100%;
+  height: 112px;
+
+  margin: 0 0 12px;
+  padding: 20px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 0 0 10px 10px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #f5f2ff,
+      #eef0ff 62%,
+      #e9f7ef
+    );
+
+  overflow: hidden;
+}
+
+.reuse-hero h1 {
+  margin: 0 0 4px;
+
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 800;
+
+  color: #18247b;
+}
+
+.reuse-hero p {
+  margin: 0;
+
+  font-size: 15px;
+
+  color: #242a79;
+}
+
+.reuse-hero-art {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding-right: 12px;
+
+  color: #1c7d5d;
+}
+
+.reuse-hero-art span {
+  font-family: cursive;
+
+  font-size: 16px;
+  line-height: 1.15;
+
+  text-align: right;
+
+  color: #17346c;
+}
+
+.reuse-hero-art strong {
+  font-size: 17px;
+}
+
+.hero-globe {
+  font-size: 68px;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   TABS
+============================================================ */
+
+.reuse-tabs {
+  width: 100%;
+
+  display: flex;
+
+  gap: 8px;
+
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.reuse-tabs button {
+  height: 42px;
+
+  padding: 0 28px;
+
+  border: 1px solid #e1e0ee;
+  border-radius: 7px;
+
+  background: #f8f8fc;
+  color: #302b83;
+
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+.reuse-tabs button.active {
+  background:
+    linear-gradient(
+      90deg,
+      #5422cf,
+      #5e31d7
+    );
+
+  border-color: #5422cf;
+
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.reuse-error {
+  width: 100%;
+
+  margin: 0 0 16px;
+
+  padding: 11px 14px;
+
+  border: 1px solid #f0b7b7;
+  border-radius: 8px;
+
+  background: #fff3f3;
+
+  color: #a12626;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 13px;
+}
+
+.reuse-error button {
+  border: 0;
+  background: transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   GRID
+============================================================ */
+
+.reuse-top-grid,
+.reuse-bottom-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 374px)
+    minmax(0, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 18px;
+}
+
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.info-card,
+.panel-card {
+  min-width: 0;
+
+  border: 1px solid #e6e5f0;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 2px 7px
+    rgba(36, 32, 100, 0.06);
+}
+
+.info-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 24px;
+}
+
+
+/* ============================================================
+   CONDITION GUIDE
+============================================================ */
+
+.checker-guide {
+  min-height: 332px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8f6ff,
+      #f0efff
+    );
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 13px;
+}
+
+.card-icon.purple {
+  background: #e7dcff;
+  color: #5b2cd1;
+}
+
+.card-icon.green {
+  background: #dff3e3;
+  color: #2c916d;
+}
+
+.info-card h2,
+.panel-card h2 {
+  margin: 0;
+
+  font-size: 18px;
+
+  color: #13206c;
+}
+
+.card-subtitle,
+.panel-heading p {
+  margin: 5px 0 0;
+
+  color: #6b6b98;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   STEPS
+============================================================ */
+
+.steps {
+  margin-top: 22px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.step-row {
+  display: flex;
+
+  gap: 13px;
+
+  align-items: flex-start;
+}
+
+.step-row > span {
+  flex: 0 0 32px;
+
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: #e8ddff;
+
+  color: #5130bc;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 800;
+}
+
+.step-row strong,
+.step-row small {
+  display: block;
+}
+
+.step-row strong {
+  margin: 2px 0 3px;
+
+  font-size: 12px;
+
+  color: #443b88;
+
+  font-weight: 700;
+}
+
+.step-row small {
+  font-size: 11px;
+
+  color: #6e6a9a;
+
+  line-height: 1.4;
+}
+
+.guide-sprout {
+  position: absolute;
+
+  bottom: -9px;
+  left: 12px;
+
+  color: #d5c9f6;
+
+  transform: rotate(-18deg);
+}
+
+
+/* ============================================================
+   PANEL
+============================================================ */
+
+.panel-card {
+  padding: 22px;
+}
+
+.check-panel {
+  min-height: 332px;
+}
+
+.panel-heading {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.panel-heading h2 {
+  font-size: 18px;
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.text-button,
+.icon-refresh {
+  border: 0;
+
+  background: transparent;
+
+  color: #4c31bb;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.icon-refresh {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 7px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-refresh:hover {
+  background: #f3f0ff;
+}
+
+.spin {
+  animation:
+    spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   UPLOAD
+============================================================ */
+
+.upload-box {
+  width: 100%;
+  height: 216px;
+
+  margin-top: 18px;
+
+  border: 2px dashed #d8d5eb;
+  border-radius: 8px;
+
+  background: #fcfcff;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: #6a65b7;
+
+  cursor: pointer;
+}
+
+.upload-box:hover {
+  background: #faf8ff;
+
+  border-color: #8b79db;
+}
+
+.upload-box strong {
+  font-size: 13px;
+
+  color: #33347c;
+}
+
+.upload-box span {
+  font-size: 10px;
+
+  color: #77779e;
+}
+
+
+/* ============================================================
+   QUESTIONS
+============================================================ */
+
+.question-area {
+  margin-top: 18px;
+}
+
+.image-preview-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.image-preview-row img,
+.preview-empty {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 8px;
+
+  object-fit: cover;
+
+  border: 1px solid #e1e0ed;
+}
+
+.preview-empty {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #f6f4ff;
+
+  color: #6952c8;
+}
+
+.image-preview-row strong,
+.image-preview-row small {
+  display: block;
+}
+
+.image-preview-row strong {
+  font-size: 12px;
+
+  color: #2b2c72;
+}
+
+.image-preview-row small {
+  margin-top: 3px;
+
+  font-size: 11px;
+
+  color: #77779e;
+}
+
+.question-area label {
+  display: block;
+
+  margin: 12px 0 7px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #3d397f;
+}
+
+.choice-row {
+  display: flex;
+
+  gap: 7px;
+}
+
+.choice-row button {
+  padding: 7px 12px;
+
+  border: 1px solid #dfdeeb;
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #5a5684;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.choice-row button.selected {
+  border-color: #6031d1;
+
+  background: #f0eaff;
+
+  color: #4c22bd;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+============================================================ */
+
+.primary-button {
+  border: 0;
+
+  border-radius: 7px;
+
+  height: 41px;
+
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+.primary-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.purple-button {
+  width: 100%;
+
+  margin-top: 16px;
+
+  background: #5728ca;
+}
+
+.green-button {
+  width: 100%;
+
+  background: #31936e;
+}
+
+
+/* ============================================================
+   ASSESSMENT RESULT
+============================================================ */
+
+.assessment-result {
+  margin-top: 20px;
+
+  padding: 22px;
+
+  border-radius: 10px;
+
+  background: #f4fbf7;
+
+  border: 1px solid #d9eee1;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.result-badge {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-badge.good {
+  background: #dff4e9;
+
+  color: #258d68;
+}
+
+.result-badge.fair {
+  background: #fff0d5;
+
+  color: #d48a1b;
+}
+
+.result-badge.needs {
+  background: #ffe4e4;
+
+  color: #c24d4d;
+}
+
+.assessment-result span {
+  font-size: 11px;
+
+  color: #73719a;
+}
+
+.assessment-result h3 {
+  margin: 2px 0 4px;
+
+  font-size: 17px;
+
+  color: #23306f;
+}
+
+.assessment-result p {
+  margin: 0;
+
+  font-size: 11px;
+
+  color: #69678d;
+}
+
+.secondary-button {
+  margin-left: auto;
+
+  border: 1px solid #d9d6e8;
+  background: #ffffff;
+
+  color: #4d3a96;
+
+  border-radius: 7px;
+
+  height: 37px;
+
+  padding: 0 13px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   IMPACT GUIDE
+============================================================ */
+
+.impact-guide {
+  min-height: 332px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f2fbf5,
+      #eef9f0
+    );
+}
+
+.impact-points {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+.impact-points > div {
+  display: flex;
+
+  gap: 13px;
+
+  align-items: flex-start;
+
+  color: #29936c;
+}
+
+.impact-points span strong,
+.impact-points span small {
+  display: block;
+}
+
+.impact-points strong {
+  font-size: 12px;
+
+  color: #327e68;
+}
+
+.impact-points small {
+  margin-top: 2px;
+
+  font-size: 11px;
+
+  color: #6b7f79;
+}
+
+.impact-art {
+  position: absolute;
+
+  right: 15px;
+  bottom: -10px;
+
+  font-size: 74px;
+
+  opacity: 0.9;
+}
+
+
+/* ============================================================
+   RECENT CHECKS
+============================================================ */
+
+.recent-panel {
+  min-height: 332px;
+}
+
+.recent-list {
+  margin-top: 17px;
+}
+
+.recent-item {
+  display: grid;
+
+  grid-template-columns:
+    51px
+    minmax(120px, 1fr)
+    auto
+    78px;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #f0eff5;
+}
+
+.recent-item:last-child {
+  border-bottom: 0;
+}
+
+.recent-thumb {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 7px;
+
+  overflow: hidden;
+
+  background: #f2f1f6;
+}
+
+.recent-thumb img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.fallback-item {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #8b87b5;
+}
+
+.recent-name strong,
+.recent-name small {
+  display: block;
+}
+
+.recent-name strong {
+  font-size: 12px;
+
+  color: #26316f;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.recent-name small {
+  margin-top: 2px;
+
+  font-size: 10px;
+
+  color: #7b7a9d;
+}
+
+.condition-pill {
+  padding: 5px 8px;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.condition-pill.good {
+  background: #dcf4e9;
+
+  color: #258767;
+}
+
+.condition-pill.fair {
+  background: #fff0d7;
+
+  color: #c8831a;
+}
+
+.condition-pill.needs {
+  background: #ffe4e4;
+
+  color: #bd4c4c;
+}
+
+.recent-item time {
+  font-size: 10px;
+
+  color: #7d7c9b;
+
+  text-align: right;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+============================================================ */
+
+.empty-state {
+  height: 220px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #8a88a4;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   ENVIRONMENTAL IMPACT
+============================================================ */
+
+.environment-layout {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 18px;
+}
+
+.calculator-card,
+.impact-summary {
+  min-height: 440px;
+}
+
+
+/* ============================================================
+   CALCULATOR
+============================================================ */
+
+.calculator-form {
+  max-width: 620px;
+
+  margin-top: 24px;
+}
+
+.calculator-form label {
+  display: block;
+
+  margin: 0 0 7px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #46447c;
+}
+
+.calculator-form select,
+.calculator-form input {
+  width: 100%;
+
+  height: 43px;
+
+  border: 1px solid #dedce9;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  padding: 0 12px;
+
+  margin-bottom: 15px;
+
+  color: #65638e;
+
+  font-size: 12px;
+
+  outline: none;
+}
+
+.calculator-form select:focus,
+.calculator-form input:focus {
+  border-color: #7d68d3;
+}
+
+.field-error {
+  margin: -4px 0 10px;
+
+  color: #b23c3c;
+
+  font-size: 11px;
+}
+
+
+/* ============================================================
+   IMPACT STATS
+============================================================ */
+
+.impact-stat-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.impact-stat-grid > div {
+  min-height: 88px;
+
+  padding: 14px;
+
+  border: 1px solid #e7eee9;
+
+  border-radius: 9px;
+
+  background: #fbfefd;
+
+  display: grid;
+
+  grid-template-columns:
+    42px
+    1fr;
+
+  grid-template-rows:
+    1fr
+    1fr;
+
+  column-gap: 10px;
+}
+
+.stat-icon {
+  grid-row: 1 / 3;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  align-self: center;
+}
+
+.stat-icon.green {
+  background: #e0f3e8;
+
+  color: #2b946e;
+}
+
+.stat-icon.blue {
+  background: #e5f0fb;
+
+  color: #438bc8;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.impact-stat-grid strong {
+  font-size: 16px;
+
+  color: #29366e;
+
+  align-self: end;
+}
+
+.impact-stat-grid small {
+  font-size: 10px;
+
+  color: #777898;
+
+  align-self: start;
+}
+
+
+/* ============================================================
+   DIFFERENCE NOTE
+============================================================ */
+
+.difference-note {
+  margin-top: 15px;
+
+  padding: 13px;
+
+  border-radius: 8px;
+
+  background: #ecfaf2;
+
+  color: #2c936d;
+
+  display: flex;
+
+  gap: 10px;
+
+  align-items: flex-start;
+}
+
+.difference-note strong,
+.difference-note small {
+  display: block;
+}
+
+.difference-note strong {
+  font-size: 11px;
+
+  color: #277b61;
+}
+
+.difference-note small {
+  margin-top: 2px;
+
+  font-size: 10px;
+
+  color: #5d7d71;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  .seller-reuse-tools {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .reuse-top-grid,
+  .reuse-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .environment-layout {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .seller-reuse-tools {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 18px;
+  }
+
+  .reuse-hero {
+    height: auto;
+
+    min-height: 105px;
+
+    padding: 17px;
+  }
+
+  .reuse-hero-art {
+    display: none;
+  }
+
+  .reuse-tabs {
+    overflow-x: auto;
+  }
+
+  .reuse-tabs button {
+    white-space: nowrap;
+  }
+
+  .panel-card,
+  .info-card {
+    padding: 17px;
+  }
+
+  .recent-item {
+    grid-template-columns:
+      45px
+      minmax(90px, 1fr);
+  }
+
+  .recent-item .condition-pill,
+  .recent-item time {
+    grid-column: 2;
+
+    text-align: left;
+
+    width: max-content;
+  }
+
+  .assessment-result {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .secondary-button {
+    margin-left: 0;
+  }
+
+  .choice-row {
+    flex-wrap: wrap;
+  }
+
+  .impact-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   LARGE / READABLE FONT UPDATE
+   Seller Reuse Tools
+   CSS-only: functionality, API, calculations, auth, and JSX
+   behavior are preserved.
+============================================================ */
+
+.seller-reuse-tools {
+  font-size: 15px;
+}
+
+/* HERO */
+.reuse-hero h1 {
+  font-size: 30px !important;
+}
+.reuse-hero p {
+  font-size: 16px !important;
+}
+.reuse-hero-art span {
+  font-size: 17px !important;
+}
+.reuse-hero-art strong {
+  font-size: 18px !important;
+}
+
+/* TABS */
+.reuse-tabs button {
+  font-size: 15px !important;
+  min-height: 44px;
+}
+.reuse-tabs button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ERROR */
+.reuse-error {
+  font-size: 14px !important;
+}
+.reuse-error button {
+  font-size: 14px !important;
+}
+
+/* CARD HEADINGS */
+.info-card h2,
+.panel-card h2,
+.panel-heading h2 {
+  font-size: 20px !important;
+}
+.card-subtitle,
+.panel-heading p {
+  font-size: 14px !important;
+  line-height: 1.55;
+}
+
+/* CONDITION GUIDE */
+.step-row > span {
+  font-size: 15px !important;
+}
+.step-row strong {
+  font-size: 14px !important;
+  line-height: 1.35;
+}
+.step-row small {
+  font-size: 13px !important;
+  line-height: 1.5;
+}
+
+/* PANEL ACTIONS */
+.text-button,
+.icon-refresh {
+  font-size: 14px !important;
+}
+.icon-refresh {
+  width: 38px;
+  height: 38px;
+}
+
+/* UPLOAD */
+.upload-box strong {
+  font-size: 15px !important;
+}
+.upload-box span {
+  font-size: 13px !important;
+}
+
+/* QUESTIONS */
+.image-preview-row strong {
+  font-size: 14px !important;
+}
+.image-preview-row small {
+  font-size: 13px !important;
+}
+.question-area label {
+  font-size: 14px !important;
+  line-height: 1.4;
+}
+.choice-row button {
+  font-size: 14px !important;
+  min-height: 38px;
+  padding: 8px 13px;
+}
+
+/* PRIMARY / SECONDARY BUTTONS */
+.primary-button {
+  font-size: 15px !important;
+  min-height: 44px;
+}
+.secondary-button {
+  font-size: 14px !important;
+  min-height: 40px;
+}
+
+/* ASSESSMENT RESULT */
+.assessment-result span {
+  font-size: 13px !important;
+}
+.assessment-result h3 {
+  font-size: 20px !important;
+}
+.assessment-result p {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+/* IMPACT GUIDE */
+.impact-points strong {
+  font-size: 14px !important;
+}
+.impact-points small {
+  font-size: 13px !important;
+  line-height: 1.5;
+}
+
+/* RECENT CHECKS */
+.recent-name strong {
+  font-size: 14px !important;
+}
+.recent-name small {
+  font-size: 13px !important;
+}
+.condition-pill {
+  font-size: 13px !important;
+}
+.recent-item time {
+  font-size: 13px !important;
+}
+.empty-state {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+/* IMPACT CALCULATOR */
+.calculator-form label {
+  font-size: 14px !important;
+}
+.calculator-form select,
+.calculator-form input {
+  font-size: 15px !important;
+  height: 45px;
+}
+.field-error {
+  font-size: 13px !important;
+}
+
+/* IMPACT STATS */
+.impact-stat-grid strong {
+  font-size: 20px !important;
+}
+.impact-stat-grid small {
+  font-size: 13px !important;
+}
+
+/* DIFFERENCE NOTE */
+.difference-note strong {
+  font-size: 14px !important;
+}
+.difference-note small {
+  font-size: 13px !important;
+  line-height: 1.5;
+}
+
+/* GENERAL READABILITY */
+.reuse-tabs,
+.reuse-error,
+.info-card,
+.panel-card,
+.question-area,
+.calculator-form,
+.impact-summary,
+.recent-panel {
+  line-height: 1.45;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .reuse-hero h1 {
+    font-size: 27px !important;
+  }
+
+  .reuse-hero p {
+    font-size: 15px !important;
+  }
+
+  .reuse-tabs button {
+    font-size: 14px !important;
+  }
+
+  .info-card h2,
+  .panel-card h2,
+  .panel-heading h2 {
+    font-size: 19px !important;
+  }
+
+  .step-row strong {
+    font-size: 14px !important;
+  }
+
+  .step-row small,
+  .card-subtitle,
+  .panel-heading p {
+    font-size: 13px !important;
+  }
+
+  .question-area label {
+    font-size: 14px !important;
+  }
+
+  .choice-row button {
+    font-size: 14px !important;
+  }
+
+  .assessment-result h3 {
+    font-size: 19px !important;
+  }
+
+  .assessment-result p {
+    font-size: 14px !important;
+  }
+
+  .recent-name strong {
+    font-size: 14px !important;
+  }
+
+  .recent-name small,
+  .condition-pill,
+  .recent-item time {
+    font-size: 13px !important;
+  }
+
+  .calculator-form select,
+  .calculator-form input {
+    font-size: 15px !important;
+  }
+
+  .impact-stat-grid strong {
+    font-size: 19px !important;
+  }
+}

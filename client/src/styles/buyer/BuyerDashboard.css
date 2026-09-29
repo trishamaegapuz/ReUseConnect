@@ -1,0 +1,1421 @@
+/* ============================================================
+   REUSE CONNECT
+   BUYER DASHBOARD
+   ============================================================ */
+
+.buyer-dashboard {
+
+  width: 100%;
+
+  min-height: 100%;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: #191654;
+
+}
+
+
+/* ============================================================
+   WELCOME
+   ============================================================ */
+
+.buyer-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.buyer-welcome-label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #756fc4;
+}
+
+.buyer-welcome h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #17134f;
+}
+
+.buyer-welcome p {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: #7b7899;
+}
+
+
+/* ============================================================
+   REFRESH
+   ============================================================ */
+
+.buyer-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 15px;
+  border: 1px solid #e2e0f0;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #4b4594;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(32, 25, 96, 0.04);
+  transition: 0.2s ease;
+}
+
+.buyer-refresh-btn:hover {
+  background: #f4f2ff;
+  border-color: #cbc6ef;
+}
+
+.buyer-refresh-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.buyer-refresh-spinning {
+  animation: buyer-spin 0.8s linear infinite;
+}
+
+
+/* ============================================================
+   SIX STATS
+   ============================================================ */
+
+.buyer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 18px;
+}
+
+.buyer-stat-card {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px;
+  background: #ffffff;
+  border: 1px solid #e8e6f2;
+  border-radius: 11px;
+  box-shadow: 0 3px 12px rgba(38, 28, 111, 0.035);
+}
+
+.buyer-stat-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.buyer-stat-icon.purple {
+  background: #eeeaff;
+  color: #6d58d9;
+}
+
+.buyer-stat-icon.orange {
+  background: #fff2df;
+  color: #dc8a24;
+}
+
+.buyer-stat-icon.green {
+  background: #e8f8ef;
+  color: #2e9b62;
+}
+
+.buyer-stat-icon.pink {
+  background: #ffebf2;
+  color: #d95784;
+}
+
+.buyer-stat-icon.blue {
+  background: #e9f2ff;
+  color: #4c82cf;
+}
+
+.buyer-stat-icon.teal {
+  background: #e5f8f7;
+  color: #2d9996;
+}
+
+.buyer-stat-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.buyer-stat-content span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8885a2;
+}
+
+.buyer-stat-content strong {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #211c65;
+}
+
+.buyer-stat-content .buyer-money {
+  font-size: 20px;
+}
+
+
+/* ============================================================
+   FEATURE ROW
+   ============================================================ */
+
+.buyer-feature-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.85fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+
+/* ============================================================
+   IMPACT BANNER
+   ============================================================ */
+
+.buyer-impact-banner {
+  position: relative;
+  min-height: 190px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e0fa;
+  border-radius: 13px;
+  background: linear-gradient(
+    120deg,
+    #f0ecff 0%,
+    #f7f4ff 55%,
+    #edf9f7 100%
+  );
+}
+
+.buyer-impact-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px 26px;
+}
+
+.buyer-impact-small {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  color: #7667c8;
+}
+
+.buyer-impact-content h2 {
+  margin: 7px 0 7px;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #1b1761;
+}
+
+.buyer-impact-content p {
+  max-width: 390px;
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #716e99;
+}
+
+.buyer-impact-content button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #6043c6;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buyer-impact-content button:hover {
+  background: #5034ae;
+}
+
+.buyer-impact-decoration {
+  position: absolute;
+  right: 25px;
+  bottom: -12px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c66d6;
+  opacity: 0.35;
+  transform: rotate(-12deg);
+}
+
+
+/* ============================================================
+   MINI IMPACT
+   ============================================================ */
+
+.buyer-mini-impact {
+  min-height: 190px;
+  padding: 19px;
+  box-sizing: border-box;
+  border: 1px solid #e6e4f0;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(38, 28, 111, 0.035);
+}
+
+.buyer-mini-impact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.buyer-mini-impact-header > span {
+  font-size: 14px;
+  color: #9793ad;
+}
+
+.buyer-mini-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.buyer-mini-impact-grid > div {
+  min-height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 13px;
+  border-radius: 10px;
+  background: #f5fbf9;
+}
+
+.buyer-mini-impact-grid strong {
+  margin-bottom: 4px;
+  font-size: 23px;
+  color: #267e6b;
+}
+
+.buyer-mini-impact-grid span {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #7f8f8b;
+}
+
+
+/* ============================================================
+   SECTION TITLE
+   ============================================================ */
+
+.buyer-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4f3eae;
+}
+
+.buyer-section-title h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #201a61;
+}
+
+
+/* ============================================================
+   MAIN CONTENT GRID
+   ============================================================ */
+
+.buyer-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.buyer-large-panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e7e5f0;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(38, 28, 111, 0.035);
+}
+
+
+/* ============================================================
+   PANEL HEADER
+   ============================================================ */
+
+.buyer-panel-header {
+  min-height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px 18px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eeeef5;
+}
+
+.buyer-panel-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #8a87a2;
+}
+
+.buyer-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 7px;
+  border: 0;
+  background: transparent;
+  color: #6756cf;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buyer-view-all:hover {
+  color: #4f3fb4;
+}
+
+
+/* ============================================================
+   PURCHASES
+   ============================================================ */
+
+.buyer-purchases-list {
+  width: 100%;
+}
+
+.buyer-purchase-row {
+  min-height: 66px;
+  display: grid;
+  grid-template-columns: 48px minmax(120px, 1fr) 75px 82px 72px 16px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 17px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f0eff6;
+}
+
+.buyer-purchase-row:last-child {
+  border-bottom: 0;
+}
+
+.buyer-purchase-row:hover {
+  background: #fbfaff;
+}
+
+.buyer-purchase-image {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #f0edff;
+  color: #6b58cf;
+}
+
+.buyer-purchase-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.buyer-purchase-info strong {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  font-weight: 800;
+  color: #292364;
+}
+
+.buyer-purchase-info span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: #85829d;
+}
+
+.buyer-purchase-date {
+  font-size: 13px;
+  color: #77738f;
+}
+
+.buyer-purchase-total {
+  font-size: 14px;
+  color: #292364;
+}
+
+.buyer-row-arrow {
+  color: #8b86a4;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.buyer-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 23px;
+  padding: 0 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status-success {
+  background: #e8f8ee;
+  color: #27915b;
+}
+
+.status-warning {
+  background: #fff3df;
+  color: #c57a18;
+}
+
+.status-danger {
+  background: #ffe9ed;
+  color: #d34f68;
+}
+
+.status-neutral {
+  background: #eeedf6;
+  color: #69657e;
+}
+
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+
+.buyer-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 15px;
+}
+
+.buyer-product-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e9e7f1;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.buyer-product-image {
+  position: relative;
+  height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f3f1f8;
+  color: #7867c9;
+}
+
+.buyer-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.buyer-product-heart {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #6b58ca;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.buyer-product-info {
+  padding: 9px;
+}
+
+.buyer-product-info > strong {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+  font-size: 14px;
+  color: #292364;
+}
+
+.buyer-product-info > span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: #89869e;
+}
+
+.buyer-product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.buyer-product-bottom > strong {
+  font-size: 14px;
+  color: #40348f;
+}
+
+.buyer-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  color: #d89b28;
+}
+
+
+/* ============================================================
+   BOTTOM SECTION
+   ============================================================ */
+
+.buyer-bottom-section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+  gap: 18px;
+}
+
+
+/* ============================================================
+   ACTIVITY
+   ============================================================ */
+
+.buyer-activity-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.buyer-activity-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.buyer-activity-table th {
+  padding: 10px 16px;
+  background: #fafaff;
+  border-bottom: 1px solid #eeeef5;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  color: #9793ad;
+}
+
+.buyer-activity-table td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0eff6;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #6f6c88;
+}
+
+.buyer-activity-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.buyer-activity-table tbody tr:hover {
+  background: #fbfaff;
+}
+
+.buyer-activity-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+  color: #40358d;
+}
+
+
+/* ============================================================
+   ENVIRONMENT
+   ============================================================ */
+
+.buyer-environment-content {
+  padding: 16px;
+}
+
+.buyer-impact-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.buyer-impact-stat {
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 9px;
+  background: #f4fbf8;
+  text-align: center;
+}
+
+.buyer-impact-stat svg {
+  margin-bottom: 5px;
+  color: #38a984;
+}
+
+.buyer-impact-stat strong {
+  font-size: 20px;
+  font-weight: 800;
+  color: #267b68;
+}
+
+.buyer-impact-stat span {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #778b85;
+}
+
+
+/* ============================================================
+   REUSE PROGRESS
+   ============================================================ */
+
+.buyer-reuse-progress {
+  padding: 2px 0;
+}
+
+.buyer-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.buyer-progress-header span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #403a73;
+}
+
+.buyer-progress-header strong {
+  font-size: 14px;
+  color: #6a59c7;
+}
+
+.buyer-progress-bar {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eeeeF5;
+}
+
+.buyer-progress-purchases {
+  background: #7050d9;
+}
+
+.buyer-progress-donations {
+  background: #64c69f;
+}
+
+.buyer-progress-trades {
+  background: #6b9be4;
+}
+
+.buyer-progress-other {
+  background: #dfe1e9;
+}
+
+.buyer-progress-legend {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.buyer-progress-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #79768e;
+}
+
+.buyer-progress-legend i {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.purchase-dot {
+  background: #7050d9;
+}
+
+.donation-dot {
+  background: #64c69f;
+}
+
+.trade-dot {
+  background: #6b9be4;
+}
+
+.other-dot {
+  background: #dfe1e9;
+}
+
+
+/* ============================================================
+   EMPTY STATES
+   ============================================================ */
+
+.buyer-empty-purchases,
+.buyer-empty-products,
+.buyer-empty-activity {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.buyer-empty-products {
+  grid-column: 1 / -1;
+}
+
+.buyer-empty-activity {
+  min-height: 190px;
+}
+
+.buyer-empty-icon {
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: #f0edff;
+  color: #6c58d0;
+}
+
+.buyer-empty-purchases h3,
+.buyer-empty-products h3,
+.buyer-empty-activity h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #282263;
+}
+
+.buyer-empty-purchases p,
+.buyer-empty-products p,
+.buyer-empty-activity p {
+  margin: 0;
+  font-size: 14px;
+  color: #9290a4;
+}
+
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+
+.buyer-dashboard-loading {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #77739a;
+}
+
+.buyer-spinner {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 13px;
+  border: 3px solid #e7e4f4;
+  border-top-color: #6955cf;
+  border-radius: 50%;
+  animation: buyer-spin 0.8s linear infinite;
+}
+
+.buyer-dashboard-loading p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes buyer-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.buyer-error-card {
+  width: min(460px, 100%);
+  margin: 80px auto;
+  padding: 35px 30px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ebe8f2;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(37, 28, 111, 0.06);
+}
+
+.buyer-error-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #fff0f1;
+  color: #d15a69;
+}
+
+.buyer-error-card h2 {
+  margin: 0 0 7px;
+  font-size: 21px;
+  color: #2c2669;
+}
+
+.buyer-error-card p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #85829a;
+}
+
+.buyer-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 8px;
+  background: #6552ca;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buyer-retry-btn:hover {
+  background: #5543b6;
+}
+
+
+/* ============================================================
+   ERROR BANNER
+   ============================================================ */
+
+.buyer-error-banner {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 17px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border: 1px solid #f0d4d9;
+  border-radius: 9px;
+  background: #fff7f8;
+  color: #b45463;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1300px) {
+
+  .buyer-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .buyer-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-bottom-section-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 1050px) {
+
+  .buyer-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-mini-impact {
+    min-height: auto;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .buyer-dashboard {
+    padding: 20px 15px 30px;
+  }
+
+  .buyer-welcome {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .buyer-refresh-btn {
+    width: 100%;
+  }
+
+  .buyer-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .buyer-products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .buyer-purchase-row {
+    grid-template-columns: 45px minmax(0, 1fr) 65px 16px;
+  }
+
+  .buyer-purchase-date,
+  .buyer-purchase-status,
+  .buyer-purchase-total {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .buyer-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-welcome h1 {
+    font-size: 25px;
+  }
+
+  .buyer-impact-content h2 {
+    font-size: 23px;
+  }
+
+  .buyer-mini-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .buyer-impact-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .buyer-progress-legend {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* ============================================================
+   DASHBOARD PAGINATION
+   ============================================================ */
+
+.buyer-pagination {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 16px;
+  box-sizing: border-box;
+  border-top: 1px solid #eeeef5;
+  background: #fcfcff;
+}
+
+.buyer-pagination-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #4e478f;
+}
+
+.buyer-pagination-info small {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9692aa;
+}
+
+.buyer-pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.buyer-pagination-buttons button {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid #dedbed;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #5c50a4;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.buyer-pagination-buttons button:hover:not(:disabled) {
+  background: #f3f0ff;
+  border-color: #cfc8ef;
+}
+
+.buyer-pagination-buttons button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+
+  .buyer-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .buyer-pagination-buttons {
+    width: 100%;
+  }
+
+  .buyer-pagination-buttons button {
+    flex: 1;
+  }
+
+}
+
+
+/* ============================================================
+   ANNOUNCEMENTS & UPDATES
+   COMPACT TABLE
+   ============================================================ */
+
+.buyer-content-updates {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.buyer-updates-panel {
+  overflow: hidden;
+  border: 1px solid #e7e5f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(38, 28, 111, 0.03);
+}
+
+.buyer-updates-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.buyer-updates-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.buyer-updates-table th {
+  padding: 9px 12px;
+  border-bottom: 1px solid #eceaf3;
+  background: #faf9fe;
+  color: #78748f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.45px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.buyer-updates-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0eef5;
+  color: #77738b;
+  font-size: 13px;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+.buyer-updates-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.buyer-updates-table tbody tr:hover {
+  background: #fcfbff;
+}
+
+.buyer-updates-table th:nth-child(1),
+.buyer-updates-table td:nth-child(1) {
+  width: 105px;
+}
+
+.buyer-updates-table th:nth-child(2),
+.buyer-updates-table td:nth-child(2) {
+  width: auto;
+}
+
+.buyer-updates-table th:nth-child(3),
+.buyer-updates-table td:nth-child(3) {
+  width: 105px;
+}
+
+.buyer-updates-table th:nth-child(4),
+.buyer-updates-table td:nth-child(4) {
+  width: 90px;
+}
+
+.buyer-update-type {
+  display: inline-flex;
+  align-items: center;
+  min-height: 19px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #f0edff;
+  color: #6754c8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+
+.buyer-update-title-cell {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.buyer-update-icon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: #eeeaff;
+  color: #6754c8;
+}
+
+.buyer-update-title-cell > div {
+  min-width: 0;
+}
+
+.buyer-update-title-cell strong {
+  display: block;
+  overflow: hidden;
+  color: #292364;
+  font-size: 14px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.buyer-update-title-cell p {
+  display: -webkit-box;
+  margin: 2px 0 0;
+  overflow: hidden;
+  color: #8b87a0;
+  font-size: 12px;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+}
+
+.buyer-update-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 19px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #eaf8f0;
+  color: #328264;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+
+  .buyer-updates-table {
+    min-width: 620px;
+  }
+
+}
+
+/* ============================================================
+   ENVIRONMENT PANEL COMPACT TUNING
+   ============================================================ */
+
+.buyer-environment-panel {
+  min-height: 0;
+}
+
+.buyer-environment-content {
+  padding: 12px 14px 14px;
+}
+
+.buyer-impact-stat-grid {
+  gap: 7px;
+  margin-bottom: 13px;
+}
+
+.buyer-impact-stat {
+  min-height: 76px;
+  padding: 7px;
+}
+
+.buyer-impact-stat svg {
+  width: 19px;
+  height: 19px;
+  margin-bottom: 3px;
+}
+
+.buyer-impact-stat strong {
+  font-size: 18px;
+}
+
+.buyer-impact-stat span {
+  font-size: 11px;
+}
+
+.buyer-reuse-progress {
+  padding: 0;
+}
+
+.buyer-progress-header {
+  margin-bottom: 6px;
+}
+
+.buyer-progress-header span,
+.buyer-progress-header strong {
+  font-size: 13px;
+}
+
+.buyer-progress-bar {
+  height: 8px;
+}
+
+.buyer-progress-legend {
+  margin-top: 7px;
+  gap: 7px;
+}
+
+.buyer-progress-legend span {
+  font-size: 11px;
+}
+
+
+@media (max-width: 1050px) {
+
+  .buyer-updates-table {
+    min-width: 620px;
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .buyer-environment-content {
+    padding: 10px;
+  }
+
+  .buyer-impact-stat {
+    min-height: 72px;
+  }
+
+}

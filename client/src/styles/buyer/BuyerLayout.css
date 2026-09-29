@@ -1,0 +1,662 @@
+/* =========================================================
+   REUSE CONNECT - BUYER LAYOUT
+   Header + Sidebar + Footer + Responsive Layout
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.buyer-layout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  background: #f7f8fc;
+  color: #20232d;
+}
+
+.buyer-main-wrapper {
+  min-width: 0;
+  min-height: 100vh;
+  flex: 1;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.buyer-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #5b2a86;
+  color: #ffffff;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  box-shadow: 3px 0 15px rgba(48, 25, 73, 0.08);
+}
+
+.buyer-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.buyer-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.buyer-sidebar-brand {
+  min-height: 86px;
+  padding: 20px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.buyer-brand-logo {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+}
+
+.buyer-brand-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.buyer-brand-name {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.buyer-brand-subtitle {
+  margin-top: 4px;
+
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.buyer-sidebar-close {
+  display: none;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.buyer-sidebar-nav {
+  flex: 1;
+  padding: 24px 13px 15px;
+}
+
+.buyer-nav-section-title {
+  padding: 0 13px 10px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.buyer-nav-item {
+  width: 100%;
+  min-height: 48px;
+
+  margin-bottom: 5px;
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.buyer-nav-item svg {
+  flex-shrink: 0;
+}
+
+.buyer-nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.buyer-nav-item.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.buyer-nav-item.active::before {
+  content: '';
+  position: absolute;
+}
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.buyer-sidebar-bottom {
+  padding: 0 13px 20px;
+}
+
+.buyer-sidebar-divider {
+  width: 100%;
+  height: 1px;
+  margin: 0 0 12px;
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.buyer-logout-item {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.buyer-logout-item:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ffffff;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.buyer-header {
+  height: 76px;
+  width: 100%;
+
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e9eaf0;
+
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+.buyer-header-left {
+  min-width: 0;
+}
+
+.buyer-page-title {
+  margin: 0;
+
+  color: #252735;
+
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.buyer-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buyer-header-icon-button {
+  width: 42px;
+  height: 42px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #5d6170;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.buyer-header-icon-button:hover {
+  background: #f4f1f8;
+  color: #5b2a86;
+}
+
+.buyer-notification-badge,
+.buyer-cart-badge {
+  position: absolute;
+  top: 3px;
+  right: 2px;
+
+  min-width: 17px;
+  height: 17px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50px;
+
+  background: #e5484d;
+  color: #ffffff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  border: 2px solid #ffffff;
+}
+
+.buyer-header-divider {
+  width: 1px;
+  height: 30px;
+  margin: 0 10px;
+
+  background: #e6e7ec;
+}
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.buyer-profile-button {
+  padding: 5px 0 5px 7px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+.buyer-profile-avatar {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eee5f7;
+  color: #5b2a86;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  overflow: hidden;
+}
+
+.buyer-profile-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.buyer-profile-info {
+  min-width: 70px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.buyer-profile-name {
+  max-width: 150px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #292b36;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.buyer-profile-role {
+  margin-top: 3px;
+
+  color: #858896;
+
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.buyer-content {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+
+  padding: 30px 32px 40px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.buyer-footer {
+  width: 100%;
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 30px;
+
+  background: #ffffff;
+  border-top: 1px solid #e9eaf0;
+}
+
+.buyer-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: #8b8e99;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  text-align: center;
+}
+
+.buyer-footer-separator {
+  color: #b8bac2;
+}
+
+/* =========================================================
+   MOBILE TOPBAR
+   ========================================================= */
+
+.buyer-mobile-topbar {
+  display: none;
+}
+
+/* =========================================================
+   MOBILE SIDEBAR OVERLAY
+   ========================================================= */
+
+.buyer-sidebar-overlay {
+  display: none;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .buyer-main-wrapper {
+    margin-left: 225px;
+  }
+
+  .buyer-sidebar {
+    width: 225px;
+  }
+
+  .buyer-header {
+    padding: 0 24px;
+  }
+
+  .buyer-content {
+    padding: 25px 24px 35px;
+  }
+
+  .buyer-profile-info {
+    display: none;
+  }
+
+  .buyer-header-divider {
+    margin-right: 4px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .buyer-layout {
+    display: block;
+  }
+
+  .buyer-main-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    margin-left: 0;
+  }
+
+  .buyer-sidebar {
+    width: 270px;
+    max-width: 85vw;
+
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+
+    box-shadow: none;
+  }
+
+  .buyer-sidebar-mobile-open {
+    transform: translateX(0);
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .buyer-sidebar-close {
+    width: 32px;
+    height: 32px;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+
+    cursor: pointer;
+  }
+
+  .buyer-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: block;
+
+    z-index: 999;
+
+    background: rgba(20, 15, 25, 0.45);
+  }
+
+  .buyer-mobile-topbar {
+    height: 58px;
+    width: 100%;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: #5b2a86;
+    color: #ffffff;
+  }
+
+  .buyer-mobile-menu-button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+
+    cursor: pointer;
+  }
+
+  .buyer-mobile-brand {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .buyer-header {
+    height: 68px;
+    padding: 0 16px;
+  }
+
+  .buyer-page-title {
+    font-size: 19px;
+  }
+
+  .buyer-header-right {
+    gap: 2px;
+  }
+
+  .buyer-header-icon-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .buyer-header-divider {
+    height: 26px;
+    margin: 0 3px;
+  }
+
+  .buyer-profile-button {
+    padding-left: 2px;
+  }
+
+  .buyer-profile-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .buyer-profile-info {
+    display: none;
+  }
+
+  .buyer-content {
+    padding: 20px 16px 30px;
+  }
+
+  .buyer-footer {
+    padding: 14px 16px;
+  }
+
+  .buyer-footer-content {
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .buyer-page-title {
+    font-size: 18px;
+  }
+
+  .buyer-header-icon-button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .buyer-profile-avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .buyer-header-divider {
+    display: none;
+  }
+
+  .buyer-content {
+    padding: 18px 13px 25px;
+  }
+
+  .buyer-footer-content {
+    font-size: 10px;
+  }
+}

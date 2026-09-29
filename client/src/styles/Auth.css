@@ -1,0 +1,1748 @@
+/* ============================================================
+   REUSE CONNECT
+   AUTHENTICATION PAGES
+   Login + Register
+   ============================================================ */
+
+:root {
+  --auth-purple: #5427d8;
+  --auth-purple-dark: #291273;
+  --auth-purple-deep: #1d0c5b;
+  --auth-purple-light: #7450eb;
+  --auth-text: #17155f;
+  --auth-muted: #7774b7;
+  --auth-border: #dcd9ff;
+  --auth-bg: #ffffff;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+.auth-page *,
+.auth-page *::before,
+.auth-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   MAIN AUTH PAGE
+   ============================================================ */
+
+.auth-page {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+
+  display: flex;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+
+/* ============================================================
+   LEFT BRAND PANEL
+   ============================================================ */
+
+.auth-brand-panel {
+  position: relative;
+
+  width: 50%;
+  height: 100vh;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(125, 78, 245, 0.95) 0%,
+      rgba(125, 78, 245, 0) 30%
+    ),
+    linear-gradient(
+      145deg,
+      #6939e5 0%,
+      #4320a8 38%,
+      #21105e 100%
+    );
+
+  color: #ffffff;
+}
+
+
+/* Decorative circles */
+
+.brand-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.brand-orb-top {
+  width: 330px;
+  height: 330px;
+
+  top: -190px;
+  left: -110px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.brand-orb-bottom {
+  width: 520px;
+  height: 220px;
+
+  right: -180px;
+  bottom: -130px;
+
+  background: rgba(126, 81, 235, 0.42);
+
+  border-radius: 50%;
+}
+
+
+/* Decorative waves */
+
+.brand-wave {
+  position: absolute;
+
+  pointer-events: none;
+
+  opacity: 0.18;
+}
+
+.brand-wave-one {
+  width: 650px;
+  height: 300px;
+
+  left: -190px;
+  top: 210px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  transform: rotate(-18deg);
+  opacity: 0.035;
+}
+
+.brand-wave-two {
+  width: 650px;
+  height: 270px;
+
+  right: -270px;
+  bottom: 50px;
+
+  border-radius: 50%;
+
+  background: #9f80ff;
+
+  transform: rotate(-12deg);
+}
+
+
+/* ============================================================
+   BRAND CONTENT
+   ============================================================ */
+
+.brand-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+  height: 100%;
+
+  padding:
+    clamp(46px, 7vh, 86px)
+    clamp(55px, 8vw, 130px)
+    0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  flex-shrink: 0;
+}
+
+.brand-logo-leaf {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+}
+
+.brand-logo-text {
+  line-height: 1;
+}
+
+.brand-name {
+  font-size: clamp(40px, 3.4vw, 64px);
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.brand-connect {
+  margin-top: 9px;
+
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-weight: 700;
+
+  letter-spacing: 9px;
+}
+
+
+/* ============================================================
+   BRAND MESSAGE
+   ============================================================ */
+
+.brand-message {
+  margin-top: clamp(38px, 5vh, 62px);
+}
+
+.brand-message h1 {
+  margin: 0;
+
+  font-size: clamp(31px, 3vw, 49px);
+  line-height: 1.13;
+
+  font-weight: 800;
+  letter-spacing: -1.3px;
+}
+
+.brand-message h1 span {
+  color: #c9baff;
+}
+
+.brand-message p {
+  margin: 22px 0 0;
+
+  font-size: clamp(15px, 1.25vw, 20px);
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.96);
+}
+
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
+
+.brand-features {
+  display: flex;
+  align-items: flex-start;
+
+  gap: clamp(42px, 4.5vw, 78px);
+
+  margin-top: clamp(34px, 4vh, 52px);
+}
+
+.brand-feature {
+  min-width: 76px;
+
+  text-align: center;
+}
+
+.feature-circle {
+  width: 66px;
+  height: 66px;
+
+  margin: 0 auto 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(130, 83, 237, 0.95),
+      rgba(84, 39, 176, 0.8)
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.16);
+}
+
+.feature-circle svg {
+  width: 36px;
+  height: 36px;
+}
+
+.feature-title {
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 1.25;
+
+  font-weight: 500;
+
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   BOTTOM SCENE
+   ============================================================ */
+
+.brand-bottom-scene {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 39%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+/* table */
+
+.scene-table {
+  position: absolute;
+
+  left: -5%;
+  right: -5%;
+  bottom: -10%;
+
+  height: 52%;
+
+  background:
+    linear-gradient(
+      160deg,
+      #b97968 0%,
+      #d7967e 45%,
+      #a85f52 100%
+    );
+
+  transform: perspective(500px) rotateX(10deg);
+}
+
+
+/* laptop */
+
+.scene-laptop {
+  position: absolute;
+
+  left: 13%;
+  bottom: 8%;
+
+  width: 42%;
+  height: 72%;
+
+  transform:
+    perspective(700px)
+    rotateY(7deg)
+    rotateZ(-7deg);
+}
+
+.laptop-screen {
+  width: 100%;
+  height: 73%;
+
+  padding: 8px;
+
+  border-radius: 10px 10px 4px 4px;
+
+  background: #10103d;
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow:
+    0 20px 30px rgba(0, 0, 0, 0.28);
+}
+
+.laptop-screen::before {
+  content: "";
+
+  display: block;
+
+  width: 5px;
+  height: 5px;
+
+  margin: 2px auto;
+
+  border-radius: 50%;
+
+  background: #b6b0ff;
+}
+
+.laptop-message {
+  height: calc(100% - 8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  text-align: center;
+
+  font-family: cursive;
+
+  font-size: clamp(12px, 1.3vw, 19px);
+  line-height: 1.05;
+
+  color: #ffffff;
+}
+
+.laptop-message span {
+  color: #c6b7ff;
+}
+
+.laptop-message .heart {
+  margin-top: 4px;
+
+  font-size: 22px;
+
+  color: #ffffff;
+}
+
+.laptop-base {
+  position: absolute;
+
+  left: -8%;
+  right: -8%;
+  bottom: 0;
+
+  height: 25px;
+
+  border-radius: 3px 3px 18px 18px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #d5d3dc,
+      #8b8997
+    );
+
+  box-shadow:
+    0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.laptop-trackpad {
+  width: 22%;
+  height: 5px;
+
+  margin: 7px auto;
+
+  border-radius: 4px;
+
+  background: #777582;
+}
+
+
+/* boxes */
+
+.scene-box {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #5a2a9e;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dca37d,
+      #b97861
+    );
+
+  border: 1px solid rgba(104, 47, 55, 0.25);
+
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.16);
+}
+
+.scene-box-one {
+  width: 130px;
+  height: 82px;
+
+  left: 53%;
+  bottom: 20%;
+
+  transform: rotate(3deg);
+}
+
+.scene-box-two {
+  width: 115px;
+  height: 65px;
+
+  left: 57%;
+  bottom: 9%;
+
+  transform: rotate(2deg);
+}
+
+
+/* fabrics */
+
+.scene-fabric {
+  position: absolute;
+
+  width: 120px;
+  height: 30px;
+
+  right: 15%;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #8063c7,
+      #5c3b9c
+    );
+
+  box-shadow:
+    0 8px 10px rgba(0, 0, 0, 0.18);
+}
+
+.fabric-one {
+  bottom: 23%;
+}
+
+.fabric-two {
+  bottom: 15%;
+  right: 12%;
+}
+
+.fabric-three {
+  bottom: 7%;
+  right: 15%;
+}
+
+
+/* phone */
+
+.scene-phone {
+  position: absolute;
+
+  width: 88px;
+  height: 36px;
+
+  right: 4%;
+  bottom: 7%;
+
+  border-radius: 8px;
+
+  background: #20203e;
+
+  transform: rotate(-13deg);
+
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   RIGHT FORM SIDE
+   ============================================================ */
+
+.auth-form-side {
+  width: 50%;
+  height: 100vh;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.auth-form-container {
+  width: min(88%, 620px);
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   REGISTER
+   ============================================================ */
+
+.register-form-side {
+  overflow: hidden;
+}
+
+.register-container {
+  padding:
+    28px 0
+    24px;
+
+  justify-content: center;
+}
+
+
+/* heading */
+
+.register-heading {
+  margin-bottom: 20px;
+
+  text-align: left;
+}
+
+.register-heading h2 {
+  margin: 0;
+
+  color: var(--auth-text);
+
+  font-size: clamp(31px, 2.55vw, 44px);
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+.register-heading p {
+  margin: 7px 0 0;
+
+  color: #7471b2;
+
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   MOBILE LOGO
+   ============================================================ */
+
+.register-mobile-logo {
+  display: none;
+}
+
+
+/* ============================================================
+   ERRORS / SUCCESS
+   ============================================================ */
+
+.auth-error,
+.auth-success {
+  padding: 10px 13px;
+
+  margin-bottom: 13px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.auth-error {
+  color: #a52d45;
+  background: #fff0f3;
+  border: 1px solid #ffd3dc;
+}
+
+.auth-success {
+  color: #26754a;
+  background: #eefbf3;
+  border: 1px solid #ccefd9;
+}
+
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.register-form {
+  width: 100%;
+}
+
+
+/* section titles */
+
+.account-type-title,
+.register-section-title {
+  margin-bottom: 8px;
+
+  color: var(--auth-text);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.password-section-title {
+  margin-top: 13px;
+}
+
+.address-section-title {
+  margin-top: 13px;
+}
+
+
+/* ============================================================
+   ACCOUNT TYPES
+   ============================================================ */
+
+.account-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 13px;
+
+  margin-bottom: 13px;
+}
+
+.account-type {
+  position: relative;
+
+  min-height: 84px;
+
+  padding: 13px 36px 13px 13px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  border: 1px solid var(--auth-border);
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: var(--auth-text);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.account-type:hover {
+  border-color: #b7a8ff;
+}
+
+.account-type.selected {
+  border: 1.5px solid #6740ff;
+
+  background:
+    linear-gradient(
+      110deg,
+      #f9f7ff,
+      #f1edff
+    );
+
+  box-shadow:
+    0 4px 12px rgba(84, 39, 216, 0.06);
+}
+
+.account-type-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f4f1ff;
+
+  color: #4d29d8;
+}
+
+.account-type-icon svg {
+  width: 24px;
+  height: 24px;
+
+  stroke: currentColor;
+
+  stroke-width: 2;
+}
+
+.account-type-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.account-type-info strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.account-type-info span {
+  color: #817bc1;
+
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.radio-circle {
+  position: absolute;
+
+  top: 15px;
+  right: 13px;
+
+  width: 17px;
+  height: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1.5px solid #c8c4ef;
+
+  border-radius: 50%;
+}
+
+.account-type.selected .radio-circle {
+  border-color: #5427e8;
+}
+
+.radio-circle span {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #5427e8;
+}
+
+
+/* ============================================================
+   INPUT GRID
+   ============================================================ */
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px 13px;
+}
+
+
+/* ============================================================
+   INPUT GROUP
+   ============================================================ */
+
+.input-group {
+  position: relative;
+
+  width: 100%;
+}
+
+.input-group input,
+.register-address-full input,
+.register-location-grid input {
+  width: 100%;
+  height: 45px;
+
+  padding: 0 13px 0 46px;
+
+  border: 1px solid var(--auth-border);
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: var(--auth-text);
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-group input::placeholder,
+.register-address-full input::placeholder,
+.register-location-grid input::placeholder {
+  color: #8b87c5;
+}
+
+.input-group input:focus,
+.register-address-full input:focus,
+.register-location-grid input:focus {
+  border-color: #7350ec;
+
+  box-shadow:
+    0 0 0 3px rgba(84, 39, 216, 0.07);
+}
+
+
+/* icon */
+
+.input-icon {
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  width: 19px;
+  height: 19px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #7268ba;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.input-icon svg {
+  width: 19px;
+  height: 19px;
+
+  stroke: currentColor;
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* password eye */
+
+.password-toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 13px;
+
+  width: 26px;
+  height: 26px;
+
+  transform: translateY(-50%);
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  color: #746dbb;
+
+  cursor: pointer;
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+
+  stroke: currentColor;
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.password-toggle + input {
+  padding-right: 44px;
+}
+
+
+/* ============================================================
+   PASSWORD GRID
+   ============================================================ */
+
+.register-password-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 13px;
+}
+
+
+/* ============================================================
+   ADDRESS
+   ============================================================ */
+
+.register-address-full {
+  position: relative;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+}
+
+.register-location-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    0.72fr;
+
+  gap: 8px;
+}
+
+.register-location-grid input {
+  padding-left: 13px;
+}
+
+
+/* ============================================================
+   TERMS
+   ============================================================ */
+
+.terms-label {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+
+  color: #7773ad;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.terms-label input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1.5px solid #7b73c4;
+  border-radius: 3px;
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.terms-label input:checked + .custom-checkbox {
+  border-color: #5427e8;
+
+  background: #5427e8;
+}
+
+.terms-text {
+  line-height: 1.4;
+}
+
+.terms-link {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #4f25d9;
+
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+
+.primary-auth-button {
+  width: 100%;
+  height: 46px;
+
+  margin-top: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5528df,
+      #6332e9
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(84, 39, 216, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.primary-auth-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 22px rgba(84, 39, 216, 0.24);
+}
+
+.primary-auth-button:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+}
+
+.button-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-arrow svg {
+  width: 18px;
+  height: 18px;
+
+  stroke: currentColor;
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* ============================================================
+   BOTTOM LOGIN CARD
+   ============================================================ */
+
+.auth-bottom-card {
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 13px 17px;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #f3f0ff,
+      #f8f7ff
+    );
+}
+
+.register-login-card {
+  min-height: 62px;
+}
+
+.bottom-card-icon {
+  width: 37px;
+  height: 37px;
+
+  margin-right: 12px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #4d26d8;
+}
+
+.bottom-card-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.bottom-card-text {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.bottom-card-text strong {
+  color: #17155f;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bottom-card-text span {
+  color: #7975b4;
+
+  font-size: 10px;
+}
+
+.bottom-card-link {
+  margin-left: auto;
+
+  padding: 7px 2px 7px 15px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #4b22d7;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.bottom-card-link svg {
+  width: 16px;
+  height: 16px;
+
+  stroke: currentColor;
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* ============================================================
+   LOGIN COMPATIBILITY
+   ============================================================ */
+
+.login-container {
+  justify-content: center;
+}
+
+.auth-heading {
+  text-align: center;
+}
+
+.auth-heading h2 {
+  margin: 0;
+
+  color: var(--auth-text);
+
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.auth-heading p {
+  margin: 8px 0 0;
+
+  color: #7773b4;
+
+  font-size: 15px;
+}
+
+
+/* Login form */
+
+.login-form {
+  margin-top: 24px;
+}
+
+.login-form .input-group {
+  margin-bottom: 13px;
+}
+
+.login-form .input-group input {
+  height: 49px;
+}
+
+
+/* login options */
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 7px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #7773ad;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  position: absolute;
+
+  opacity: 0;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+}
+
+.forgot-button {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #5427df;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+
+/* Large desktop */
+
+@media (min-width: 1400px) {
+
+  .brand-content {
+    padding-left: 9%;
+    padding-right: 8%;
+  }
+
+  .brand-message h1 {
+    font-size: 43px;
+  }
+
+  .brand-message p {
+    font-size: 17px;
+  }
+
+  .register-container {
+    width: min(88%, 630px);
+  }
+
+}
+
+
+/* Medium desktop / laptop */
+
+@media (max-width: 1200px) {
+
+  .brand-content {
+    padding-left: 7%;
+    padding-right: 6%;
+  }
+
+  .brand-features {
+    gap: 25px;
+  }
+
+  .feature-circle {
+    width: 57px;
+    height: 57px;
+  }
+
+  .feature-circle svg {
+    width: 31px;
+    height: 31px;
+  }
+
+  .brand-message h1 {
+    font-size: 32px;
+  }
+
+  .brand-message p {
+    font-size: 14px;
+  }
+
+}
+
+
+/* Short screens */
+
+@media (max-height: 800px) {
+
+  .brand-content {
+    padding-top: 42px;
+  }
+
+  .brand-message {
+    margin-top: 27px;
+  }
+
+  .brand-message p {
+    margin-top: 14px;
+  }
+
+  .brand-features {
+    margin-top: 24px;
+  }
+
+  .register-container {
+    padding-top: 15px;
+    padding-bottom: 12px;
+  }
+
+  .register-heading {
+    margin-bottom: 13px;
+  }
+
+  .register-heading h2 {
+    font-size: 29px;
+  }
+
+  .register-heading p {
+    font-size: 12px;
+  }
+
+  .account-type {
+    min-height: 72px;
+    padding: 9px 32px 9px 10px;
+  }
+
+  .account-type-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .account-type-info strong {
+    font-size: 12px;
+  }
+
+  .account-type-info span {
+    font-size: 9px;
+  }
+
+  .input-group input,
+  .register-address-full input,
+  .register-location-grid input {
+    height: 39px;
+
+    font-size: 11px;
+  }
+
+  .input-icon {
+    left: 12px;
+  }
+
+  .input-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .register-section-title,
+  .account-type-title {
+    font-size: 12px;
+  }
+
+  .register-grid,
+  .register-password-grid {
+    gap: 7px 10px;
+  }
+
+  .password-section-title,
+  .address-section-title {
+    margin-top: 8px;
+  }
+
+  .terms-label {
+    margin-top: 8px;
+    font-size: 9px;
+  }
+
+  .primary-auth-button {
+    height: 40px;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+  }
+
+  .auth-bottom-card {
+    margin-top: 9px;
+    padding: 8px 12px;
+  }
+
+  .register-login-card {
+    min-height: 47px;
+  }
+
+  .bottom-card-icon {
+    width: 29px;
+    height: 29px;
+    margin-right: 8px;
+  }
+
+  .bottom-card-icon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .bottom-card-text strong {
+    font-size: 10px;
+  }
+
+  .bottom-card-text span {
+    font-size: 8px;
+  }
+
+  .bottom-card-link {
+    font-size: 10px;
+  }
+
+  .bottom-card-link svg {
+    width: 13px;
+    height: 13px;
+  }
+
+}
+
+
+/* Tablet */
+
+@media (max-width: 950px) {
+
+  .auth-brand-panel {
+    width: 43%;
+  }
+
+  .auth-form-side {
+    width: 57%;
+  }
+
+  .brand-message h1 {
+    font-size: 27px;
+  }
+
+  .brand-message p {
+    font-size: 12px;
+  }
+
+  .brand-features {
+    gap: 14px;
+  }
+
+  .feature-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-circle svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .feature-title {
+    font-size: 10px;
+  }
+
+  .brand-bottom-scene {
+    display: none;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .auth-page {
+    min-height: 100vh;
+    height: auto;
+
+    overflow-y: auto;
+  }
+
+  .auth-brand-panel {
+    display: none;
+  }
+
+  .auth-form-side {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+
+    overflow: visible;
+
+    padding: 30px 18px;
+  }
+
+  .auth-form-container {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .register-container {
+    padding: 0;
+  }
+
+  .register-mobile-logo {
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+  }
+
+  .register-mobile-leaf {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #4d26d8;
+  }
+
+  .register-mobile-leaf svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .register-mobile-name {
+    color: #251270;
+
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .register-mobile-connect {
+    margin-top: 2px;
+
+    color: #251270;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 5px;
+  }
+
+  .register-heading h2 {
+    font-size: 31px;
+  }
+
+  .register-heading p {
+    font-size: 13px;
+  }
+
+  .account-types,
+  .register-grid,
+  .register-password-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .register-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-bottom-scene {
+    display: none;
+  }
+
+}
+
+
+/* Very short mobile */
+
+@media (max-width: 700px) and (max-height: 700px) {
+
+  .auth-form-side {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+}

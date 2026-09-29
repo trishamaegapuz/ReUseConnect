@@ -1,0 +1,1027 @@
+/* ============================================================
+   ReUse Connect
+   Seller Trade & Exchange
+   Design aligned with Seller My Listings
+   ============================================================ */
+
+.seller-trade-exchange {
+  width: 100%;
+  min-width: 0;
+  color: #3d3150;
+}
+
+
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
+
+.seller-trade-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.seller-trade-page-header h1 {
+  margin: 0;
+  color: #2f166f;
+  font-size: 17px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.seller-trade-page-header p {
+  margin: 4px 0 0;
+  color: #85799a;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.seller-trade-refresh {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid #ded5ef;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #5a2cc8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background .15s ease,
+    border-color .15s ease;
+}
+
+.seller-trade-refresh:hover {
+  background: #f7f3ff;
+  border-color: #cfc1eb;
+}
+
+.seller-trade-refresh:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.seller-trade-content-card {
+  width: 100%;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e4def0;
+  border-radius: 9px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+.seller-trade-search {
+  width: min(100%, 430px);
+  height: 36px;
+  margin-left: auto;
+  margin-bottom: 17px;
+  padding: 0 5px 0 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #ded7ed;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #897c9e;
+}
+
+.seller-trade-search:focus-within {
+  border-color: #bba8df;
+  box-shadow: 0 0 0 2px rgba(91, 45, 204, .05);
+}
+
+.seller-trade-search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #40334f;
+  font-size: 10px;
+}
+
+.seller-trade-search input::placeholder {
+  color: #a59bb1;
+}
+
+.seller-trade-search button {
+  height: 27px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 5px;
+  background: #5a2cc8;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-trade-search button:hover {
+  background: #4d23b1;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.seller-trade-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.seller-trade-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e3dcef;
+  border-radius: 9px;
+  background: #ffffff;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    border-color .15s ease;
+}
+
+.seller-trade-card:hover {
+  transform: translateY(-1px);
+  border-color: #d4c8e8;
+  box-shadow:
+    0 5px 16px rgba(53, 32, 93, .08);
+}
+
+
+/* ============================================================
+   CARD IMAGE
+   ============================================================ */
+
+.seller-trade-card-image {
+  position: relative;
+  width: 100%;
+  height: 145px;
+  overflow: hidden;
+  background: #f4f1fa;
+}
+
+.seller-trade-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seller-trade-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #a49ab3;
+  font-size: 9px;
+}
+
+.seller-trade-image-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seller-trade-image-error::after {
+  content: 'No image available';
+  color: #9d92aa;
+  font-size: 9px;
+}
+
+.seller-trade-category {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: #5a2cc8;
+  color: #ffffff;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(45, 20, 102, .16);
+}
+
+
+/* ============================================================
+   CARD CONTENT
+   ============================================================ */
+
+.seller-trade-card-content {
+  padding: 12px;
+}
+
+.seller-trade-card-content h3 {
+  margin: 0 0 6px;
+  color: #33206c;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.seller-trade-card-description {
+  height: 34px;
+  margin: 0;
+  overflow: hidden;
+
+  color: #80748f;
+  font-size: 9px;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.seller-trade-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid #f0ebf5;
+}
+
+.seller-trade-card-meta > div {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #877b96;
+  font-size: 8.5px;
+}
+
+.seller-trade-card-meta svg {
+  flex: 0 0 auto;
+  color: #8160c6;
+}
+
+.seller-trade-card-meta span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seller-trade-view-button {
+  width: 100%;
+  height: 30px;
+  margin-top: 11px;
+
+  border: 1px solid #d9cfee;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #5125b8;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-trade-view-button:hover {
+  background: #f7f3ff;
+  border-color: #cbbce6;
+}
+
+
+/* ============================================================
+   EMPTY / ERROR
+   ============================================================ */
+
+.seller-trade-empty {
+  min-height: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  color: #968aa5;
+}
+
+.seller-trade-empty-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f0eaff;
+  color: #7450c4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seller-trade-empty strong {
+  color: #4b3b5e;
+  font-size: 12px;
+}
+
+.seller-trade-empty span {
+  color: #968aa5;
+  font-size: 9px;
+}
+
+.seller-trade-error {
+  margin-bottom: 13px;
+  padding: 9px 11px;
+  border: 1px solid #efd5d5;
+  border-radius: 6px;
+  background: #fff8f8;
+  color: #a34343;
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+
+.seller-trade-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid #eee9f4;
+  color: #8b7f98;
+  font-size: 9px;
+}
+
+.seller-trade-pagination > div {
+  display: flex;
+  gap: 5px;
+}
+
+.seller-trade-pagination button {
+  width: 29px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #ddd5e9;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #67597a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.seller-trade-pagination button:hover:not(:disabled) {
+  background: #f8f5fc;
+}
+
+.seller-trade-pagination button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.seller-trade-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(35, 23, 58, .42);
+  box-sizing: border-box;
+}
+
+.seller-trade-modal {
+  width: min(650px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+
+  border: 1px solid #e0d7ee;
+  border-radius: 10px;
+  background: #ffffff;
+
+  box-shadow:
+    0 18px 50px rgba(40, 25, 70, .18);
+}
+
+.seller-trade-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 15px 17px;
+  border-bottom: 1px solid #eee9f4;
+}
+
+.seller-trade-modal-header span {
+  color: #6943bd;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .35px;
+}
+
+.seller-trade-modal-header h2 {
+  margin: 4px 0 0;
+  color: #32206d;
+  font-size: 15px;
+}
+
+.seller-trade-modal-header button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: #f5f1fa;
+  color: #685b78;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.seller-trade-modal-body {
+  padding: 17px;
+}
+
+.seller-trade-modal-image {
+  width: 100%;
+  max-height: 290px;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.seller-trade-modal-placeholder {
+  height: 190px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: #f5f2fa;
+  color: #9b91a9;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-size: 9px;
+}
+
+.seller-trade-modal-info {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.seller-trade-modal-info > div {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  color: #7551bd;
+}
+
+.seller-trade-modal-info section {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seller-trade-modal-info small {
+  color: #9b90a7;
+  font-size: 8px;
+}
+
+.seller-trade-modal-info strong {
+  color: #4d3d5e;
+  font-size: 9px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seller-trade-modal-description {
+  margin-top: 15px;
+  padding-top: 14px;
+  border-top: 1px solid #eee9f4;
+}
+
+.seller-trade-modal-description > span {
+  color: #8c809b;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.seller-trade-modal-description p {
+  margin: 6px 0 0;
+  color: #5e526e;
+  font-size: 10px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.seller-trade-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid #eee9f4;
+}
+
+.seller-trade-contact-button {
+  height: 32px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 6px;
+  background: #5a2cc8;
+  color: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-trade-contact-button:hover {
+  background: #4d23b1;
+}
+
+.seller-trade-modal-loading {
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #7f728e;
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+
+.seller-trade-spin {
+  animation: sellerTradeSpin .85s linear infinite;
+}
+
+@keyframes sellerTradeSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1050px) {
+
+  .seller-trade-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .seller-trade-content-card {
+    padding: 12px;
+  }
+
+  .seller-trade-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-trade-search {
+    width: 100%;
+  }
+
+  .seller-trade-modal-info {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .seller-trade-page-header {
+    align-items: flex-start;
+  }
+
+  .seller-trade-card-image {
+    height: 160px;
+  }
+
+  .seller-trade-modal-backdrop {
+    padding: 10px;
+  }
+
+  .seller-trade-modal-header,
+  .seller-trade-modal-body {
+    padding: 13px;
+  }
+
+}
+/* ============================================================
+   SELLER TRADE & EXCHANGE — LARGE / READABLE FONT UPDATE
+   CSS-ONLY OVERRIDES
+   ============================================================ */
+
+/* Filter buttons inside the existing content card */
+.seller-trade-content-card > div:first-child button {
+  font-size: 15px !important;
+  line-height: 1.3 !important;
+  min-height: 38px;
+  padding: 8px 14px !important;
+}
+
+/* Search */
+.seller-trade-search {
+  height: 42px;
+}
+
+.seller-trade-search input {
+  font-size: 15px !important;
+  line-height: 1.4;
+}
+
+.seller-trade-search button {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 14px !important;
+}
+
+/* Cards */
+.seller-trade-card-image {
+  height: 170px;
+}
+
+.seller-trade-image-placeholder,
+.seller-trade-image-error::after {
+  font-size: 13px !important;
+}
+
+.seller-trade-category {
+  padding: 6px 9px;
+  font-size: 12px !important;
+  line-height: 1.2;
+}
+
+.seller-trade-card-content {
+  padding: 15px;
+}
+
+.seller-trade-card-content h3 {
+  font-size: 17px !important;
+  line-height: 1.35;
+}
+
+.seller-trade-card-description {
+  height: 45px;
+  font-size: 14px !important;
+  line-height: 1.55;
+}
+
+.seller-trade-card-meta {
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 11px;
+}
+
+.seller-trade-card-meta > div {
+  gap: 7px;
+  font-size: 13px !important;
+  line-height: 1.4;
+}
+
+.seller-trade-view-button {
+  height: 38px;
+  margin-top: 13px;
+  gap: 7px;
+  font-size: 14px !important;
+}
+
+/* Empty / error */
+.seller-trade-empty {
+  min-height: 300px;
+  gap: 10px;
+}
+
+.seller-trade-empty strong {
+  font-size: 17px !important;
+  line-height: 1.35;
+}
+
+.seller-trade-empty span {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+.seller-trade-error {
+  font-size: 14px !important;
+  line-height: 1.5;
+  padding: 10px 12px;
+}
+
+/* Pagination */
+.seller-trade-pagination {
+  font-size: 14px !important;
+  line-height: 1.4;
+}
+
+.seller-trade-pagination button {
+  width: 36px;
+  height: 34px;
+}
+
+/* Modal */
+.seller-trade-modal {
+  width: min(700px, 100%);
+}
+
+.seller-trade-modal-header {
+  padding: 17px 19px;
+}
+
+.seller-trade-modal-header span {
+  font-size: 12px !important;
+  line-height: 1.3;
+}
+
+.seller-trade-modal-header h2 {
+  font-size: 22px !important;
+  line-height: 1.3;
+}
+
+.seller-trade-modal-header button {
+  width: 36px;
+  height: 36px;
+}
+
+.seller-trade-modal-body {
+  padding: 19px;
+}
+
+.seller-trade-modal-image {
+  max-height: 320px;
+}
+
+.seller-trade-modal-placeholder {
+  height: 210px;
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-info {
+  gap: 12px;
+}
+
+.seller-trade-modal-info small {
+  font-size: 13px !important;
+  line-height: 1.3;
+}
+
+.seller-trade-modal-info strong {
+  font-size: 14px !important;
+  line-height: 1.4;
+}
+
+.seller-trade-modal-description {
+  margin-top: 17px;
+  padding-top: 15px;
+}
+
+.seller-trade-modal-description > span {
+  font-size: 13px !important;
+}
+
+.seller-trade-modal-description p {
+  font-size: 15px !important;
+  line-height: 1.65;
+}
+
+.seller-trade-modal-loading {
+  min-height: 240px;
+  font-size: 15px !important;
+}
+
+/* ============================================================
+   COMMENTS / ITEM IMPORTER
+   These selectors intentionally override the inline font sizes
+   already present in SellerTradeExchange.jsx.
+   ============================================================ */
+
+.seller-trade-modal-body strong {
+  line-height: 1.4;
+}
+
+.seller-trade-modal-body textarea {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  min-height: 88px;
+}
+
+/* Comment header */
+.seller-trade-modal-body > div[style*="border-top"] strong {
+  font-size: 17px !important;
+}
+
+/* Comment loading / empty state */
+.seller-trade-modal-body > div[style*="border-top"] > div[style*="text-align: center"] {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+.seller-trade-modal-body > div[style*="border-top"] > div[style*="opacity: 0.7"] {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+/* Individual comments */
+.seller-trade-modal-body > div[style*="border-top"] div[style*="background: rgba(247, 244, 255"] {
+  font-size: 14px;
+}
+
+.seller-trade-modal-body > div[style*="border-top"] div[style*="background: rgba(247, 244, 255"] strong {
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-body > div[style*="border-top"] div[style*="background: rgba(247, 244, 255"] span {
+  font-size: 13px !important;
+}
+
+.seller-trade-modal-body > div[style*="border-top"] div[style*="background: rgba(247, 244, 255"] > div[style*="lineHeight"] {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Attached item inside comments */
+.seller-trade-modal-body > div[style*="border-top"] div[style*="background: #ffffff"] strong {
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-body > div[style*="border-top"] div[style*="background: #ffffff"] span {
+  font-size: 13px !important;
+}
+
+/* Import Item picker */
+.seller-trade-modal-body button[style*="fontSize: '11px'"],
+.seller-trade-modal-body button[style*="fontSize: \"11px\""] {
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-body button[style*="fontSize: '12px'"],
+.seller-trade-modal-body button[style*="fontSize: \"12px\""] {
+  font-size: 15px !important;
+}
+
+/* Item picker text */
+.seller-trade-modal-body div[style*="maxHeight: '180px'"] strong {
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-body div[style*="maxHeight: '180px'"] span {
+  font-size: 13px !important;
+}
+
+/* Selected item */
+.seller-trade-modal-body div[style*="Item attached"] strong {
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-body div[style*="Item attached"] span {
+  font-size: 13px !important;
+}
+
+/* Comment action buttons */
+.seller-trade-modal-body form button {
+  min-height: 38px;
+  font-size: 14px !important;
+}
+
+.seller-trade-modal-body form button[type="submit"] {
+  padding: 9px 14px !important;
+}
+
+.seller-trade-modal-body form button[type="button"] {
+  padding: 8px 12px !important;
+}
+
+/* Better spacing for larger text */
+.seller-trade-modal-body {
+  line-height: 1.5;
+}
+
+/* Responsive readability */
+@media (max-width: 720px) {
+  .seller-trade-card-image {
+    height: 175px;
+  }
+
+  .seller-trade-card-content h3 {
+    font-size: 17px !important;
+  }
+
+  .seller-trade-card-description {
+    height: auto;
+    max-height: 45px;
+  }
+
+  .seller-trade-modal-header h2 {
+    font-size: 20px !important;
+  }
+
+  .seller-trade-modal-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .seller-trade-content-card {
+    padding: 13px;
+  }
+
+  .seller-trade-card-image {
+    height: 165px;
+  }
+
+  .seller-trade-search {
+    height: 42px;
+  }
+
+  .seller-trade-modal-backdrop {
+    padding: 8px;
+  }
+
+  .seller-trade-modal-header,
+  .seller-trade-modal-body {
+    padding: 14px;
+  }
+
+  .seller-trade-modal-header h2 {
+    font-size: 19px !important;
+  }
+
+  .seller-trade-modal-description p,
+  .seller-trade-modal-body textarea {
+    font-size: 15px !important;
+  }
+
+  .seller-trade-modal-body form {
+    width: 100%;
+  }
+
+  .seller-trade-modal-body form > div {
+    flex-wrap: wrap;
+  }
+}
