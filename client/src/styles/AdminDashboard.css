@@ -901,3 +901,264 @@
     flex: 1;
   }
 }
+/* ============================================================
+   ADMIN DASHBOARD - MOBILE RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .admin-dashboard {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+
+  /* ----------------------------------------------------------
+     KPI
+     ---------------------------------------------------------- */
+
+  .dashboard-kpi-grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  .kpi-card {
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    padding: 14px;
+  }
+
+
+  .kpi-content {
+    min-width: 0;
+  }
+
+
+  .kpi-content span {
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+
+  .kpi-content strong {
+    font-size: 20px;
+
+    word-break: break-word;
+  }
+
+
+  /* ----------------------------------------------------------
+     MAIN GRID
+     ---------------------------------------------------------- */
+
+  .dashboard-main-grid,
+  .dashboard-bottom-grid {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PANELS
+     ---------------------------------------------------------- */
+
+  .dashboard-panel {
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+  }
+
+
+  .panel-header {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+
+  .panel-header h2 {
+    font-size: 16px;
+  }
+
+
+  .panel-header p {
+    font-size: 12px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PERIOD BUTTONS
+     ---------------------------------------------------------- */
+
+  .period-buttons {
+    width: 100%;
+
+    display: flex;
+
+    overflow-x: auto;
+
+    padding-bottom: 2px;
+  }
+
+
+  .period-buttons button {
+    flex: 0 0 auto;
+  }
+
+
+  /* ----------------------------------------------------------
+     PLATFORM CHART
+     ---------------------------------------------------------- */
+
+  .platform-chart {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: auto;
+  }
+
+
+  .platform-chart-svg {
+    min-width: 520px;
+  }
+
+
+  /* ----------------------------------------------------------
+     DISTRIBUTION
+     ---------------------------------------------------------- */
+
+  .distribution-content {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .distribution-list {
+    width: 100%;
+  }
+
+
+  /* ----------------------------------------------------------
+     CATEGORY
+     ---------------------------------------------------------- */
+
+  .category-list {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  .category-item {
+    min-width: 0;
+  }
+
+
+  .category-top {
+    gap: 8px;
+  }
+
+
+  .category-title {
+    min-width: 0;
+  }
+
+
+  .category-title strong {
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ----------------------------------------------------------
+     ACTIVITY TABLE
+     ---------------------------------------------------------- */
+
+  .activity-table {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .activity-table-header,
+  .activity-table-row {
+    min-width: 720px;
+  }
+
+
+  /* ----------------------------------------------------------
+     EMPTY STATES
+     ---------------------------------------------------------- */
+
+  .empty-dashboard-row,
+  .empty-category-state {
+    padding-left: 18px;
+    padding-right: 18px;
+
+    text-align: center;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .dashboard-kpi-grid {
+    gap: 8px;
+  }
+
+
+  .kpi-card {
+    padding: 12px;
+  }
+
+
+  .kpi-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+  }
+
+
+  .kpi-content strong {
+    font-size: 18px;
+  }
+
+
+  .dashboard-panel {
+    border-radius: 10px;
+  }
+
+
+  .platform-chart-svg {
+    min-width: 480px;
+  }
+
+
+  .activity-table-header,
+  .activity-table-row {
+    min-width: 680px;
+  }
+
+}

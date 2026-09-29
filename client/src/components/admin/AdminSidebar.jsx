@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   NavLink,
   useNavigate
@@ -13,6 +14,7 @@ const LogoLeaf = () => (
       d="M52.8 7.2C36.3 8.5 20.1 14.7 13.1 27.4C7.8 37.1 9.5 48.1 17.8 55.6C25.4 62.5 37.2 58.5 44.7 50.6C53.1 41.8 56.3 27.5 52.8 7.2Z"
       fill="currentColor"
     />
+
     <path
       d="M13 56C18.2 40.2 27.5 28.7 42.6 20.8"
       stroke="white"
@@ -22,6 +24,7 @@ const LogoLeaf = () => (
   </svg>
 );
 
+
 const DashboardIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
     <path d="M4 11L12 4L20 11V20H4V11Z" />
@@ -29,14 +32,23 @@ const DashboardIcon = () => (
   </svg>
 );
 
+
 const UsersIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
-    <circle cx="9" cy="8" r="3" />
+    <circle
+      cx="9"
+      cy="8"
+      r="3"
+    />
+
     <path d="M3 20C3 16.7 5.5 14 9 14C12.5 14 15 16.7 15 20" />
+
     <path d="M16 5C18.2 5.2 20 7 20 9.2" />
+
     <path d="M17 14C19.4 14.7 21 16.8 21 19" />
   </svg>
 );
+
 
 const MarketplaceIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
@@ -47,6 +59,7 @@ const MarketplaceIcon = () => (
   </svg>
 );
 
+
 const CommunityIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
     <path d="M4 5H20V16H8L4 20V5Z" />
@@ -54,6 +67,7 @@ const CommunityIcon = () => (
     <path d="M8 12H13" />
   </svg>
 );
+
 
 const ReportsIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
@@ -64,6 +78,7 @@ const ReportsIcon = () => (
   </svg>
 );
 
+
 const ContentIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
     <path d="M5 3H14L19 8V21H5V3Z" />
@@ -73,12 +88,19 @@ const ContentIcon = () => (
   </svg>
 );
 
+
 const SystemIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="3" />
+    <circle
+      cx="12"
+      cy="12"
+      r="3"
+    />
+
     <path d="M19.4 15A1.7 1.7 0 0 0 19.7 17L20 17.3L17.3 20L17 19.7A1.7 1.7 0 0 0 15 19.4C14.4 19.7 14 20.3 14 21V21.5H10V21C10 20.3 9.6 19.7 9 19.4A1.7 1.7 0 0 0 7 19.7L6.7 20L4 17.3L4.3 17A1.7 1.7 0 0 0 4.6 15C4.3 14.4 3.7 14 3 14H2.5V10H3C3.7 10 4.3 9.6 4.6 9A1.7 1.7 0 0 0 4.3 7L4 6.7L6.7 4L7 4.3A1.7 1.7 0 0 0 9 4.6C9.6 4.3 10 3.7 10 3V2.5H14V3C14 3.7 14.4 4.3 15 4.6A1.7 1.7 0 0 0 17 4.3L17.3 4L20 6.7L19.7 7A1.7 1.7 0 0 0 19.4 9C19.7 9.6 20.3 10 21 10H21.5V14H21C20.3 14 19.7 14.4 19.4 15Z" />
   </svg>
 );
+
 
 const LogoutIcon = () => (
   <svg viewBox="0 0 24 24" fill="none">
@@ -88,8 +110,14 @@ const LogoutIcon = () => (
   </svg>
 );
 
-const AdminSidebar = () => {
+
+const AdminSidebar = ({
+  isOpen = false,
+  onClose = () => {}
+}) => {
+
   const navigate = useNavigate();
+
 
   const menuItems = [
     {
@@ -97,31 +125,37 @@ const AdminSidebar = () => {
       path: '/admin-dashboard',
       icon: <DashboardIcon />
     },
+
     {
       label: 'Users & Accounts',
       path: '/admin/users',
       icon: <UsersIcon />
     },
+
     {
       label: 'Marketplace Management',
       path: '/admin/marketplace',
       icon: <MarketplaceIcon />
     },
+
     {
       label: 'Community & Support',
       path: '/admin/community',
       icon: <CommunityIcon />
     },
+
     {
       label: 'Reports & Analytics',
       path: '/admin/reports',
       icon: <ReportsIcon />
     },
+
     {
       label: 'Content Management',
       path: '/admin/content',
       icon: <ContentIcon />
     },
+
     {
       label: 'System',
       path: '/admin/system',
@@ -129,7 +163,9 @@ const AdminSidebar = () => {
     }
   ];
 
+
   const handleLogout = () => {
+
     localStorage.removeItem(
       'reuseconnect_token'
     );
@@ -142,16 +178,39 @@ const AdminSidebar = () => {
      * Keep compatibility with older auth
      * keys if they exist.
      */
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+
+    localStorage.removeItem(
+      'token'
+    );
+
+    localStorage.removeItem(
+      'user'
+    );
+
+    onClose();
 
     navigate('/login');
   };
 
-  return (
-    <aside className="admin-sidebar">
 
-      {/* Logo */}
+  const handleNavigation = () => {
+    onClose();
+  };
+
+
+  return (
+    <aside
+      className={`admin-sidebar ${
+        isOpen
+          ? 'mobile-open'
+          : ''
+      }`}
+    >
+
+      {/* ======================================================
+          LOGO
+      ====================================================== */}
+
       <div className="admin-logo">
 
         <div className="admin-logo-leaf">
@@ -159,6 +218,7 @@ const AdminSidebar = () => {
         </div>
 
         <div className="admin-logo-text">
+
           <div className="admin-logo-name">
             ReUse
           </div>
@@ -166,40 +226,54 @@ const AdminSidebar = () => {
           <div className="admin-logo-connect">
             CONNECT
           </div>
+
         </div>
 
       </div>
 
 
-      {/* Navigation */}
+      {/* ======================================================
+          NAVIGATION
+      ====================================================== */}
+
       <nav className="admin-navigation">
 
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            className={({ isActive }) =>
-              `admin-nav-item ${
+        {menuItems.map(
+          (item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              onClick={handleNavigation}
+              className={({
                 isActive
-                  ? 'active'
-                  : ''
-              }`
-            }
-          >
-            <span className="admin-nav-icon">
-              {item.icon}
-            </span>
+              }) =>
+                `admin-nav-item ${
+                  isActive
+                    ? 'active'
+                    : ''
+                }`
+              }
+            >
 
-            <span className="admin-nav-label">
-              {item.label}
-            </span>
-          </NavLink>
-        ))}
+              <span className="admin-nav-icon">
+                {item.icon}
+              </span>
+
+              <span className="admin-nav-label">
+                {item.label}
+              </span>
+
+            </NavLink>
+          )
+        )}
 
       </nav>
 
 
-      {/* Logout */}
+      {/* ======================================================
+          LOGOUT
+      ====================================================== */}
+
       <div className="admin-sidebar-bottom">
 
         <button
@@ -207,6 +281,7 @@ const AdminSidebar = () => {
           className="admin-logout"
           onClick={handleLogout}
         >
+
           <span className="admin-nav-icon">
             <LogoutIcon />
           </span>
@@ -214,6 +289,7 @@ const AdminSidebar = () => {
           <span>
             Logout
           </span>
+
         </button>
 
       </div>
@@ -221,5 +297,6 @@ const AdminSidebar = () => {
     </aside>
   );
 };
+
 
 export default AdminSidebar;
