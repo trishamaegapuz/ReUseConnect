@@ -1025,3 +1025,580 @@
     flex-wrap: wrap;
   }
 }
+/* ============================================================
+   SELLER TRADE & EXCHANGE
+   FINAL RESPONSIVE POLISH
+   ============================================================ */
+
+.seller-trade-exchange {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .seller-trade-content-card {
+    padding: 15px;
+  }
+
+  .seller-trade-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .seller-trade-card-image {
+    height: 165px;
+  }
+
+  .seller-trade-card-content {
+    padding: 14px;
+  }
+
+  .seller-trade-card-content h3 {
+    font-size: 16px !important;
+  }
+
+  .seller-trade-card-description {
+    font-size: 13px !important;
+  }
+
+  .seller-trade-card-meta > div {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-view-button {
+    font-size: 13px !important;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .seller-trade-content-card {
+    padding: 14px;
+  }
+
+  .seller-trade-search {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .seller-trade-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .seller-trade-card-image {
+    height: 160px;
+  }
+
+  .seller-trade-modal {
+    width: min(680px, 100%);
+  }
+
+  .seller-trade-modal-info {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 720px) {
+
+  .seller-trade-content-card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+
+  /* FILTER BUTTONS */
+
+  .seller-trade-content-card > div:first-child {
+    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 7px !important;
+    margin-bottom: 11px !important;
+  }
+
+  .seller-trade-content-card > div:first-child button {
+    flex: 1 1 auto;
+    min-height: 38px;
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+    white-space: nowrap;
+  }
+
+
+  /* SEARCH */
+
+  .seller-trade-search {
+    width: 100%;
+    height: 42px;
+    margin: 0 0 13px;
+  }
+
+  .seller-trade-search input {
+    min-width: 0;
+    font-size: 13px !important;
+  }
+
+  .seller-trade-search button {
+    height: 32px;
+    padding: 0 11px;
+    font-size: 12px !important;
+    flex: 0 0 auto;
+  }
+
+
+  /* GRID */
+
+  .seller-trade-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+
+  /* CARD */
+
+  .seller-trade-card {
+    width: 100%;
+  }
+
+  .seller-trade-card-image {
+    height: 185px;
+  }
+
+  .seller-trade-card-content {
+    padding: 14px;
+  }
+
+  .seller-trade-card-content h3 {
+    font-size: 16px !important;
+  }
+
+  .seller-trade-card-description {
+    height: auto;
+    max-height: 46px;
+    font-size: 13px !important;
+  }
+
+  .seller-trade-card-meta {
+    gap: 7px;
+    margin-top: 11px;
+    padding-top: 10px;
+  }
+
+  .seller-trade-card-meta > div {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-view-button {
+    height: 39px;
+    margin-top: 12px;
+    font-size: 13px !important;
+  }
+
+
+  /* EMPTY STATE */
+
+  .seller-trade-empty {
+    min-height: 250px;
+    padding: 20px 12px;
+  }
+
+  .seller-trade-empty strong {
+    font-size: 16px !important;
+  }
+
+  .seller-trade-empty span {
+    max-width: 280px;
+    font-size: 13px !important;
+    line-height: 1.5;
+  }
+
+
+  /* PAGINATION */
+
+  .seller-trade-pagination {
+    margin-top: 13px;
+    padding-top: 12px;
+    font-size: 12px !important;
+  }
+
+  .seller-trade-pagination button {
+    width: 36px;
+    height: 34px;
+  }
+
+
+  /* MODAL */
+
+  .seller-trade-modal-backdrop {
+    padding: 9px;
+    align-items: center;
+  }
+
+  .seller-trade-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: 94vh !important;
+    border-radius: 10px;
+  }
+
+  .seller-trade-modal-header {
+    padding: 13px 14px;
+    gap: 10px;
+  }
+
+  .seller-trade-modal-header span {
+    font-size: 11px !important;
+  }
+
+  .seller-trade-modal-header h2 {
+    max-width: calc(100vw - 85px);
+    font-size: 19px !important;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .seller-trade-modal-header button {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+  }
+
+  .seller-trade-modal-body {
+    padding: 14px;
+  }
+
+  .seller-trade-modal-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    margin-bottom: 13px;
+  }
+
+  .seller-trade-modal-placeholder {
+    height: 180px;
+    margin-bottom: 13px;
+  }
+
+  .seller-trade-modal-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .seller-trade-modal-info small {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-modal-info strong {
+    font-size: 13px !important;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .seller-trade-modal-description {
+    margin-top: 14px;
+    padding-top: 13px;
+  }
+
+  .seller-trade-modal-description > span {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-modal-description p {
+    font-size: 14px !important;
+    line-height: 1.6;
+  }
+
+
+  /* COMMENTS */
+
+  .seller-trade-modal-body > div[style*="border-top"] {
+    margin-top: 15px !important;
+    padding-top: 14px !important;
+  }
+
+  .seller-trade-modal-body > div[style*="border-top"] strong {
+    font-size: 15px !important;
+  }
+
+  .seller-trade-modal-body textarea {
+    width: 100%;
+    min-height: 82px;
+    font-size: 14px !important;
+  }
+
+
+  /* COMMENT BUTTONS */
+
+  .seller-trade-modal-body form > div {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .seller-trade-modal-body form button {
+    min-height: 38px;
+    font-size: 13px !important;
+  }
+
+  .seller-trade-modal-body form button[type="button"] {
+    flex: 1 1 auto;
+  }
+
+  .seller-trade-modal-body form button[type="submit"] {
+    flex: 1 1 auto;
+  }
+
+
+  /* ITEM PICKER */
+
+  .seller-trade-modal-body div[style*="maxHeight: '180px'"] {
+    max-height: 170px !important;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .seller-trade-content-card {
+    padding: 10px;
+  }
+
+
+  /* FILTERS */
+
+  .seller-trade-content-card > div:first-child {
+    gap: 6px !important;
+  }
+
+  .seller-trade-content-card > div:first-child button {
+    flex: 1 1 calc(50% - 3px);
+    min-height: 37px;
+    padding: 7px 8px !important;
+    font-size: 12px !important;
+  }
+
+
+  /* SEARCH */
+
+  .seller-trade-search {
+    height: 40px;
+  }
+
+  .seller-trade-search input {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-search button {
+    height: 31px;
+    padding: 0 9px;
+    font-size: 11px !important;
+  }
+
+
+  /* CARD */
+
+  .seller-trade-card-image {
+    height: 170px;
+  }
+
+  .seller-trade-card-content {
+    padding: 13px;
+  }
+
+  .seller-trade-card-content h3 {
+    font-size: 15px !important;
+  }
+
+  .seller-trade-card-description {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-card-meta > div {
+    font-size: 11px !important;
+  }
+
+  .seller-trade-view-button {
+    height: 38px;
+    font-size: 12px !important;
+  }
+
+
+  /* PAGINATION */
+
+  .seller-trade-pagination {
+    font-size: 11px !important;
+  }
+
+
+  /* MODAL */
+
+  .seller-trade-modal-backdrop {
+    padding: 6px;
+  }
+
+  .seller-trade-modal {
+    max-height: 96vh !important;
+  }
+
+  .seller-trade-modal-header {
+    padding: 11px 12px;
+  }
+
+  .seller-trade-modal-header span {
+    font-size: 10px !important;
+  }
+
+  .seller-trade-modal-header h2 {
+    font-size: 17px !important;
+  }
+
+  .seller-trade-modal-header button {
+    width: 33px;
+    height: 33px;
+    min-width: 33px;
+  }
+
+  .seller-trade-modal-body {
+    padding: 12px;
+  }
+
+  .seller-trade-modal-image {
+    max-height: 210px;
+  }
+
+  .seller-trade-modal-placeholder {
+    height: 155px;
+  }
+
+  .seller-trade-modal-description p {
+    font-size: 13px !important;
+  }
+
+
+  /* COMMENTS */
+
+  .seller-trade-modal-body textarea {
+    min-height: 75px;
+    font-size: 13px !important;
+  }
+
+  .seller-trade-modal-body form button {
+    font-size: 12px !important;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+  .seller-trade-content-card {
+    padding: 8px;
+  }
+
+  .seller-trade-content-card > div:first-child button {
+    flex: 1 1 100%;
+    min-height: 36px;
+    font-size: 11px !important;
+  }
+
+  .seller-trade-search {
+    height: 39px;
+  }
+
+  .seller-trade-search button {
+    padding: 0 8px;
+    font-size: 10px !important;
+  }
+
+  .seller-trade-card-image {
+    height: 155px;
+  }
+
+  .seller-trade-card-content {
+    padding: 12px;
+  }
+
+  .seller-trade-card-content h3 {
+    font-size: 14px !important;
+  }
+
+  .seller-trade-card-description {
+    font-size: 11px !important;
+  }
+
+  .seller-trade-card-meta > div {
+    font-size: 10px !important;
+  }
+
+  .seller-trade-view-button {
+    height: 36px;
+    font-size: 11px !important;
+  }
+
+  .seller-trade-modal-header h2 {
+    font-size: 16px !important;
+  }
+
+  .seller-trade-modal-description p {
+    font-size: 12px !important;
+  }
+
+  .seller-trade-modal-body textarea {
+    font-size: 12px !important;
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .seller-trade-content-card button,
+  .seller-trade-view-button,
+  .seller-trade-pagination button,
+  .seller-trade-modal button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .seller-trade-view-button,
+  .seller-trade-pagination button {
+    min-height: 36px;
+  }
+
+}

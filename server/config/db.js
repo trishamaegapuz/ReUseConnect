@@ -1,13 +1,8 @@
-/*
-============================================================
-ReUse Connect
-PostgreSQL Database Configuration
-Production-ready for Neon PostgreSQL
-============================================================
-*/
-
 const { Pool } = require('pg');
 require('dotenv').config();
+
+const isProduction =
+  process.env.NODE_ENV === 'production';
 
 const pool = new Pool({
   host: process.env.DB_HOST,
@@ -16,18 +11,27 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
 
-  // Neon PostgreSQL requires SSL
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ...(isProduction
+    ? {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      }
+    : {}),
 });
+
 
 pool.on('connect', () => {
   console.log('✅ PostgreSQL client connected');
 });
 
+
 pool.on('error', (err) => {
-  console.error('❌ Unexpected PostgreSQL error:', err.message);
+  console.error(
+    '❌ Unexpected PostgreSQL error:',
+    err.message
+  );
 });
+
 
 module.exports = pool;

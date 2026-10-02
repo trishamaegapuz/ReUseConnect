@@ -1962,3 +1962,1225 @@
     padding: 0 8px;
   }
 }
+/* ============================================================
+   BUYER COMMUNITY
+   RESPONSIVE MOBILE POLISH
+   ============================================================ */
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .community-main-grid {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 14px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .community-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .community-tab {
+    min-width: 0;
+    font-size: 14px;
+    padding: 0 8px;
+  }
+
+  .community-create-card {
+    padding: 13px;
+  }
+
+  .community-create-actions {
+    gap: 5px;
+  }
+
+  .community-create-actions button {
+    padding: 7px 8px;
+    font-size: 13px;
+  }
+
+  .community-post-card {
+    padding: 15px;
+  }
+
+  .community-side-card {
+    padding: 13px;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .community-main-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 14px 24px;
+    box-sizing: border-box;
+  }
+
+  .community-feed-column,
+  .community-right-column {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .community-right-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .community-side-card,
+  .community-side-card:first-child {
+    margin-top: 0;
+    min-width: 0;
+  }
+
+  .community-hero-art {
+    display: none;
+  }
+
+  .community-hero {
+    min-height: 94px;
+    padding: 17px 20px;
+  }
+
+  .community-hero-copy h1 {
+    font-size: 28px;
+  }
+
+  .community-hero-copy p {
+    font-size: 14px;
+  }
+
+  .community-post-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .community-post-body {
+    min-width: 0;
+  }
+
+  .community-post-title-button {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .community-post-text {
+    overflow-wrap: anywhere;
+  }
+
+  .community-post-image {
+    max-height: 320px;
+  }
+
+  .community-create-actions {
+    flex-wrap: wrap;
+  }
+
+  .community-create-actions .community-post-button {
+    margin-left: auto;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .buyer-community {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .community-main-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 10px 10px 22px;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .community-feed-column {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* ----------------------------------------------------------
+     TABS
+  ---------------------------------------------------------- */
+
+  .community-tabs {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    border-radius: 9px;
+  }
+
+  .community-tab {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    height: 44px;
+    padding: 0 5px;
+    gap: 5px;
+    font-size: 11px !important;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .community-tab svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+
+  /* ----------------------------------------------------------
+     CREATE POST CARD
+  ---------------------------------------------------------- */
+
+  .community-create-card {
+    width: 100%;
+    min-width: 0;
+    margin-top: 9px;
+    padding: 11px;
+    gap: 9px;
+    border-radius: 9px;
+  }
+
+  .community-create-avatar {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    font-size: 13px;
+  }
+
+  .community-create-content {
+    min-width: 0;
+  }
+
+  .community-create-input {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    padding: 0 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .community-create-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 7px;
+  }
+
+  .community-create-actions button {
+    min-width: 0;
+    min-height: 36px;
+    justify-content: center;
+    padding: 5px 4px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .community-create-actions button svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .community-create-actions .community-post-button {
+    grid-column: 1 / -1;
+    margin-left: 0;
+    min-height: 38px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SEARCH
+  ---------------------------------------------------------- */
+
+  .community-search-box {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    margin-top: 9px;
+    padding: 0 9px;
+    gap: 7px;
+  }
+
+  .community-search-box svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .community-search-box input {
+    width: 100%;
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  .community-search-box button {
+    display: flex;
+    flex-shrink: 0;
+    min-height: 32px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CATEGORY FILTER
+  ---------------------------------------------------------- */
+
+  .community-category-filter {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 5px;
+    padding: 8px 0 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .community-category-filter button {
+    min-height: 32px;
+    padding: 5px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+
+  /* ----------------------------------------------------------
+     POST CARD
+  ---------------------------------------------------------- */
+
+  .community-post-card {
+    width: 100%;
+    min-width: 0;
+    margin-top: 8px;
+    padding: 11px;
+    gap: 8px;
+    border-radius: 9px;
+    box-sizing: border-box;
+  }
+
+  .community-post-avatar {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    font-size: 12px;
+  }
+
+  .community-post-body {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .community-post-top {
+    width: 100%;
+    min-width: 0;
+    gap: 7px;
+  }
+
+  .community-author-row {
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .community-author-row strong {
+    max-width: 150px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .community-member-badge {
+    padding: 2px 5px;
+    font-size: 9px;
+  }
+
+  .community-post-meta {
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 3px;
+    font-size: 10px;
+  }
+
+  .community-post-meta svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .community-icon-action {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  .community-icon-action svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .community-post-title-button {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .community-post-text {
+    margin-top: 5px;
+    font-size: 11px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .community-post-footer {
+    gap: 11px;
+    margin-top: 8px;
+  }
+
+  .community-post-footer button {
+    min-height: 32px;
+    padding: 3px 2px;
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .community-post-footer button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ----------------------------------------------------------
+     POST IMAGE
+  ---------------------------------------------------------- */
+
+  .community-post-image-wrap {
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 7px;
+  }
+
+  .community-post-image {
+    width: 100%;
+    max-width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+  }
+
+
+  /* ----------------------------------------------------------
+     RIGHT SIDEBAR
+  ---------------------------------------------------------- */
+
+  .community-right-column {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .community-side-card,
+  .community-side-card:first-child {
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    padding: 11px;
+    border-radius: 9px;
+    box-sizing: border-box;
+  }
+
+  .community-side-title {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .community-side-title svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .community-category-row {
+    min-height: 42px;
+    padding: 5px 2px;
+    gap: 7px;
+  }
+
+  .community-category-icon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  .community-category-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .community-category-info strong {
+    font-size: 11px;
+  }
+
+  .community-category-info small {
+    font-size: 9px;
+  }
+
+  .community-category-row > svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .community-quick-action {
+    min-height: 38px;
+    margin-top: 5px;
+    padding: 0 8px;
+    gap: 7px;
+  }
+
+  .community-quick-action svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .community-quick-action span {
+    min-width: 0;
+    font-size: 11px;
+  }
+
+  .community-guideline {
+    padding: 7px 0;
+  }
+
+  .community-guideline strong {
+    font-size: 11px;
+  }
+
+  .community-guideline span {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+
+  /* ----------------------------------------------------------
+     ACTIVITY
+  ---------------------------------------------------------- */
+
+  .community-activity-feed {
+    width: 100%;
+    min-width: 0;
+    margin-top: 9px;
+    gap: 7px;
+  }
+
+  .community-activity-card {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .community-activity-icon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  .community-activity-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .community-activity-card .community-activity-content {
+    min-width: 0;
+  }
+
+  .community-activity-card .community-activity-content strong {
+    font-size: 11px;
+  }
+
+  .community-activity-card .community-activity-content span {
+    font-size: 11px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .community-activity-card .community-activity-content small {
+    font-size: 9px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .community-activity-date {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+
+  /* ----------------------------------------------------------
+     LOADING / EMPTY / ERROR
+  ---------------------------------------------------------- */
+
+  .community-loading,
+  .community-empty,
+  .community-error {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-top: 9px;
+    padding: 32px 12px;
+    font-size: 12px;
+  }
+
+  .community-empty svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .community-empty h3 {
+    font-size: 15px;
+  }
+
+  .community-empty p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .community-empty button,
+  .community-error button {
+    min-height: 36px;
+    padding: 7px 11px;
+    font-size: 11px;
+  }
+
+  .community-error button {
+    margin-left: 5px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PAGINATION
+  ---------------------------------------------------------- */
+
+  .community-pagination {
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 9px;
+  }
+
+  .community-pagination button {
+    min-height: 36px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .community-pagination span {
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     MODALS
+  ---------------------------------------------------------- */
+
+  .community-modal-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .community-modal,
+  .community-post-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 16px);
+    margin: 0 auto;
+    border-radius: 11px;
+    box-sizing: border-box;
+  }
+
+  .community-modal-header {
+    padding: 13px 14px;
+    gap: 8px;
+  }
+
+  .community-modal-label {
+    font-size: 10px;
+  }
+
+  .community-modal-header h2 {
+    max-width: 100%;
+    margin-top: 3px;
+    padding-right: 3px;
+    font-size: 16px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .community-modal-close {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+  }
+
+  .community-modal-close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  /* ----------------------------------------------------------
+     POST DETAILS
+  ---------------------------------------------------------- */
+
+  .community-detail-author {
+    padding: 11px 14px;
+    gap: 8px;
+  }
+
+  .community-detail-author .community-post-avatar {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .community-detail-author strong {
+    font-size: 12px;
+  }
+
+  .community-detail-author span {
+    font-size: 10px;
+  }
+
+  .community-detail-image-wrap {
+    padding: 0 14px 11px;
+  }
+
+  .community-detail-image {
+    width: 100%;
+    max-height: 260px;
+    border-radius: 7px;
+  }
+
+  .community-detail-content {
+    padding: 0 14px 11px;
+  }
+
+  .community-detail-category {
+    padding: 3px 7px;
+    font-size: 10px;
+  }
+
+  .community-detail-content p {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .community-detail-actions {
+    padding: 8px 14px;
+    gap: 6px;
+    overflow-x: auto;
+  }
+
+  .community-detail-actions button {
+    min-height: 35px;
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .community-detail-actions button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ----------------------------------------------------------
+     COMMENTS
+  ---------------------------------------------------------- */
+
+  .community-comments {
+    padding: 11px 14px 4px;
+  }
+
+  .community-comments h3 {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .community-comment {
+    gap: 7px;
+    padding: 8px 0;
+  }
+
+  .community-comment-avatar {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    font-size: 10px;
+  }
+
+  .community-comment-content {
+    min-width: 0;
+  }
+
+  .community-comment-content strong {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+
+  .community-comment-content > span {
+    margin-left: 4px;
+    font-size: 9px;
+  }
+
+  .community-comment-content p {
+    margin-top: 3px;
+    font-size: 10px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .community-no-comments {
+    padding: 11px 0;
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     COMMENT ATTACHED ITEM
+     JSX uses inline styles, so constrain it here.
+  ---------------------------------------------------------- */
+
+  .community-comment-content > div[style*="maxWidth"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .community-comment-content > div[style*="maxWidth"] img {
+    width: 100% !important;
+    max-width: 100%;
+    height: 125px !important;
+    object-fit: cover;
+  }
+
+  .community-comment-content > div[style*="maxWidth"] strong {
+    font-size: 11px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .community-comment-content > div[style*="maxWidth"] span {
+    font-size: 9px !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     COMMENT FORM
+  ---------------------------------------------------------- */
+
+  .community-comment-form {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-top: 7px;
+    padding: 9px 14px 13px;
+    gap: 6px;
+  }
+
+  .community-comment-form input {
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    padding: 0 9px;
+    font-size: 11px;
+  }
+
+  .community-comment-form button {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CREATE / REPORT FORM
+  ---------------------------------------------------------- */
+
+  .community-create-form {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    gap: 6px;
+  }
+
+  .community-create-form label {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  .community-create-form input,
+  .community-create-form select,
+  .community-create-form textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 8px 9px;
+    font-size: 11px;
+    border-radius: 7px;
+  }
+
+  .community-create-form textarea {
+    min-height: 105px;
+  }
+
+  .community-form-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 7px;
+  }
+
+  .community-form-actions button {
+    width: 100%;
+    min-height: 38px;
+    justify-content: center;
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PHOTO UPLOAD
+  ---------------------------------------------------------- */
+
+  .community-photo-upload-box {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .community-photo-button {
+    min-height: 35px;
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+
+  .community-photo-help {
+    width: 100%;
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .community-photo-preview-wrap {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .community-photo-preview {
+    width: 100%;
+    max-height: 190px;
+  }
+
+  .community-photo-remove {
+    min-height: 32px;
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .community-main-grid {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .community-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .community-tab {
+    min-height: 42px;
+    height: 42px;
+    padding: 0 3px;
+    gap: 3px;
+    font-size: 10px !important;
+  }
+
+  .community-tab svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .community-create-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .community-create-actions .community-post-button {
+    grid-column: 1 / -1;
+  }
+
+  .community-search-box button {
+    display: none;
+  }
+
+  .community-post-card {
+    padding: 10px;
+  }
+
+  .community-post-avatar {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .community-post-title-button {
+    font-size: 12px;
+  }
+
+  .community-post-text {
+    font-size: 10px;
+  }
+
+  .community-post-footer {
+    gap: 8px;
+  }
+
+  .community-post-footer button {
+    font-size: 10px;
+  }
+
+  .community-modal-overlay {
+    padding: 6px;
+  }
+
+  .community-modal,
+  .community-post-modal {
+    max-height: calc(100vh - 12px);
+    border-radius: 10px;
+  }
+
+  .community-modal-header {
+    padding: 11px 12px;
+  }
+
+  .community-detail-author,
+  .community-detail-content,
+  .community-comments {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .community-detail-image-wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .community-detail-actions {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .community-comment-form {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .community-form-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+  .community-main-grid {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .community-tab {
+    font-size: 9px !important;
+  }
+
+  .community-tab svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .community-create-card {
+    padding: 9px;
+    gap: 7px;
+  }
+
+  .community-create-avatar {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .community-create-actions button {
+    font-size: 10px;
+  }
+
+  .community-post-card {
+    padding: 9px;
+  }
+
+  .community-post-meta {
+    font-size: 9px;
+  }
+
+  .community-icon-action {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+  }
+
+  .community-post-footer {
+    gap: 6px;
+  }
+
+  .community-post-footer button {
+    font-size: 9px;
+  }
+
+  .community-activity-date {
+    display: none;
+  }
+
+  .community-form-actions button {
+    min-height: 36px;
+  }
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .community-tab,
+  .community-category-filter button,
+  .community-icon-action,
+  .community-post-footer button,
+  .community-quick-action,
+  .community-category-row,
+  .community-pagination button,
+  .community-form-actions button,
+  .community-photo-button,
+  .community-photo-remove {
+    min-height: 40px;
+  }
+
+  .community-category-filter,
+  .community-detail-actions {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+/* ============================================================
+   BUYER COMMUNITY
+   DESKTOP RIGHT SIDEBAR - STICKY FIX
+   Prevents large empty space beside the feed while scrolling.
+============================================================ */
+
+@media (min-width: 851px) {
+
+  .community-main-grid {
+    align-items: start;
+  }
+
+  .community-right-column {
+    position: sticky;
+    top: 18px;
+    align-self: start;
+
+    height: fit-content;
+    max-height: calc(100vh - 36px);
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .community-right-column::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .community-right-column::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .community-right-column::-webkit-scrollbar-thumb {
+    background: #d8d0ee;
+    border-radius: 10px;
+  }
+}
+
+
+/* ============================================================
+   TABLET / MOBILE
+   Keep the existing responsive behavior.
+============================================================ */
+
+@media (max-width: 850px) {
+
+  .community-right-column {
+    position: static;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+}

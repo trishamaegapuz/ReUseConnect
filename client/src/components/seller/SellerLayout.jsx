@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useState
+} from 'react';
 
 import {
-  Bell,
   Heart,
   MessageSquare,
-  ChevronDown
+  Bell,
+  ChevronDown,
+  Menu
 } from 'lucide-react';
 
 import {
@@ -17,18 +21,35 @@ import SellerFooter from './SellerFooter';
 
 import '../../styles/seller/SellerLayout.css';
 
+
 const SellerLayout = () => {
+
   const location = useLocation();
 
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
+
+
+  // ==========================================================
+  // USER
+  // ==========================================================
+
   const storedUser = (() => {
+
     try {
+
       return JSON.parse(
         localStorage.getItem('user') || '{}'
       );
+
     } catch {
+
       return {};
+
     }
+
   })();
+
 
   const firstName =
     storedUser.first_name ||
@@ -48,27 +69,124 @@ const SellerLayout = () => {
     storedUser.profileImage ||
     '';
 
+
   const isDashboard =
     location.pathname === '/seller-dashboard';
 
+
+  // ==========================================================
+  // CLOSE MOBILE SIDEBAR WHEN ROUTE CHANGES
+  // ==========================================================
+
+  useEffect(() => {
+
+    setSidebarOpen(false);
+
+  }, [location.pathname]);
+
+
+  // ==========================================================
+  // PREVENT BODY SCROLL WHEN MOBILE SIDEBAR IS OPEN
+  // ==========================================================
+
+  useEffect(() => {
+
+    if (sidebarOpen) {
+
+      document.body.classList.add(
+        'seller-sidebar-open'
+      );
+
+    } else {
+
+      document.body.classList.remove(
+        'seller-sidebar-open'
+      );
+
+    }
+
+    return () => {
+
+      document.body.classList.remove(
+        'seller-sidebar-open'
+      );
+
+    };
+
+  }, [sidebarOpen]);
+
+
   return (
+
     <div className="seller-layout">
 
-      {/* SIDEBAR */}
+      {/* =====================================================
+          MOBILE OVERLAY
+      ===================================================== */}
 
-      <SellerSidebar />
+      {sidebarOpen && (
 
-      {/* RIGHT CONTENT */}
+        <div
+          className="seller-sidebar-overlay"
+          onClick={() =>
+            setSidebarOpen(false)
+          }
+          aria-hidden="true"
+        />
+
+      )}
+
+
+      {/* =====================================================
+          SIDEBAR
+      ===================================================== */}
+
+      <SellerSidebar
+        isOpen={sidebarOpen}
+        onClose={() =>
+          setSidebarOpen(false)
+        }
+      />
+
+
+      {/* =====================================================
+          RIGHT CONTENT
+      ===================================================== */}
 
       <div className="seller-layout-content">
 
-        {/* HEADER */}
+        {/* ===================================================
+            HEADER
+        =================================================== */}
 
         <header className="seller-header">
 
           <div className="seller-header-left">
 
+            {/* MOBILE MENU BUTTON */}
+
+            <button
+              type="button"
+              className="seller-mobile-menu-button"
+              onClick={() =>
+                setSidebarOpen(true)
+              }
+              aria-label="Open seller menu"
+              aria-expanded={sidebarOpen}
+            >
+
+              <Menu
+                size={23}
+                strokeWidth={2}
+              />
+
+            </button>
+
+
+            {/* DASHBOARD WELCOME */}
+
             {isDashboard && (
+
               <div className="seller-welcome">
 
                 <span className="seller-welcome-small">
@@ -80,9 +198,11 @@ const SellerLayout = () => {
                 </strong>
 
               </div>
+
             )}
 
           </div>
+
 
           <div className="seller-header-right">
 
@@ -93,11 +213,14 @@ const SellerLayout = () => {
               className="seller-header-icon-button"
               aria-label="Favorites"
             >
+
               <Heart
                 size={21}
                 strokeWidth={1.8}
               />
+
             </button>
+
 
             {/* MESSAGES */}
 
@@ -106,11 +229,14 @@ const SellerLayout = () => {
               className="seller-header-icon-button"
               aria-label="Messages"
             >
+
               <MessageSquare
                 size={21}
                 strokeWidth={1.8}
               />
+
             </button>
+
 
             {/* NOTIFICATIONS */}
 
@@ -119,15 +245,19 @@ const SellerLayout = () => {
               className="seller-header-icon-button"
               aria-label="Notifications"
             >
+
               <Bell
                 size={21}
                 strokeWidth={1.8}
               />
+
             </button>
+
 
             {/* DIVIDER */}
 
             <div className="seller-header-divider" />
+
 
             {/* PROFILE */}
 
@@ -136,19 +266,26 @@ const SellerLayout = () => {
               <div className="seller-profile-image">
 
                 {profileImage ? (
+
                   <img
                     src={profileImage}
                     alt={fullName}
                   />
+
                 ) : (
+
                   <div className="seller-profile-placeholder">
+
                     {firstName
                       .charAt(0)
                       .toUpperCase()}
+
                   </div>
+
                 )}
 
               </div>
+
 
               <div className="seller-profile-info">
 
@@ -162,6 +299,7 @@ const SellerLayout = () => {
 
               </div>
 
+
               <ChevronDown
                 size={17}
                 className="seller-profile-chevron"
@@ -173,20 +311,31 @@ const SellerLayout = () => {
 
         </header>
 
-        {/* MAIN CONTENT */}
+
+        {/* ===================================================
+            MAIN CONTENT
+        =================================================== */}
 
         <main className="seller-main-content">
+
           <Outlet />
+
         </main>
 
-        {/* FOOTER */}
+
+        {/* ===================================================
+            FOOTER
+        =================================================== */}
 
         <SellerFooter />
 
       </div>
 
     </div>
+
   );
+
 };
+
 
 export default SellerLayout;

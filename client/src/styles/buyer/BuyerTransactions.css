@@ -1374,3 +1374,771 @@
     padding-right: 48px;
   }
 }
+/* ============================================================
+   BUYER TRANSACTIONS
+   RESPONSIVE MOBILE POLISH
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   TABLET / SMALL LAPTOP
+------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+
+  .transactions-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transactions-sidebar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .transaction-side-card {
+    min-width: 0;
+  }
+
+  .transactions-filter-bar {
+    grid-template-columns:
+      minmax(180px, 1fr)
+      125px
+      125px
+      100px;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   TABLET
+------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+
+  .transactions-filter-bar {
+    grid-template-columns:
+      minmax(180px, 1fr)
+      120px
+      120px;
+  }
+
+  .transaction-filter-button {
+    width: 100%;
+  }
+
+  .transactions-search {
+    min-width: 0;
+  }
+
+  .transactions-sidebar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .transaction-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   MOBILE
+------------------------------------------------------------ */
+
+@media (max-width: 700px) {
+
+  .buyer-transactions-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .buyer-transactions-main {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* ==========================================================
+     TABS
+  ========================================================== */
+
+  .transactions-tabs {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .transaction-tab {
+    min-width: 0;
+    min-height: 42px;
+    padding: 0 8px;
+    gap: 6px;
+    font-size: 12px !important;
+  }
+
+  .transaction-tab span {
+    display: inline !important;
+    font-size: 12px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .transaction-tab b {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    font-size: 11px !important;
+    flex-shrink: 0;
+  }
+
+
+  /* ==========================================================
+     FILTER BAR
+  ========================================================== */
+
+  .transactions-filter-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    padding: 7px;
+    margin-bottom: 8px;
+  }
+
+  .transactions-search {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+  }
+
+  .transactions-search input {
+    min-width: 0;
+    font-size: 12px !important;
+  }
+
+  .transactions-filter-bar select {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    font-size: 12px !important;
+  }
+
+  .transaction-filter-button {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    font-size: 12px !important;
+  }
+
+
+  /* ==========================================================
+     ERROR
+  ========================================================== */
+
+  .transactions-error {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 9px 10px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .transactions-error span {
+    min-width: 0;
+    flex: 1 1 180px;
+  }
+
+  .transactions-error button {
+    margin-left: 0;
+  }
+
+
+  /* ==========================================================
+     TABLE
+  ========================================================== */
+
+  .transactions-table-card {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .transactions-table-header,
+  .transaction-row {
+    min-width: 780px;
+  }
+
+  .transactions-table-header {
+    min-height: 38px;
+    padding: 0 9px;
+    gap: 7px;
+  }
+
+  .transaction-row {
+    min-height: 82px;
+    padding: 7px 9px;
+    gap: 7px;
+  }
+
+
+  /* Keep item information readable inside horizontal table. */
+
+  .transaction-item-image {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+  }
+
+  .transaction-item-info strong {
+    max-width: 145px;
+    font-size: 12px !important;
+  }
+
+  .transaction-item-info span {
+    max-width: 145px;
+    font-size: 11px !important;
+  }
+
+  .transaction-item-info b {
+    font-size: 12px !important;
+  }
+
+  .transaction-item-info small {
+    font-size: 10px !important;
+  }
+
+
+  /* ==========================================================
+     ACTION BUTTONS
+  ========================================================== */
+
+  .transaction-action-cell {
+    gap: 6px;
+  }
+
+  .transaction-icon-action,
+  .transaction-review-action {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    border-radius: 8px;
+  }
+
+
+  /* ==========================================================
+     PAGINATION
+  ========================================================== */
+
+  .transactions-pagination {
+    min-height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    font-size: 11px !important;
+  }
+
+  .transactions-pagination > span {
+    min-width: 0;
+    flex: 1 1 150px;
+  }
+
+  .pagination-controls {
+    flex-shrink: 0;
+  }
+
+
+  /* ==========================================================
+     SIDEBAR CARDS
+  ========================================================== */
+
+  .transactions-sidebar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .transaction-side-card {
+    width: 100%;
+    padding: 11px;
+  }
+
+  .side-card-title {
+    margin-bottom: 9px;
+  }
+
+  .side-card-title h3 {
+    font-size: 13px !important;
+  }
+
+  .transaction-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .summary-stat {
+    min-height: 58px;
+    padding: 7px;
+  }
+
+  .summary-stat-icon {
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+  }
+
+  .summary-stat strong {
+    font-size: 18px !important;
+  }
+
+  .summary-stat span {
+    font-size: 10px !important;
+  }
+
+  .quick-actions button {
+    min-height: 40px;
+    font-size: 11px;
+  }
+
+  .guide-item strong {
+    font-size: 11px;
+  }
+
+  .guide-item p {
+    font-size: 10px;
+  }
+
+
+  /* ==========================================================
+     TRANSACTION DETAILS MODAL
+  ========================================================== */
+
+  .transaction-modal-overlay {
+    align-items: flex-start;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .transaction-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 20px);
+    margin: 0 auto;
+    padding: 18px 15px 20px;
+    border-radius: 12px;
+  }
+
+  .transaction-modal-close {
+    top: 9px;
+    right: 9px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+  }
+
+  .transaction-modal-header {
+    gap: 10px;
+    padding-right: 43px;
+    padding-bottom: 11px;
+  }
+
+  .transaction-modal-header span:first-child {
+    font-size: 10px !important;
+  }
+
+  .transaction-modal-header h2 {
+    margin-top: 3px;
+    font-size: 17px !important;
+    line-height: 1.25;
+    word-break: break-word;
+  }
+
+  .transaction-modal-header > .transaction-status {
+    flex-shrink: 0;
+    font-size: 9px !important;
+    padding: 4px 7px;
+  }
+
+
+  /* ==========================================================
+     MODAL SUMMARY
+  ========================================================== */
+
+  .modal-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .modal-summary-grid > div {
+    min-width: 0;
+    padding: 8px;
+  }
+
+  .modal-summary-grid span {
+    font-size: 9px !important;
+  }
+
+  .modal-summary-grid strong {
+    font-size: 12px !important;
+    word-break: break-word;
+  }
+
+
+  /* ==========================================================
+     MODAL ITEMS
+  ========================================================== */
+
+  .modal-section {
+    margin-top: 13px;
+  }
+
+  .modal-section h3 {
+    font-size: 12px !important;
+  }
+
+  .modal-item {
+    grid-template-columns: 45px minmax(0, 1fr) auto;
+    gap: 7px;
+    padding: 7px;
+  }
+
+  .modal-item-image {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px;
+  }
+
+  .modal-item-info {
+    min-width: 0;
+  }
+
+  .modal-item-info strong {
+    font-size: 11px !important;
+  }
+
+  .modal-item-info span,
+  .modal-item-info small {
+    font-size: 9px !important;
+  }
+
+  .modal-item > strong {
+    font-size: 11px !important;
+  }
+
+  .modal-address {
+    padding: 8px;
+    font-size: 11px !important;
+    word-break: break-word;
+  }
+
+
+  /* ==========================================================
+     REVIEW MODAL
+  ========================================================== */
+
+  .review-modal-loading {
+    min-height: 150px;
+  }
+
+  .review-existing {
+    padding: 10px !important;
+  }
+
+  .review-form-label {
+    font-size: 11px !important;
+  }
+
+  .review-stars {
+    gap: 2px !important;
+    flex-wrap: nowrap;
+  }
+
+  .review-star-button {
+    padding: 2px !important;
+  }
+
+  .review-star-button svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .review-textarea {
+    min-height: 95px;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .review-actions {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px !important;
+    margin-top: 11px !important;
+  }
+
+  .review-cancel-button,
+  .review-submit-button {
+    width: 100%;
+    min-height: 39px;
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+  }
+
+  .review-error {
+    font-size: 10px !important;
+    line-height: 1.4;
+  }
+
+
+  /* Review item card must stack cleanly on mobile. */
+
+  .modal-item[style*="align-items: flex-start"] {
+    display: grid !important;
+    grid-template-columns: 45px minmax(0, 1fr) !important;
+    align-items: start !important;
+  }
+
+  .modal-item[style*="align-items: flex-start"] > strong {
+    grid-column: 2;
+    margin-left: 0 !important;
+    margin-top: 4px;
+  }
+
+  .modal-item[style*="align-items: flex-start"] .modal-item-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .modal-item[style*="align-items: flex-start"] .review-textarea {
+    width: 100%;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   SMALL PHONE
+------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+
+  .transactions-tabs {
+    gap: 5px;
+  }
+
+  .transaction-tab {
+    min-height: 40px;
+    padding: 0 6px;
+  }
+
+  .transaction-tab svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .transaction-tab span {
+    font-size: 11px !important;
+  }
+
+  .transaction-tab b {
+    font-size: 10px !important;
+  }
+
+
+  .transactions-filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .transactions-search {
+    grid-column: auto;
+  }
+
+
+  .transactions-sidebar {
+    gap: 8px;
+  }
+
+  .transaction-summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+  .transactions-pagination {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .transactions-pagination > span {
+    flex: none;
+    text-align: center;
+  }
+
+  .pagination-controls {
+    justify-content: center;
+  }
+
+
+  /* Modal */
+
+  .transaction-modal-overlay {
+    padding: 7px;
+  }
+
+  .transaction-modal {
+    max-height: calc(100vh - 14px);
+    padding: 16px 12px 18px;
+  }
+
+  .transaction-modal-header {
+    padding-right: 40px;
+  }
+
+  .transaction-modal-header h2 {
+    font-size: 16px !important;
+  }
+
+  .modal-summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .modal-item {
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+  }
+
+  .modal-item-image {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px;
+  }
+
+  .review-stars {
+    gap: 1px !important;
+  }
+
+  .review-star-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   VERY SMALL PHONE
+------------------------------------------------------------ */
+
+@media (max-width: 360px) {
+
+  .transaction-tab {
+    gap: 4px;
+    padding: 0 5px;
+  }
+
+  .transaction-tab span {
+    font-size: 10px !important;
+  }
+
+  .transaction-tab b {
+    min-width: 16px;
+    height: 16px;
+    font-size: 9px !important;
+  }
+
+
+  .transaction-item-image {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+  }
+
+
+  .transaction-action-cell {
+    gap: 4px;
+  }
+
+  .transaction-icon-action,
+  .transaction-review-action {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+
+  /* Modal summary becomes one column on very narrow phones. */
+
+  .modal-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* Review buttons stack to avoid squeezing. */
+
+  .review-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+
+  .review-star-button svg {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  .transaction-modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .transaction-modal-header > .transaction-status {
+    align-self: flex-start;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   TOUCH DEVICES
+------------------------------------------------------------ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .transaction-icon-action,
+  .transaction-review-action,
+  .pagination-controls button,
+  .transaction-filter-button,
+  .quick-actions button,
+  .transaction-tab {
+    min-height: 40px;
+  }
+
+  .transaction-icon-action,
+  .transaction-review-action {
+    min-width: 40px;
+    width: 40px;
+  }
+
+  .transaction-modal-close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .transactions-table-card {
+    -webkit-overflow-scrolling: touch;
+  }
+
+}

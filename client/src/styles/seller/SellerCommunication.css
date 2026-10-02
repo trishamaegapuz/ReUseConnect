@@ -1072,3 +1072,831 @@
     font-size: 15px;
   }
 }
+/* ============================================================
+   SELLER COMMUNICATION
+   FINAL RESPONSIVE POLISH
+   ============================================================ */
+
+
+/* ============================================================
+   LARGE TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .communication-sidebar {
+    width: 325px;
+    min-width: 325px;
+  }
+
+  .communication-sidebar-header {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .communication-search {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  .conversation-item {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .chat-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .messages-area {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .message-input-area {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .message-bubble {
+    max-width: 78%;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .seller-communication {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .communication-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .communication-sidebar {
+    width: 300px;
+    min-width: 300px;
+  }
+
+  .communication-sidebar-header h2 {
+    font-size: 24px;
+  }
+
+  .communication-sidebar-header p {
+    font-size: 14px;
+  }
+
+  .conversation-item {
+    min-height: 92px;
+  }
+
+  .chat-header {
+    min-height: 76px;
+  }
+
+  .messages-area {
+    padding: 18px;
+  }
+
+  .message-bubble {
+    max-width: 82%;
+  }
+}
+
+
+/* ============================================================
+   MOBILE / TABLET BREAKPOINT
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+  .seller-communication {
+    min-height: calc(100vh - 112px);
+  }
+
+  .communication-container {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 112px);
+    border-left: 0;
+    border-right: 0;
+  }
+
+
+  /* ----------------------------------------------------------
+     CONVERSATION SIDEBAR
+  ---------------------------------------------------------- */
+
+  .communication-sidebar {
+    width: 100%;
+    min-width: 0;
+    height: 340px;
+    min-height: 340px;
+    border-right: 0;
+    border-bottom: 1px solid #e7e6ef;
+  }
+
+  .communication-sidebar-header {
+    min-height: 70px;
+    padding: 13px 14px 11px;
+  }
+
+  .communication-sidebar-header h2 {
+    font-size: 23px;
+  }
+
+  .communication-sidebar-header p {
+    margin-top: 3px;
+    font-size: 12px;
+  }
+
+  .refresh-button {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SEARCH
+  ---------------------------------------------------------- */
+
+  .communication-search {
+    width: auto;
+    height: 43px;
+    margin: 10px 12px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .communication-search input {
+    min-width: 0;
+    font-size: 13px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CONVERSATION LIST
+  ---------------------------------------------------------- */
+
+  .conversation-list {
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .conversation-item {
+    min-height: 76px;
+    padding: 10px 12px;
+    gap: 9px;
+  }
+
+  .conversation-avatar {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    font-size: 14px;
+  }
+
+  .conversation-top {
+    gap: 5px;
+  }
+
+  .conversation-top strong {
+    font-size: 14px;
+  }
+
+  .conversation-top span {
+    font-size: 10px;
+  }
+
+  .conversation-listing {
+    margin-top: 3px;
+    font-size: 11px;
+  }
+
+  .conversation-bottom {
+    margin-top: 3px;
+  }
+
+  .conversation-bottom p {
+    font-size: 11px;
+  }
+
+  .unread-badge {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    font-size: 9px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CHAT AREA
+  ---------------------------------------------------------- */
+
+  .communication-chat {
+    width: 100%;
+    min-width: 0;
+    min-height: 560px;
+    height: 560px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CHAT HEADER
+  ---------------------------------------------------------- */
+
+  .chat-header {
+    min-height: 68px;
+    padding: 10px 13px;
+  }
+
+  .chat-buyer-info {
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 13px;
+  }
+
+  .chat-buyer-info h3 {
+    max-width: calc(100vw - 90px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+  }
+
+  .buyer-status {
+    margin-top: 3px;
+    font-size: 10px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+
+  /* ----------------------------------------------------------
+     MESSAGES AREA
+  ---------------------------------------------------------- */
+
+  .messages-area {
+    min-height: 0;
+    padding: 14px 12px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .message-row {
+    margin-bottom: 10px;
+  }
+
+  .message-bubble {
+    max-width: 88%;
+    padding: 9px 11px 8px;
+    border-radius: 11px;
+  }
+
+  .message-bubble.received {
+    border-bottom-left-radius: 4px;
+  }
+
+  .message-bubble.mine {
+    border-bottom-right-radius: 4px;
+  }
+
+  .message-bubble p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+
+  /* ----------------------------------------------------------
+     LISTING CARD INSIDE MESSAGE
+  ---------------------------------------------------------- */
+
+  .message-listing-card {
+    margin-bottom: 7px;
+    padding: 6px;
+    gap: 7px;
+  }
+
+  .message-listing-card img,
+  .message-listing-placeholder {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  .message-listing-card strong {
+    font-size: 10px;
+  }
+
+  .message-listing-card span {
+    font-size: 9px;
+  }
+
+  .message-meta {
+    margin-top: 4px;
+    font-size: 9px;
+  }
+
+  .message-meta svg {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  /* ----------------------------------------------------------
+     MESSAGE INPUT
+  ---------------------------------------------------------- */
+
+  .message-input-area {
+    padding: 9px 10px 10px;
+  }
+
+  .message-input-wrapper {
+    min-height: 45px;
+    gap: 7px;
+    padding: 4px 4px 4px 10px;
+    border-radius: 9px;
+  }
+
+  .message-input-wrapper textarea {
+    min-height: 34px;
+    max-height: 90px;
+    padding: 7px 0;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .send-message-button {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    flex: 0 0 36px;
+    border-radius: 8px;
+  }
+
+  .send-message-button svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .message-input-hint {
+    margin-top: 5px;
+    padding-left: 1px;
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+
+  /* ----------------------------------------------------------
+     EMPTY CHAT
+  ---------------------------------------------------------- */
+
+  .chat-empty-state {
+    min-height: 100%;
+    padding: 20px 14px;
+  }
+
+  .chat-empty-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 13px;
+  }
+
+  .chat-empty-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .chat-empty-state h2 {
+    font-size: 19px;
+  }
+
+  .chat-empty-state p {
+    max-width: 300px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* ----------------------------------------------------------
+     EMPTY / LOADING CONVERSATIONS
+  ---------------------------------------------------------- */
+
+  .conversation-loading,
+  .empty-conversations {
+    min-height: 180px;
+    padding: 18px;
+  }
+
+  .conversation-loading {
+    font-size: 12px;
+  }
+
+  .empty-conversations svg {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 8px;
+  }
+
+  .empty-conversations h3 {
+    font-size: 15px;
+  }
+
+  .empty-conversations p {
+    max-width: 250px;
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ERROR
+  ---------------------------------------------------------- */
+
+  .communication-error {
+    top: 67px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: none;
+    min-height: 42px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .communication-error button {
+    flex: 0 0 24px;
+  }
+}
+
+
+/* ============================================================
+   SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .seller-communication {
+    min-height: calc(100vh - 112px);
+  }
+
+  .communication-container {
+    min-height: calc(100vh - 112px);
+  }
+
+
+  /* ----------------------------------------------------------
+     SIDEBAR
+  ---------------------------------------------------------- */
+
+  .communication-sidebar {
+    height: 315px;
+    min-height: 315px;
+  }
+
+  .communication-sidebar-header {
+    min-height: 64px;
+    padding: 11px 10px 9px;
+  }
+
+  .communication-sidebar-header h2 {
+    font-size: 21px;
+  }
+
+  .communication-sidebar-header p {
+    font-size: 11px;
+  }
+
+  .refresh-button {
+    width: 35px;
+    height: 35px;
+    flex-basis: 35px;
+  }
+
+  .refresh-button svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .communication-search {
+    height: 40px;
+    margin: 8px 10px;
+  }
+
+  .communication-search svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .communication-search input {
+    font-size: 12px;
+  }
+
+  .conversation-item {
+    min-height: 70px;
+    padding: 9px 10px;
+    gap: 8px;
+  }
+
+  .conversation-avatar {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    font-size: 12px;
+  }
+
+  .conversation-top strong {
+    font-size: 13px;
+  }
+
+  .conversation-top span {
+    font-size: 9px;
+  }
+
+  .conversation-listing {
+    font-size: 10px;
+  }
+
+  .conversation-bottom p {
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CHAT
+  ---------------------------------------------------------- */
+
+  .communication-chat {
+    min-height: 520px;
+    height: 520px;
+  }
+
+  .chat-header {
+    min-height: 62px;
+    padding: 9px 10px;
+  }
+
+  .chat-avatar {
+    width: 37px;
+    height: 37px;
+    min-width: 37px;
+    font-size: 12px;
+  }
+
+  .chat-buyer-info {
+    gap: 8px;
+  }
+
+  .chat-buyer-info h3 {
+    max-width: calc(100vw - 75px);
+    font-size: 14px;
+  }
+
+  .buyer-status {
+    font-size: 9px;
+  }
+
+
+  /* ----------------------------------------------------------
+     MESSAGES
+  ---------------------------------------------------------- */
+
+  .messages-area {
+    padding: 11px 9px;
+  }
+
+  .message-row {
+    margin-bottom: 8px;
+  }
+
+  .message-bubble {
+    max-width: 91%;
+    padding: 8px 10px 7px;
+  }
+
+  .message-bubble p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .message-listing-card {
+    padding: 5px;
+    gap: 6px;
+  }
+
+  .message-listing-card img,
+  .message-listing-placeholder {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+  }
+
+  .message-listing-card strong {
+    font-size: 9px;
+  }
+
+  .message-listing-card span {
+    font-size: 8px;
+  }
+
+  .message-meta {
+    font-size: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     INPUT
+  ---------------------------------------------------------- */
+
+  .message-input-area {
+    padding: 8px 8px 9px;
+  }
+
+  .message-input-wrapper {
+    min-height: 42px;
+    padding-left: 9px;
+    gap: 5px;
+  }
+
+  .message-input-wrapper textarea {
+    min-height: 32px;
+    font-size: 12px;
+  }
+
+  .send-message-button {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    flex-basis: 34px;
+  }
+
+  .send-message-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .message-input-hint {
+    font-size: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     EMPTY CHAT
+  ---------------------------------------------------------- */
+
+  .chat-empty-state {
+    padding: 15px 10px;
+  }
+
+  .chat-empty-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .chat-empty-icon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .chat-empty-state h2 {
+    font-size: 17px;
+  }
+
+  .chat-empty-state p {
+    max-width: 270px;
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ERROR
+  ---------------------------------------------------------- */
+
+  .communication-error {
+    top: 64px;
+    left: 7px;
+    right: 7px;
+    padding: 7px 8px;
+    font-size: 10px;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+  .communication-sidebar {
+    height: 295px;
+    min-height: 295px;
+  }
+
+  .communication-sidebar-header {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .communication-sidebar-header h2 {
+    font-size: 19px;
+  }
+
+  .communication-sidebar-header p {
+    font-size: 10px;
+  }
+
+  .communication-search {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .conversation-item {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .conversation-avatar {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+  }
+
+  .conversation-top strong {
+    font-size: 12px;
+  }
+
+  .conversation-bottom p {
+    font-size: 9px;
+  }
+
+  .communication-chat {
+    min-height: 500px;
+    height: 500px;
+  }
+
+  .message-bubble {
+    max-width: 93%;
+  }
+
+  .message-bubble p {
+    font-size: 11px;
+  }
+
+  .message-input-wrapper textarea {
+    font-size: 11px;
+  }
+
+  .message-input-hint {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   TOUCH DEVICE POLISH
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .conversation-item,
+  .refresh-button,
+  .send-message-button,
+  .communication-error button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .conversation-item {
+    cursor: pointer;
+  }
+
+  .refresh-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .send-message-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}

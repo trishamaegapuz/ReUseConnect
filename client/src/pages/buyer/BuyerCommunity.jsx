@@ -2474,19 +2474,56 @@ const BuyerCommunity = () => {
               </div>
 
 
-              <button
-                type="button"
-                className="community-modal-close"
-                onClick={
-                  closePost
-                }
+              <div
+                className="community-modal-header-actions"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  flexShrink: 0
+                }}
               >
 
-                <X
-                  size={18}
-                />
+                <button
+                  type="button"
+                  className="community-modal-exit"
+                  onClick={closePost}
+                  title="Exit post and return to Community"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    minHeight: '36px',
+                    padding: '0 12px',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    background: '#ffffff',
+                    color: '#374151',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  <X size={15} />
+                  EXIT
+                </button>
 
-              </button>
+                <button
+                  type="button"
+                  className="community-modal-close"
+                  onClick={closePost}
+                  title="Close"
+                >
+
+                  <X
+                    size={18}
+                  />
+
+                </button>
+
+              </div>
 
             </div>
 
@@ -3073,6 +3110,40 @@ const BuyerCommunity = () => {
               </>
 
             )}
+
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              padding: '12px 0 4px',
+              borderTop: '1px solid #eee',
+              marginTop: '16px'
+            }}
+          >
+            <button
+              type="button"
+              className="community-modal-exit-bottom"
+              onClick={closePost}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '7px',
+                minHeight: '38px',
+                padding: '0 18px',
+                border: 'none',
+                borderRadius: '8px',
+                background: '#6b2c91',
+                color: '#ffffff',
+                fontSize: '13px',
+                fontWeight: 700,
+                cursor: 'pointer'
+              }}
+            >
+              <X size={16} />
+              Exit
+            </button>
+          </div>
 
           </div>
 

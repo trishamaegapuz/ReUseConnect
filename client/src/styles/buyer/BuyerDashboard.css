@@ -1419,3 +1419,735 @@
   }
 
 }
+/* ============================================================
+   BUYER DASHBOARD
+   FINAL RESPONSIVE POLISH
+   ============================================================ */
+
+.buyer-dashboard {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   LARGE TABLET
+   ============================================================ */
+
+@media (max-width: 1180px) {
+
+  .buyer-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .buyer-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-bottom-section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .buyer-dashboard {
+    padding: 20px 16px 30px;
+  }
+
+  .buyer-welcome {
+    align-items: flex-start;
+  }
+
+  .buyer-welcome h1 {
+    font-size: 27px;
+  }
+
+  .buyer-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .buyer-products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .buyer-impact-stat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .buyer-dashboard {
+    padding: 16px 12px 26px;
+  }
+
+
+  /* ----------------------------------------------------------
+     WELCOME
+     ---------------------------------------------------------- */
+
+  .buyer-welcome {
+    width: 100%;
+    margin-bottom: 16px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .buyer-welcome-label {
+    margin-bottom: 4px;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+  }
+
+  .buyer-welcome h1 {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .buyer-welcome p {
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .buyer-refresh-btn {
+    width: 100%;
+    min-height: 40px;
+  }
+
+
+  /* ----------------------------------------------------------
+     STATS
+     ---------------------------------------------------------- */
+
+  .buyer-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .buyer-stat-card {
+    min-height: 72px;
+    padding: 11px;
+    gap: 9px;
+    border-radius: 10px;
+  }
+
+  .buyer-stat-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 8px;
+  }
+
+  .buyer-stat-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .buyer-stat-content {
+    gap: 2px;
+  }
+
+  .buyer-stat-content span {
+    font-size: 11px;
+  }
+
+  .buyer-stat-content strong {
+    font-size: 20px;
+  }
+
+  .buyer-stat-content .buyer-money {
+    font-size: 17px;
+  }
+
+
+  /* ----------------------------------------------------------
+     FEATURE
+     ---------------------------------------------------------- */
+
+  .buyer-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .buyer-impact-banner {
+    min-height: 205px;
+    border-radius: 11px;
+  }
+
+  .buyer-impact-content {
+    width: 100%;
+    padding: 20px 18px;
+    box-sizing: border-box;
+  }
+
+  .buyer-impact-small {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+
+  .buyer-impact-content h2 {
+    max-width: 75%;
+    margin: 6px 0;
+    font-size: 21px;
+  }
+
+  .buyer-impact-content p {
+    max-width: 72%;
+    margin-bottom: 13px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .buyer-impact-content button {
+    min-height: 35px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .buyer-impact-decoration {
+    right: -20px;
+    bottom: -15px;
+    width: 125px;
+    height: 125px;
+  }
+
+  .buyer-mini-impact {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .buyer-mini-impact-header {
+    margin-bottom: 11px;
+  }
+
+  .buyer-mini-impact-header > span {
+    font-size: 12px;
+  }
+
+  .buyer-mini-impact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .buyer-mini-impact-grid > div {
+    min-height: 75px;
+    padding: 9px;
+  }
+
+  .buyer-mini-impact-grid strong {
+    font-size: 19px;
+  }
+
+  .buyer-mini-impact-grid span {
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PANELS
+     ---------------------------------------------------------- */
+
+  .buyer-content-grid,
+  .buyer-bottom-section-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .buyer-large-panel {
+    border-radius: 11px;
+  }
+
+  .buyer-panel-header {
+    min-height: 59px;
+    padding: 11px 13px;
+    gap: 8px;
+  }
+
+  .buyer-panel-header p {
+    font-size: 12px;
+  }
+
+  .buyer-section-title {
+    gap: 6px;
+  }
+
+  .buyer-section-title h2 {
+    font-size: 15px;
+  }
+
+  .buyer-view-all {
+    flex-shrink: 0;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+
+  /* ----------------------------------------------------------
+     RECENT PURCHASES
+     ---------------------------------------------------------- */
+
+  .buyer-purchases-list {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .buyer-purchase-row {
+    min-width: 390px;
+    min-height: 61px;
+    grid-template-columns: 42px minmax(120px, 1fr) 16px;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  .buyer-purchase-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .buyer-purchase-info strong {
+    font-size: 13px;
+  }
+
+  .buyer-purchase-info span {
+    font-size: 11px;
+  }
+
+  .buyer-purchase-date,
+  .buyer-purchase-status,
+  .buyer-purchase-total {
+    display: none;
+  }
+
+  .buyer-row-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     PRODUCTS
+     ---------------------------------------------------------- */
+
+  .buyer-products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .buyer-product-image {
+    height: 105px;
+  }
+
+  .buyer-product-info {
+    padding: 8px;
+  }
+
+  .buyer-product-info > strong {
+    font-size: 12px;
+  }
+
+  .buyer-product-info > span {
+    font-size: 10px;
+  }
+
+  .buyer-product-bottom > strong {
+    font-size: 12px;
+  }
+
+  .buyer-rating {
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ACTIVITY TABLE
+     ---------------------------------------------------------- */
+
+  .buyer-activity-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .buyer-activity-table {
+    min-width: 540px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ENVIRONMENT
+     ---------------------------------------------------------- */
+
+  .buyer-environment-content {
+    padding: 11px;
+  }
+
+  .buyer-impact-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 13px;
+  }
+
+  .buyer-impact-stat {
+    min-height: 75px;
+  }
+
+  .buyer-impact-stat strong {
+    font-size: 18px;
+  }
+
+  .buyer-impact-stat span {
+    font-size: 11px;
+  }
+
+  .buyer-progress-header span,
+  .buyer-progress-header strong {
+    font-size: 12px;
+  }
+
+  .buyer-progress-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .buyer-progress-legend span {
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     UPDATES
+     ---------------------------------------------------------- */
+
+  .buyer-content-updates {
+    margin-top: 12px;
+    margin-bottom: 14px;
+  }
+
+  .buyer-updates-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .buyer-updates-table {
+    min-width: 620px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PAGINATION
+     ---------------------------------------------------------- */
+
+  .buyer-pagination {
+    min-height: auto;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .buyer-pagination-info {
+    font-size: 12px;
+  }
+
+  .buyer-pagination-buttons {
+    width: 100%;
+  }
+
+  .buyer-pagination-buttons button {
+    flex: 1;
+    min-height: 34px;
+  }
+
+
+  /* ----------------------------------------------------------
+     EMPTY STATES
+     ---------------------------------------------------------- */
+
+  .buyer-empty-purchases,
+  .buyer-empty-products,
+  .buyer-empty-activity {
+    min-height: 170px;
+    padding: 20px 14px;
+  }
+
+  .buyer-empty-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .buyer-empty-purchases h3,
+  .buyer-empty-products h3,
+  .buyer-empty-activity h3 {
+    font-size: 14px;
+  }
+
+  .buyer-empty-purchases p,
+  .buyer-empty-products p,
+  .buyer-empty-activity p {
+    font-size: 12px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ERROR
+     ---------------------------------------------------------- */
+
+  .buyer-error-card {
+    margin: 45px auto;
+    padding: 26px 18px;
+  }
+
+  .buyer-error-card h2 {
+    font-size: 19px;
+  }
+
+  .buyer-error-card p {
+    font-size: 13px;
+  }
+
+  .buyer-retry-btn {
+    width: 100%;
+  }
+
+  .buyer-error-banner {
+    align-items: flex-start;
+    min-height: auto;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .buyer-dashboard {
+    padding: 14px 10px 24px;
+  }
+
+  .buyer-welcome h1 {
+    font-size: 22px;
+  }
+
+  .buyer-welcome p {
+    font-size: 12px;
+  }
+
+  .buyer-stats-grid {
+    gap: 8px;
+  }
+
+  .buyer-stat-card {
+    min-height: 68px;
+    padding: 9px;
+    gap: 7px;
+  }
+
+  .buyer-stat-icon {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+  }
+
+  .buyer-stat-content span {
+    font-size: 10px;
+  }
+
+  .buyer-stat-content strong {
+    font-size: 18px;
+  }
+
+  .buyer-stat-content .buyer-money {
+    font-size: 15px;
+  }
+
+  .buyer-impact-banner {
+    min-height: 195px;
+  }
+
+  .buyer-impact-content {
+    padding: 17px 15px;
+  }
+
+  .buyer-impact-content h2 {
+    max-width: 70%;
+    font-size: 19px;
+  }
+
+  .buyer-impact-content p {
+    max-width: 68%;
+    font-size: 11px;
+  }
+
+  .buyer-mini-impact-grid {
+    gap: 5px;
+  }
+
+  .buyer-mini-impact-grid > div {
+    min-height: 70px;
+    padding: 7px;
+  }
+
+  .buyer-mini-impact-grid strong {
+    font-size: 17px;
+  }
+
+  .buyer-mini-impact-grid span {
+    font-size: 10px;
+  }
+
+  .buyer-panel-header {
+    padding: 10px 11px;
+  }
+
+  .buyer-section-title h2 {
+    font-size: 14px;
+  }
+
+  .buyer-view-all {
+    font-size: 11px;
+  }
+
+  .buyer-product-image {
+    height: 95px;
+  }
+
+  .buyer-impact-stat {
+    min-height: 70px;
+    padding: 6px;
+  }
+
+  .buyer-impact-stat strong {
+    font-size: 17px;
+  }
+
+  .buyer-impact-stat span {
+    font-size: 10px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+  .buyer-dashboard {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .buyer-stats-grid {
+    gap: 7px;
+  }
+
+  .buyer-stat-card {
+    padding: 8px;
+  }
+
+  .buyer-stat-icon {
+    width: 29px;
+    height: 29px;
+    min-width: 29px;
+  }
+
+  .buyer-stat-content span {
+    font-size: 9px;
+  }
+
+  .buyer-stat-content strong {
+    font-size: 17px;
+  }
+
+  .buyer-stat-content .buyer-money {
+    font-size: 14px;
+  }
+
+  .buyer-mini-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyer-impact-content h2,
+  .buyer-impact-content p {
+    max-width: 65%;
+  }
+
+  .buyer-products-grid {
+    gap: 7px;
+  }
+
+  .buyer-product-image {
+    height: 88px;
+  }
+
+  .buyer-pagination-buttons {
+    gap: 4px;
+  }
+
+  .buyer-pagination-buttons button {
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .buyer-refresh-btn,
+  .buyer-view-all,
+  .buyer-product-heart,
+  .buyer-pagination-buttons button,
+  .buyer-impact-content button,
+  .buyer-retry-btn {
+    min-height: 38px;
+  }
+
+  .buyer-product-heart {
+    width: 34px;
+    height: 34px;
+  }
+
+}

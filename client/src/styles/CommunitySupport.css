@@ -1900,3 +1900,631 @@
   }
 
 }
+/* ============================================================
+   COMMUNITY & SUPPORT
+   RESPONSIVE POLISH
+   ============================================================ */
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .cs-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-side-column {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+  .cs-section-heading {
+    gap: 12px;
+  }
+
+  .cs-filter-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-filter-row .cs-search {
+    grid-column: 1 / -1;
+  }
+
+  .cs-side-column {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cs-table {
+    min-width: 1050px;
+  }
+
+  .cs-pagination {
+    flex-wrap: wrap;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 650px) {
+
+  .community-support-page {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* --------------------------------
+     KPI
+     -------------------------------- */
+
+  .cs-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+
+    margin-bottom: 10px;
+  }
+
+  .cs-kpi-card {
+    min-height: 92px;
+
+    gap: 9px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+  }
+
+  .cs-kpi-icon {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+  }
+
+  .cs-kpi-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .cs-kpi-card span {
+    font-size: 10px;
+
+    line-height: 1.25;
+  }
+
+  .cs-kpi-card strong {
+    margin-top: 4px;
+
+    font-size: 22px;
+  }
+
+
+  /* --------------------------------
+     MAIN CARD
+     -------------------------------- */
+
+  .cs-main-grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .cs-main-card {
+    width: 100%;
+
+    border-radius: 9px;
+  }
+
+
+  /* --------------------------------
+     TABS
+     -------------------------------- */
+
+  .cs-tabs {
+    min-height: 50px;
+
+    padding: 6px 8px;
+
+    gap: 5px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+  }
+
+  .cs-tabs button {
+    flex: 0 0 auto;
+
+    min-height: 36px;
+
+    padding: 0 11px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+  }
+
+  .cs-tabs button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cs-tab-count {
+    min-width: 17px;
+    height: 17px;
+
+    font-size: 10px;
+  }
+
+
+  /* --------------------------------
+     SECTION HEADING
+     -------------------------------- */
+
+  .cs-section-heading {
+    min-height: auto;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 12px;
+  }
+
+  .cs-section-heading h2 {
+    font-size: 16px;
+  }
+
+  .cs-section-heading p {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+  }
+
+  .cs-heading-actions {
+    width: 100%;
+
+    display: flex;
+  }
+
+  .cs-refresh-button {
+    width: 35px;
+    height: 35px;
+
+    flex: 0 0 35px;
+  }
+
+  .cs-primary-button {
+    min-height: 35px;
+
+    flex: 1;
+
+    justify-content: center;
+
+    font-size: 11px;
+  }
+
+
+  /* --------------------------------
+     FILTERS
+     -------------------------------- */
+
+  .cs-filter-row {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    padding: 9px;
+  }
+
+  .cs-filter-row .cs-search {
+    grid-column: auto;
+  }
+
+  .cs-search {
+    height: 35px;
+  }
+
+  .cs-search input {
+    font-size: 11px;
+  }
+
+  .cs-filter-row select {
+    width: 100%;
+
+    height: 35px;
+
+    font-size: 11px;
+  }
+
+
+  /* --------------------------------
+     TABLE
+     -------------------------------- */
+
+  .cs-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cs-table {
+    min-width: 1050px;
+  }
+
+
+  /* --------------------------------
+     PAGINATION
+     -------------------------------- */
+
+  .cs-pagination {
+    min-height: auto;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 9px;
+  }
+
+  .cs-pagination > span {
+    font-size: 10px;
+  }
+
+  .cs-pagination > div {
+    width: 100%;
+
+    justify-content: flex-end;
+
+    overflow-x: auto;
+
+    padding-bottom: 2px;
+  }
+
+  .cs-pagination button {
+    width: 28px;
+    height: 28px;
+
+    flex: 0 0 28px;
+  }
+
+
+  /* --------------------------------
+     SIDE COLUMN
+     -------------------------------- */
+
+  .cs-side-column {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .cs-side-card {
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 9px;
+  }
+
+  .cs-side-heading h3 {
+    font-size: 14px;
+  }
+
+  .cs-side-heading button {
+    font-size: 11px;
+  }
+
+
+  /* --------------------------------
+     RECENT TICKETS
+     -------------------------------- */
+
+  .cs-ticket-item {
+    min-height: 58px;
+
+    gap: 7px;
+  }
+
+  .cs-ticket-icon {
+    width: 29px;
+    height: 29px;
+
+    flex: 0 0 29px;
+  }
+
+  .cs-ticket-info strong {
+    font-size: 11px;
+  }
+
+  .cs-ticket-info span {
+    font-size: 11px;
+  }
+
+  .cs-ticket-info small {
+    font-size: 9px;
+  }
+
+  .cs-mini-status {
+    font-size: 9px;
+
+    padding: 4px 5px;
+  }
+
+
+  /* --------------------------------
+     QUICK ACTIONS
+     -------------------------------- */
+
+  .cs-quick-grid {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 7px;
+  }
+
+  .cs-quick-grid button {
+    min-height: 88px;
+
+    padding: 8px;
+  }
+
+  .cs-quick-grid strong {
+    font-size: 11px;
+  }
+
+  .cs-quick-grid span {
+    font-size: 9px;
+  }
+
+
+  /* --------------------------------
+     SAFETY CARD
+     -------------------------------- */
+
+  .cs-safety-card {
+    min-height: auto;
+
+    padding: 11px;
+  }
+
+  .cs-safety-card p {
+    font-size: 10px;
+  }
+
+
+  /* --------------------------------
+     MODAL
+     -------------------------------- */
+
+  .cs-modal-backdrop {
+    align-items: center;
+
+    padding: 12px;
+  }
+
+  .cs-modal,
+  .cs-modal.medium,
+  .cs-modal.detail {
+    width: 100%;
+
+    max-width: 100%;
+
+    max-height: calc(100vh - 24px);
+
+    border-radius: 10px;
+  }
+
+  .cs-modal-header {
+    padding: 14px;
+  }
+
+  .cs-modal-header h2 {
+    font-size: 17px;
+  }
+
+  .cs-modal-header p {
+    font-size: 10px;
+  }
+
+  .cs-modal form {
+    padding: 14px;
+  }
+
+  .cs-modal input,
+  .cs-modal textarea,
+  .cs-modal select {
+    font-size: 12px;
+  }
+
+  .cs-modal-actions {
+    flex-direction: column-reverse;
+
+    gap: 7px;
+  }
+
+  .cs-modal-actions button {
+    width: 100%;
+  }
+
+
+  /* --------------------------------
+     DETAIL MODAL
+     -------------------------------- */
+
+  .cs-detail-content {
+    padding: 14px;
+  }
+
+  .cs-detail-field {
+    margin-bottom: 12px;
+  }
+
+  .cs-detail-field strong {
+    font-size: 13px;
+  }
+
+  .cs-detail-field > span,
+  .cs-detail-field p {
+    font-size: 12px;
+  }
+
+  .cs-detail-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    padding: 11px 14px;
+  }
+
+  .cs-detail-actions button {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+
+  /* --------------------------------
+     BANNED USERS
+     -------------------------------- */
+
+  .cs-banned-list {
+    padding: 8px 14px 14px;
+  }
+
+  .cs-banned-user {
+    gap: 7px;
+  }
+
+  .cs-banned-user strong {
+    font-size: 11px;
+  }
+
+  .cs-banned-user span {
+    font-size: 10px;
+  }
+
+  .cs-banned-user small {
+    font-size: 9px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 390px) {
+
+  .cs-kpi-grid {
+    gap: 7px;
+  }
+
+  .cs-kpi-card {
+    min-height: 86px;
+
+    gap: 7px;
+
+    padding: 9px;
+  }
+
+  .cs-kpi-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .cs-kpi-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .cs-kpi-card span {
+    font-size: 9px;
+  }
+
+  .cs-kpi-card strong {
+    font-size: 19px;
+  }
+
+  .cs-tabs button {
+    padding: 0 9px;
+
+    font-size: 10px;
+  }
+
+  .cs-quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-quick-grid button {
+    min-height: 78px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 340px) {
+
+  .cs-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-kpi-card {
+    min-height: 78px;
+  }
+
+}

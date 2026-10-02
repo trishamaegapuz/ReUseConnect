@@ -5,18 +5,38 @@ import { useLocation } from 'react-router-dom';
 const AdminHeader = () => {
   const location = useLocation();
 
-  const pathname = location?.pathname || '/admin-dashboard';
+  const pathname =
+    location?.pathname || '/admin-dashboard';
 
   const getPageTitle = (path) => {
-    const safePath = typeof path === 'string' ? path : '';
+    const safePath =
+      typeof path === 'string'
+        ? path
+        : '';
+
+    /* ============================================================
+       DASHBOARD
+    ============================================================ */
 
     if (safePath === '/admin-dashboard') {
       return 'Admin Dashboard';
     }
 
-    if (safePath.startsWith('/admin/users')) {
+
+    /* ============================================================
+       USERS & ACCOUNTS
+    ============================================================ */
+
+    if (
+      safePath.startsWith('/admin/users')
+    ) {
       return 'Users & Accounts';
     }
+
+
+    /* ============================================================
+       MARKETPLACE MANAGEMENT
+    ============================================================ */
 
     if (
       safePath.startsWith('/admin/marketplace') ||
@@ -29,9 +49,21 @@ const AdminHeader = () => {
       return 'Marketplace Management';
     }
 
-    if (safePath.startsWith('/admin/community')) {
+
+    /* ============================================================
+       COMMUNITY & SUPPORT
+    ============================================================ */
+
+    if (
+      safePath.startsWith('/admin/community')
+    ) {
       return 'Community & Support';
     }
+
+
+    /* ============================================================
+       REPORTS & ANALYTICS
+    ============================================================ */
 
     if (
       safePath.startsWith('/admin/reports') ||
@@ -40,22 +72,45 @@ const AdminHeader = () => {
       return 'Reports & Analytics';
     }
 
+
+    /* ============================================================
+       CONTENT MANAGEMENT
+    ============================================================ */
+
     if (
-      safePath.startsWith('/admin/settings') ||
-      safePath.startsWith('/admin/system-logs')
+      safePath.startsWith('/admin/content')
     ) {
-      return 'System';
+      return 'Content Management';
     }
+
+
+    /* ============================================================
+       SYSTEM MANAGEMENT
+    ============================================================ */
+
+    if (
+      safePath.startsWith('/admin/system') ||
+      safePath.startsWith('/admin/settings')
+    ) {
+      return 'System Management';
+    }
+
+
+    /* ============================================================
+       DEFAULT
+    ============================================================ */
 
     return 'Admin Dashboard';
   };
+
 
   return (
     <header
       style={{
         height: '64px',
         background: '#ffffff',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom:
+          '1px solid #e5e7eb',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -63,7 +118,11 @@ const AdminHeader = () => {
         boxSizing: 'border-box'
       }}
     >
-      {/* PAGE TITLE */}
+
+      {/* ========================================================
+          PAGE TITLE
+      ======================================================== */}
+
       <h1
         style={{
           margin: 0,
@@ -75,7 +134,11 @@ const AdminHeader = () => {
         {getPageTitle(pathname)}
       </h1>
 
-      {/* RIGHT SIDE */}
+
+      {/* ========================================================
+          RIGHT SIDE
+      ======================================================== */}
+
       <div
         style={{
           display: 'flex',
@@ -83,6 +146,11 @@ const AdminHeader = () => {
           gap: '18px'
         }}
       >
+
+        {/* ======================================================
+            NOTIFICATIONS
+        ====================================================== */}
+
         <button
           type="button"
           style={{
@@ -93,10 +161,19 @@ const AdminHeader = () => {
           }}
           aria-label="Notifications"
         >
-          <Bell size={20} color="#5b3a82" />
+          <Bell
+            size={20}
+            color="#5b3a82"
+          />
         </button>
 
+
+        {/* ======================================================
+            ADMIN PROFILE
+        ====================================================== */}
+
         <div>
+
           <div
             style={{
               fontSize: '14px',
@@ -115,8 +192,11 @@ const AdminHeader = () => {
           >
             Admin
           </div>
+
         </div>
+
       </div>
+
     </header>
   );
 };

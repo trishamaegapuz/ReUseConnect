@@ -1713,3 +1713,1009 @@
   }
 
 }
+/* ============================================================
+   CONTENT MANAGEMENT
+   RESPONSIVE POLISH
+============================================================ */
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  .content-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+  }
+
+
+  .content-main-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+  .content-right-column {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 800px) {
+
+  .content-management-page {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  .content-panel-header {
+    gap: 12px;
+  }
+
+
+  .content-filters {
+    grid-template-columns:
+      minmax(0, 1fr)
+      135px
+      38px;
+  }
+
+
+  .content-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .content-table {
+    min-width: 900px;
+  }
+
+
+  .content-right-column {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .content-modal-overlay {
+    padding: 14px;
+  }
+
+
+  .content-modal {
+    width: 100%;
+
+    max-width: 100%;
+
+    max-height:
+      calc(100vh - 28px);
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+  .content-management-page {
+    width: 100%;
+    min-width: 0;
+
+    padding-bottom: 14px;
+  }
+
+
+  /* ==========================================================
+     KPI CARDS
+  ========================================================== */
+
+  .content-kpi-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .content-kpi-card {
+    min-height: 92px;
+
+    padding: 11px;
+
+    gap: 9px;
+
+    border-radius: 9px;
+  }
+
+
+  .content-kpi-icon {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+  }
+
+
+  .content-kpi-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  .content-kpi-info {
+    min-width: 0;
+  }
+
+
+  .content-kpi-info span {
+    font-size: 10px;
+
+    line-height: 1.25;
+  }
+
+
+  .content-kpi-info strong {
+    margin-top: 4px;
+
+    font-size: 21px;
+
+    line-height: 1.15;
+  }
+
+
+  .content-kpi-info small {
+    margin-top: 3px;
+
+    font-size: 8px;
+
+    line-height: 1.3;
+  }
+
+
+  /* ==========================================================
+     MAIN LAYOUT
+  ========================================================== */
+
+  .content-main-layout {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  .content-main-panel,
+  .content-side-card {
+    border-radius: 9px;
+  }
+
+
+  /* ==========================================================
+     TABS
+  ========================================================== */
+
+  .content-tabs {
+    min-height: 50px;
+
+    padding: 6px 8px;
+
+    gap: 5px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+  }
+
+
+  .content-tabs button {
+    flex: 0 0 auto;
+
+    min-height: 36px;
+
+    padding:
+      0 11px;
+
+    gap: 6px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+  }
+
+
+  .content-tabs button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ==========================================================
+     PANEL HEADER
+  ========================================================== */
+
+  .content-panel-header {
+    min-height: auto;
+
+    padding: 12px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+
+  .content-panel-header h2 {
+    font-size: 16px;
+
+    line-height: 1.25;
+  }
+
+
+  .content-panel-header p {
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+  }
+
+
+  .content-primary-button {
+    width: 100%;
+
+    min-height: 36px;
+
+    font-size: 11px;
+  }
+
+
+  /* ==========================================================
+     FILTERS
+  ========================================================== */
+
+  .content-filters {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    padding:
+      0 9px 9px;
+  }
+
+
+  .content-search {
+    width: 100%;
+
+    height: 36px;
+  }
+
+
+  .content-search input {
+    font-size: 11px;
+  }
+
+
+  .content-search svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .content-filters select {
+    width: 100%;
+
+    height: 36px;
+
+    font-size: 11px;
+  }
+
+
+  .content-refresh-button {
+    width: 100%;
+    height: 36px;
+  }
+
+
+  /* ==========================================================
+     ERROR
+  ========================================================== */
+
+  .content-error {
+    margin:
+      0 9px 9px;
+
+    padding: 9px 10px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+  }
+
+
+  /* ==========================================================
+     TABLE
+  ========================================================== */
+
+  .content-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .content-table {
+    min-width: 900px;
+  }
+
+
+  .content-table th {
+    padding:
+      8px 9px;
+
+    font-size: 9px;
+  }
+
+
+  .content-table td {
+    padding:
+      8px 9px;
+
+    font-size: 10px;
+  }
+
+
+  .content-title-cell {
+    min-width: 190px;
+
+    gap: 7px;
+  }
+
+
+  .content-row-icon {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+  }
+
+
+  .content-row-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .content-title-cell strong {
+    max-width: 210px;
+
+    font-size: 11px;
+  }
+
+
+  .content-title-cell small {
+    max-width: 210px;
+
+    font-size: 9px;
+  }
+
+
+  .content-type-badge,
+  .content-status-badge {
+    padding:
+      4px 7px;
+
+    font-size: 9px;
+  }
+
+
+  .content-author-avatar {
+    width: 23px;
+    height: 23px;
+
+    font-size: 10px;
+  }
+
+
+  .content-author {
+    gap: 6px;
+  }
+
+
+  .content-author span {
+    font-size: 10px;
+  }
+
+
+  /* ==========================================================
+     ACTION BUTTONS
+  ========================================================== */
+
+  .content-action-buttons {
+    gap: 4px;
+  }
+
+
+  .content-icon-button {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .content-icon-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ==========================================================
+     EMPTY STATE
+  ========================================================== */
+
+  .content-empty {
+    height: 180px;
+  }
+
+
+  .content-empty strong {
+    font-size: 13px;
+  }
+
+
+  .content-empty span {
+    max-width: 280px;
+
+    margin:
+      5px auto 0;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+  }
+
+
+  /* ==========================================================
+     PAGINATION
+  ========================================================== */
+
+  .content-pagination {
+    min-height: auto;
+
+    padding:
+      9px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    font-size: 10px;
+  }
+
+
+  .content-pagination > div {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+
+
+  .content-pagination button,
+  .content-page-number {
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+  }
+
+
+  .content-page-number {
+    font-size: 11px;
+  }
+
+
+  /* ==========================================================
+     RIGHT COLUMN
+  ========================================================== */
+
+  .content-right-column {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+
+  .content-side-card {
+    width: 100%;
+
+    padding: 12px;
+  }
+
+
+  .content-side-title {
+    margin-bottom: 9px;
+  }
+
+
+  .content-side-title h3 {
+    font-size: 14px;
+  }
+
+
+  .content-side-title button {
+    font-size: 10px;
+  }
+
+
+  /* ==========================================================
+     QUICK ACTIONS
+  ========================================================== */
+
+  .content-quick-action {
+    grid-template-columns:
+      38px
+      minmax(0, 1fr)
+      16px;
+
+    gap: 7px;
+
+    padding: 8px;
+
+    margin-bottom: 6px;
+  }
+
+
+  .quick-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .quick-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .content-quick-action strong {
+    font-size: 10px;
+
+    line-height: 1.3;
+  }
+
+
+  .content-quick-action small {
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    line-height: 1.3;
+  }
+
+
+  .content-quick-action > svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ==========================================================
+     RECENT ACTIVITY
+  ========================================================== */
+
+  .content-activity-item {
+    gap: 7px;
+
+    padding:
+      8px 0;
+  }
+
+
+  .activity-icon {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+  }
+
+
+  .activity-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .content-activity-item strong {
+    font-size: 10px;
+
+    line-height: 1.3;
+  }
+
+
+  .content-activity-item span {
+    margin-top: 2px;
+
+    font-size: 9px;
+  }
+
+
+  .content-activity-item small {
+    margin-top: 2px;
+
+    font-size: 8px;
+  }
+
+
+  .content-side-empty {
+    min-height: 85px;
+
+    font-size: 10px;
+  }
+
+
+  /* ==========================================================
+     MODAL
+  ========================================================== */
+
+  .content-modal-overlay {
+    padding: 10px;
+  }
+
+
+  .content-modal {
+    width: 100%;
+
+    max-width: 100%;
+
+    max-height:
+      calc(100vh - 20px);
+
+    border-radius: 10px;
+  }
+
+
+  .content-modal-header {
+    padding:
+      13px;
+
+    gap: 10px;
+  }
+
+
+  .content-modal-header span {
+    font-size: 9px;
+  }
+
+
+  .content-modal-header h2 {
+    margin-top: 3px;
+
+    font-size: 15px;
+
+    line-height: 1.3;
+  }
+
+
+  .content-modal-header > button {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+  }
+
+
+  .content-modal-header > button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .content-modal-body {
+    padding: 13px;
+  }
+
+
+  .view-meta-grid {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 7px;
+
+    margin-bottom: 11px;
+  }
+
+
+  .view-meta-grid > div {
+    padding: 8px;
+  }
+
+
+  .view-meta-grid label {
+    font-size: 9px;
+  }
+
+
+  .view-meta-grid strong {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    word-break: break-word;
+  }
+
+
+  .view-image {
+    margin-bottom: 11px;
+  }
+
+
+  .view-image img {
+    max-height: 180px;
+  }
+
+
+  .view-content label {
+    margin-bottom: 5px;
+
+    font-size: 10px;
+  }
+
+
+  .view-content > div {
+    min-height: 100px;
+
+    padding: 10px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+  }
+
+
+  .content-modal-footer {
+    padding:
+      9px 13px;
+
+    gap: 7px;
+  }
+
+
+  .modal-secondary-button,
+  .modal-primary-button {
+    min-height: 36px;
+
+    padding:
+      8px 11px;
+
+    font-size: 11px;
+  }
+
+
+  /* ==========================================================
+     FORM
+  ========================================================== */
+
+  .content-form-body {
+    padding: 13px;
+
+    gap: 10px;
+  }
+
+
+  .content-form-body label {
+    font-size: 11px;
+
+    gap: 5px;
+  }
+
+
+  .content-form-body input,
+  .content-form-body select,
+  .content-form-body textarea {
+    font-size: 12px;
+  }
+
+
+  .content-form-body input,
+  .content-form-body select {
+    height: 39px;
+  }
+
+
+  .content-form-body textarea {
+    min-height: 150px;
+  }
+
+
+  .form-two-columns {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  .optional {
+    font-size: 9px;
+  }
+
+
+  .content-modal-footer {
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+  }
+
+
+  .modal-secondary-button,
+  .modal-primary-button {
+    width: 100%;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+============================================================ */
+
+@media (max-width: 390px) {
+
+  .content-kpi-grid {
+    gap: 7px;
+  }
+
+
+  .content-kpi-card {
+    min-height: 86px;
+
+    padding: 9px;
+
+    gap: 7px;
+  }
+
+
+  .content-kpi-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+
+  .content-kpi-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  .content-kpi-info span {
+    font-size: 9px;
+  }
+
+
+  .content-kpi-info strong {
+    font-size: 18px;
+  }
+
+
+  .content-kpi-info small {
+    font-size: 7px;
+  }
+
+
+  .content-tabs button {
+    padding:
+      0 9px;
+
+    font-size: 10px;
+  }
+
+
+  .content-panel-header h2 {
+    font-size: 14px;
+  }
+
+
+  .content-panel-header p {
+    font-size: 9px;
+  }
+
+
+  .content-primary-button {
+    min-height: 34px;
+
+    font-size: 10px;
+  }
+
+
+  .content-table {
+    min-width: 880px;
+  }
+
+
+  .content-side-card {
+    padding: 10px;
+  }
+
+
+  .content-quick-action {
+    grid-template-columns:
+      34px
+      minmax(0, 1fr)
+      14px;
+
+    gap: 6px;
+  }
+
+
+  .quick-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+
+  .content-quick-action strong {
+    font-size: 9px;
+  }
+
+
+  .content-quick-action small {
+    font-size: 7px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+============================================================ */
+
+@media (max-width: 340px) {
+
+  .content-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .content-kpi-card {
+    min-height: 78px;
+  }
+
+
+  .view-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

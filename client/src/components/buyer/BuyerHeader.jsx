@@ -1,8 +1,10 @@
 import React from 'react';
+
 import {
   Bell,
   Heart,
-  ShoppingCart
+  ShoppingCart,
+  Menu
 } from 'lucide-react';
 
 import {
@@ -14,6 +16,7 @@ const BuyerHeader = ({
   user = null,
   notificationCount = 0,
   cartCount = 0,
+  onMenuClick = () => {},
 }) => {
 
   const navigate = useNavigate();
@@ -55,22 +58,30 @@ const BuyerHeader = ({
   */
 
   const handleNotifications = () => {
+
     navigate('/buyer/notifications');
+
   };
 
 
   const handleFavorites = () => {
+
     navigate('/buyer/favorites');
+
   };
 
 
   const handleCart = () => {
+
     navigate('/buyer/cart');
+
   };
 
 
   const handleAccount = () => {
+
     navigate('/buyer/account');
+
   };
 
 
@@ -84,19 +95,57 @@ const BuyerHeader = ({
 
     <header className="buyer-header">
 
-      {/* LEFT SIDE
-          Intentionally empty.
-          No Dashboard/page title.
-      */}
+
+      {/* ====================================================
+          LEFT SIDE
+      ==================================================== */}
+
       <div className="buyer-header-left">
+
+
+        {/* MOBILE MENU */}
+
+        <button
+          type="button"
+          className="buyer-header-menu-button"
+          onClick={onMenuClick}
+          aria-label="Open menu"
+        >
+
+          <Menu
+            size={22}
+            strokeWidth={2}
+          />
+
+        </button>
+
+
+        {/* MOBILE BRAND */}
+
+        <span className="buyer-mobile-brand">
+          ReUse Connect
+        </span>
+
+
+        {/* DESKTOP PAGE TITLE */}
+
+        <h1 className="buyer-page-title">
+          Buyer Dashboard
+        </h1>
+
       </div>
 
 
-      {/* HEADER ACTIONS */}
+      {/* ====================================================
+          HEADER ACTIONS
+      ==================================================== */}
+
       <div className="buyer-header-right">
 
 
-        {/* NOTIFICATIONS */}
+        {/* ==================================================
+            NOTIFICATIONS
+        ================================================== */}
 
         <button
           type="button"
@@ -110,6 +159,7 @@ const BuyerHeader = ({
             size={21}
             strokeWidth={2}
           />
+
 
           {notificationCount > 0 && (
 
@@ -126,7 +176,9 @@ const BuyerHeader = ({
         </button>
 
 
-        {/* FAVORITES */}
+        {/* ==================================================
+            FAVORITES
+        ================================================== */}
 
         <button
           type="button"
@@ -144,7 +196,9 @@ const BuyerHeader = ({
         </button>
 
 
-        {/* CART */}
+        {/* ==================================================
+            CART
+        ================================================== */}
 
         <button
           type="button"
@@ -158,6 +212,7 @@ const BuyerHeader = ({
             size={21}
             strokeWidth={2}
           />
+
 
           {cartCount > 0 && (
 
@@ -174,12 +229,16 @@ const BuyerHeader = ({
         </button>
 
 
-        {/* DIVIDER */}
+        {/* ==================================================
+            DIVIDER
+        ================================================== */}
 
         <div className="buyer-header-divider"></div>
 
 
-        {/* BUYER PROFILE */}
+        {/* ==================================================
+            BUYER PROFILE
+        ================================================== */}
 
         <button
           type="button"
@@ -231,6 +290,7 @@ const BuyerHeader = ({
     </header>
 
   );
+
 };
 
 

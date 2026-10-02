@@ -9,6 +9,7 @@ import BuyerSidebar from './BuyerSidebar';
 import BuyerFooter from './BuyerFooter';
 
 import '../../styles/buyer/BuyerLayout.css';
+
 import {
   getCart
 } from '../../services/buyer/buyerMarketplaceApi';
@@ -55,25 +56,30 @@ const BuyerLayout = ({
     setLoggedInUser
   ] = useState(userProp);
 
+
+  // ==========================================================
+  // CART COUNT
+  // ==========================================================
+
   const [
-  currentCartCount,
-  setCurrentCartCount
-] = useState(
-  Number(
-    initialCartCount || 0
-  )
-);
+    currentCartCount,
+    setCurrentCartCount
+  ] = useState(
+    Number(initialCartCount || 0)
+  );
 
-useEffect(() => {
 
-  const loadCartCount =
-    async () => {
+  // ==========================================================
+  // LOAD CART COUNT
+  // ==========================================================
+
+  useEffect(() => {
+
+    const loadCartCount = async () => {
 
       try {
 
-        const response =
-          await getCart();
-
+        const response = await getCart();
 
         const cart =
           response?.items ||
@@ -83,10 +89,7 @@ useEffect(() => {
           response?.data ||
           [];
 
-
-        if (
-          Array.isArray(cart)
-        ) {
+        if (Array.isArray(cart)) {
 
           setCurrentCartCount(
             cart.length
@@ -106,33 +109,33 @@ useEffect(() => {
     };
 
 
-  loadCartCount();
+    loadCartCount();
 
 
-  const handleCartUpdated =
-    () => {
+    const handleCartUpdated = () => {
 
       loadCartCount();
 
     };
 
 
-  window.addEventListener(
-    'buyer-cart-updated',
-    handleCartUpdated
-  );
-
-
-  return () => {
-
-    window.removeEventListener(
+    window.addEventListener(
       'buyer-cart-updated',
       handleCartUpdated
     );
 
-  };
 
-}, []);
+    return () => {
+
+      window.removeEventListener(
+        'buyer-cart-updated',
+        handleCartUpdated
+      );
+
+    };
+
+  }, []);
+
 
   // ==========================================================
   // GET LOGGED-IN BUYER
@@ -276,43 +279,15 @@ useEffect(() => {
 
 
         {/* ==================================================
-            MOBILE TOP BAR
-        ================================================== */}
-
-        <div className="buyer-mobile-topbar">
-
-          <button
-            type="button"
-            className="buyer-mobile-menu-button"
-            onClick={openMobileSidebar}
-            aria-label="Open menu"
-          >
-
-            <Menu size={23} />
-
-          </button>
-
-
-          <span className="buyer-mobile-brand">
-            ReUse Connect
-          </span>
-
-        </div>
-
-
-        {/* ==================================================
             HEADER
         ================================================== */}
 
         <BuyerHeader
-  user={loggedInUser}
-  notificationCount={
-    notificationCount
-  }
-  cartCount={
-    currentCartCount
-  }
-/>
+          user={loggedInUser}
+          notificationCount={notificationCount}
+          cartCount={currentCartCount}
+          onMenuClick={openMobileSidebar}
+        />
 
 
         {/* ==================================================

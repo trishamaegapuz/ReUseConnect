@@ -637,7 +637,7 @@ const SellerTradeExchange = () => {
                         post.listing_type || ''
                       ).toUpperCase() === 'DONATION'
                         ? 'Donations'
-                        : 'Trade &amp; Exchange'}
+                        : 'Trade & Exchange'}
                     </span>
                   </div>
 
@@ -792,7 +792,7 @@ const SellerTradeExchange = () => {
                     selectedPost.listing_type || ''
                   ).toUpperCase() === 'DONATION'
                     ? 'DONATIONS'
-                    : 'TRADE &amp; EXCHANGE'}
+                    : 'TRADE & EXCHANGE'}
                 </span>
 
                 <h2>

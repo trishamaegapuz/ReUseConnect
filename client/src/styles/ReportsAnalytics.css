@@ -1234,3 +1234,855 @@ No empty grid column.
   }
 
 }
+/* =========================================================
+   REPORTS & ANALYTICS
+   RESPONSIVE POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .reports-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+  }
+
+  .reports-main-grid,
+  .reports-lower-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+  }
+
+  .reports-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .report-date-field,
+  .report-select-field {
+    flex: 1 1 180px;
+    min-width: 0;
+  }
+
+  .report-select-wrapper {
+    min-width: 0;
+  }
+
+  .reports-apply-button {
+    flex: 1 1 150px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .reports-page {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .reports-main-grid,
+  .reports-lower-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-filter-bar {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    align-items: stretch;
+
+    gap: 8px;
+
+    padding: 10px;
+  }
+
+  .report-date-field,
+  .report-select-field {
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+  }
+
+  .report-select-wrapper {
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+  }
+
+  .reports-apply-button {
+    width: 100%;
+  }
+
+  .reports-refresh-button {
+    width: 100%;
+  }
+
+  .reports-chart {
+    min-height: 195px;
+  }
+
+  .reports-panel-header {
+    padding: 12px 14px;
+  }
+
+  .reports-panel-header p {
+    font-size: 12px;
+  }
+
+  .reports-category-list,
+  .reports-order-status {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .reports-page {
+    width: 100%;
+    min-width: 0;
+
+    padding-bottom: 16px;
+  }
+
+
+  /* -------------------------------------------------------
+     KPI
+  ------------------------------------------------------- */
+
+  .reports-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+  }
+
+  .reports-kpi-card {
+    min-height: 92px;
+
+    padding: 11px;
+
+    gap: 9px;
+
+    border-radius: 9px;
+  }
+
+  .reports-kpi-icon {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+  }
+
+  .reports-kpi-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .reports-kpi-content {
+    min-width: 0;
+  }
+
+  .reports-kpi-content span {
+    font-size: 10px;
+
+    line-height: 1.25;
+  }
+
+  .reports-kpi-content strong {
+    margin-top: 3px;
+
+    font-size: 19px;
+
+    line-height: 1.15;
+
+    white-space: nowrap;
+  }
+
+  .reports-kpi-content small {
+    margin-top: 3px;
+
+    font-size: 8px;
+
+    line-height: 1.3;
+  }
+
+
+  /* -------------------------------------------------------
+     FILTERS
+  ------------------------------------------------------- */
+
+  .reports-filter-bar {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    padding: 9px;
+
+    margin-bottom: 10px;
+
+    border-radius: 9px;
+  }
+
+  .report-date-field {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 6px 9px;
+
+    box-sizing: border-box;
+  }
+
+  .report-date-field label,
+  .report-select-field label {
+    margin-bottom: 2px;
+
+    font-size: 9px;
+  }
+
+  .report-date-field input {
+    width: 100%;
+
+    font-size: 12px;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+  }
+
+  .report-select-field {
+    width: 100%;
+  }
+
+  .report-select-wrapper {
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 8px 30px 8px 9px;
+
+    box-sizing: border-box;
+  }
+
+  .report-select-wrapper select {
+    font-size: 11px;
+  }
+
+  .reports-apply-button {
+    width: 100%;
+
+    min-height: 38px;
+
+    font-size: 11px;
+  }
+
+  .reports-refresh-button {
+    width: 100%;
+
+    height: 38px;
+
+    min-height: 38px;
+  }
+
+
+  /* -------------------------------------------------------
+     PANELS
+  ------------------------------------------------------- */
+
+  .reports-main-grid,
+  .reports-lower-grid {
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+  }
+
+  .reports-panel {
+    width: 100%;
+
+    border-radius: 9px;
+  }
+
+  .reports-panel-header {
+    min-height: 55px;
+
+    padding: 11px 12px;
+
+    gap: 8px;
+  }
+
+  .reports-panel-header h2 {
+    font-size: 13px;
+  }
+
+  .reports-panel-header p {
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    line-height: 1.35;
+  }
+
+  .reports-panel-header > svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  /* -------------------------------------------------------
+     USER GROWTH
+  ------------------------------------------------------- */
+
+  .reports-chart {
+    min-height: 175px;
+
+    padding: 10px 12px 9px;
+
+    overflow: hidden;
+  }
+
+  .reports-line-chart {
+    width: 100%;
+
+    height: 130px;
+  }
+
+  .reports-chart-labels {
+    gap: 3px;
+
+    font-size: 8px;
+
+    overflow: hidden;
+  }
+
+  .reports-chart-labels span {
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .reports-empty-chart {
+    min-height: 135px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    font-size: 10px;
+  }
+
+
+  /* -------------------------------------------------------
+     CATEGORY
+  ------------------------------------------------------- */
+
+  .reports-category-list {
+    padding: 9px 12px 12px;
+  }
+
+  .reports-category-row {
+    margin-bottom: 10px;
+  }
+
+  .reports-category-top {
+    gap: 7px;
+
+    margin-bottom: 4px;
+
+    font-size: 11px;
+  }
+
+  .reports-progress-track {
+    height: 6px;
+  }
+
+  .reports-category-row small {
+    margin-top: 2px;
+
+    font-size: 9px;
+  }
+
+
+  /* -------------------------------------------------------
+     ORDER STATUS
+  ------------------------------------------------------- */
+
+  .reports-order-status {
+    padding: 8px 12px 11px;
+  }
+
+  .reports-status-row {
+    min-height: 42px;
+
+    gap: 7px;
+  }
+
+  .reports-status-name {
+    gap: 6px;
+
+    font-size: 10px;
+  }
+
+  .reports-status-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .reports-status-row strong {
+    font-size: 10px;
+  }
+
+  .reports-status-row small {
+    min-width: 30px;
+
+    font-size: 9px;
+  }
+
+
+  /* -------------------------------------------------------
+     TOP SELLING TABLE
+  ------------------------------------------------------- */
+
+  .reports-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .reports-table {
+    min-width: 520px;
+  }
+
+  .reports-table th {
+    padding: 8px;
+
+    font-size: 9px;
+  }
+
+  .reports-table td {
+    padding: 8px;
+
+    font-size: 10px;
+  }
+
+  .reports-item-name {
+    max-width: 150px;
+
+    gap: 6px;
+  }
+
+  .reports-item-icon {
+    width: 25px;
+    height: 25px;
+
+    min-width: 25px;
+  }
+
+  .reports-item-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .reports-icon-button {
+    width: 27px;
+    height: 27px;
+  }
+
+
+  /* -------------------------------------------------------
+     PLATFORM ACTIVITY
+  ------------------------------------------------------- */
+
+  .reports-activity-list {
+    padding: 2px 11px 8px;
+  }
+
+  .reports-activity-row {
+    min-height: 59px;
+
+    grid-template-columns:
+      30px minmax(0, 1fr) auto;
+
+    gap: 7px;
+  }
+
+  .reports-activity-icon {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 7px;
+  }
+
+  .reports-activity-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .reports-activity-info strong {
+    font-size: 10px;
+  }
+
+  .reports-activity-info span {
+    margin-top: 2px;
+
+    font-size: 9px;
+  }
+
+  .reports-activity-row small {
+    font-size: 8px;
+  }
+
+
+  /* -------------------------------------------------------
+     REPORT EXPORTS
+  ------------------------------------------------------- */
+
+  .reports-export-list {
+    padding: 5px 8px 9px;
+  }
+
+  .reports-export-list button {
+    min-height: 50px;
+
+    padding: 6px 3px;
+
+    grid-template-columns:
+      31px minmax(0, 1fr) auto;
+
+    gap: 7px;
+  }
+
+  .reports-export-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .reports-export-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .reports-export-list strong {
+    font-size: 10px;
+  }
+
+  .reports-export-list span {
+    margin-top: 2px;
+
+    font-size: 8px;
+  }
+
+  .reports-export-list > button > svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* -------------------------------------------------------
+     ERROR
+  ------------------------------------------------------- */
+
+  .reports-error {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+  }
+
+  .reports-error button {
+    width: 100%;
+
+    justify-content: center;
+
+    font-size: 11px;
+  }
+
+
+  /* -------------------------------------------------------
+     MODAL
+  ------------------------------------------------------- */
+
+  .reports-modal-overlay {
+    padding: 10px;
+  }
+
+  .reports-modal {
+    width: 100%;
+
+    max-width: 100%;
+
+    max-height: calc(100vh - 20px);
+
+    border-radius: 10px;
+  }
+
+  .reports-modal-header {
+    padding: 13px;
+
+    gap: 10px;
+  }
+
+  .reports-modal-header span {
+    font-size: 9px;
+  }
+
+  .reports-modal-header h3 {
+    margin-top: 3px;
+
+    font-size: 14px;
+  }
+
+  .reports-modal-close {
+    width: 29px;
+    height: 29px;
+
+    flex-shrink: 0;
+  }
+
+  .reports-modal-body {
+    padding: 13px;
+  }
+
+  .reports-modal-description {
+    margin-bottom: 11px;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+  }
+
+  .reports-detail-row {
+    min-height: 43px;
+
+    gap: 10px;
+  }
+
+  .reports-detail-row span {
+    font-size: 10px;
+  }
+
+  .reports-detail-row strong {
+    max-width: 60%;
+
+    font-size: 11px;
+
+    word-break: break-word;
+  }
+
+  .reports-modal-footer {
+    padding: 9px 13px;
+  }
+
+  .reports-modal-footer button {
+    width: 100%;
+
+    padding: 8px;
+
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .reports-kpi-grid {
+    gap: 7px;
+  }
+
+  .reports-kpi-card {
+    min-height: 86px;
+
+    padding: 9px;
+
+    gap: 7px;
+  }
+
+  .reports-kpi-icon {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+  }
+
+  .reports-kpi-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .reports-kpi-content span {
+    font-size: 9px;
+  }
+
+  .reports-kpi-content strong {
+    font-size: 17px;
+  }
+
+  .reports-kpi-content small {
+    font-size: 7px;
+  }
+
+  .reports-panel-header {
+    padding: 10px;
+  }
+
+  .reports-panel-header h2 {
+    font-size: 12px;
+  }
+
+  .reports-panel-header p {
+    font-size: 8px;
+  }
+
+  .reports-chart {
+    min-height: 160px;
+
+    padding: 8px 10px;
+  }
+
+  .reports-line-chart {
+    height: 115px;
+  }
+
+  .reports-chart-labels {
+    font-size: 7px;
+  }
+
+  .reports-table {
+    min-width: 500px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+  .reports-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-kpi-card {
+    min-height: 78px;
+  }
+
+}
+/* =========================================================
+   FINAL MOBILE FIX
+   REPORTS & ANALYTICS
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  /* KPI = 2 COLUMNS */
+  .reports-kpi-grid {
+    display: grid !important;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+
+  /* DATE INPUT = NORMAL MOBILE SIZE */
+  .report-date-field input {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+  }
+
+
+  /* DATE FIELD */
+  .report-date-field {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+
+  /* CATEGORY */
+  .report-select-field {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .report-select-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+
+  /* FILTER BUTTONS */
+  .reports-apply-button,
+  .reports-refresh-button {
+    width: 100% !important;
+  }
+
+}
+
+
+@media (max-width: 390px) {
+
+  .reports-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+}
+
+
+@media (max-width: 340px) {
+
+  .reports-kpi-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+}

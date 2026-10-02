@@ -1,4 +1,15 @@
-import React, { useEffect, useState } from 'react';
+/*
+============================================================
+ReUse Connect
+Admin Layout
+Responsive Version
+============================================================
+*/
+
+import React, {
+  useEffect,
+  useState
+} from 'react';
 
 import {
   Outlet,
@@ -15,13 +26,27 @@ import AdminHeader from './AdminHeader';
 import AdminSidebar from './AdminSidebar';
 import AdminFooter from './AdminFooter';
 
+import '../../styles/AdminLayout.css';
+
+
 const AdminLayout = () => {
+
   const location = useLocation();
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
+
+
+  /*
+  ============================================================
+  ADMIN PAGE TITLES
+  ============================================================
+  */
 
   const titles = {
-    '/admin-dashboard': 'Dashboard',
+
+    '/admin-dashboard':
+      'Dashboard',
 
     '/admin/users':
       'Users & Accounts',
@@ -40,11 +65,60 @@ const AdminLayout = () => {
 
     '/admin/system':
       'System'
+
   };
+
 
   const title =
     titles[location.pathname] ||
     'Dashboard';
+
+
+  /*
+  ============================================================
+  CLOSE MOBILE SIDEBAR WHEN ROUTE CHANGES
+  ============================================================
+  */
+
+  useEffect(() => {
+
+    setSidebarOpen(false);
+
+  }, [location.pathname]);
+
+
+  /*
+  ============================================================
+  PREVENT BODY SCROLL WHEN MOBILE SIDEBAR IS OPEN
+  ============================================================
+  */
+
+  useEffect(() => {
+
+    if (sidebarOpen) {
+
+      document.body.classList.add(
+        'admin-mobile-menu-open'
+      );
+
+    } else {
+
+      document.body.classList.remove(
+        'admin-mobile-menu-open'
+      );
+
+    }
+
+
+    return () => {
+
+      document.body.classList.remove(
+        'admin-mobile-menu-open'
+      );
+
+    };
+
+  }, [sidebarOpen]);
 
 
   /*
@@ -58,86 +132,82 @@ const AdminLayout = () => {
       'reuseconnect_token'
     );
 
+
   const storedUser =
     localStorage.getItem(
       'reuseconnect_user'
     );
 
+
   let user = null;
 
+
   try {
+
     user = storedUser
       ? JSON.parse(storedUser)
       : null;
+
   } catch {
+
     user = null;
+
   }
 
+
+  /*
+  ============================================================
+  NOT LOGGED IN
+  ============================================================
+  */
 
   if (!token || !user) {
+
     return (
       <Navigate
         to="/login"
         replace
       />
     );
+
   }
 
+
+  /*
+  ============================================================
+  NOT ADMIN
+  ============================================================
+  */
 
   if (user.role !== 'ADMIN') {
+
     return (
       <Navigate
         to="/login"
         replace
       />
     );
+
   }
 
 
   /*
   ============================================================
-  CLOSE MOBILE SIDEBAR WHEN ROUTE CHANGES
+  ADMIN LAYOUT
   ============================================================
   */
-
-  useEffect(() => {
-    setSidebarOpen(false);
-  }, [location.pathname]);
-
-
-  /*
-  ============================================================
-  PREVENT BODY SCROLL WHEN MOBILE SIDEBAR IS OPEN
-  ============================================================
-  */
-
-  useEffect(() => {
-    if (sidebarOpen) {
-      document.body.classList.add(
-        'admin-mobile-menu-open'
-      );
-    } else {
-      document.body.classList.remove(
-        'admin-mobile-menu-open'
-      );
-    }
-
-    return () => {
-      document.body.classList.remove(
-        'admin-mobile-menu-open'
-      );
-    };
-  }, [sidebarOpen]);
-
 
   return (
+
     <div className="admin-app">
 
+
       {/* ======================================================
-          MOBILE OVERLAY
+          MOBILE SIDEBAR OVERLAY
       ====================================================== */}
 
       {sidebarOpen && (
+
         <button
           type="button"
           className="admin-sidebar-overlay"
@@ -146,11 +216,12 @@ const AdminLayout = () => {
             setSidebarOpen(false)
           }
         />
+
       )}
 
 
       {/* ======================================================
-          SIDEBAR
+          ADMIN SIDEBAR
       ====================================================== */}
 
       <AdminSidebar
@@ -162,10 +233,11 @@ const AdminLayout = () => {
 
 
       {/* ======================================================
-          MAIN
+          MAIN CONTENT AREA
       ====================================================== */}
 
       <div className="admin-main">
+
 
         {/* ====================================================
             MOBILE MENU BUTTON
@@ -174,43 +246,70 @@ const AdminLayout = () => {
         <button
           type="button"
           className="admin-mobile-menu-button"
+
           aria-label={
             sidebarOpen
               ? 'Close menu'
               : 'Open menu'
           }
+
           aria-expanded={sidebarOpen}
+
           onClick={() =>
             setSidebarOpen(
-              (previous) =>
+              previous =>
                 !previous
             )
           }
         >
+
           {sidebarOpen ? (
+
             <X size={23} />
+
           ) : (
+
             <Menu size={23} />
+
           )}
+
         </button>
 
+
+        {/* ====================================================
+            HEADER
+        ==================================================== */}
 
         <AdminHeader
           title={title}
         />
 
 
+        {/* ====================================================
+            PAGE CONTENT
+        ==================================================== */}
+
         <main className="admin-content">
+
           <Outlet />
+
         </main>
 
 
+        {/* ====================================================
+            FOOTER
+        ==================================================== */}
+
         <AdminFooter />
+
 
       </div>
 
     </div>
+
   );
+
 };
+
 
 export default AdminLayout;

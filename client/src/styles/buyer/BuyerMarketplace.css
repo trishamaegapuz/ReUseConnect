@@ -2236,3 +2236,1114 @@
     font-size: 13px;
   }
 }
+/* ============================================================
+   BUYER MARKETPLACE - FINAL RESPONSIVE OVERRIDES
+   ReUse Connect
+   ============================================================ */
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .buyer-marketplace {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .marketplace-heading {
+    margin-bottom: 16px;
+  }
+
+  .marketplace-heading h1 {
+    font-size: 28px;
+  }
+
+  .marketplace-heading p {
+    font-size: 14px;
+  }
+
+  .marketplace-filter-panel {
+    padding: 14px;
+  }
+
+  .marketplace-filter-row {
+    grid-template-columns:
+      minmax(180px, 1.5fr)
+      repeat(2, minmax(130px, 1fr))
+      repeat(2, minmax(130px, 1fr))
+      auto;
+    gap: 10px;
+  }
+
+  .marketplace-content {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 16px;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-card-body {
+    padding: 11px;
+  }
+
+  .product-name {
+    font-size: 12px;
+  }
+
+  .product-actions {
+    gap: 5px;
+  }
+
+  .marketplace-buy-now-btn {
+    min-width: 0;
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .marketplace-right-column {
+    min-width: 0;
+  }
+
+  .quick-links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .marketplace-filter-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .marketplace-search {
+    grid-column: 1 / -1;
+  }
+
+  .marketplace-search-button {
+    width: 100%;
+  }
+
+  .marketplace-content {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-right-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .total-reused-card {
+    grid-column: 1 / -1;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .featured-heading {
+    gap: 10px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+  .buyer-marketplace {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+  }
+
+  .marketplace-heading {
+    margin-bottom: 12px;
+  }
+
+  .marketplace-heading h1 {
+    font-size: 23px;
+    line-height: 1.2;
+  }
+
+  .marketplace-heading p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* ----------------------------------------------------------
+     FILTER PANEL
+     ---------------------------------------------------------- */
+
+  .marketplace-filter-panel {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .marketplace-filter-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .marketplace-search {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .marketplace-search input {
+    min-width: 0;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .marketplace-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .marketplace-select label {
+    font-size: 9px;
+  }
+
+  .select-wrapper {
+    width: 100%;
+  }
+
+  .select-wrapper select {
+    width: 100%;
+    min-width: 0;
+    font-size: 11px;
+  }
+
+  .marketplace-search-button {
+    width: 100%;
+    min-height: 38px;
+    justify-content: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     TABS
+     ---------------------------------------------------------- */
+
+  .marketplace-tabs {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    gap: 5px;
+    padding-top: 10px;
+    scrollbar-width: none;
+  }
+
+  .marketplace-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .marketplace-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     CONTENT
+     ---------------------------------------------------------- */
+
+  .marketplace-content {
+    display: block;
+    width: 100%;
+  }
+
+  .marketplace-main-column {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+  }
+
+  .featured-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 14px 0 10px;
+  }
+
+  .featured-heading h2 {
+    font-size: 16px;
+  }
+
+  .featured-heading span {
+    font-size: 10px;
+  }
+
+  .marketplace-refresh-btn {
+    flex: 0 0 auto;
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PRODUCT GRID
+     ---------------------------------------------------------- */
+
+  .marketplace-grid,
+  .marketplace-grid.list-view {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+
+  .marketplace-product-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .product-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-card-body {
+    padding: 9px;
+    min-width: 0;
+  }
+
+  .product-name {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .product-category,
+  .product-condition {
+    font-size: 8px;
+  }
+
+  .product-price {
+    font-size: 12px;
+  }
+
+  .product-location {
+    font-size: 8px;
+  }
+
+  .product-rating {
+    font-size: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PRODUCT ACTIONS
+     ---------------------------------------------------------- */
+
+  .product-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-icon-button,
+  .view-details-button {
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+  }
+
+  .marketplace-buy-now-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 28px;
+    padding: 0 7px;
+    gap: 4px;
+    font-size: 8px;
+  }
+
+  .marketplace-buy-now-btn span {
+    white-space: nowrap;
+  }
+
+
+  /* ----------------------------------------------------------
+     STATUS / WISHLIST
+     ---------------------------------------------------------- */
+
+  .product-status {
+    max-width: calc(100% - 42px);
+    font-size: 7px;
+    padding: 4px 6px;
+  }
+
+  .product-wishlist {
+    width: 27px;
+    height: 27px;
+    top: 7px;
+    right: 7px;
+  }
+
+
+  /* ----------------------------------------------------------
+     RIGHT COLUMN
+     ---------------------------------------------------------- */
+
+  .marketplace-right-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .second-life-card,
+  .quick-links-card,
+  .why-card,
+  .total-reused-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .quick-links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .total-reused-card {
+    grid-column: auto;
+  }
+
+
+  /* ----------------------------------------------------------
+     PAGINATION
+     ---------------------------------------------------------- */
+
+  .marketplace-pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  .marketplace-pagination > span {
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .pagination-buttons button {
+    width: 28px;
+    height: 28px;
+  }
+
+
+  /* ----------------------------------------------------------
+     TOAST
+     ---------------------------------------------------------- */
+
+  .marketplace-toast {
+    left: 12px;
+    right: 12px;
+    bottom: 15px;
+    width: auto;
+    max-width: none;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ERROR / EMPTY / LOADING
+     ---------------------------------------------------------- */
+
+  .marketplace-error {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+    font-size: 10px;
+  }
+
+  .marketplace-empty {
+    padding: 30px 15px;
+  }
+
+  .marketplace-empty h3 {
+    font-size: 15px;
+  }
+
+  .marketplace-empty p {
+    font-size: 10px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE MODALS
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+  .marketplace-modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .marketplace-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 24px);
+    margin: auto 0;
+    overflow-y: auto;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .marketplace-modal .modal-close {
+    width: 32px;
+    height: 32px;
+    top: 9px;
+    right: 9px;
+    z-index: 5;
+  }
+
+
+  /* ----------------------------------------------------------
+     DETAILS MODAL
+     ---------------------------------------------------------- */
+
+  .marketplace-modal:not(.buy-now-modal):not(.message-modal) {
+    display: block;
+  }
+
+  .marketplace-modal:not(.buy-now-modal):not(.message-modal)
+    .modal-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .marketplace-modal:not(.buy-now-modal):not(.message-modal)
+    .modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .marketplace-modal:not(.buy-now-modal):not(.message-modal)
+    .modal-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 15px 16px;
+  }
+
+  .modal-content h2 {
+    font-size: 19px;
+    line-height: 1.3;
+    padding-right: 30px;
+  }
+
+  .modal-category {
+    font-size: 10px;
+  }
+
+  .modal-price {
+    font-size: 18px;
+  }
+
+  .modal-information {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .modal-information > div {
+    min-width: 0;
+    padding: 8px;
+  }
+
+  .modal-information span {
+    font-size: 8px;
+  }
+
+  .modal-information strong {
+    font-size: 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .modal-description h3 {
+    font-size: 11px;
+  }
+
+  .modal-description p {
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .modal-seller {
+    min-width: 0;
+  }
+
+  .modal-seller strong {
+    font-size: 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .modal-actions button {
+    min-width: 0;
+  }
+
+  .modal-message-btn {
+    width: 100%;
+    min-height: 34px;
+  }
+}
+
+
+/* ============================================================
+   BUY NOW MODAL - MOBILE
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+  .marketplace-modal.buy-now-modal {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    overflow-y: auto;
+  }
+
+  .buy-now-modal .modal-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 14px 16px !important;
+  }
+
+  .buy-now-modal .modal-content > h2 {
+    font-size: 18px !important;
+    line-height: 1.3;
+    padding-right: 30px;
+    margin-bottom: 14px !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     PRODUCT PREVIEW
+     ---------------------------------------------------------- */
+
+  .buy-form-product {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px;
+    margin-bottom: 12px;
+  }
+
+  .buy-form-image {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+  }
+
+  .buy-form-product strong {
+    display: block;
+    font-size: 11px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .buy-form-product span {
+    display: block;
+    font-size: 10px;
+  }
+
+  .buy-form-product small {
+    font-size: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     BUY FORM
+     ---------------------------------------------------------- */
+
+  .marketplace-buy-form {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .marketplace-form-field {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .marketplace-form-label {
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------------------------
+     QUANTITY
+     ---------------------------------------------------------- */
+
+  .marketplace-quantity-control {
+    width: 125px;
+    max-width: 100%;
+  }
+
+  .marketplace-quantity-button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .marketplace-quantity-control input {
+    min-width: 0;
+    width: 55px;
+    height: 35px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SIZE OPTIONS
+     ---------------------------------------------------------- */
+
+  .size-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .size-option {
+    min-width: 0;
+    padding: 8px 6px;
+  }
+
+  .size-option span {
+    font-size: 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .size-option small {
+    font-size: 8px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SHIPPING
+     ---------------------------------------------------------- */
+
+  .shipping-grid {
+    grid-template-columns: 1fr !important;
+    gap: 9px;
+  }
+
+  .shipping-grid label {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shipping-grid label[style*="span 2"] {
+    grid-column: auto !important;
+  }
+
+  .shipping-grid input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     PAYMENT
+     ---------------------------------------------------------- */
+
+  .payment-method-options {
+    grid-template-columns: 1fr !important;
+    gap: 7px;
+  }
+
+  .radio-label {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    padding: 8px;
+  }
+
+  .payment-details-form {
+    grid-template-columns: 1fr !important;
+    gap: 9px;
+  }
+
+  .payment-details-form label {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .payment-details-form label[style*="span 2"] {
+    grid-column: auto !important;
+  }
+
+  .payment-details-form input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     TOTAL
+     ---------------------------------------------------------- */
+
+  .buy-form-total {
+    margin-top: 12px;
+    padding: 11px;
+  }
+
+  .buy-form-total span {
+    font-size: 10px;
+  }
+
+  .buy-form-total strong {
+    font-size: 15px;
+  }
+
+
+  /* ----------------------------------------------------------
+     BUY NOW ACTIONS
+     ---------------------------------------------------------- */
+
+  .marketplace-form-modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .marketplace-form-modal-actions button {
+    min-width: 0;
+    min-height: 38px;
+    font-size: 10px;
+  }
+}
+
+
+/* ============================================================
+   MESSAGE MODAL - MOBILE
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+  .marketplace-modal.message-modal {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+  }
+
+  .message-modal .modal-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 14px 16px !important;
+  }
+
+  .message-modal textarea {
+    min-height: 120px;
+    font-size: 11px !important;
+  }
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 500px) {
+
+  .marketplace-heading h1 {
+    font-size: 21px;
+  }
+
+  .marketplace-filter-panel {
+    padding: 10px;
+  }
+
+  .marketplace-grid,
+  .marketplace-grid.list-view {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .product-card-body {
+    padding: 8px;
+  }
+
+  .product-actions {
+    gap: 3px;
+  }
+
+  .product-icon-button,
+  .view-details-button {
+    flex-basis: 26px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .marketplace-buy-now-btn {
+    height: 26px;
+    padding: 0 5px;
+    font-size: 7px;
+  }
+
+  .marketplace-buy-now-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .product-name {
+    font-size: 10px;
+  }
+
+  .product-price {
+    font-size: 11px;
+  }
+
+  .marketplace-modal-overlay {
+    padding: 8px;
+  }
+
+  .marketplace-modal {
+    max-height: calc(100vh - 16px);
+  }
+
+  .marketplace-modal:not(.buy-now-modal):not(.message-modal)
+    .modal-image {
+    height: 190px;
+  }
+
+  .modal-information {
+    gap: 6px;
+  }
+
+  .modal-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quick-links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+  .marketplace-heading h1 {
+    font-size: 19px;
+  }
+
+  .marketplace-heading p {
+    font-size: 11px;
+  }
+
+  .marketplace-grid,
+  .marketplace-grid.list-view {
+    gap: 7px;
+  }
+
+  .product-card-body {
+    padding: 7px;
+  }
+
+  .product-name {
+    font-size: 9px;
+  }
+
+  .product-category,
+  .product-condition,
+  .product-location,
+  .product-rating {
+    font-size: 7px;
+  }
+
+  .product-price {
+    font-size: 10px;
+  }
+
+  .product-actions {
+    gap: 2px;
+  }
+
+  .product-icon-button,
+  .view-details-button {
+    flex-basis: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .marketplace-buy-now-btn {
+    height: 24px;
+    padding: 0 4px;
+  }
+
+  .marketplace-buy-now-btn svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .marketplace-buy-now-btn span {
+    font-size: 7px;
+  }
+
+  .marketplace-modal-overlay {
+    padding: 6px;
+  }
+
+  .marketplace-modal {
+    max-height: calc(100vh - 12px);
+    border-radius: 11px;
+  }
+
+  .buy-now-modal .modal-content {
+    padding: 17px 11px 13px !important;
+  }
+
+  .buy-form-product {
+    padding: 7px;
+  }
+
+  .buy-form-image {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+
+  .size-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .marketplace-form-modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .marketplace-form-modal-actions button {
+    width: 100%;
+  }
+
+  .modal-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .product-icon-button,
+  .view-details-button,
+  .product-wishlist,
+  .marketplace-buy-now-btn,
+  .marketplace-search-button,
+  .marketplace-tab,
+  .marketplace-refresh-btn,
+  .pagination-buttons button,
+  .marketplace-form-modal-actions button {
+    min-height: 32px;
+  }
+
+  .marketplace-quantity-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .size-option {
+    min-height: 42px;
+  }
+
+  .radio-label {
+    min-height: 38px;
+  }
+}
+/* ============================================================
+   BUYER MARKETPLACE
+   MOBILE DETAIL MODAL ACTIONS
+============================================================ */
+
+@media (max-width: 750px) {
+
+  .marketplace-modal-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+  }
+
+  .marketplace-modal-actions > button {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .marketplace-modal-actions .marketplace-buy-now-btn {
+    width: 100% !important;
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .marketplace-modal-actions {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .marketplace-modal-actions > button {
+    min-height: 40px !important;
+  }
+}

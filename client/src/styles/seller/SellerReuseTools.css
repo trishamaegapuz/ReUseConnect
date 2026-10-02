@@ -1501,3 +1501,1017 @@
     font-size: 19px !important;
   }
 }
+/* ============================================================
+   SELLER REUSE TOOLS
+   FINAL RESPONSIVE POLISH
+   ============================================================ */
+
+.seller-reuse-tools {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  .seller-reuse-tools {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .reuse-top-grid,
+  .reuse-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .environment-layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .checker-guide,
+  .check-panel,
+  .impact-guide,
+  .recent-panel {
+    min-height: auto;
+  }
+
+  .upload-box {
+    height: 205px;
+  }
+
+  .calculator-card,
+  .impact-summary {
+    min-height: auto;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+============================================================ */
+
+@media (max-width: 850px) {
+
+  .seller-reuse-tools {
+    padding-top: 18px;
+  }
+
+  .reuse-tabs {
+    margin-bottom: 17px;
+  }
+
+  .reuse-tabs button {
+    min-height: 43px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .info-card,
+  .panel-card {
+    padding: 18px;
+  }
+
+  .steps {
+    gap: 13px;
+  }
+
+  .upload-box {
+    height: 195px;
+  }
+
+  .assessment-result {
+    gap: 13px;
+  }
+
+  .recent-item {
+    grid-template-columns:
+      50px
+      minmax(120px, 1fr)
+      auto
+      75px;
+  }
+
+  .impact-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+  .seller-reuse-tools {
+    width: 100%;
+    min-width: 0;
+    padding: 14px 12px 18px;
+    overflow-x: hidden;
+  }
+
+  /* -------------------------
+     TABS
+  ------------------------- */
+
+  .reuse-tabs {
+    width: 100%;
+    margin-bottom: 15px;
+    gap: 6px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .reuse-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reuse-tabs button {
+    flex: 0 0 auto;
+
+    min-height: 42px;
+    height: 42px;
+
+    padding: 0 15px;
+
+    font-size: 13px !important;
+
+    white-space: nowrap;
+  }
+
+  .reuse-tabs button svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+
+  /* -------------------------
+     ERROR
+  ------------------------- */
+
+  .reuse-error {
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 13px;
+    padding: 10px 11px;
+
+    gap: 8px;
+
+    font-size: 12px !important;
+
+    line-height: 1.4;
+  }
+
+  .reuse-error span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .reuse-error button {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  /* -------------------------
+     GRIDS
+  ------------------------- */
+
+  .reuse-top-grid,
+  .reuse-bottom-grid,
+  .environment-layout {
+    width: 100%;
+    min-width: 0;
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+
+  /* -------------------------
+     CARDS
+  ------------------------- */
+
+  .info-card,
+  .panel-card {
+    width: 100%;
+    min-width: 0;
+
+    padding: 15px;
+
+    border-radius: 9px;
+  }
+
+  .info-card h2,
+  .panel-card h2,
+  .panel-heading h2 {
+    font-size: 18px !important;
+    line-height: 1.3;
+  }
+
+  .card-subtitle,
+  .panel-heading p {
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+
+
+  /* -------------------------
+     CONDITION GUIDE
+  ------------------------- */
+
+  .checker-guide,
+  .impact-guide {
+    min-height: auto;
+  }
+
+  .card-icon {
+    width: 46px;
+    height: 46px;
+
+    margin-bottom: 11px;
+  }
+
+  .card-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .steps {
+    margin-top: 17px;
+    gap: 12px;
+  }
+
+  .step-row {
+    gap: 10px;
+  }
+
+  .step-row > span {
+    flex: 0 0 29px;
+
+    width: 29px;
+    height: 29px;
+
+    font-size: 13px !important;
+  }
+
+  .step-row strong {
+    font-size: 13px !important;
+    line-height: 1.35;
+  }
+
+  .step-row small {
+    font-size: 11px !important;
+    line-height: 1.45;
+  }
+
+
+  /* -------------------------
+     PANEL HEADING
+  ------------------------- */
+
+  .panel-heading {
+    gap: 8px;
+  }
+
+  .panel-heading > div {
+    min-width: 0;
+  }
+
+  .panel-heading h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .text-button {
+    flex: 0 0 auto;
+
+    min-height: 34px;
+    padding: 5px 8px;
+
+    font-size: 12px !important;
+  }
+
+  .icon-refresh {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+  }
+
+
+  /* -------------------------
+     UPLOAD
+  ------------------------- */
+
+  .upload-box {
+    width: 100%;
+    height: 185px;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    gap: 7px;
+
+    text-align: center;
+  }
+
+  .upload-box svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .upload-box strong {
+    font-size: 13px !important;
+    line-height: 1.4;
+  }
+
+  .upload-box span {
+    font-size: 11px !important;
+  }
+
+
+  /* -------------------------
+     QUESTIONS
+  ------------------------- */
+
+  .question-area {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 15px;
+  }
+
+  .image-preview-row {
+    width: 100%;
+    min-width: 0;
+
+    gap: 9px;
+    margin-bottom: 13px;
+  }
+
+  .image-preview-row img,
+  .preview-empty {
+    width: 52px;
+    height: 52px;
+
+    flex: 0 0 52px;
+  }
+
+  .image-preview-row > div:last-child {
+    min-width: 0;
+  }
+
+  .image-preview-row strong {
+    font-size: 12px !important;
+
+    overflow-wrap: anywhere;
+  }
+
+  .image-preview-row small {
+    font-size: 11px !important;
+  }
+
+  .question-area label {
+    margin-top: 11px;
+    margin-bottom: 7px;
+
+    font-size: 12px !important;
+    line-height: 1.4;
+  }
+
+  .choice-row {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 6px;
+  }
+
+  .choice-row button {
+    width: 100%;
+    min-width: 0;
+
+    min-height: 38px;
+
+    padding: 7px 6px;
+
+    font-size: 12px !important;
+
+    white-space: normal;
+  }
+
+  .purple-button {
+    margin-top: 14px;
+  }
+
+  .primary-button {
+    min-height: 43px;
+
+    font-size: 13px !important;
+  }
+
+
+  /* -------------------------
+     ASSESSMENT RESULT
+  ------------------------- */
+
+  .assessment-result {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 15px;
+    padding: 15px;
+
+    display: grid;
+
+    grid-template-columns:
+      48px
+      minmax(0, 1fr);
+
+    gap: 11px;
+
+    align-items: start;
+  }
+
+  .result-badge {
+    width: 48px;
+    height: 48px;
+  }
+
+  .result-badge svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .assessment-result > div:nth-child(2) {
+    min-width: 0;
+  }
+
+  .assessment-result span {
+    font-size: 11px !important;
+  }
+
+  .assessment-result h3 {
+    margin-top: 2px;
+
+    font-size: 17px !important;
+    line-height: 1.3;
+  }
+
+  .assessment-result p {
+    font-size: 12px !important;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+  }
+
+  .secondary-button {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    min-height: 40px;
+
+    margin-left: 0;
+
+    font-size: 12px !important;
+  }
+
+
+  /* -------------------------
+     IMPACT GUIDE
+  ------------------------- */
+
+  .impact-points {
+    margin-top: 16px;
+    gap: 12px;
+  }
+
+  .impact-points > div {
+    gap: 10px;
+  }
+
+  .impact-points > div > svg {
+    width: 20px;
+    height: 20px;
+
+    flex: 0 0 20px;
+  }
+
+  .impact-points strong {
+    font-size: 12px !important;
+  }
+
+  .impact-points small {
+    font-size: 11px !important;
+    line-height: 1.45;
+  }
+
+  .impact-art {
+    display: none;
+  }
+
+
+  /* -------------------------
+     RECENT CHECKS
+  ------------------------- */
+
+  .recent-panel {
+    min-height: auto;
+  }
+
+  .recent-list {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 12px;
+  }
+
+  .recent-item {
+    width: 100%;
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+      44px
+      minmax(0, 1fr)
+      auto;
+
+    grid-template-rows:
+      auto
+      auto;
+
+    column-gap: 9px;
+    row-gap: 4px;
+
+    padding: 9px 0;
+  }
+
+  .recent-thumb {
+    width: 44px;
+    height: 44px;
+
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .recent-name {
+    min-width: 0;
+
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .recent-name strong {
+    font-size: 12px !important;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .recent-name small {
+    font-size: 10px !important;
+  }
+
+  .condition-pill {
+    grid-column: 2;
+    grid-row: 2;
+
+    width: max-content;
+    max-width: 100%;
+
+    padding: 4px 7px;
+
+    font-size: 10px !important;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .recent-item time {
+    grid-column: 3;
+    grid-row: 1;
+
+    align-self: start;
+
+    font-size: 10px !important;
+
+    white-space: nowrap;
+  }
+
+  .empty-state {
+    min-height: 170px;
+    height: auto;
+
+    padding: 20px 10px;
+
+    font-size: 12px !important;
+  }
+
+
+  /* -------------------------
+     ENVIRONMENT CALCULATOR
+  ------------------------- */
+
+  .calculator-card,
+  .impact-summary {
+    min-height: auto;
+  }
+
+  .calculator-form {
+    width: 100%;
+    max-width: none;
+
+    margin-top: 18px;
+  }
+
+  .calculator-form label {
+    font-size: 12px !important;
+  }
+
+  .calculator-form select,
+  .calculator-form input {
+    width: 100%;
+    min-width: 0;
+
+    height: 43px;
+
+    margin-bottom: 13px;
+
+    padding: 0 10px;
+
+    font-size: 13px !important;
+  }
+
+  .field-error {
+    font-size: 11px !important;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+  }
+
+  .green-button {
+    width: 100%;
+    min-height: 43px;
+
+    font-size: 13px !important;
+  }
+
+
+  /* -------------------------
+     IMPACT STATS
+  ------------------------- */
+
+  .impact-stat-grid {
+    width: 100%;
+    min-width: 0;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-top: 17px;
+  }
+
+  .impact-stat-grid > div {
+    min-width: 0;
+    min-height: 82px;
+
+    padding: 10px;
+
+    grid-template-columns:
+      34px
+      minmax(0, 1fr);
+
+    column-gap: 7px;
+  }
+
+  .stat-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .stat-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .impact-stat-grid strong {
+    min-width: 0;
+
+    font-size: 16px !important;
+
+    overflow-wrap: anywhere;
+  }
+
+  .impact-stat-grid small {
+    font-size: 10px !important;
+    line-height: 1.3;
+  }
+
+
+  /* -------------------------
+     DIFFERENCE NOTE
+  ------------------------- */
+
+  .difference-note {
+    margin-top: 11px;
+    padding: 10px;
+
+    gap: 8px;
+  }
+
+  .difference-note > svg {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+  }
+
+  .difference-note strong {
+    font-size: 11px !important;
+  }
+
+  .difference-note small {
+    font-size: 10px !important;
+    line-height: 1.4;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+============================================================ */
+
+@media (max-width: 480px) {
+
+  .seller-reuse-tools {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .reuse-tabs {
+    gap: 5px;
+  }
+
+  .reuse-tabs button {
+    min-height: 40px;
+    height: 40px;
+
+    padding: 0 12px;
+
+    font-size: 12px !important;
+  }
+
+  .reuse-tabs button svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .info-card,
+  .panel-card {
+    padding: 13px;
+  }
+
+  .info-card h2,
+  .panel-card h2,
+  .panel-heading h2 {
+    font-size: 17px !important;
+  }
+
+  .card-subtitle,
+  .panel-heading p {
+    font-size: 11px !important;
+  }
+
+  .upload-box {
+    height: 170px;
+    padding: 12px;
+  }
+
+  .upload-box svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .upload-box strong {
+    font-size: 12px !important;
+  }
+
+  .upload-box span {
+    font-size: 10px !important;
+  }
+
+  .choice-row {
+    gap: 5px;
+  }
+
+  .choice-row button {
+    min-height: 36px;
+    padding: 6px 4px;
+
+    font-size: 11px !important;
+  }
+
+  .assessment-result {
+    padding: 12px;
+    grid-template-columns:
+      43px
+      minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .result-badge {
+    width: 43px;
+    height: 43px;
+  }
+
+  .result-badge svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .assessment-result h3 {
+    font-size: 16px !important;
+  }
+
+  .assessment-result p {
+    font-size: 11px !important;
+  }
+
+  .recent-item {
+    grid-template-columns:
+      40px
+      minmax(0, 1fr)
+      auto;
+
+    column-gap: 7px;
+  }
+
+  .recent-thumb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .recent-name strong {
+    font-size: 11px !important;
+  }
+
+  .recent-name small,
+  .condition-pill,
+  .recent-item time {
+    font-size: 9px !important;
+  }
+
+  .condition-pill {
+    padding: 3px 6px;
+  }
+
+  .impact-stat-grid {
+    gap: 7px;
+  }
+
+  .impact-stat-grid > div {
+    min-height: 76px;
+    padding: 8px;
+
+    grid-template-columns:
+      30px
+      minmax(0, 1fr);
+
+    column-gap: 6px;
+  }
+
+  .stat-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .stat-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .impact-stat-grid strong {
+    font-size: 14px !important;
+  }
+
+  .impact-stat-grid small {
+    font-size: 9px !important;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+============================================================ */
+
+@media (max-width: 340px) {
+
+  .seller-reuse-tools {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .reuse-tabs button {
+    padding: 0 10px;
+    font-size: 11px !important;
+  }
+
+  .choice-row {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-row button {
+    min-height: 35px;
+  }
+
+  .impact-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-item time {
+    max-width: 62px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .assessment-result {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .result-badge {
+    width: 38px;
+    height: 38px;
+  }
+
+  .result-badge svg {
+    width: 21px;
+    height: 21px;
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICE POLISH
+============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .reuse-tabs button,
+  .choice-row button,
+  .primary-button,
+  .secondary-button,
+  .upload-box,
+  .text-button,
+  .icon-refresh,
+  .reuse-error button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .choice-row button {
+    min-height: 38px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 42px;
+  }
+
+  .icon-refresh {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+}

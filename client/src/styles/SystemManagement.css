@@ -1139,3 +1139,1208 @@
   }
 
 }
+
+/* ============================================================
+   SYSTEM MANAGEMENT
+   RESPONSIVE POLISH
+   ============================================================ */
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .system-management-inner {
+    padding: 18px;
+  }
+
+
+  .system-kpi-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 11px;
+  }
+
+
+  .system-kpi-card {
+    min-height: 130px;
+    padding: 15px;
+  }
+
+
+  .system-kpi-value {
+    font-size: 26px;
+  }
+
+
+  .resource-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+  }
+
+
+  .system-health-grid {
+    grid-template-columns:
+      minmax(0, 1.4fr)
+      minmax(260px, 0.9fr);
+
+    gap: 11px;
+  }
+
+
+  .database-overview {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .system-management-inner {
+    width: 100%;
+    min-width: 0;
+    padding: 15px;
+  }
+
+
+  .system-kpi-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+
+  .system-health-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .details-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .configuration-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .database-overview {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .system-section-heading {
+    gap: 12px;
+  }
+
+
+  .system-section-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .system-section-heading p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+
+  .performance-metrics {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+
+  .logs-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .system-logs-table {
+    min-width: 850px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .system-management-page {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+
+  .system-management-inner {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+
+  /* ==========================================================
+     ERROR
+     ========================================================== */
+
+  .system-error {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-bottom: 10px;
+    padding: 9px 10px;
+
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+
+  .system-error span {
+    min-width: 0;
+  }
+
+
+  .system-error button {
+    width: 100%;
+    padding: 6px 0;
+    font-size: 10px;
+    text-align: left;
+  }
+
+
+  /* ==========================================================
+     KPI CARDS
+     ========================================================== */
+
+  .system-kpi-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .system-kpi-card {
+    min-width: 0;
+    min-height: 92px;
+
+    padding: 10px;
+
+    border-radius: 9px;
+  }
+
+
+  .system-kpi-top {
+    margin-bottom: 7px;
+  }
+
+
+  .system-kpi-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 8px;
+  }
+
+
+  .system-kpi-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  .system-kpi-label {
+    margin-bottom: 3px;
+
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+
+  .system-kpi-value {
+    margin-bottom: 3px;
+
+    font-size: 18px;
+    line-height: 1.15;
+
+    word-break: break-word;
+  }
+
+
+  .system-kpi-description {
+    font-size: 8px;
+    line-height: 1.3;
+  }
+
+
+  /* ==========================================================
+     TABS
+     ========================================================== */
+
+  .system-tabs {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-bottom: 10px;
+
+    padding: 5px;
+
+    gap: 4px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+
+    box-sizing: border-box;
+  }
+
+
+  .system-tab {
+    flex: 0 0 auto;
+
+    min-height: 36px;
+
+    padding: 0 10px;
+
+    gap: 5px;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+  }
+
+
+  .system-tab svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ==========================================================
+     SECTION HEADINGS
+     ========================================================== */
+
+  .system-section-heading {
+    width: 100%;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .system-section-heading h2 {
+    margin-bottom: 3px;
+
+    font-size: 15px;
+    line-height: 1.25;
+  }
+
+
+  .system-section-heading p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+
+  .health-live {
+    width: fit-content;
+
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+
+  .health-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+
+  /* ==========================================================
+     RESOURCE CARDS
+     ========================================================== */
+
+  .resource-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .resource-card {
+    min-width: 0;
+
+    padding: 10px;
+
+    border-radius: 9px;
+  }
+
+
+  .resource-card-header {
+    gap: 6px;
+
+    margin-bottom: 8px;
+
+    font-size: 9px;
+
+    line-height: 1.3;
+  }
+
+
+  .resource-icon {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    border-radius: 7px;
+  }
+
+
+  .resource-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .resource-value {
+    margin-bottom: 6px;
+
+    font-size: 17px;
+  }
+
+
+  .resource-progress {
+    height: 5px;
+  }
+
+
+  .resource-description {
+    margin-top: 6px;
+
+    font-size: 8px;
+    line-height: 1.35;
+  }
+
+
+  /* ==========================================================
+     HEALTH LOWER GRID
+     ========================================================== */
+
+  .system-health-grid {
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+  }
+
+
+  .performance-card,
+  .system-info-card {
+    width: 100%;
+    min-width: 0;
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+  }
+
+
+  .card-header-row {
+    gap: 8px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .card-header-row h3 {
+    margin-bottom: 3px;
+
+    font-size: 13px;
+  }
+
+
+  .card-header-row p {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+
+  .card-header-row > svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+
+  /* ==========================================================
+     PERFORMANCE STATUS
+     ========================================================== */
+
+  .performance-status {
+    gap: 9px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+
+  .performance-circle {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+  }
+
+
+  .performance-circle svg {
+    width: 22px;
+    height: 22px;
+  }
+
+
+  .performance-status strong {
+    margin-bottom: 2px;
+
+    font-size: 13px;
+  }
+
+
+  .performance-status span {
+    font-size: 9px;
+    line-height: 1.3;
+  }
+
+
+  /* ==========================================================
+     PERFORMANCE METRICS
+     ========================================================== */
+
+  .performance-metrics {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 6px;
+
+    margin-top: 9px;
+  }
+
+
+  .performance-metrics > div {
+    min-width: 0;
+
+    padding: 8px;
+
+    border-radius: 7px;
+  }
+
+
+  .performance-metrics span {
+    margin-bottom: 3px;
+
+    font-size: 8px;
+  }
+
+
+  .performance-metrics strong {
+    font-size: 9px;
+  }
+
+
+  /* ==========================================================
+     ALERTS
+     ========================================================== */
+
+  .empty-alerts {
+    min-height: 130px;
+
+    gap: 5px;
+
+    padding: 10px;
+  }
+
+
+  .empty-alerts svg {
+    width: 21px;
+    height: 21px;
+  }
+
+
+  .empty-alerts strong {
+    font-size: 11px;
+  }
+
+
+  .empty-alerts span {
+    max-width: 220px;
+
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+
+  .alert-list {
+    max-height: 190px;
+
+    gap: 6px;
+  }
+
+
+  .alert-item {
+    gap: 7px;
+
+    padding: 8px;
+
+    border-radius: 7px;
+  }
+
+
+  .alert-icon {
+    width: 29px;
+    height: 29px;
+
+    flex: 0 0 29px;
+
+    border-radius: 6px;
+  }
+
+
+  .alert-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  .alert-item strong {
+    margin-bottom: 2px;
+
+    font-size: 10px;
+  }
+
+
+  .alert-item span {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+
+  .alert-item small {
+    margin-top: 3px;
+
+    font-size: 8px;
+  }
+
+
+  /* ==========================================================
+     DETAILS
+     ========================================================== */
+
+  .details-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  .detail-card {
+    min-width: 0;
+    min-height: 90px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+
+  .detail-card svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .detail-card span {
+    margin-top: 7px;
+
+    font-size: 9px;
+  }
+
+
+  .detail-card strong {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    word-break: break-word;
+  }
+
+
+  /* ==========================================================
+     DATABASE
+     ========================================================== */
+
+  .database-overview {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  .database-main-card,
+  .database-detail-card {
+    min-width: 0;
+
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+
+  .database-main-card {
+    gap: 8px;
+  }
+
+
+  .database-main-card > svg {
+    width: 25px;
+    height: 25px;
+  }
+
+
+  .database-main-card span,
+  .database-detail-card span {
+    margin-bottom: 3px;
+
+    font-size: 8px;
+    line-height: 1.3;
+  }
+
+
+  .database-main-card strong,
+  .database-detail-card strong {
+    font-size: 10px;
+
+    word-break: break-word;
+  }
+
+
+  .database-status-panel {
+    gap: 8px;
+
+    margin-top: 9px;
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+
+  .database-status-icon {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    border-radius: 7px;
+  }
+
+
+  .database-status-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+
+  .database-status-panel strong {
+    margin-bottom: 2px;
+
+    font-size: 10px;
+  }
+
+
+  .database-status-panel span {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+
+  /* ==========================================================
+     STATUS
+     ========================================================== */
+
+  .system-status {
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+
+  /* ==========================================================
+     LOGS TABLE
+     ========================================================== */
+
+  .logs-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    border-radius: 8px;
+  }
+
+
+  .system-logs-table {
+    min-width: 850px;
+  }
+
+
+  .system-logs-table th {
+    padding: 8px 9px;
+
+    font-size: 9px;
+  }
+
+
+  .system-logs-table td {
+    padding: 8px 9px;
+
+    font-size: 10px;
+  }
+
+
+  .log-level {
+    padding: 3px 6px;
+
+    font-size: 8px;
+  }
+
+
+  .icon-action-button {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 6px;
+  }
+
+
+  .icon-action-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ==========================================================
+     EMPTY STATE
+     ========================================================== */
+
+  .empty-state-large {
+    min-height: 200px;
+
+    padding: 15px;
+
+    border-radius: 9px;
+    box-sizing: border-box;
+  }
+
+
+  .empty-state-large svg {
+    width: 28px;
+    height: 28px;
+  }
+
+
+  .empty-state-large h3 {
+    font-size: 13px;
+  }
+
+
+  .empty-state-large p {
+    max-width: 260px;
+
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+
+  /* ==========================================================
+     CONFIGURATION
+     ========================================================== */
+
+  .configuration-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  .configuration-card {
+    min-width: 0;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+
+  .configuration-card > svg {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+  }
+
+
+  .configuration-card span {
+    margin-bottom: 3px;
+
+    font-size: 8px;
+  }
+
+
+  .configuration-card strong {
+    font-size: 10px;
+
+    word-break: break-word;
+  }
+
+
+  .configuration-note {
+    gap: 8px;
+
+    margin-top: 9px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+
+  .configuration-note > svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .configuration-note strong {
+    margin-bottom: 3px;
+
+    font-size: 10px;
+  }
+
+
+  .configuration-note p {
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+
+  /* ==========================================================
+     LAST UPDATED
+     ========================================================== */
+
+  .system-last-updated {
+    justify-content: flex-start;
+
+    margin-top: 9px;
+
+    font-size: 8px;
+  }
+
+
+  .system-last-updated svg {
+    width: 12px;
+    height: 12px;
+  }
+
+
+  /* ==========================================================
+     MODAL
+     ========================================================== */
+
+  .system-modal-overlay {
+    align-items: center;
+
+    padding: 10px;
+  }
+
+
+  .system-log-modal {
+    width: 100%;
+    max-width: 100%;
+
+    max-height:
+      calc(100vh - 20px);
+
+    border-radius: 10px;
+  }
+
+
+  .system-modal-header {
+    gap: 10px;
+
+    padding: 12px;
+  }
+
+
+  .system-modal-header span {
+    margin-bottom: 2px;
+
+    font-size: 8px;
+  }
+
+
+  .system-modal-header h3 {
+    font-size: 15px;
+  }
+
+
+  .system-modal-header button {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    font-size: 17px;
+  }
+
+
+  .system-modal-body {
+    padding: 12px;
+  }
+
+
+  .modal-detail-row {
+    gap: 8px;
+
+    padding: 8px 0;
+  }
+
+
+  .modal-detail-row span {
+    font-size: 9px;
+  }
+
+
+  .modal-detail-row strong {
+    max-width: 60%;
+
+    font-size: 10px;
+
+    word-break: break-word;
+  }
+
+
+  .modal-message {
+    margin-top: 10px;
+  }
+
+
+  .modal-message > span {
+    margin-bottom: 5px;
+
+    font-size: 10px;
+  }
+
+
+  .modal-message p {
+    padding: 9px;
+
+    font-size: 10px;
+    line-height: 1.5;
+
+    word-break: break-word;
+  }
+
+
+  .system-modal-footer {
+    padding: 9px 12px;
+  }
+
+
+  .system-modal-footer button {
+    width: 100%;
+
+    min-height: 35px;
+    height: 35px;
+
+    font-size: 10px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 390px) {
+
+  .system-management-inner {
+    padding: 8px;
+  }
+
+
+  .system-kpi-grid {
+    gap: 7px;
+  }
+
+
+  .system-kpi-card {
+    min-height: 86px;
+
+    padding: 9px;
+  }
+
+
+  .system-kpi-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+
+  .system-kpi-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  .system-kpi-label {
+    font-size: 8px;
+  }
+
+
+  .system-kpi-value {
+    font-size: 16px;
+  }
+
+
+  .system-kpi-description {
+    font-size: 7px;
+  }
+
+
+  .system-tab {
+    padding: 0 9px;
+
+    font-size: 9px;
+  }
+
+
+  .system-tab svg {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  .resource-grid {
+    gap: 7px;
+  }
+
+
+  .resource-card {
+    padding: 9px;
+  }
+
+
+  .resource-value {
+    font-size: 16px;
+  }
+
+
+  .details-grid,
+  .database-overview,
+  .configuration-grid {
+    gap: 7px;
+  }
+
+
+  .performance-metrics {
+    gap: 5px;
+  }
+
+
+  .performance-metrics > div {
+    padding: 7px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media (max-width: 340px) {
+
+  .system-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .resource-grid,
+  .details-grid,
+  .database-overview,
+  .configuration-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .system-kpi-card {
+    min-height: 78px;
+  }
+
+
+  .system-tab {
+    padding: 0 8px;
+
+    font-size: 8px;
+  }
+
+}

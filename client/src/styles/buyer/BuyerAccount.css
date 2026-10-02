@@ -1814,3 +1814,771 @@
     grid-auto-rows: auto;
   }
 }
+
+
+/* ============================================================
+   BUYER ACCOUNT - RESPONSIVE POLISH
+   Added without changing the existing desktop design.
+============================================================ */
+
+/* Prevent content from creating horizontal overflow */
+.buyer-account,
+.account-page-hero,
+.account-profile-banner,
+.account-content-grid,
+.account-card,
+.account-modal,
+.account-form,
+.activity-table-wrap {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.account-profile-text,
+.account-card-title,
+.personal-info-item,
+.security-item-text,
+.full-activity-main {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   TABLET / SMALL DESKTOP
+============================================================ */
+
+@media (max-width: 1000px) {
+
+  .account-page-hero {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .account-tabs {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .account-profile-banner,
+  .account-content-grid,
+  .activity-card,
+  .tab-content-card {
+    margin-left: 22px;
+    margin-right: 22px;
+  }
+
+  .account-content-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .account-banner-art {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .photo-card {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 800px) {
+
+  .account-page-hero {
+    min-height: 86px;
+    padding: 15px 18px;
+  }
+
+  .account-page-hero h1 {
+    font-size: 25px;
+  }
+
+  .account-page-hero p {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .account-hero-decoration {
+    right: 8px;
+    width: 110px;
+    opacity: 0.2;
+  }
+
+  .account-tabs {
+    width: 100%;
+    padding: 9px 18px 11px;
+    gap: 6px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: thin;
+  }
+
+  .account-tab {
+    flex: 0 0 auto;
+    min-height: 43px;
+    padding: 0 15px;
+    font-size: 14px;
+  }
+
+  .account-profile-banner,
+  .account-content-grid,
+  .activity-card,
+  .tab-content-card {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .account-profile-banner {
+    margin-bottom: 13px;
+  }
+
+  .account-profile-summary {
+    padding: 17px 18px;
+    gap: 14px;
+  }
+
+  .account-avatar.large {
+    width: 72px;
+    height: 72px;
+  }
+
+  .account-profile-text h2 {
+    font-size: 19px;
+  }
+
+  .account-profile-text p {
+    font-size: 14px;
+  }
+
+  .account-role-badge {
+    font-size: 12px;
+  }
+
+  .account-green-message {
+    font-size: 12px;
+  }
+
+  .account-banner-art {
+    min-height: 92px;
+  }
+
+  .account-banner-copy {
+    font-size: 17px;
+  }
+
+  .account-banner-globe {
+    right: 18px;
+    font-size: 62px;
+  }
+
+  .account-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-info-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+    row-gap: 14px;
+  }
+
+  .personal-info-item strong {
+    max-width: 100%;
+  }
+
+  .account-mini-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .account-mini-stat {
+    min-width: 0;
+    padding: 9px;
+  }
+
+  .activity-table {
+    min-width: 650px;
+  }
+
+  .activity-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .security-content {
+    padding: 18px;
+  }
+
+  .security-item {
+    align-items: flex-start;
+  }
+
+  .tab-content-card {
+    min-height: 300px;
+  }
+
+  .account-modal-overlay {
+    padding: 14px;
+  }
+
+  .account-modal,
+  .activity-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: 92vh;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 560px) {
+
+  .account-page-hero {
+    min-height: 78px;
+    padding: 13px 14px;
+  }
+
+  .account-page-hero h1 {
+    font-size: 22px;
+  }
+
+  .account-page-hero p {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  .account-hero-decoration {
+    display: none;
+  }
+
+  .account-message {
+    margin-left: 14px;
+    margin-right: 14px;
+    padding: 9px 11px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .account-message button {
+    flex-shrink: 0;
+  }
+
+  .account-tabs {
+    padding: 8px 14px 10px;
+    gap: 6px;
+  }
+
+  .account-tab {
+    min-height: 42px;
+    padding: 0 13px;
+    gap: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .account-profile-banner,
+  .account-content-grid,
+  .activity-card,
+  .tab-content-card {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  .account-profile-summary {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .account-avatar.large {
+    width: 64px;
+    height: 64px;
+  }
+
+  .account-avatar > span {
+    font-size: 25px;
+  }
+
+  .account-profile-text h2 {
+    font-size: 17px;
+    line-height: 1.25;
+  }
+
+  .account-profile-text p {
+    margin-top: 3px;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+
+  .account-role-badge {
+    padding: 3px 7px;
+    font-size: 11px;
+  }
+
+  .account-green-message {
+    margin-top: 7px;
+    font-size: 11px;
+  }
+
+  .account-banner-art {
+    min-height: 78px;
+  }
+
+  .account-banner-copy {
+    font-size: 15px;
+  }
+
+  .account-banner-copy svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .account-banner-globe {
+    right: 10px;
+    bottom: -16px;
+    font-size: 48px;
+  }
+
+  .account-card-header {
+    min-height: 49px;
+    padding-left: 13px;
+    padding-right: 13px;
+    gap: 8px;
+  }
+
+  .account-card-title {
+    gap: 7px;
+  }
+
+  .account-card-title h3 {
+    font-size: 15px;
+  }
+
+  .account-card-title svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .icon-text-button {
+    min-height: 31px;
+    padding: 0 9px;
+    font-size: 12px;
+  }
+
+  .personal-info-grid {
+    grid-template-columns: 1fr;
+    padding: 12px 13px 10px;
+    row-gap: 12px;
+  }
+
+  .personal-info-item {
+    gap: 9px;
+  }
+
+  .info-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .personal-info-item label {
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+
+  .personal-info-item strong {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .account-mini-stats {
+    grid-template-columns: 1fr;
+    padding: 0 10px 10px;
+    gap: 7px;
+  }
+
+  .account-mini-stat {
+    min-height: 58px;
+    padding: 9px;
+    align-items: center;
+  }
+
+  .mini-stat-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .account-mini-stat label {
+    font-size: 12px;
+  }
+
+  .account-mini-stat strong {
+    font-size: 14px;
+  }
+
+  .account-mini-stat small {
+    font-size: 11px;
+  }
+
+  .profile-photo-preview {
+    padding: 13px 12px 8px;
+  }
+
+  .account-avatar.profile {
+    width: 82px;
+    height: 82px;
+  }
+
+  .profile-photo-preview p {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+  .photo-action {
+    width: calc(100% - 24px);
+    min-height: 38px;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: 13px;
+  }
+
+  .activity-card {
+    overflow: hidden;
+  }
+
+  .activity-card .account-card-header {
+    min-height: 49px;
+  }
+
+  .activity-table {
+    min-width: 650px;
+  }
+
+  .activity-table th,
+  .activity-table td {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .activity-loading,
+  .activity-empty {
+    min-height: 100px;
+    padding: 18px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .security-content {
+    padding: 13px;
+  }
+
+  .security-item {
+    padding: 13px;
+    gap: 10px;
+  }
+
+  .security-item-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .security-item-text h4 {
+    font-size: 14px;
+  }
+
+  .security-item-text p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .security-info-box {
+    padding: 12px;
+  }
+
+  .security-info-box strong {
+    font-size: 13px;
+  }
+
+  .security-info-box p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .unsupported-tab {
+    min-height: 230px;
+    padding: 25px 16px;
+  }
+
+  .unsupported-tab h3 {
+    font-size: 16px;
+  }
+
+  .unsupported-tab p {
+    font-size: 13px;
+  }
+
+  .tab-content-card {
+    min-height: 260px;
+  }
+
+  .account-modal-overlay {
+    padding: 8px;
+  }
+
+  .account-modal {
+    border-radius: 11px;
+    max-height: 94vh;
+  }
+
+  .account-modal-header {
+    min-height: 60px;
+    padding: 0 13px;
+  }
+
+  .modal-eyebrow {
+    font-size: 10px;
+  }
+
+  .account-modal-header h3 {
+    font-size: 16px;
+  }
+
+  .modal-close-button {
+    width: 31px;
+    height: 31px;
+  }
+
+  .account-form {
+    padding: 14px;
+  }
+
+  .form-two-columns {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .account-form label.form-full {
+    grid-column: auto;
+  }
+
+  .account-form label > span {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .account-form input {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .account-modal-actions {
+    margin-top: 16px;
+    flex-direction: column-reverse;
+  }
+
+  .modal-secondary-button,
+  .modal-primary-button,
+  .account-primary-button {
+    width: 100%;
+    min-height: 40px;
+    font-size: 13px;
+  }
+
+  .full-activity-list {
+    padding: 6px 13px 14px;
+  }
+
+  .full-activity-row {
+    min-height: 58px;
+    padding: 9px 0;
+    gap: 9px;
+    align-items: flex-start;
+  }
+
+  .full-activity-icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .full-activity-main strong {
+    font-size: 13px;
+  }
+
+  .full-activity-main span {
+    font-size: 12px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.35;
+  }
+
+  .full-activity-date {
+    min-width: 82px;
+    font-size: 11px;
+    text-align: right;
+  }
+}
+
+
+/* ============================================================
+   EXTRA SMALL PHONES
+============================================================ */
+
+@media (max-width: 380px) {
+
+  .account-page-hero {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .account-page-hero h1 {
+    font-size: 20px;
+  }
+
+  .account-page-hero p {
+    font-size: 12px;
+  }
+
+  .account-message {
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+
+  .account-tabs {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .account-tab {
+    min-height: 40px;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  .account-profile-banner,
+  .account-content-grid,
+  .activity-card,
+  .tab-content-card {
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+
+  .account-profile-summary {
+    padding: 12px;
+  }
+
+  .account-avatar.large {
+    width: 58px;
+    height: 58px;
+  }
+
+  .account-profile-text h2 {
+    font-size: 16px;
+  }
+
+  .account-profile-text p {
+    font-size: 12px;
+  }
+
+  .account-role-badge {
+    font-size: 10px;
+  }
+
+  .account-green-message {
+    font-size: 10px;
+  }
+
+  .account-card-header {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .account-card-title h3 {
+    font-size: 14px;
+  }
+
+  .icon-text-button {
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .personal-info-grid {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .personal-info-item strong {
+    font-size: 12px;
+  }
+
+  .account-mini-stat strong {
+    font-size: 13px;
+  }
+
+  .account-avatar.profile {
+    width: 76px;
+    height: 76px;
+  }
+
+  .photo-action {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .activity-table {
+    min-width: 620px;
+  }
+
+  .account-modal-overlay {
+    padding: 6px;
+  }
+
+  .account-modal-header {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .account-form {
+    padding: 12px;
+  }
+
+  .full-activity-date {
+    min-width: 72px;
+  }
+}
+
+
+/* ============================================================
+   TOUCH DEVICE POLISH
+============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .account-tab,
+  .icon-text-button,
+  .photo-action,
+  .activity-view-button,
+  .modal-close-button,
+  .modal-secondary-button,
+  .modal-primary-button,
+  .account-primary-button,
+  .account-message button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .account-tab,
+  .photo-action,
+  .modal-close-button,
+  .modal-secondary-button,
+  .modal-primary-button,
+  .account-primary-button {
+    touch-action: manipulation;
+  }
+}

@@ -8,10 +8,14 @@ import {
   Repeat2,
   Leaf,
   UserCircle,
-  LogOut
+  LogOut,
+  X
 } from 'lucide-react';
 
-import { NavLink, useNavigate } from 'react-router-dom';
+import {
+  NavLink,
+  useNavigate
+} from 'react-router-dom';
 
 import '../../styles/seller/Sidebar.css';
 
@@ -20,7 +24,10 @@ import '../../styles/seller/Sidebar.css';
 // SELLER SIDEBAR
 // ============================================================
 
-const SellerSidebar = () => {
+const SellerSidebar = ({
+  isOpen = false,
+  onClose = () => {}
+}) => {
 
   const navigate = useNavigate();
 
@@ -35,31 +42,37 @@ const SellerSidebar = () => {
       path: '/seller-dashboard',
       icon: LayoutDashboard
     },
+
     {
       label: 'My Listings',
       path: '/seller/listings',
       icon: Tag
     },
+
     {
       label: 'Transactions',
       path: '/seller/transactions',
       icon: ArrowLeftRight
     },
+
     {
       label: 'Communication',
       path: '/seller/communication',
       icon: MessageSquare
     },
+
     {
       label: 'Trade & Exchange',
       path: '/seller/trade-exchange',
       icon: Repeat2
     },
+
     {
       label: 'Reuse Tools',
       path: '/seller/reuse-tools',
       icon: Leaf
     },
+
     {
       label: 'Account',
       path: '/seller/account',
@@ -78,15 +91,29 @@ const SellerSidebar = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('authToken');
 
+    sessionStorage.clear();
+
     navigate('/login', {
       replace: true
     });
+
+    onClose();
+  };
+
+
+  // ==========================================================
+  // NAVIGATION CLICK
+  // ==========================================================
+
+  const handleNavigation = () => {
+    onClose();
   };
 
 
   return (
-
-    <aside className="seller-sidebar">
+    <aside
+      className={`seller-sidebar ${isOpen ? 'open' : ''}`}
+    >
 
       {/* =====================================================
           LOGO
@@ -95,7 +122,10 @@ const SellerSidebar = () => {
       <div className="seller-sidebar-logo">
 
         <div className="seller-logo-mark">
-          <Leaf size={32} strokeWidth={1.7} />
+          <Leaf
+            size={32}
+            strokeWidth={1.7}
+          />
         </div>
 
         <div className="seller-logo-text">
@@ -109,6 +139,23 @@ const SellerSidebar = () => {
           </span>
 
         </div>
+
+
+        {/* ===================================================
+            MOBILE CLOSE
+        =================================================== */}
+
+        <button
+          type="button"
+          className="seller-sidebar-close"
+          onClick={onClose}
+          aria-label="Close seller menu"
+        >
+          <X
+            size={23}
+            strokeWidth={2}
+          />
+        </button>
 
       </div>
 
@@ -124,10 +171,10 @@ const SellerSidebar = () => {
           const Icon = item.icon;
 
           return (
-
             <NavLink
               key={item.label}
               to={item.path}
+              onClick={handleNavigation}
               className={({ isActive }) =>
                 `seller-sidebar-link ${
                   isActive
@@ -148,7 +195,6 @@ const SellerSidebar = () => {
               </span>
 
             </NavLink>
-
           );
 
         })}
@@ -157,7 +203,7 @@ const SellerSidebar = () => {
 
 
       {/* =====================================================
-          BOTTOM
+          LOGOUT
       ===================================================== */}
 
       <div className="seller-sidebar-bottom">
@@ -182,7 +228,6 @@ const SellerSidebar = () => {
       </div>
 
     </aside>
-
   );
 };
 

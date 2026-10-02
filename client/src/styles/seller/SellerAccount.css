@@ -1235,3 +1235,970 @@
   }
 
 }
+/* ============================================================
+   SELLER ACCOUNT
+   FINAL RESPONSIVE POLISH
+============================================================ */
+
+.seller-account {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.seller-account-content {
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  .seller-account-content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .account-main-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .account-side-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .personal-card {
+    min-height: auto;
+  }
+
+  .personal-form-layout {
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 17px;
+  }
+
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+    font-size: 28px;
+  }
+
+  .settings-row {
+    min-height: 70px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .settings-text strong {
+    font-size: 11px;
+  }
+
+  .settings-text small {
+    font-size: 9px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 850px) {
+
+  .seller-account-content {
+    padding: 17px 15px 24px;
+  }
+
+  .account-tabs {
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .account-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .account-tabs button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .account-side-column {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-form-layout {
+    grid-template-columns: 135px minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .profile-photo-section {
+    padding-top: 6px;
+  }
+
+  .profile-photo {
+    width: 96px;
+    height: 96px;
+    font-size: 26px;
+  }
+
+  .change-photo-button {
+    min-width: 112px;
+    height: 35px;
+    font-size: 10px;
+  }
+
+  .account-card-heading {
+    gap: 11px;
+  }
+
+  .account-heading-icon {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+
+  .account-heading-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+  .seller-account {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .seller-account-content {
+    width: 100%;
+    min-width: 0;
+    padding: 14px 12px 20px;
+  }
+
+
+  /* ALERTS */
+
+  .account-alert {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 10px;
+    gap: 7px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .account-alert span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .account-alert button {
+    flex: 0 0 28px;
+  }
+
+
+  /* TABS */
+
+  .account-tabs {
+    width: 100%;
+    margin-bottom: 13px;
+    gap: 6px;
+  }
+
+  .account-tabs button {
+    min-height: 42px;
+    height: 42px;
+    padding: 0 14px;
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .account-tabs button svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+
+
+  /* MAIN GRID */
+
+  .account-main-grid {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .account-side-column {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+
+  /* CARDS */
+
+  .account-card {
+    width: 100%;
+    min-width: 0;
+    border-radius: 9px;
+  }
+
+  .personal-card {
+    min-height: auto;
+  }
+
+  .account-card-heading {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .account-heading-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .account-heading-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .account-card-heading > div:last-child {
+    min-width: 0;
+  }
+
+  .account-card-heading h2 {
+    margin-top: 2px;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .account-card-heading p {
+    font-size: 10px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* PERSONAL FORM */
+
+  .personal-form-layout {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 3px 14px 18px;
+  }
+
+
+  /* PROFILE PHOTO */
+
+  .profile-photo-section {
+    width: 100%;
+    align-items: center;
+    padding: 0;
+  }
+
+  .profile-photo {
+    width: 96px;
+    height: 96px;
+    border-width: 4px;
+    font-size: 27px;
+  }
+
+  .change-photo-button {
+    min-width: 118px;
+    height: 35px;
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+
+  /* FORM */
+
+  .profile-fields {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .profile-fields > label {
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 10px;
+  }
+
+  .profile-fields input {
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    margin-top: 6px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .profile-fields textarea {
+    width: 100%;
+    min-width: 0;
+    min-height: 92px;
+    margin-top: 6px;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .profile-fields label > small {
+    right: 6px;
+    bottom: 6px;
+    font-size: 8px;
+  }
+
+
+  /* LOCATION */
+
+  .input-with-icon {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .input-with-icon svg {
+    left: 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .input-with-icon input {
+    padding-left: 31px;
+  }
+
+
+  /* PROFILE NOTE */
+
+  .profile-note {
+    width: 100%;
+    min-height: auto;
+    margin-top: 4px;
+    padding: 9px 10px;
+    gap: 8px;
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .leaf-note-icon {
+    width: 21px;
+    height: 21px;
+    flex: 0 0 21px;
+  }
+
+
+  /* SAVE */
+
+  .save-profile-button {
+    width: 100%;
+    min-width: 0;
+    height: 41px;
+    margin-top: 13px;
+    font-size: 11px;
+  }
+
+
+  /* SETTINGS */
+
+  .settings-row {
+    width: 100%;
+    min-width: 0;
+    min-height: 72px;
+    padding: 10px 11px;
+    gap: 9px;
+  }
+
+  .settings-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+  .settings-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .settings-text {
+    min-width: 0;
+  }
+
+  .settings-text strong {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .settings-text small {
+    font-size: 9px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .settings-row > svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+  }
+
+
+  /* SWITCH */
+
+  .switch {
+    width: 40px;
+    height: 23px;
+    flex: 0 0 40px;
+    padding: 2px;
+  }
+
+  .switch span {
+    width: 19px;
+    height: 19px;
+  }
+
+  .switch.active span {
+    transform: translateX(17px);
+  }
+
+
+  /* SECURITY / PREFERENCES TAB */
+
+  .single-account-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .security-tab-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .large-settings-list {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .large-settings-list > button {
+    width: 100%;
+    min-height: 78px;
+    padding: 12px 13px;
+    gap: 10px;
+  }
+
+  .large-setting-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .large-setting-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .large-settings-list > button > span:nth-child(2) {
+    min-width: 0;
+  }
+
+  .large-settings-list strong {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .large-settings-list small {
+    font-size: 9px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .large-settings-list > button > svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+  }
+
+
+  /* LOADING */
+
+  .account-loading {
+    min-height: 300px;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+
+  /* MODAL */
+
+  .account-modal-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .account-modal,
+  .account-modal.wide,
+  .account-modal.small {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 20px);
+    border-radius: 10px;
+  }
+
+  .modal-header {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .modal-header > div {
+    min-width: 0;
+  }
+
+  .modal-header h3 {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .modal-header p {
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .modal-header > button {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+
+  /* MODAL BODY */
+
+  .modal-body {
+    padding: 15px;
+  }
+
+  .modal-body label {
+    margin-bottom: 12px;
+    font-size: 10px;
+  }
+
+  .modal-body input {
+    height: 40px;
+    margin-top: 6px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+
+  /* MODAL FOOTER */
+
+  .modal-footer {
+    padding: 11px 14px;
+    gap: 7px;
+  }
+
+  .modal-cancel,
+  .modal-primary {
+    min-height: 38px;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 10px;
+  }
+
+
+  /* LOGIN ACTIVITY */
+
+  .login-activity-list {
+    padding: 7px 14px 15px;
+  }
+
+  .login-activity-row {
+    gap: 9px;
+    padding: 11px 0;
+  }
+
+  .login-activity-row > svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+  }
+
+  .login-activity-row > div {
+    min-width: 0;
+  }
+
+  .login-activity-row strong {
+    font-size: 10px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .login-activity-row small {
+    font-size: 8px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .modal-empty {
+    min-height: 140px;
+    padding: 15px;
+    font-size: 10px;
+  }
+
+
+  /* NOTIFICATION */
+
+  .modal-option {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .modal-option > div {
+    min-width: 0;
+  }
+
+  .modal-option strong {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .modal-option small {
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+
+  /* LANGUAGE / DISPLAY */
+
+  .language-options {
+    padding: 7px 10px 11px;
+  }
+
+  .language-options button {
+    min-height: 47px;
+    padding: 0 9px;
+    gap: 8px;
+  }
+
+  .language-options button svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+  }
+
+  .language-options button span {
+    min-width: 0;
+    font-size: 11px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONE
+============================================================ */
+
+@media (max-width: 480px) {
+
+  .seller-account-content {
+    padding: 12px 9px 18px;
+  }
+
+  .account-tabs {
+    gap: 5px;
+  }
+
+  .account-tabs button {
+    min-height: 40px;
+    height: 40px;
+    padding: 0 12px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .account-tabs button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .account-card-heading {
+    padding: 13px;
+  }
+
+  .account-heading-icon {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+  }
+
+  .account-heading-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .account-card-heading h2 {
+    font-size: 15px;
+  }
+
+  .account-card-heading p {
+    font-size: 9px;
+  }
+
+  .personal-form-layout {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .profile-photo {
+    width: 88px;
+    height: 88px;
+    font-size: 24px;
+  }
+
+  .change-photo-button {
+    min-width: 110px;
+    height: 34px;
+    font-size: 9px;
+  }
+
+  .profile-fields > label {
+    font-size: 9px;
+  }
+
+  .profile-fields input,
+  .profile-fields textarea {
+    font-size: 11px;
+  }
+
+  .profile-note {
+    font-size: 8px;
+  }
+
+  .settings-row {
+    min-height: 69px;
+    padding: 9px 9px;
+  }
+
+  .settings-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .settings-text strong {
+    font-size: 10px;
+  }
+
+  .settings-text small {
+    font-size: 8px;
+  }
+
+  .switch {
+    width: 38px;
+    height: 22px;
+    flex-basis: 38px;
+  }
+
+  .switch span {
+    width: 18px;
+    height: 18px;
+  }
+
+  .switch.active span {
+    transform: translateX(16px);
+  }
+
+  .large-settings-list > button {
+    min-height: 74px;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .large-setting-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .large-setting-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .large-settings-list strong {
+    font-size: 10px;
+  }
+
+  .large-settings-list small {
+    font-size: 8px;
+  }
+
+  .modal-header {
+    padding: 12px;
+  }
+
+  .modal-body {
+    padding: 13px;
+  }
+
+  .modal-footer {
+    padding: 10px 12px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+============================================================ */
+
+@media (max-width: 340px) {
+
+  .seller-account-content {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .account-tabs button {
+    padding: 0 10px;
+    font-size: 9px;
+  }
+
+  .account-card-heading {
+    gap: 8px;
+  }
+
+  .account-heading-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .account-card-heading h2 {
+    font-size: 14px;
+  }
+
+  .personal-form-layout {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .profile-photo {
+    width: 82px;
+    height: 82px;
+    font-size: 22px;
+  }
+
+  .settings-row {
+    gap: 7px;
+  }
+
+  .settings-icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .settings-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .settings-text strong {
+    font-size: 9px;
+  }
+
+  .settings-text small {
+    font-size: 7px;
+  }
+
+  .switch {
+    width: 35px;
+    height: 21px;
+    flex-basis: 35px;
+  }
+
+  .switch span {
+    width: 17px;
+    height: 17px;
+  }
+
+  .switch.active span {
+    transform: translateX(14px);
+  }
+
+  .large-settings-list > button {
+    padding: 9px;
+  }
+
+  .large-setting-icon {
+    width: 35px;
+    height: 35px;
+    flex-basis: 35px;
+  }
+
+  .large-settings-list strong {
+    font-size: 9px;
+  }
+
+  .large-settings-list small {
+    font-size: 7px;
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICE POLISH
+============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .account-tabs button,
+  .change-photo-button,
+  .save-profile-button,
+  .settings-row,
+  .large-settings-list > button,
+  .modal-header > button,
+  .modal-cancel,
+  .modal-primary,
+  .language-options button,
+  .switch {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .account-tabs button {
+    min-height: 42px;
+  }
+
+  .change-photo-button,
+  .save-profile-button,
+  .modal-cancel,
+  .modal-primary {
+    min-height: 40px;
+  }
+
+}

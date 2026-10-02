@@ -931,7 +931,6 @@ router.get(
             c.comment_text,
             c.listing_id,
             c.created_at,
-            c.updated_at,
             c.status,
 
             CONCAT_WS(
@@ -1309,7 +1308,6 @@ router.get(
             c.comment_text,
             c.listing_id,
             c.created_at,
-            c.updated_at,
             c.status,
 
             CONCAT_WS(

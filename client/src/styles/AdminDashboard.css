@@ -1162,3 +1162,490 @@
   }
 
 }
+/* ============================================================
+   FINAL MOBILE DASHBOARD OVERRIDES
+   ReUse Connect Admin Dashboard
+============================================================ */
+
+@media (max-width: 768px) {
+
+  /* ==========================================================
+     DASHBOARD CONTAINER
+  ========================================================== */
+
+  .admin-dashboard {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+
+  /* ==========================================================
+     MOBILE HEADER SPACE
+     Prevent hamburger from covering the title
+  ========================================================== */
+
+  .admin-main > .admin-mobile-menu-button + * {
+    box-sizing: border-box;
+    padding-left: 68px !important;
+  }
+
+
+  /* ==========================================================
+     KPI GRID
+     2 COLUMNS ON MOBILE
+  ========================================================== */
+
+  .dashboard-kpi-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 10px;
+
+    box-sizing: border-box;
+  }
+
+
+  /* ==========================================================
+     KPI CARD
+  ========================================================== */
+
+  .kpi-card {
+    width: 100%;
+    min-width: 0;
+
+    min-height: 100px;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    gap: 9px;
+  }
+
+
+  .kpi-icon {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+  }
+
+
+  .kpi-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+
+  .kpi-content span {
+    font-size: 10px;
+
+    line-height: 1.3;
+
+    white-space: normal;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  .kpi-content strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 20px;
+
+    line-height: 1.15;
+
+    word-break: break-word;
+  }
+
+
+  .kpi-content small {
+    font-size: 8px;
+
+    line-height: 1.3;
+
+    white-space: normal;
+  }
+
+
+  /* ==========================================================
+     DASHBOARD MAIN SECTIONS
+  ========================================================== */
+
+  .dashboard-main-grid,
+  .dashboard-bottom-grid {
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 10px;
+
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    margin-bottom: 10px;
+  }
+
+
+  /* ==========================================================
+     PANELS
+  ========================================================== */
+
+  .dashboard-panel {
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    box-sizing: border-box;
+  }
+
+
+  /* ==========================================================
+     PANEL HEADER
+  ========================================================== */
+
+  .panel-header {
+
+    min-height: auto;
+
+    padding:
+      13px
+      14px
+      10px;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+  }
+
+
+  .panel-header h2 {
+    font-size: 15px;
+  }
+
+
+  .panel-header p {
+    font-size: 9px;
+  }
+
+
+  /* ==========================================================
+     PERIOD BUTTONS
+  ========================================================== */
+
+  .period-buttons {
+
+    width: 100%;
+
+    display: flex;
+
+    gap: 6px;
+
+    overflow-x: auto;
+
+    padding-bottom: 2px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .period-buttons button {
+
+    flex: 0 0 auto;
+
+    padding:
+      6px
+      10px;
+
+    font-size: 8px;
+  }
+
+
+  /* ==========================================================
+     PLATFORM CHART
+  ========================================================== */
+
+  .platform-chart {
+
+    width: 100%;
+
+    min-width: 0;
+
+    overflow-x: auto;
+
+    box-sizing: border-box;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .platform-chart-svg {
+
+    min-width: 500px;
+
+    height: 190px;
+  }
+
+
+  /* ==========================================================
+     DISTRIBUTION
+  ========================================================== */
+
+  .distribution-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding:
+      10px
+      14px
+      18px;
+
+    box-sizing: border-box;
+  }
+
+
+  .distribution-list {
+
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  /* ==========================================================
+     ACTIVITY TABLE
+  ========================================================== */
+
+  .activity-table {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .activity-table-header,
+  .activity-table-row {
+
+    min-width: 700px;
+  }
+
+
+  /* ==========================================================
+     CATEGORY LIST
+  ========================================================== */
+
+  .category-list {
+
+    width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+  }
+
+
+  .category-item {
+
+    min-width: 0;
+  }
+
+
+  .category-title {
+
+    min-width: 0;
+  }
+
+
+  .category-title strong {
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ==========================================================
+     EMPTY STATES
+  ========================================================== */
+
+  .empty-dashboard-row,
+  .empty-category-state {
+
+    padding-left: 14px;
+    padding-right: 14px;
+
+    text-align: center;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONES
+============================================================ */
+
+@media (max-width: 480px) {
+
+  .admin-main > .admin-mobile-menu-button + * {
+
+    padding-left: 62px !important;
+  }
+
+
+  .dashboard-kpi-grid {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  .kpi-card {
+
+    min-height: 94px;
+
+    padding: 10px;
+
+    gap: 7px;
+  }
+
+
+  .kpi-icon {
+
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+
+  .kpi-content span {
+
+    font-size: 9px;
+  }
+
+
+  .kpi-content strong {
+
+    font-size: 18px;
+  }
+
+
+  .platform-chart-svg {
+
+    min-width: 470px;
+  }
+
+
+  .activity-table-header,
+  .activity-table-row {
+
+    min-width: 680px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 360px) {
+
+  .dashboard-kpi-grid {
+
+    gap: 7px;
+  }
+
+
+  .kpi-card {
+
+    padding: 8px;
+  }
+
+
+  .kpi-icon {
+
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+
+  .kpi-content strong {
+
+    font-size: 17px;
+  }
+
+}
+/* ============================================================
+   MOBILE EMPTY PLATFORM OVERVIEW - COMPACT
+============================================================ */
+
+@media (max-width: 768px) {
+
+  .platform-panel {
+    min-height: 0 !important;
+  }
+
+  .platform-chart {
+    min-height: 0 !important;
+    height: auto !important;
+    padding:
+      0
+      12px
+      14px !important;
+  }
+
+  .platform-empty-state {
+    min-height: 180px !important;
+
+    padding:
+      24px
+      12px
+      20px !important;
+
+    box-sizing: border-box;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .platform-empty-state {
+    min-height: 160px !important;
+
+    padding:
+      20px
+      10px
+      16px !important;
+  }
+
+}

@@ -1,6 +1,16 @@
+/* ============================================================
+   REUSE CONNECT
+   SELLER LAYOUT
+   ============================================================ */
+
 :root {
   --seller-sidebar-width: 190px;
 }
+
+
+/* ============================================================
+   MAIN SELLER LAYOUT
+   ============================================================ */
 
 .seller-layout {
   width: 100%;
@@ -17,6 +27,11 @@
   overflow-x: hidden;
 }
 
+
+/* ============================================================
+   DESKTOP SIDEBAR SPACE
+   ============================================================ */
+
 .seller-layout > .seller-sidebar {
   width: var(--seller-sidebar-width);
   min-width: var(--seller-sidebar-width);
@@ -26,6 +41,11 @@
 
   box-sizing: border-box;
 }
+
+
+/* ============================================================
+   SELLER CONTENT
+   ============================================================ */
 
 .seller-layout-content {
   width: calc(100% - var(--seller-sidebar-width));
@@ -45,6 +65,12 @@
 
   overflow-x: hidden;
 }
+
+
+/* ============================================================
+   SELLER HEADER
+   ORIGINAL DESIGN — PRESERVED
+   ============================================================ */
 
 .seller-header {
   width: 100%;
@@ -70,6 +96,7 @@
   flex-shrink: 0;
 }
 
+
 .seller-header-left {
   min-width: 0;
 
@@ -80,6 +107,7 @@
   align-items: center;
 }
 
+
 .seller-welcome {
   display: flex;
 
@@ -87,6 +115,7 @@
 
   gap: 5px;
 }
+
 
 .seller-welcome-small {
   color: #817b91;
@@ -96,6 +125,7 @@
   font-weight: 500;
 }
 
+
 .seller-welcome strong {
   color: #29204f;
 
@@ -103,6 +133,7 @@
 
   font-weight: 700;
 }
+
 
 .seller-header-title {
   font-size: 15px;
@@ -118,6 +149,7 @@
   text-overflow: ellipsis;
 }
 
+
 .seller-header-right {
   display: flex;
 
@@ -129,6 +161,7 @@
 
   flex-shrink: 0;
 }
+
 
 .seller-header-icon-button {
   width: 36px;
@@ -157,11 +190,13 @@
     color 0.2s ease;
 }
 
+
 .seller-header-icon-button:hover {
   background: #f4f0ff;
 
   color: #6337d8;
 }
+
 
 .seller-header-divider {
   width: 1px;
@@ -172,6 +207,7 @@
 
   margin: 0 2px;
 }
+
 
 .seller-header-profile {
   display: flex;
@@ -184,6 +220,7 @@
 
   min-width: 0;
 }
+
 
 .seller-profile-image {
   width: 34px;
@@ -201,6 +238,7 @@
   justify-content: center;
 }
 
+
 .seller-profile-image img {
   width: 100%;
   height: 100%;
@@ -209,6 +247,7 @@
 
   display: block;
 }
+
 
 .seller-profile-placeholder {
   width: 34px;
@@ -230,6 +269,7 @@
   font-weight: 600;
 }
 
+
 .seller-profile-info {
   min-width: 0;
 
@@ -239,6 +279,7 @@
 
   line-height: 1.15;
 }
+
 
 .seller-profile-info strong {
   font-size: 12px;
@@ -250,6 +291,7 @@
   white-space: nowrap;
 }
 
+
 .seller-profile-info span {
   margin-top: 2px;
 
@@ -258,11 +300,17 @@
   color: #817b91;
 }
 
+
 .seller-profile-chevron {
   color: #817b91;
 
   flex-shrink: 0;
 }
+
+
+/* ============================================================
+   SELLER MAIN CONTENT
+   ============================================================ */
 
 .seller-main-content {
   width: 100%;
@@ -279,6 +327,12 @@
 
   overflow-x: hidden;
 }
+
+
+/* ============================================================
+   SELLER FOOTER
+   ORIGINAL DESIGN — PRESERVED
+   ============================================================ */
 
 .seller-footer {
   width: 100%;
@@ -309,6 +363,7 @@
   flex-shrink: 0;
 }
 
+
 .seller-footer-left {
   display: flex;
 
@@ -319,9 +374,11 @@
   min-width: 0;
 }
 
+
 .seller-footer-divider {
   color: #aaa5c4;
 }
+
 
 .seller-footer-right {
   display: flex;
@@ -333,11 +390,18 @@
   white-space: nowrap;
 }
 
+
 .seller-notification-dot {
   display: none !important;
 }
 
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
 @media (max-width: 1100px) {
+
   :root {
     --seller-sidebar-width: 190px;
   }
@@ -351,21 +415,167 @@
   }
 }
 
+
+/* ============================================================
+   MOBILE SIDEBAR / HAMBURGER
+   ============================================================ */
+
+.seller-mobile-menu-button {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #21154f;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+
+.seller-mobile-menu-button:hover {
+  background: #f1eff8;
+}
+
+
+/* ============================================================
+   MOBILE — 900px
+   ============================================================ */
+
 @media (max-width: 900px) {
+
+  /*
+    IMPORTANT:
+    The sidebar is position: fixed in Sidebar.css.
+    Therefore it should NOT consume layout space.
+  */
+
+  .seller-layout {
+    display: block;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    overflow-x: hidden;
+  }
+
+
+  /*
+    Keep the sidebar's actual 250px width
+    so the fixed sidebar can slide in.
+
+    flex-basis is zero so it does not create
+    the old 190px blank space.
+  */
+
+  .seller-layout > .seller-sidebar {
+    width: 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+
+    flex: 0 0 0 !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /*
+    Full-width content on mobile
+  */
+
+  .seller-layout-content {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-left: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+  }
+
+
+  /*
+    ORIGINAL HEADER DESIGN PRESERVED.
+    Only width/spacing behavior is adjusted.
+  */
+
   .seller-header {
+    width: 100%;
+
+    min-width: 0;
+
     padding: 0 18px;
   }
 
+
+  .seller-header-left {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+  }
+
+
   .seller-header-right {
+    min-width: 0;
+
     gap: 10px;
   }
 
+
+  .seller-mobile-menu-button {
+    display: flex;
+  }
+
+
+  .seller-main-content {
+    width: 100%;
+
+    min-width: 0;
+
+    overflow-x: hidden;
+  }
+
+
   .seller-footer {
+    width: 100%;
+
+    min-width: 0;
+
     padding: 0 18px;
   }
 }
 
+
+/* ============================================================
+   MOBILE — 700px
+   ============================================================ */
+
 @media (max-width: 700px) {
+
   .seller-header {
     min-height: 60px;
     height: 60px;
@@ -373,13 +583,21 @@
     padding: 0 14px;
   }
 
+
+  /*
+    Hide seller name/role on smaller screens
+    to preserve header space.
+  */
+
   .seller-profile-info {
     display: none;
   }
 
+
   .seller-header-right {
     gap: 8px;
   }
+
 
   .seller-footer {
     min-height: 52px;
@@ -396,24 +614,156 @@
     text-align: center;
   }
 
+
   .seller-footer-left,
   .seller-footer-right {
     justify-content: center;
   }
 }
 
+
+/* ============================================================
+   MOBILE — 600px
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  .seller-layout-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding: 0;
+  }
+
+
+  .seller-header {
+    width: 100%;
+
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+
+  .seller-header-right {
+    gap: 8px !important;
+  }
+
+
+  .seller-profile-info {
+    display: none;
+  }
+
+
+  .seller-profile-chevron {
+    display: none;
+  }
+
+
+  .seller-header-divider {
+    display: none;
+  }
+
+
+  .seller-main-content {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .seller-footer {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   SMALL PHONE — 500px
+   ============================================================ */
+
 @media (max-width: 500px) {
+
   .seller-layout {
+    width: 100%;
+
+    min-width: 0;
+
     overflow-x: hidden;
   }
 
-  .seller-header {
-    padding: 0 10px;
+
+  .seller-layout-content {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-left: 0;
   }
+
+
+  .seller-header {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
 
   .seller-footer {
     padding: 9px 10px;
 
     font-size: 11px;
   }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE — 390px
+   ============================================================ */
+
+@media (max-width: 390px) {
+
+  .seller-layout-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding: 0;
+  }
+
+
+  .seller-header {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .seller-main-content {
+    width: 100%;
+  }
+
+
+  .seller-footer {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   BODY SCROLL LOCK WHEN SIDEBAR IS OPEN
+   ============================================================ */
+
+body.seller-sidebar-open {
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+.seller-mobile-menu-button:focus-visible {
+  outline: 2px solid #6330db;
+
+  outline-offset: 2px;
 }

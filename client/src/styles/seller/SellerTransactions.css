@@ -1641,3 +1641,1184 @@
     font-size: 14px;
   }
 }
+/* ============================================================
+   SELLER TRANSACTIONS
+   FINAL RESPONSIVE POLISH
+   ============================================================ */
+
+
+/* ============================================================
+   LARGE TABLET / SMALL DESKTOP
+   ============================================================ */
+
+@media (max-width: 1180px) {
+
+  .seller-transactions-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .seller-transactions-hero {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .seller-transaction-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .earnings-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-order-history {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .seller-secondary-panel {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .seller-order-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .seller-order-table {
+    min-width: 920px;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 980px) {
+
+  .seller-transactions-hero {
+    min-height: 100px;
+    padding: 20px 20px;
+  }
+
+  .seller-transactions-hero h1 {
+    font-size: 31px;
+  }
+
+  .seller-transactions-hero p {
+    font-size: 16px;
+  }
+
+  .seller-transactions-tabs {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .transaction-tab {
+    min-width: 145px;
+    height: 43px;
+    font-size: 15px;
+  }
+
+  .seller-transaction-stats {
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-order-history {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .seller-secondary-panel {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .order-history-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .order-history-controls {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .transaction-search {
+    width: min(100%, 300px);
+  }
+
+  .seller-review-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-item-rating-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .transaction-modal {
+    width: min(700px, 94vw);
+    max-width: 94vw;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+  .seller-transactions-page {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+
+  /* ----------------------------------------------------------
+     HERO
+  ---------------------------------------------------------- */
+
+  .seller-transactions-hero {
+    width: 100%;
+    min-height: auto;
+    padding: 17px 14px;
+  }
+
+  .seller-transactions-hero h1 {
+    font-size: 25px;
+    line-height: 1.15;
+  }
+
+  .seller-transactions-hero p {
+    margin-top: 3px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+
+  /* ----------------------------------------------------------
+     TABS
+  ---------------------------------------------------------- */
+
+  .seller-transactions-tabs {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px 0;
+    gap: 7px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .transaction-tab {
+    min-width: 120px;
+    height: 40px;
+    flex: 0 0 auto;
+    gap: 6px;
+    padding: 0 13px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .transaction-tab svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+  }
+
+
+  /* ----------------------------------------------------------
+     STAT CARDS
+  ---------------------------------------------------------- */
+
+  .seller-transaction-stats {
+    width: 100%;
+    padding: 12px 14px 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .transaction-stat-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 100px;
+    padding: 12px;
+    gap: 9px;
+    border-radius: 9px;
+  }
+
+  .transaction-stat-icon {
+    width: 37px;
+    height: 37px;
+    flex: 0 0 37px;
+  }
+
+  .transaction-stat-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .transaction-stat-card span {
+    margin-bottom: 3px;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .transaction-stat-card strong {
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .transaction-stat-card small {
+    margin-top: 5px;
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+
+  /* ----------------------------------------------------------
+     ORDER HISTORY CARD
+  ---------------------------------------------------------- */
+
+  .seller-order-history {
+    width: calc(100% - 28px);
+    margin: 0 14px 18px;
+    border-radius: 9px;
+  }
+
+  .order-history-header {
+    width: 100%;
+    min-width: 0;
+    min-height: 62px;
+    padding: 13px 13px 8px;
+    gap: 10px;
+  }
+
+  .order-history-header > div {
+    min-width: 0;
+  }
+
+  .order-history-header h2 {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .order-history-header p {
+    max-width: 100%;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .transaction-refresh-btn {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SEARCH / FILTER
+  ---------------------------------------------------------- */
+
+  .order-history-controls {
+    width: 100%;
+    min-width: 0;
+    padding: 0 13px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .transaction-search {
+    width: 100%;
+    max-width: none;
+    height: 38px;
+    min-width: 0;
+  }
+
+  .transaction-search input {
+    min-width: 0;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .transaction-status-filter {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    font-size: 12px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ERROR
+  ---------------------------------------------------------- */
+
+  .transaction-error {
+    width: auto;
+    margin: 0 13px 10px;
+    padding: 8px 9px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+
+  /* ----------------------------------------------------------
+     TABLE
+  ---------------------------------------------------------- */
+
+  .seller-order-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .seller-order-table {
+    width: 100%;
+    min-width: 900px;
+  }
+
+  .seller-order-table th {
+    height: 40px;
+    padding: 0 9px;
+    font-size: 11px;
+  }
+
+  .seller-order-table td {
+    height: 58px;
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+
+  .seller-order-table th:first-child,
+  .seller-order-table td:first-child {
+    padding-left: 13px;
+  }
+
+  .seller-order-table th:last-child,
+  .seller-order-table td:last-child {
+    padding-right: 13px;
+  }
+
+  .order-number {
+    font-size: 11px;
+  }
+
+  .transaction-item {
+    min-width: 175px;
+    gap: 7px;
+  }
+
+  .transaction-item-image {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .transaction-item strong {
+    max-width: 135px;
+    font-size: 11px;
+  }
+
+  .transaction-item small {
+    max-width: 135px;
+    font-size: 9px;
+  }
+
+  .transaction-buyer {
+    min-width: 115px;
+    gap: 6px;
+  }
+
+  .transaction-avatar {
+    width: 26px;
+    height: 26px;
+    flex-basis: 26px;
+  }
+
+  .transaction-price {
+    font-size: 11px;
+  }
+
+  .seller-transaction-status {
+    padding: 4px 7px;
+    gap: 4px;
+    font-size: 10px;
+  }
+
+  .seller-transaction-status svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .transaction-date {
+    font-size: 10px;
+  }
+
+  .transaction-actions {
+    gap: 4px;
+    justify-content: flex-start;
+  }
+
+  .transaction-icon-btn {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  .transaction-icon-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  /* ----------------------------------------------------------
+     LOADING / EMPTY
+  ---------------------------------------------------------- */
+
+  .transaction-loading,
+  .transaction-empty {
+    min-height: 230px;
+    padding: 25px 14px;
+  }
+
+  .transaction-loading span,
+  .transaction-empty p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .transaction-empty h3 {
+    font-size: 16px;
+  }
+
+
+  /* ----------------------------------------------------------
+     ORDER PAGINATION
+  ---------------------------------------------------------- */
+
+  .transaction-pagination {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 10px 13px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .transaction-pagination > span {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .transaction-pagination > div {
+    margin-left: auto;
+  }
+
+  .transaction-pagination button,
+  .transaction-pagination .current-page {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+    font-size: 12px;
+  }
+
+
+  /* ----------------------------------------------------------
+     SECONDARY PANELS
+  ---------------------------------------------------------- */
+
+  .seller-secondary-panel {
+    width: calc(100% - 28px);
+    margin: 14px 14px 18px;
+    padding: 14px;
+    border-radius: 9px;
+  }
+
+  .secondary-panel-title {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .secondary-panel-title h2 {
+    font-size: 18px;
+  }
+
+  .secondary-panel-title p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .secondary-panel-title > svg {
+    width: 25px;
+    height: 25px;
+    flex: 0 0 auto;
+  }
+
+
+  /* ----------------------------------------------------------
+     EARNINGS
+  ---------------------------------------------------------- */
+
+  .earnings-summary-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .earnings-card {
+    min-width: 0;
+    min-height: 125px;
+    padding: 12px;
+  }
+
+  .earnings-card svg {
+    width: 19px;
+    height: 19px;
+    margin-bottom: 8px;
+  }
+
+  .earnings-card span {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .earnings-card strong {
+    font-size: 19px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .earnings-card small {
+    margin-top: 5px;
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+
+  /* ----------------------------------------------------------
+     REVIEW SUMMARY
+  ---------------------------------------------------------- */
+
+  .seller-review-summary {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 17px;
+  }
+
+  .seller-review-summary-card {
+    min-width: 0;
+    padding: 11px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  .seller-review-summary-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 8px;
+  }
+
+  .seller-review-summary-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .seller-review-summary-card span {
+    font-size: 9px;
+  }
+
+  .seller-review-summary-card strong {
+    font-size: 18px;
+  }
+
+  .seller-review-summary-card small {
+    font-size: 8px;
+    line-height: 1.3;
+  }
+
+
+  /* ----------------------------------------------------------
+     ITEM RATINGS
+  ---------------------------------------------------------- */
+
+  .seller-review-section-heading {
+    margin: 15px 0 10px;
+  }
+
+  .seller-review-section-heading h3 {
+    font-size: 14px;
+  }
+
+  .seller-review-section-heading p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .seller-item-rating-list {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 17px;
+  }
+
+  .seller-item-rating-card {
+    min-width: 0;
+    padding: 9px;
+    gap: 9px;
+  }
+
+  .seller-item-rating-image {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+  }
+
+  .seller-item-rating-info strong {
+    font-size: 11px;
+  }
+
+  .seller-item-rating-stars {
+    gap: 2px;
+  }
+
+  .seller-item-rating-stars svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .seller-item-rating-stars span {
+    font-size: 9px;
+  }
+
+
+  /* ----------------------------------------------------------
+     REVIEW CARDS
+  ---------------------------------------------------------- */
+
+  .seller-reviews-list {
+    gap: 8px;
+  }
+
+  .seller-review-card {
+    width: 100%;
+    min-width: 0;
+    padding: 11px;
+    gap: 9px;
+  }
+
+  .reviewer-avatar {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .reviewer-avatar svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .review-top {
+    gap: 6px;
+  }
+
+  .review-top strong {
+    font-size: 12px;
+  }
+
+  .review-top small {
+    font-size: 9px;
+  }
+
+  .review-stars {
+    gap: 1px;
+  }
+
+  .review-stars svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .review-content p {
+    margin: 7px 0;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .review-listing {
+    max-width: 100%;
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+
+
+  /* ----------------------------------------------------------
+     REVIEW PAGINATION
+  ---------------------------------------------------------- */
+
+  .seller-review-pagination {
+    width: 100%;
+    min-width: 0;
+    gap: 9px;
+    margin-top: 12px;
+    padding-top: 11px;
+  }
+
+  .seller-review-pagination .review-page-info {
+    font-size: 9px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .seller-review-pagination-controls {
+    flex-shrink: 0;
+  }
+
+  .seller-review-pagination button,
+  .seller-review-pagination .review-current-page {
+    min-width: 30px;
+    height: 30px;
+  }
+
+
+  /* ----------------------------------------------------------
+     MODALS
+  ---------------------------------------------------------- */
+
+  .transaction-modal-overlay {
+    padding: 7px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .transaction-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 14px);
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  .transaction-modal-header {
+    min-height: 58px;
+    padding: 11px 13px;
+    gap: 8px;
+  }
+
+  .transaction-modal-header span {
+    font-size: 10px;
+  }
+
+  .transaction-modal-header h2 {
+    max-width: calc(100vw - 85px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 18px;
+  }
+
+  .modal-close-btn {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .modal-order-top {
+    padding: 10px 13px;
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  .modal-section {
+    padding: 12px 13px;
+  }
+
+  .modal-section h3 {
+    margin-bottom: 9px;
+    font-size: 13px;
+  }
+
+  .modal-buyer {
+    gap: 8px;
+  }
+
+  .modal-buyer-avatar {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .modal-buyer strong {
+    font-size: 12px;
+  }
+
+  .modal-buyer span {
+    font-size: 10px;
+    word-break: break-word;
+  }
+
+
+  /* ----------------------------------------------------------
+     MODAL ITEMS
+  ---------------------------------------------------------- */
+
+  .modal-items {
+    gap: 7px;
+  }
+
+  .modal-item {
+    min-width: 0;
+    min-height: 56px;
+    padding: 7px;
+    gap: 8px;
+  }
+
+  .modal-item-image {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+
+  .modal-item-info strong {
+    font-size: 11px;
+  }
+
+  .modal-item-info span,
+  .modal-item-info small {
+    font-size: 9px;
+  }
+
+  .modal-item > strong:last-child {
+    font-size: 11px;
+  }
+
+
+  /* ----------------------------------------------------------
+     MODAL DETAILS
+  ---------------------------------------------------------- */
+
+  .modal-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-detail-grid > div {
+    padding: 10px 13px;
+  }
+
+  .modal-detail-grid span {
+    margin-bottom: 3px;
+    font-size: 10px;
+  }
+
+  .modal-detail-grid strong {
+    font-size: 11px;
+  }
+
+  .shipping-address {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+
+  /* ----------------------------------------------------------
+     REVIEW MODAL
+  ---------------------------------------------------------- */
+
+  .review-modal-loading {
+    min-height: 150px;
+  }
+
+  .review-form-label {
+    font-size: 10px !important;
+  }
+
+  .review-textarea {
+    min-height: 95px !important;
+    padding: 9px 10px !important;
+    font-size: 10px !important;
+  }
+
+  .review-star-button {
+    padding: 2px !important;
+  }
+
+  .review-star-button svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .review-actions {
+    gap: 7px !important;
+    margin-top: 11px !important;
+  }
+
+  .review-submit-button,
+  .review-cancel-button {
+    min-height: 36px;
+    padding: 8px 13px !important;
+    font-size: 10px !important;
+  }
+
+  .review-existing-comment {
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 480px) {
+
+  .seller-transactions-hero {
+    padding: 15px 10px;
+  }
+
+  .seller-transactions-hero h1 {
+    font-size: 22px;
+  }
+
+  .seller-transactions-hero p {
+    font-size: 11px;
+  }
+
+  .seller-transactions-tabs {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .transaction-tab {
+    min-width: 105px;
+    height: 38px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .seller-transaction-stats {
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 7px;
+  }
+
+  .transaction-stat-card {
+    min-height: 88px;
+    padding: 9px;
+    gap: 7px;
+  }
+
+  .transaction-stat-icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .transaction-stat-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .transaction-stat-card span {
+    font-size: 9px;
+  }
+
+  .transaction-stat-card strong {
+    font-size: 18px;
+  }
+
+  .transaction-stat-card small {
+    font-size: 8px;
+  }
+
+  .seller-order-history {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .order-history-header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .order-history-header h2 {
+    font-size: 17px;
+  }
+
+  .order-history-header p {
+    font-size: 10px;
+  }
+
+  .order-history-controls {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .transaction-error {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .transaction-pagination {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .seller-secondary-panel {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 11px;
+  }
+
+  .earnings-summary-grid {
+    gap: 7px;
+  }
+
+  .earnings-card {
+    min-height: 112px;
+    padding: 9px;
+  }
+
+  .earnings-card strong {
+    font-size: 17px;
+  }
+
+  .seller-review-summary {
+    gap: 7px;
+  }
+
+  .seller-review-summary-card {
+    padding: 9px;
+  }
+
+  .seller-review-summary-icon {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+
+  .seller-review-summary-card strong {
+    font-size: 16px;
+  }
+
+  .seller-review-summary-card small {
+    font-size: 7px;
+  }
+
+  .seller-item-rating-image {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .seller-review-card {
+    padding: 9px;
+  }
+
+  .reviewer-avatar {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+  }
+
+  .review-content p {
+    font-size: 9px;
+  }
+}
+
+
+/* ============================================================
+   EXTRA SMALL PHONES
+============================================================ */
+
+@media (max-width: 340px) {
+
+  .seller-transaction-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .earnings-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-review-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-transactions-hero h1 {
+    font-size: 20px;
+  }
+
+  .transaction-tab {
+    min-width: 100px;
+    font-size: 10px;
+  }
+
+  .transaction-stat-card {
+    min-height: 84px;
+  }
+
+  .seller-order-table {
+    min-width: 880px;
+  }
+
+  .transaction-pagination {
+    align-items: center;
+  }
+
+  .transaction-pagination > div {
+    margin-left: 0;
+  }
+}
+
+
+/* ============================================================
+   TOUCH DEVICE POLISH
+============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .transaction-tab,
+  .transaction-refresh-btn,
+  .transaction-icon-btn,
+  .transaction-pagination button,
+  .modal-close-btn,
+  .seller-review-pagination button,
+  .review-star-button,
+  .review-submit-button,
+  .review-cancel-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .transaction-icon-btn {
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .transaction-refresh-btn {
+    min-width: 34px;
+    min-height: 34px;
+  }
+}
