@@ -998,4 +998,133 @@ router.get(
 );
 
 
+
+
+// ============================================================
+// SELLER FAVORITES
+// Uses the existing favorites table. buyer_id stores the
+// authenticated account ID for both buyer and seller accounts.
+// ============================================================
+
+router.get('/favorites', async (req, res) => {
+  try {
+    const sellerId = getSellerId(req);
+    if (!sellerId) {
+      return res.status(401).json({ success: false, message: 'Seller authentication information is missing.' });
+    }
+
+    const result = await pool.query(`
+      SELECT
+        f.favorite_id,
+        f.listing_id,
+        f.created_at AS favorite_created_at,
+        l.title,
+        l.title AS name,
+        l.description,
+        l.price,
+        l.status,
+        l.seller_id AS listing_seller_id,
+        li.image_url
+      FROM favorites f
+      INNER JOIN listings l ON l.listing_id = f.listing_id
+      LEFT JOIN LATERAL (
+        SELECT image_url
+        FROM listing_images
+        WHERE listing_id = l.listing_id
+        ORDER BY is_primary DESC, sort_order ASC, image_id ASC
+        LIMIT 1
+      ) li ON TRUE
+      WHERE f.buyer_id = $1
+      ORDER BY f.created_at DESC, f.favorite_id DESC
+      LIMIT 30
+    `, [sellerId]);
+
+    const items = result.rows.map((item) => {
+      let imageUrl = item.image_url || null;
+      if (imageUrl && !/^(https?:|data:|blob:)/i.test(imageUrl)) {
+        const filename = String(imageUrl).split('?')[0].split('#')[0].split('/').filter(Boolean).pop();
+        imageUrl = filename
+          ? `${req.protocol}://${req.get('host')}/api/seller/listings/image/${encodeURIComponent(filename)}`
+          : null;
+      }
+      return { ...item, image_url: imageUrl };
+    });
+
+    return res.json({ success: true, items, favorites: items });
+  } catch (error) {
+    console.error('GET SELLER FAVORITES ERROR:', error);
+    return res.status(500).json({ success: false, message: 'Unable to load seller favorites.' });
+  }
+});
+
+router.post('/favorites', async (req, res) => {
+  try {
+    const sellerId = getSellerId(req);
+    const listingId = Number(req.body?.listing_id ?? req.body?.product_id);
+
+    if (!sellerId) {
+      return res.status(401).json({ success: false, message: 'Seller authentication information is missing.' });
+    }
+    if (!Number.isSafeInteger(listingId) || listingId <= 0) {
+      return res.status(400).json({ success: false, message: 'Valid listing_id is required.' });
+    }
+
+    const listing = await pool.query(`
+      SELECT listing_id
+      FROM listings
+      WHERE listing_id = $1
+        AND LOWER(COALESCE(status, '')) = 'available'
+        AND UPPER(COALESCE(listing_type, '')) = 'SALE'
+      LIMIT 1
+    `, [listingId]);
+
+    if (!listing.rowCount) {
+      return res.status(404).json({ success: false, message: 'Listing is not available for favorites.' });
+    }
+
+    const result = await pool.query(`
+      INSERT INTO favorites (buyer_id, listing_id)
+      VALUES ($1, $2)
+      ON CONFLICT (buyer_id, listing_id)
+      DO UPDATE SET created_at = favorites.created_at
+      RETURNING favorite_id, buyer_id, listing_id, created_at
+    `, [sellerId, listingId]);
+
+    return res.status(201).json({ success: true, favorite: result.rows[0], message: 'Listing added to favorites.' });
+  } catch (error) {
+    console.error('ADD SELLER FAVORITE ERROR:', error);
+    return res.status(500).json({ success: false, message: 'Unable to add seller favorite.' });
+  }
+});
+
+router.delete('/favorites/:listingId', async (req, res) => {
+  try {
+    const sellerId = getSellerId(req);
+    const listingId = Number(req.params.listingId);
+
+    if (!sellerId) {
+      return res.status(401).json({ success: false, message: 'Seller authentication information is missing.' });
+    }
+    if (!Number.isSafeInteger(listingId) || listingId <= 0) {
+      return res.status(400).json({ success: false, message: 'Valid listing ID is required.' });
+    }
+
+    const result = await pool.query(`
+      DELETE FROM favorites
+      WHERE buyer_id = $1 AND listing_id = $2
+      RETURNING favorite_id, listing_id
+    `, [sellerId, listingId]);
+
+    return res.json({
+      success: true,
+      removed: result.rowCount,
+      message: result.rowCount ? 'Favorite removed.' : 'Favorite not found.'
+    });
+  } catch (error) {
+    console.error('REMOVE SELLER FAVORITE ERROR:', error);
+    return res.status(500).json({ success: false, message: 'Unable to remove seller favorite.' });
+  }
+});
+
+
 module.exports = router;

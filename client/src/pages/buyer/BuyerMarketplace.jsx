@@ -970,6 +970,9 @@ function MarketplaceItemModal({
 
       <div
         className="marketplace-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Item details"
       >
 
         {/* CLOSE */}
@@ -1325,6 +1328,111 @@ const getSizeOptions = (item) => {
 
 
 // ============================================================
+// ADD TO CART SIZE SELECTION MODAL
+// ============================================================
+
+function AddToCartSizeModal({ item, onClose, onConfirm, loading }) {
+  const [selectedSize, setSelectedSize] = useState('');
+  const sizeOptions = getSizeOptions(item);
+  const selectedOption = sizeOptions.find((option) => option.value === selectedSize);
+
+  if (!item) return null;
+
+  return (
+    <div
+      className="marketplace-modal-overlay"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget && !loading) onClose();
+      }}
+    >
+      <div
+        className="marketplace-modal buy-now-modal size-selection-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Select item size"
+        style={{ maxWidth: '560px', width: 'min(92vw, 560px)' }}
+      >
+        <button type="button" className="modal-close" onClick={onClose} disabled={loading}>
+          <X size={18} />
+        </button>
+
+        <div className="modal-header">
+          <h2>Select Size</h2>
+          <p>Choose the size you want before adding this item to your cart.</p>
+        </div>
+
+        <div style={{ padding: '20px 24px' }}>
+          <h3 style={{ margin: '0 0 8px', fontSize: '16px' }}>{getItemName(item)}</h3>
+          <p style={{ margin: '0 0 16px', color: '#64748b', fontSize: '13px' }}>
+            Available sizes and stock
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '10px' }}>
+            {sizeOptions.map((option) => {
+              const stock = Math.max(0, Number(option.quantity || 0));
+              const unavailable = stock < 1;
+              const active = selectedSize === option.value;
+
+              return (
+                <label
+                  key={option.value}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    padding: '12px 10px',
+                    border: active ? '2px solid #5b2bbf' : '1px solid #d8d3e8',
+                    borderRadius: '10px',
+                    background: active ? '#f2edff' : '#fff',
+                    color: unavailable ? '#9ca3af' : '#24164b',
+                    cursor: unavailable ? 'not-allowed' : 'pointer',
+                    opacity: unavailable ? 0.65 : 1
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={active}
+                    disabled={loading || unavailable}
+                    onChange={() => setSelectedSize(active ? '' : option.value)}
+                    aria-label={`Select size ${option.value}`}
+                    style={{ width: '18px', height: '18px', accentColor: '#5b2bbf', flexShrink: 0 }}
+                  />
+                  <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <strong>{option.value}</strong>
+                    <small>{unavailable ? 'Out of stock' : `${stock} available`}</small>
+                  </span>
+                </label>
+              );
+            })}
+          </div>
+
+          {selectedOption && (
+            <p style={{ margin: '14px 0 0', color: '#475569', fontSize: '13px' }}>
+              Selected: <strong>{selectedOption.value}</strong> · {selectedOption.quantity} available
+            </p>
+          )}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '22px' }}>
+            <button type="button" className="modal-secondary-button" onClick={onClose} disabled={loading}>
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="marketplace-buy-now-btn"
+              onClick={() => onConfirm(selectedSize)}
+              disabled={loading || !selectedSize || !selectedOption || Number(selectedOption.quantity) < 1}
+            >
+              {loading ? 'Adding...' : 'Add to Cart'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// ============================================================
 // BUY NOW MODAL FORM (WITH RADIO BUTTONS & CONDITIONAL FIELDS)
 // ============================================================
 
@@ -1423,7 +1531,12 @@ function BuyNowModal({
         }
       }}
     >
-      <div className="marketplace-modal buy-now-modal">
+      <div
+        className="marketplace-modal buy-now-modal purchase-confirmation-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Confirm purchase"
+      >
         <button
           type="button"
           className="modal-close"
@@ -1528,15 +1641,29 @@ function BuyNowModal({
             {sizeOptions.length > 0 && (
               <div className="marketplace-form-field">
                 <span className="marketplace-form-label">Size</span>
-                <div className="size-options" role="group" aria-label="Select size">
+                <div className="size-options buy-now-size-options" role="group" aria-label="Select size">
                   {sizeOptions.map((size) => {
                     const stock = Math.max(0, Number(size.quantity || 0));
                     const unavailable = stock <= 0;
                     return (
-                      <button key={size.value} type="button" className={selectedSize === size.value ? 'size-option active' : 'size-option'} onClick={() => setSelectedSize(size.value)} disabled={loading || unavailable} title={unavailable ? 'Out of stock' : `${stock} available`}>
-                        <span>{size.value}</span>
-                        <small>{unavailable ? 'Out of stock' : `${stock} left`}</small>
-                      </button>
+                      <label
+                        key={size.value}
+                        className={selectedSize === size.value ? 'size-option active size-checkbox-option' : 'size-option size-checkbox-option'}
+                        title={unavailable ? 'Out of stock' : `${stock} available`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedSize === size.value}
+                          onChange={() => setSelectedSize(selectedSize === size.value ? '' : size.value)}
+                          disabled={loading || unavailable}
+                          aria-label={`Select size ${size.value}`}
+                          style={{ width: '17px', height: '17px', accentColor: '#5b2bbf', flexShrink: 0 }}
+                        />
+                        <span style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                          <span>{size.value}</span>
+                          <small>{unavailable ? 'Out of stock' : `${stock} left`}</small>
+                        </span>
+                      </label>
                     );
                   })}
                 </div>
@@ -1816,6 +1943,9 @@ function BuyerMessageModal({
 
       <div
         className="marketplace-modal message-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Message seller"
       >
 
         <button
@@ -2109,6 +2239,11 @@ const BuyerMarketplace = () => {
   const [
     buyNowItem,
     setBuyNowItem
+  ] = useState(null);
+
+  const [
+    addToCartItem,
+    setAddToCartItem
   ] = useState(null);
 
   const [
@@ -2774,7 +2909,7 @@ const BuyerMarketplace = () => {
   // ==========================================================
 
   const handleAddToCart =
-    async (item) => {
+    async (item, selectedSize = null) => {
 
       const itemId =
         getItemId(item);
@@ -2823,6 +2958,22 @@ const BuyerMarketplace = () => {
         return;
       }
 
+      const sizeOptions = getSizeOptions(item);
+
+      // Sized listings require the buyer to choose a size first.
+      if (sizeOptions.length > 0 && !selectedSize) {
+        setAddToCartItem(item);
+        return;
+      }
+
+      if (sizeOptions.length > 0) {
+        const chosenSize = sizeOptions.find((option) => option.value === selectedSize);
+        if (!chosenSize || Number(chosenSize.quantity || 0) < 1) {
+          setMessage('The selected size is out of stock.');
+          return;
+        }
+      }
+
       try {
 
         setCartLoading(
@@ -2831,7 +2982,8 @@ const BuyerMarketplace = () => {
 
         await addToCart(
           itemId,
-          1
+          1,
+          selectedSize || null
         );
 
         setCartIds(
@@ -3843,18 +3995,6 @@ const BuyerMarketplace = () => {
           </div>
 
 
-          {/* SEARCH BUTTON */}
-
-          <button
-            type="submit"
-            className="marketplace-search-button"
-          >
-            <Search size={14} />
-
-            Search
-
-          </button>
-
         </form>
 
 
@@ -4536,6 +4676,24 @@ const BuyerMarketplace = () => {
           }
         />
 
+      )}
+
+
+      {/* ====================================================
+          ADD TO CART SIZE SELECTION MODAL
+      ==================================================== */}
+
+      {addToCartItem && (
+        <AddToCartSizeModal
+          item={addToCartItem}
+          onClose={() => setAddToCartItem(null)}
+          onConfirm={(size) => {
+            const item = addToCartItem;
+            setAddToCartItem(null);
+            handleAddToCart(item, size);
+          }}
+          loading={cartLoading === getItemId(addToCartItem)}
+        />
       )}
 
 

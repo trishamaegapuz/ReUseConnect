@@ -44,6 +44,61 @@ import {
 
 import '../../styles/buyer/BuyerAccount.css';
 
+
+/* ============================================================
+   BUYER PROFILE SYNC — ACCOUNT PAGE TO SHARED HEADER
+============================================================ */
+
+const syncBuyerProfileToHeader = (profile) => {
+  if (!profile) return;
+
+  const keys = ['user', 'currentUser', 'authUser', 'reuseconnect_user'];
+  let existingUser = {};
+
+  for (const key of keys) {
+    const raw = localStorage.getItem(key);
+    if (!raw) continue;
+
+    try {
+      existingUser = JSON.parse(raw) || {};
+      if (Object.keys(existingUser).length) break;
+    } catch {
+      // Try the next known user storage key.
+    }
+  }
+
+  const hasSnakePhoto = Object.prototype.hasOwnProperty.call(profile, 'profile_image');
+  const hasCamelPhoto = Object.prototype.hasOwnProperty.call(profile, 'profileImage');
+
+  const nextPhoto = hasSnakePhoto
+    ? profile.profile_image
+    : hasCamelPhoto
+      ? profile.profileImage
+      : existingUser.profile_image ?? existingUser.profileImage ?? null;
+
+  const nextUser = {
+    ...existingUser,
+    ...profile,
+    profile_image: nextPhoto,
+    profileImage: nextPhoto
+  };
+
+  // BuyerLayout reads the "user" key, so this key is mandatory.
+  localStorage.setItem('user', JSON.stringify(nextUser));
+
+  // Keep other already-existing user keys in sync without creating
+  // unrelated keys that the application may not use.
+  for (const key of keys.slice(1)) {
+    if (localStorage.getItem(key) !== null) {
+      localStorage.setItem(key, JSON.stringify(nextUser));
+    }
+  }
+
+  window.dispatchEvent(new CustomEvent('buyer-profile-updated', {
+    detail: { user: nextUser }
+  }));
+};
+
 /* ============================================================
    HELPERS
 ============================================================ */
@@ -341,9 +396,14 @@ const BuyerAccount = () => {
           editForm
         );
 
-      setProfile(
-        response?.profile || profile
-      );
+      const updatedProfile =
+        response?.profile || {
+          ...profile,
+          ...editForm
+        };
+
+      setProfile(updatedProfile);
+      syncBuyerProfileToHeader(updatedProfile);
 
       setShowEditModal(false);
 
@@ -413,10 +473,15 @@ const BuyerAccount = () => {
             reader.result
           );
 
-        setProfile(
-          response?.profile ||
-          profile
-        );
+        const updatedProfile =
+          response?.profile || {
+            ...profile,
+            profile_image: reader.result,
+            profileImage: reader.result
+          };
+
+        setProfile(updatedProfile);
+        syncBuyerProfileToHeader(updatedProfile);
 
         setSuccess(
           'Profile photo updated successfully.'
@@ -526,10 +591,14 @@ const BuyerAccount = () => {
         );
       }
 
-      setProfile(
-        data?.profile ||
-        profile
-      );
+      const updatedProfile = {
+        ...(data?.profile || profile || {}),
+        profile_image: null,
+        profileImage: null
+      };
+
+      setProfile(updatedProfile);
+      syncBuyerProfileToHeader(updatedProfile);
 
       setSuccess(
         'Profile photo removed successfully.'

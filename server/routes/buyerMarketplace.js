@@ -1892,8 +1892,36 @@ router.get(
 
             ci.listing_id,
 
+            ci.size,
+
             ci.quantity
               AS cart_quantity,
+
+            CASE
+              WHEN ci.size IS NOT NULL AND EXISTS (
+                SELECT 1
+                FROM listing_size_inventory stock_check
+                WHERE stock_check.listing_id = l.listing_id
+                  AND LOWER(stock_check.size) = LOWER(ci.size)
+              ) THEN (
+                SELECT stock.quantity
+                FROM listing_size_inventory stock
+                WHERE stock.listing_id = l.listing_id
+                  AND LOWER(stock.size) = LOWER(ci.size)
+                LIMIT 1
+              )
+              ELSE l.quantity
+            END AS available_quantity,
+
+            COALESCE((
+              SELECT json_agg(
+                json_build_object('size', si.size, 'quantity', si.quantity)
+                ORDER BY si.size
+              )
+              FROM listing_size_inventory si
+              WHERE si.listing_id = l.listing_id
+                AND si.quantity > 0
+            ), '[]'::json) AS size_inventory,
 
             ci.created_at
               AS cart_created_at,
@@ -1915,9 +1943,6 @@ router.get(
             l.price,
 
             l.condition,
-
-            l.quantity
-              AS available_quantity,
 
             l.quantity,
 
@@ -2100,6 +2125,7 @@ router.get(
 // ============================================================
 // ADD TO CART
 // POST /api/buyer/marketplace/cart
+// Supports size-specific inventory and separate cart rows per size.
 // ============================================================
 
 router.post(
@@ -2107,348 +2133,148 @@ router.post(
   authMiddleware,
   buyerOnly,
   async (req, res) => {
+    const buyerId = getBuyerId(req);
+    const listingId = Number(req.body?.listing_id ?? req.body?.product_id);
+    const requestedQuantity = Number(req.body?.quantity ?? 1);
+    const requestedSize =
+      req.body?.size === undefined || req.body?.size === null || String(req.body.size).trim() === ''
+        ? null
+        : String(req.body.size).trim();
 
+    if (!buyerId) {
+      return res.status(401).json({ success: false, message: 'Authenticated buyer ID is missing.' });
+    }
+    if (!Number.isSafeInteger(listingId) || listingId <= 0) {
+      return res.status(400).json({ success: false, message: 'Valid listing_id is required.' });
+    }
+    if (!Number.isInteger(requestedQuantity) || requestedQuantity <= 0) {
+      return res.status(400).json({ success: false, message: 'Quantity must be a positive whole number.' });
+    }
+    if (requestedSize && requestedSize.length > 100) {
+      return res.status(400).json({ success: false, message: 'Selected size is too long.' });
+    }
+
+    let client;
     try {
+      client = await pool.connect();
+      await client.query('BEGIN');
 
-      const buyerId =
-        getBuyerId(req);
+      // Lock the listing to serialize cart stock checks for this listing.
+      const listingResult = await client.query(`
+        SELECT listing_id, quantity, size, status, listing_type, price
+        FROM listings
+        WHERE listing_id = $1
+          AND LOWER(COALESCE(status, '')) = 'available'
+          AND UPPER(COALESCE(listing_type, '')) IN ('SALE', 'DONATION')
+        FOR UPDATE
+      `, [listingId]);
 
-
-      const listingId =
-        Number(
-          req.body?.listing_id ??
-          req.body?.product_id
-        );
-
-
-      const requestedQuantity =
-        Number(
-          req.body?.quantity ?? 1
-        );
-
-
-      if (!buyerId) {
-
-        return res.status(401).json({
-
-          success: false,
-
-          message:
-            'Authenticated buyer ID is missing.'
-        });
+      if (listingResult.rows.length === 0) {
+        await client.query('ROLLBACK');
+        return res.status(404).json({ success: false, message: 'Listing is not available.' });
       }
 
+      const listing = listingResult.rows[0];
+      const inventoryResult = await client.query(`
+        SELECT inventory_id, size, quantity
+        FROM listing_size_inventory
+        WHERE listing_id = $1
+        ORDER BY size ASC
+        FOR UPDATE
+      `, [listingId]);
+      const hasSizeInventory = inventoryResult.rows.length > 0;
 
-      if (
-        !Number.isSafeInteger(
-          listingId
-        ) ||
-        listingId <= 0
-      ) {
+      let availableQuantity = Number(listing.quantity || 0);
+      let normalizedSize = requestedSize;
 
+      if (hasSizeInventory) {
+        if (!requestedSize) {
+          await client.query('ROLLBACK');
+          return res.status(400).json({ success: false, message: 'Please select a size before adding this item to your cart.' });
+        }
+        const selectedInventory = inventoryResult.rows.find(
+          (entry) => String(entry.size).toLowerCase() === requestedSize.toLowerCase()
+        );
+        if (!selectedInventory) {
+          await client.query('ROLLBACK');
+          return res.status(400).json({ success: false, message: 'The selected size is not available for this listing.' });
+        }
+        normalizedSize = selectedInventory.size;
+        availableQuantity = Number(selectedInventory.quantity || 0);
+      } else if (requestedSize) {
+        // Legacy single-size listings may have listings.size without inventory rows.
+        if (!listing.size || String(listing.size).toLowerCase() !== requestedSize.toLowerCase()) {
+          await client.query('ROLLBACK');
+          return res.status(400).json({ success: false, message: 'The selected size is not available for this listing.' });
+        }
+        normalizedSize = listing.size;
+      }
+
+      if (availableQuantity <= 0) {
+        await client.query('ROLLBACK');
+        return res.status(400).json({ success: false, message: normalizedSize ? `Size ${normalizedSize} is out of stock.` : 'This item is out of stock.' });
+      }
+
+      const existingResult = await client.query(`
+        SELECT cart_item_id, quantity
+        FROM cart_items
+        WHERE buyer_id = $1
+          AND listing_id = $2
+          AND COALESCE(LOWER(size), '') = COALESCE(LOWER($3::varchar), '')
+        LIMIT 1
+        FOR UPDATE
+      `, [buyerId, listingId, normalizedSize]);
+
+      const currentQuantity = Number(existingResult.rows[0]?.quantity || 0);
+      const finalQuantity = currentQuantity + requestedQuantity;
+      if (finalQuantity > availableQuantity) {
+        await client.query('ROLLBACK');
         return res.status(400).json({
-
           success: false,
-
-          message:
-            'Valid listing_id is required.'
+          message: normalizedSize
+            ? `Only ${availableQuantity} item(s) of size ${normalizedSize} are available.`
+            : `Only ${availableQuantity} item(s) are available.`
         });
       }
 
-
-      if (
-        !Number.isInteger(
-          requestedQuantity
-        ) ||
-        requestedQuantity <= 0
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            'Quantity must be a positive whole number.'
-        });
+      let savedCartItem;
+      let statusCode = 200;
+      if (existingResult.rows.length > 0) {
+        const updateResult = await client.query(`
+          UPDATE cart_items
+          SET quantity = $1, updated_at = CURRENT_TIMESTAMP
+          WHERE cart_item_id = $2 AND buyer_id = $3
+          RETURNING cart_item_id, buyer_id, listing_id, size, quantity, created_at, updated_at
+        `, [finalQuantity, existingResult.rows[0].cart_item_id, buyerId]);
+        savedCartItem = updateResult.rows[0];
+      } else {
+        const insertResult = await client.query(`
+          INSERT INTO cart_items (buyer_id, listing_id, size, quantity)
+          VALUES ($1, $2, $3, $4)
+          RETURNING cart_item_id, buyer_id, listing_id, size, quantity, created_at, updated_at
+        `, [buyerId, listingId, normalizedSize, requestedQuantity]);
+        savedCartItem = insertResult.rows[0];
+        statusCode = 201;
       }
 
-
-      // ======================================================
-      // CHECK LISTING
-      // ======================================================
-
-      const listingResult =
-        await pool.query(`
-
-          SELECT
-
-            listing_id,
-
-            quantity,
-
-            status,
-
-            listing_type,
-
-            price
-
-          FROM listings
-
-          WHERE
-
-            listing_id =
-            $1
-
-            AND LOWER(
-              COALESCE(
-                status,
-                ''
-              )
-            ) = 'available'
-
-            AND UPPER(
-              COALESCE(
-                listing_type,
-                ''
-              )
-            ) IN ('SALE', 'DONATION')
-
-          LIMIT 1
-
-        `, [listingId]);
-
-
-      if (
-        listingResult.rows.length === 0
-      ) {
-
-        return res.status(404).json({
-
-          success: false,
-
-          message:
-            'Listing is not available.'
-        });
-      }
-
-
-      const availableQuantity =
-        Number(
-          listingResult.rows[0].quantity ||
-          0
-        );
-
-
-      // ======================================================
-      // CHECK EXISTING CART ITEM
-      // ======================================================
-
-      const existingResult =
-        await pool.query(`
-
-          SELECT
-
-            cart_item_id,
-
-            quantity
-
-          FROM cart_items
-
-          WHERE
-
-            buyer_id =
-            $1
-
-            AND listing_id =
-            $2
-
-          LIMIT 1
-
-        `, [
-
-          buyerId,
-
-          listingId
-
-        ]);
-
-
-      const currentQuantity =
-        Number(
-          existingResult.rows[0]?.quantity ||
-          0
-        );
-
-
-      const finalQuantity =
-        currentQuantity +
-        requestedQuantity;
-
-
-      if (
-        finalQuantity >
-        availableQuantity
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            `Only ${availableQuantity} item(s) are available.`
-        });
-      }
-
-
-      // ======================================================
-      // UPDATE EXISTING
-      // ======================================================
-
-      if (
-        existingResult.rows.length > 0
-      ) {
-
-        const updateResult =
-          await pool.query(`
-
-            UPDATE cart_items
-
-            SET
-
-              quantity =
-                $1,
-
-              updated_at =
-                CURRENT_TIMESTAMP
-
-            WHERE
-
-              cart_item_id =
-              $2
-
-            RETURNING
-
-              cart_item_id,
-
-              buyer_id,
-
-              listing_id,
-
-              quantity,
-
-              created_at,
-
-              updated_at
-
-          `, [
-
-            finalQuantity,
-
-            existingResult.rows[0]
-              .cart_item_id
-
-          ]);
-
-
-        return res.json({
-
-          success: true,
-
-          cartItem:
-            updateResult.rows[0],
-
-          message:
-            'Item quantity updated in cart.'
-
-        });
-      }
-
-
-      // ======================================================
-      // INSERT NEW
-      // ======================================================
-
-      const insertResult =
-        await pool.query(`
-
-          INSERT INTO cart_items (
-
-            buyer_id,
-
-            listing_id,
-
-            quantity
-
-          )
-
-          VALUES (
-
-            $1,
-
-            $2,
-
-            $3
-
-          )
-
-          RETURNING
-
-            cart_item_id,
-
-            buyer_id,
-
-            listing_id,
-
-            quantity,
-
-            created_at,
-
-            updated_at
-
-        `, [
-
-          buyerId,
-
-          listingId,
-
-          requestedQuantity
-
-        ]);
-
-
-      return res.status(201).json({
-
+      await client.query('COMMIT');
+      return res.status(statusCode).json({
         success: true,
-
-        cartItem:
-          insertResult.rows[0],
-
-        message:
-          'Item added to cart.'
-
+        cartItem: savedCartItem,
+        message: existingResult.rows.length > 0 ? 'Item quantity updated in cart.' : 'Item added to cart.'
       });
-
-
     } catch (error) {
-
-      console.error(
-        'BUYER CART ADD ERROR:',
-        error
-      );
-
-
+      if (client) {
+        try { await client.query('ROLLBACK'); } catch (_) {}
+      }
+      console.error('BUYER CART ADD ERROR:', error);
       return res.status(500).json({
-
         success: false,
-
-        message:
-          'Failed to add item to cart.',
-
-        error:
-          process.env.NODE_ENV === 'development'
-            ? error.message
-            : undefined
+        message: 'Failed to add item to cart.',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
       });
+    } finally {
+      if (client) client.release();
     }
   }
 );
@@ -2457,6 +2283,7 @@ router.post(
 // ============================================================
 // UPDATE CART QUANTITY
 // PATCH /api/buyer/marketplace/cart/:cartItemId
+// Validates stock against the size saved on that cart row.
 // ============================================================
 
 router.patch(
@@ -2464,171 +2291,92 @@ router.patch(
   authMiddleware,
   buyerOnly,
   async (req, res) => {
+    const buyerId = getBuyerId(req);
+    const cartItemId = Number(req.params.cartItemId);
+    const quantity = Number(req.body?.quantity);
 
+    if (!buyerId) {
+      return res.status(401).json({ success: false, message: 'Authenticated buyer ID is missing.' });
+    }
+    if (!Number.isSafeInteger(cartItemId) || cartItemId <= 0) {
+      return res.status(400).json({ success: false, message: 'Valid cart item ID is required.' });
+    }
+    if (!Number.isInteger(quantity) || quantity <= 0) {
+      return res.status(400).json({ success: false, message: 'Quantity must be a positive whole number.' });
+    }
+
+    let client;
     try {
+      client = await pool.connect();
+      await client.query('BEGIN');
 
-      const buyerId =
-        getBuyerId(req);
+      const cartResult = await client.query(`
+        SELECT ci.cart_item_id, ci.listing_id, ci.size, l.quantity AS listing_quantity,
+               l.status, l.listing_type
+        FROM cart_items ci
+        INNER JOIN listings l ON l.listing_id = ci.listing_id
+        WHERE ci.cart_item_id = $1 AND ci.buyer_id = $2
+        FOR UPDATE OF ci, l
+      `, [cartItemId, buyerId]);
 
-
-      const cartItemId =
-        Number(
-          req.params.cartItemId
-        );
-
-
-      const quantity =
-        Number(
-          req.body?.quantity
-        );
-
-
-      if (!buyerId) {
-
-        return res.status(401).json({
-
-          success: false,
-
-          message:
-            'Authenticated buyer ID is missing.'
-        });
+      if (cartResult.rows.length === 0) {
+        await client.query('ROLLBACK');
+        return res.status(404).json({ success: false, message: 'Cart item was not found.' });
       }
 
+      const cartItem = cartResult.rows[0];
+      if (String(cartItem.status || '').toLowerCase() !== 'available' ||
+          !['SALE', 'DONATION'].includes(String(cartItem.listing_type || '').toUpperCase())) {
+        await client.query('ROLLBACK');
+        return res.status(400).json({ success: false, message: 'This listing is no longer available.' });
+      }
 
-      if (
-        !Number.isSafeInteger(
-          cartItemId
-        ) ||
-        cartItemId <= 0
-      ) {
+      let availableQuantity = Number(cartItem.listing_quantity || 0);
+      if (cartItem.size) {
+        const inventoryResult = await client.query(`
+          SELECT quantity
+          FROM listing_size_inventory
+          WHERE listing_id = $1 AND LOWER(size) = LOWER($2)
+          LIMIT 1
+          FOR UPDATE
+        `, [cartItem.listing_id, cartItem.size]);
 
+        if (inventoryResult.rows.length > 0) {
+          availableQuantity = Number(inventoryResult.rows[0].quantity || 0);
+        }
+      }
+
+      if (quantity > availableQuantity) {
+        await client.query('ROLLBACK');
         return res.status(400).json({
-
           success: false,
-
-          message:
-            'Valid cart item ID is required.'
+          message: cartItem.size
+            ? `Only ${availableQuantity} item(s) of size ${cartItem.size} are available.`
+            : `Only ${availableQuantity} item(s) are available.`
         });
       }
 
+      const updateResult = await client.query(`
+        UPDATE cart_items
+        SET quantity = $1, updated_at = CURRENT_TIMESTAMP
+        WHERE cart_item_id = $2 AND buyer_id = $3
+        RETURNING cart_item_id, buyer_id, listing_id, size, quantity, created_at, updated_at
+      `, [quantity, cartItemId, buyerId]);
 
-      if (
-        !Number.isInteger(
-          quantity
-        ) ||
-        quantity <= 0
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            'Quantity must be a positive whole number.'
-        });
-      }
-
-
-      const result =
-        await pool.query(`
-
-          UPDATE cart_items ci
-
-          SET
-
-            quantity =
-              $1,
-
-            updated_at =
-              CURRENT_TIMESTAMP
-
-          FROM listings l
-
-          WHERE
-
-            ci.cart_item_id =
-            $2
-
-            AND ci.buyer_id =
-            $3
-
-            AND l.listing_id =
-                ci.listing_id
-
-            AND $1 <= l.quantity
-
-          RETURNING
-
-            ci.cart_item_id,
-
-            ci.buyer_id,
-
-            ci.listing_id,
-
-            ci.quantity,
-
-            ci.created_at,
-
-            ci.updated_at
-
-        `, [
-
-          quantity,
-
-          cartItemId,
-
-          buyerId
-
-        ]);
-
-
-      if (
-        result.rows.length === 0
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            'Cart item not found or quantity exceeds available stock.'
-        });
-      }
-
-
-      return res.json({
-
-        success: true,
-
-        cartItem:
-          result.rows[0],
-
-        message:
-          'Cart quantity updated.'
-
-      });
-
-
+      await client.query('COMMIT');
+      return res.json({ success: true, cartItem: updateResult.rows[0], message: 'Cart quantity updated.' });
     } catch (error) {
-
-      console.error(
-        'BUYER CART UPDATE ERROR:',
-        error
-      );
-
-
+      if (client) {
+        try { await client.query('ROLLBACK'); } catch (_) {}
+      }
+      console.error('BUYER CART UPDATE ERROR:', error);
       return res.status(500).json({
-
         success: false,
-
-        message:
-          'Failed to update cart item.',
-
-        error:
-          process.env.NODE_ENV === 'development'
-            ? error.message
-            : undefined
+        message: 'Failed to update cart item.',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
       });
+    } finally {
+      if (client) client.release();
     }
   }
 );

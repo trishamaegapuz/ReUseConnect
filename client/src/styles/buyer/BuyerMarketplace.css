@@ -2048,6 +2048,78 @@
   -moz-appearance: textfield;
 }
 
+
+/* BUY NOW SIZE CHECKBOXES - HORIZONTAL LAYOUT */
+.buy-now-size-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
+
+.buy-now-size-options .size-checkbox-option {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px 11px;
+  border: 1px solid #d8d3e8;
+  border-radius: 9px;
+  background: #fff;
+  color: #24164b;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.buy-now-size-options .size-checkbox-option.active {
+  border: 2px solid #5b2bbf;
+  background: #f2edff;
+}
+
+.buy-now-size-options .size-checkbox-option input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: #5b2bbf;
+  flex: 0 0 17px;
+}
+
+.buy-now-size-options .size-checkbox-option > span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.buy-now-size-options .size-checkbox-option > span > span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.buy-now-size-options .size-checkbox-option small {
+  font-size: 12px;
+  line-height: 1.2;
+  opacity: .75;
+}
+
+.buy-now-size-options .size-checkbox-option:has(input:disabled) {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 750px) {
+  .buy-now-size-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
 /* Per-size stock buttons */
 .size-option { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
 .size-option small { font-size: 14px; line-height: 1.2; opacity: .75; }
@@ -3347,3 +3419,385 @@
     min-height: 40px !important;
   }
 }
+
+
+
+/* ============================================================
+   MODAL LAYOUT REFINEMENT
+   Keeps all marketplace dialogs centered, readable and usable
+   on desktop, tablet and mobile without changing modal actions.
+============================================================ */
+
+.marketplace-modal-overlay {
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(12px, 3vh, 28px) 16px;
+  align-items: center;
+  isolation: isolate;
+}
+
+.marketplace-modal {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: min(900px, 96vw);
+  max-height: min(88vh, 820px);
+  margin: auto;
+  overflow: hidden;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.marketplace-modal .modal-content {
+  min-width: 0;
+  max-height: min(88vh, 820px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-sizing: border-box;
+}
+
+.marketplace-modal .modal-image {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  max-height: min(88vh, 820px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.marketplace-modal .modal-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: calc(88vh - 36px);
+  object-fit: contain;
+  object-position: center;
+}
+
+.marketplace-modal .modal-actions {
+  flex-wrap: wrap;
+}
+
+.marketplace-modal .modal-actions > button {
+  min-width: 0;
+}
+
+/* Size selection and purchase form use a single-column dialog. */
+.marketplace-modal.buy-now-modal {
+  display: block;
+  width: min(760px, 94vw);
+  max-width: 760px;
+  max-height: 88vh;
+  overflow: hidden;
+}
+
+.marketplace-modal.buy-now-modal > .modal-content {
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 28px 30px !important;
+  box-sizing: border-box;
+}
+
+.marketplace-modal.size-selection-modal {
+  width: min(560px, 94vw) !important;
+  max-width: 560px !important;
+}
+
+.size-selection-modal .modal-header {
+  padding: 22px 26px 16px;
+  border-bottom: 1px solid #eeeaf6;
+}
+
+.size-selection-modal .modal-header h2 {
+  margin: 0 0 6px;
+  padding-right: 34px;
+  color: #302275;
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.size-selection-modal .modal-header p {
+  margin: 0;
+  color: #77719f;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.size-selection-modal > div:last-child {
+  max-height: calc(88vh - 90px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.size-selection-modal label {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.size-selection-modal label strong {
+  font-size: 15px;
+}
+
+.size-selection-modal label small {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.purchase-confirmation-modal .modal-content > h2 {
+  font-size: 24px !important;
+  line-height: 1.3;
+}
+
+.purchase-confirmation-modal .marketplace-buy-form {
+  gap: 15px;
+}
+
+.purchase-confirmation-modal .marketplace-buy-form label > span {
+  font-size: 13px;
+}
+
+.purchase-confirmation-modal .marketplace-buy-form input,
+.purchase-confirmation-modal .marketplace-buy-form select,
+.purchase-confirmation-modal .marketplace-buy-form textarea {
+  min-height: 42px;
+  font-size: 14px;
+}
+
+.purchase-confirmation-modal .buy-form-product {
+  margin: 0 0 18px;
+}
+
+.purchase-confirmation-modal .buy-form-image {
+  width: 78px;
+  height: 78px;
+}
+
+.purchase-confirmation-modal .buy-form-total {
+  padding: 15px 0;
+}
+
+.purchase-confirmation-modal .marketplace-form-modal-actions {
+  padding-top: 8px;
+}
+
+.marketplace-modal.message-modal {
+  display: block;
+  width: min(620px, 94vw);
+  max-width: 620px;
+  max-height: 86vh;
+  overflow: hidden;
+}
+
+.marketplace-modal.message-modal > .modal-content {
+  width: 100%;
+  max-height: 86vh;
+  overflow-y: auto;
+  padding: 30px 28px !important;
+  box-sizing: border-box;
+}
+
+.marketplace-modal.message-modal .modal-seller span {
+  font-size: 13px;
+}
+
+.marketplace-modal.message-modal .modal-seller strong {
+  font-size: 16px;
+}
+
+.marketplace-modal.message-modal textarea {
+  min-height: 150px;
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+.marketplace-modal.message-modal .modal-actions {
+  padding-top: 14px;
+  border-top: 1px solid #eeeaf6;
+}
+
+.marketplace-modal.message-modal .modal-actions button {
+  min-height: 42px;
+  font-size: 14px;
+}
+
+/* Tablet and phone layout */
+@media (max-width: 750px) {
+  .marketplace-modal-overlay {
+    align-items: center;
+    padding: 10px;
+  }
+
+  .marketplace-modal {
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100dvh - 20px);
+    display: block;
+    overflow-y: auto;
+  }
+
+  .marketplace-modal .modal-image {
+    height: clamp(170px, 32vh, 250px);
+    max-height: none;
+    padding: 12px;
+  }
+
+  .marketplace-modal .modal-image img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .marketplace-modal .modal-content {
+    max-height: none;
+    overflow: visible;
+    padding: 20px 16px !important;
+  }
+
+  .marketplace-modal.buy-now-modal,
+  .marketplace-modal.message-modal {
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100dvh - 20px);
+    overflow-y: auto;
+  }
+
+  .marketplace-modal.buy-now-modal > .modal-content,
+  .marketplace-modal.message-modal > .modal-content {
+    max-height: none;
+    overflow: visible;
+    padding: 22px 16px !important;
+  }
+
+  .size-selection-modal .modal-header {
+    padding: 18px 18px 14px;
+  }
+
+  .size-selection-modal > div:last-child {
+    max-height: none;
+    overflow: visible;
+    padding: 16px 18px !important;
+  }
+
+  .purchase-confirmation-modal .marketplace-buy-form {
+    gap: 12px;
+  }
+
+  .purchase-confirmation-modal .marketplace-form-modal-actions {
+    position: sticky;
+    bottom: -1px;
+    padding: 12px 0 2px;
+    background: #fff;
+  }
+
+  .marketplace-modal.message-modal textarea {
+    min-height: 130px;
+  }
+}
+
+@media (max-width: 420px) {
+  .marketplace-modal-overlay {
+    padding: 7px;
+  }
+
+  .marketplace-modal {
+    max-height: calc(100dvh - 14px);
+    border-radius: 12px;
+  }
+
+  .marketplace-modal .modal-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .marketplace-modal .modal-actions > button {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 8px;
+  }
+
+  .size-selection-modal .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .size-selection-modal > div:last-child > div:first-of-type {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .purchase-confirmation-modal .buy-form-product {
+    align-items: center;
+  }
+
+  .purchase-confirmation-modal .marketplace-form-modal-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .marketplace-modal.message-modal .modal-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+/* ============================================================
+   MARKETPLACE SEARCH — WIDER INPUT, NO SEARCH BUTTON
+   Search continues to update as the user types.
+============================================================ */
+
+.marketplace-filter-row {
+  grid-template-columns:
+    minmax(300px, 2.25fr)
+    repeat(4, minmax(130px, 1fr));
+}
+
+.marketplace-search {
+  width: 100%;
+  min-width: 0;
+}
+
+.marketplace-search input {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .marketplace-filter-row {
+    grid-template-columns:
+      minmax(260px, 2fr)
+      repeat(2, minmax(145px, 1fr));
+  }
+
+  .marketplace-search {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 700px) {
+  .marketplace-filter-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .marketplace-search {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .marketplace-select {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .marketplace-filter-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .marketplace-search {
+    grid-column: 1;
+  }
+}
+

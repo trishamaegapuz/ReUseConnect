@@ -2318,13 +2318,17 @@
 
 .seller-listing-modal,
 .seller-listing-view-modal {
-  width: min(760px, 100%);
   max-height: calc(100vh - 40px);
   overflow-y: auto;
   background: #fff;
   border: 1px solid #e3e0ef;
   border-radius: 13px;
   box-shadow: 0 18px 55px rgba(28, 20, 80, .25);
+}
+
+.seller-listing-modal {
+  width: min(1100px, calc(100vw - 40px));
+  max-width: 1100px;
 }
 
 .seller-listing-modal-header {
@@ -3265,9 +3269,13 @@
   }
 
   /* Form modal */
-  .seller-listing-modal,
+  .seller-listing-modal {
+    width: 94vw;
+    max-width: 1100px;
+  }
+
   .seller-listing-view-modal {
-    width: min(94vw, 900px);
+    width: 94vw;
     max-width: 94vw;
   }
 
@@ -3861,5 +3869,379 @@
   .action-icon {
     min-width: 34px;
     min-height: 34px;
+  }
+}
+
+/* Wider Add/Edit Listing form on desktop; responsive on smaller screens */
+@media (max-width: 768px) {
+  .seller-listing-modal {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* ============================================================
+   SELLER LISTING VIEW + DEACTIVATE MODAL REFINEMENTS
+   Scoped overrides; existing add/edit form styles are unchanged.
+============================================================ */
+
+.seller-listing-view-modal {
+  width: min(820px, calc(100vw - 36px));
+  max-width: 820px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.seller-listing-view-modal .seller-listing-modal-header {
+  flex: 0 0 auto;
+  padding: 20px 24px;
+  align-items: center;
+}
+
+.seller-listing-view-modal .seller-listing-modal-header h3 {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.seller-listing-view-content {
+  min-height: 0;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(220px, .9fr) minmax(0, 1.1fr);
+  gap: 26px;
+  overflow-y: auto;
+}
+
+.seller-view-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+}
+
+.seller-view-image {
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #eeebf6;
+}
+
+.seller-view-details h2 {
+  font-size: 25px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.seller-view-info-grid {
+  gap: 10px;
+}
+
+.seller-view-info-grid > div {
+  min-width: 0;
+  padding: 12px;
+}
+
+.seller-view-info-grid strong {
+  display: block;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.seller-listing-view-modal .seller-listing-modal-footer {
+  flex: 0 0 auto;
+  padding: 15px 24px;
+  background: #fff;
+}
+
+.seller-deactivate-backdrop {
+  z-index: 1010;
+}
+
+.seller-deactivate-modal {
+  width: min(520px, calc(100vw - 36px));
+  background: #fff;
+  border: 1px solid #e8e3f2;
+  border-radius: 15px;
+  box-shadow: 0 22px 65px rgba(28, 20, 80, .28);
+  overflow: hidden;
+  animation: sellerModalIn .18s ease-out;
+}
+
+.seller-deactivate-header {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #eeeaf5;
+}
+
+.seller-deactivate-eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  color: #918aa9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+
+.seller-deactivate-header h3 {
+  margin: 0;
+  color: #29206f;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.seller-deactivate-body {
+  padding: 30px 28px 32px;
+  text-align: center;
+}
+
+.seller-deactivate-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c17a16;
+  background: #fff1d9;
+}
+
+.seller-deactivate-body h4 {
+  margin: 0 0 9px;
+  color: #30276e;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.seller-deactivate-body > strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #5b35bd;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.seller-deactivate-body p {
+  max-width: 390px;
+  margin: 0 auto;
+  color: #77718e;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.seller-deactivate-footer {
+  padding: 14px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #eeeaf5;
+}
+
+.seller-deactivate-confirm {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #fff;
+  background: #c7831d;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.seller-deactivate-confirm:hover:not(:disabled) {
+  background: #ae6e12;
+}
+
+.seller-deactivate-confirm:disabled,
+.seller-deactivate-footer button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+@keyframes sellerModalIn {
+  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .seller-listing-view-modal {
+    width: min(520px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+  }
+
+  .seller-listing-view-content {
+    padding: 16px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .seller-view-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-deactivate-body {
+    padding: 24px 18px;
+  }
+
+  .seller-deactivate-footer {
+    padding: 12px 14px;
+  }
+}
+
+
+/* ============================================================
+   CATEGORY-BASED SIZE INVENTORY + COMPACT QUANTITY CONTROL
+============================================================ */
+
+.seller-size-inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.seller-size-inventory-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #dfe5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.seller-size-checkbox {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.seller-size-checkbox span {
+  overflow-wrap: anywhere;
+}
+
+.seller-size-stock-input {
+  width: 64px;
+  min-width: 0;
+  flex: 0 0 64px;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.seller-quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.seller-quantity-control input {
+  width: 88px;
+  min-width: 88px;
+  max-width: 88px;
+  height: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  flex: 0 0 88px;
+}
+
+.seller-quantity-control .seller-quantity-button {
+  flex: 0 0 36px;
+  width: 36px;
+  min-width: 36px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .seller-size-inventory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-quantity-control input {
+    width: 76px;
+    min-width: 76px;
+    max-width: 76px;
+    flex-basis: 76px;
+  }
+}
+
+
+/* ============================================================
+   SIZE INVENTORY LABELS - KEEP EACH SIZE ON ONE LINE
+   Visual-only override. Listing logic and stock behavior unchanged.
+============================================================ */
+
+.seller-size-inventory-grid {
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  align-items: stretch;
+}
+
+.seller-size-inventory-row {
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.seller-size-checkbox {
+  flex: 1 1 auto;
+  min-width: max-content;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.seller-size-checkbox input[type="checkbox"] {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.seller-size-checkbox span {
+  display: inline-block;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  flex: 0 0 auto;
+}
+
+.seller-size-stock-input {
+  flex: 0 0 58px;
+  width: 58px;
+  min-width: 58px;
+}
+
+@media (max-width: 900px) {
+  .seller-size-inventory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .seller-size-inventory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-size-inventory-row {
+    padding: 9px;
+    gap: 6px;
+  }
+
+  .seller-size-stock-input {
+    flex-basis: 52px;
+    width: 52px;
+    min-width: 52px;
   }
 }

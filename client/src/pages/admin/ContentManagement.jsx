@@ -876,20 +876,6 @@ const ContentManagement = () => {
             </div>
 
 
-            <button
-              type="button"
-              className="content-primary-button"
-              onClick={() =>
-                openCreateForm(
-                  activeTab === 'ALL'
-                    ? 'ANNOUNCEMENT'
-                    : activeTab
-                )
-              }
-            >
-              <Plus size={16} />
-              New Content
-            </button>
 
           </div>
 

@@ -34,6 +34,11 @@ router.get('/dashboard', async (req, res) => {
 
   try {
 
+    const requestedDays = Number.parseInt(req.query.days, 10);
+    const chartDays = [7, 30, 90].includes(requestedDays)
+      ? requestedDays
+      : 7;
+
     // ========================================================
     // BASIC COUNTS
     // ========================================================
@@ -126,11 +131,14 @@ router.get('/dashboard', async (req, res) => {
         const feeResult = await pool.query(`
           SELECT
             COALESCE(
-              SUM(platform_fee),
+              SUM(p.platform_fee),
               0
             )::numeric AS total
-          FROM payments
-          WHERE UPPER(status) = 'COMPLETED'
+          FROM payments p
+          INNER JOIN orders o
+            ON o.order_id = p.order_id
+          WHERE UPPER(p.status) = 'PAID'
+            AND UPPER(o.status) = 'COMPLETED'
         `);
 
         platformFee =
@@ -167,7 +175,7 @@ router.get('/dashboard', async (req, res) => {
 
         SELECT
           generate_series(
-            CURRENT_DATE - INTERVAL '6 days',
+            CURRENT_DATE - ($1::int - 1) * INTERVAL '1 day',
             CURRENT_DATE,
             INTERVAL '1 day'
           )::date AS activity_date
@@ -180,7 +188,7 @@ router.get('/dashboard', async (req, res) => {
           created_at::date AS activity_date,
           COUNT(*)::int AS total
         FROM users
-        WHERE created_at >= CURRENT_DATE - INTERVAL '6 days'
+        WHERE created_at >= CURRENT_DATE - ($1::int - 1) * INTERVAL '1 day'
         GROUP BY created_at::date
 
       ),
@@ -191,7 +199,7 @@ router.get('/dashboard', async (req, res) => {
           created_at::date AS activity_date,
           COUNT(*)::int AS total
         FROM listings
-        WHERE created_at >= CURRENT_DATE - INTERVAL '6 days'
+        WHERE created_at >= CURRENT_DATE - ($1::int - 1) * INTERVAL '1 day'
         GROUP BY created_at::date
 
       ),
@@ -202,7 +210,7 @@ router.get('/dashboard', async (req, res) => {
           created_at::date AS activity_date,
           COUNT(*)::int AS total
         FROM orders
-        WHERE created_at >= CURRENT_DATE - INTERVAL '6 days'
+        WHERE created_at >= CURRENT_DATE - ($1::int - 1) * INTERVAL '1 day'
         GROUP BY created_at::date
 
       )
@@ -242,7 +250,7 @@ router.get('/dashboard', async (req, res) => {
 
       ORDER BY days.activity_date ASC
 
-    `);
+    `, [chartDays]);
 
 
     // ========================================================
@@ -289,7 +297,6 @@ router.get('/dashboard', async (req, res) => {
 
       ORDER BY created_at DESC
 
-      LIMIT 5
 
     `);
 
@@ -316,7 +323,6 @@ router.get('/dashboard', async (req, res) => {
 
       ORDER BY l.created_at DESC
 
-      LIMIT 5
 
     `);
 
@@ -343,7 +349,6 @@ router.get('/dashboard', async (req, res) => {
 
       ORDER BY o.created_at DESC
 
-      LIMIT 5
 
     `);
 
@@ -400,9 +405,8 @@ router.get('/dashboard', async (req, res) => {
           c.name
 
         ORDER BY
-          orders DESC
-
-        LIMIT 5
+          orders DESC,
+          c.name ASC
 
       `);
 
@@ -567,8 +571,7 @@ router.get('/dashboard', async (req, res) => {
         (a, b) =>
           new Date(b.created_at) -
           new Date(a.created_at)
-      )
-      .slice(0, 5);
+      );
 
 
     // ========================================================

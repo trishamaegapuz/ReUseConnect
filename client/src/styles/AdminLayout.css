@@ -611,3 +611,52 @@ body.admin-mobile-menu-open {
     font-size: 13px !important;
   }
 }
+
+
+/* ============================================================
+   DESKTOP SIDEBAR SCROLL FIX
+   Keep the sidebar stationary while only the main area scrolls.
+   This is intentionally desktop-only; existing mobile drawer
+   and responsive styles above remain unchanged.
+============================================================ */
+
+@media (min-width: 769px) {
+
+  .admin-app {
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    min-height: 0;
+    z-index: 1000;
+  }
+
+  .admin-main {
+    height: 100vh;
+    min-height: 0;
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    box-sizing: border-box;
+  }
+
+}
+
+/* Match the existing 210px sidebar width on tablet-sized screens. */
+@media (min-width: 769px) and (max-width: 900px) {
+
+  .admin-main {
+    margin-left: 210px;
+    width: calc(100% - 210px);
+  }
+
+}

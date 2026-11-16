@@ -216,6 +216,7 @@
   min-width: 0;
   padding: 4px 20px 18px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .chart-legend {
@@ -259,7 +260,8 @@
   display: block;
   width: 100%;
   height: 265px;
-  overflow: visible;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .chart-grid-line {
@@ -1396,14 +1398,6 @@
   }
 
 
-  .platform-chart-svg {
-
-    min-width: 500px;
-
-    height: 190px;
-  }
-
-
   /* ==========================================================
      DISTRIBUTION
   ========================================================== */
@@ -1556,12 +1550,6 @@
   }
 
 
-  .platform-chart-svg {
-
-    min-width: 470px;
-  }
-
-
   .activity-table-header,
   .activity-table-row {
 
@@ -1648,4 +1636,90 @@
       16px !important;
   }
 
+}
+
+/* ============================================================
+   DASHBOARD PAGINATION
+============================================================ */
+.dashboard-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 18px 16px;
+  border-top: 1px solid #f0eef6;
+  color: #77748e;
+  font-size: 12px;
+}
+
+.pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-actions button {
+  border: 1px solid #ded8ef;
+  border-radius: 7px;
+  background: #fff;
+  color: #5930b3;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pagination-actions button:hover:not(:disabled) {
+  background: #f3efff;
+}
+
+.pagination-actions button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .dashboard-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+
+/* PLATFORM OVERVIEW CHART - CLEAN DATE AXIS */
+.platform-panel {
+  min-width: 0;
+}
+
+.platform-chart {
+  overflow: hidden;
+}
+
+.platform-chart-svg {
+  width: 100%;
+  max-width: 100%;
+  height: 265px;
+  display: block;
+  overflow: hidden;
+}
+
+.chart-date-text {
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+@media (max-width: 900px) {
+  .platform-chart {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .platform-chart-svg {
+    height: 235px;
+  }
+
+  .chart-date-text {
+    font-size: 10px;
+  }
 }

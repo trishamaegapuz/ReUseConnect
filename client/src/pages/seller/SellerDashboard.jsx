@@ -355,6 +355,80 @@ const EmptyState = ({
 
 
 // ============================================================
+// DASHBOARD TABLE / LIST PAGINATION
+// ============================================================
+
+const DashboardPagination = ({
+  currentPage,
+  totalItems,
+  pageSize = 5,
+  onPageChange
+}) => {
+  const totalPages = Math.max(
+    1,
+    Math.ceil(totalItems / pageSize)
+  );
+
+  if (totalItems <= pageSize) {
+    return null;
+  }
+
+  const startItem = (currentPage - 1) * pageSize + 1;
+  const endItem = Math.min(
+    currentPage * pageSize,
+    totalItems
+  );
+
+  return (
+    <div className="seller-dashboard-pagination">
+      <span className="seller-dashboard-pagination-info">
+        Showing {startItem}-{endItem} of {totalItems}
+      </span>
+
+      <div className="seller-dashboard-pagination-controls">
+        <button
+          type="button"
+          className="seller-dashboard-page-button"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage <= 1}
+          aria-label="Previous page"
+        >
+          Previous
+        </button>
+
+        {Array.from(
+          { length: totalPages },
+          (_, index) => index + 1
+        ).map((page) => (
+          <button
+            type="button"
+            key={page}
+            className={`seller-dashboard-page-button ${
+              currentPage === page ? "active" : ""
+            }`}
+            onClick={() => onPageChange(page)}
+            aria-current={currentPage === page ? "page" : undefined}
+          >
+            {page}
+          </button>
+        ))}
+
+        <button
+          type="button"
+          className="seller-dashboard-page-button"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage >= totalPages}
+          aria-label="Next page"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
+
+
+// ============================================================
 // SELLER DASHBOARD
 // ============================================================
 
@@ -388,6 +462,21 @@ const SellerDashboard = () => {
     publishedContent,
     setPublishedContent
   ] = useState([]);
+
+
+  const [
+    listingsPage,
+    setListingsPage
+  ] = useState(1);
+
+
+  const [
+    ordersPage,
+    setOrdersPage
+  ] = useState(1);
+
+
+  const DASHBOARD_PAGE_SIZE = 5;
 
 
   // ==========================================================
@@ -560,6 +649,18 @@ const SellerDashboard = () => {
     )
       ? dashboard.recentOrders
       : [];
+
+
+  const paginatedListings = recentListings.slice(
+    (listingsPage - 1) * DASHBOARD_PAGE_SIZE,
+    listingsPage * DASHBOARD_PAGE_SIZE
+  );
+
+
+  const paginatedOrders = recentOrders.slice(
+    (ordersPage - 1) * DASHBOARD_PAGE_SIZE,
+    ordersPage * DASHBOARD_PAGE_SIZE
+  );
 
 
   const monthlySales =
@@ -1313,7 +1414,7 @@ const SellerDashboard = () => {
 
                 <tbody>
 
-                  {recentListings.map(
+                  {paginatedListings.map(
                     (
                       listing
                     ) => (
@@ -1438,6 +1539,13 @@ const SellerDashboard = () => {
 
           )}
 
+          <DashboardPagination
+            currentPage={listingsPage}
+            totalItems={recentListings.length}
+            pageSize={DASHBOARD_PAGE_SIZE}
+            onPageChange={setListingsPage}
+          />
+
         </div>
 
 
@@ -1484,7 +1592,7 @@ const SellerDashboard = () => {
 
             <div className="seller-recent-orders-list">
 
-              {recentOrders.map(
+              {paginatedOrders.map(
                 (
                   order
                 ) => {
@@ -1595,6 +1703,13 @@ const SellerDashboard = () => {
             </div>
 
           )}
+
+          <DashboardPagination
+            currentPage={ordersPage}
+            totalItems={recentOrders.length}
+            pageSize={DASHBOARD_PAGE_SIZE}
+            onPageChange={setOrdersPage}
+          />
 
         </div>
 

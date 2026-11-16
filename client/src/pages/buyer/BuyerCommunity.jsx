@@ -1289,11 +1289,20 @@ const BuyerCommunity = () => {
   ========================================================== */
 
   const browseMarketplace = () => {
+    navigate('/buyer/marketplace');
+  };
 
-    navigate(
-      '/buyer/marketplace'
-    );
+  const exploreCommunity = () => {
+    setActiveTab('discussions');
+    setSearch('');
+    setSearchInput('');
+    setActiveCategory('');
+    setPage(1);
+    loadPosts();
+  };
 
+  const startCommunityDiscussion = () => {
+    openCreatePost();
   };
 
 
@@ -1745,6 +1754,7 @@ const BuyerCommunity = () => {
 
                     const activityTitle =
                       activity.title ||
+                      activity.activity_title ||
                       'Community activity';
 
                     const activityType =
@@ -1775,9 +1785,11 @@ const BuyerCommunity = () => {
                               post_id:
                                 activity.post_id,
                               title:
-                                activity.title,
+                                activity.title ||
+                                activity.activity_title,
                               body:
-                                activity.body,
+                                activity.body ||
+                                activity.activity_body,
                               category:
                                 activity.category
                             });
@@ -1815,9 +1827,13 @@ const BuyerCommunity = () => {
                             {activityTitle}
                           </span>
 
-                          {activity.comment_text && (
+                          {(activity.comment_text ||
+                            (activityType === 'comment'
+                              ? activity.activity_title
+                              : '')) && (
                             <small>
-                              {activity.comment_text}
+                              {activity.comment_text ||
+                                activity.activity_title}
                             </small>
                           )}
 
@@ -1825,7 +1841,8 @@ const BuyerCommunity = () => {
 
                         <span className="community-activity-date">
                           {formatTimeAgo(
-                            activity.activity_date
+                            activity.activity_date ||
+                            activity.created_at
                           )}
                         </span>
 
@@ -2321,7 +2338,7 @@ const BuyerCommunity = () => {
               type="button"
               className="community-quick-action"
               onClick={
-                openCreatePost
+                startCommunityDiscussion
               }
             >
 
@@ -2343,10 +2360,8 @@ const BuyerCommunity = () => {
             <button
               type="button"
               className="community-quick-action"
-              onClick={() =>
-                handleTabChange(
-                  'discussions'
-                )
+              onClick={
+                exploreCommunity
               }
             >
 
@@ -2483,34 +2498,7 @@ const BuyerCommunity = () => {
                   flexShrink: 0
                 }}
               >
-
-                <button
-                  type="button"
-                  className="community-modal-exit"
-                  onClick={closePost}
-                  title="Exit post and return to Community"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px',
-                    minHeight: '36px',
-                    padding: '0 12px',
-                    border: '1px solid #d1d5db',
-                    borderRadius: '8px',
-                    background: '#ffffff',
-                    color: '#374151',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  <X size={15} />
-                  EXIT
-                </button>
-
-                <button
+<button
                   type="button"
                   className="community-modal-close"
                   onClick={closePost}
@@ -3110,42 +3098,7 @@ const BuyerCommunity = () => {
               </>
 
             )}
-
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              padding: '12px 0 4px',
-              borderTop: '1px solid #eee',
-              marginTop: '16px'
-            }}
-          >
-            <button
-              type="button"
-              className="community-modal-exit-bottom"
-              onClick={closePost}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '7px',
-                minHeight: '38px',
-                padding: '0 18px',
-                border: 'none',
-                borderRadius: '8px',
-                background: '#6b2c91',
-                color: '#ffffff',
-                fontSize: '13px',
-                fontWeight: 700,
-                cursor: 'pointer'
-              }}
-            >
-              <X size={16} />
-              Exit
-            </button>
-          </div>
-
-          </div>
+</div>
 
         </div>
 

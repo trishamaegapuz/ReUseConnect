@@ -138,97 +138,63 @@ const BuyerLayout = ({
 
 
   // ==========================================================
-  // GET LOGGED-IN BUYER
+  // GET AND SYNC LOGGED-IN BUYER
   // ==========================================================
 
   useEffect(() => {
-
-    /*
-    If user is supplied through props,
-    use that user.
-    */
-
-    if (userProp) {
-
-      setLoggedInUser(userProp);
-
-      return;
-
-    }
-
-
-    /*
-    Get saved user from localStorage.
-    */
-
-    const getStoredUser = () => {
-
+    const readStoredUser = () => {
       try {
-
-        const storedUser =
-          localStorage.getItem('user');
-
-
-        if (!storedUser) {
-
-          setLoggedInUser(null);
-
-          return;
-
-        }
-
-
-        const parsedUser =
-          JSON.parse(storedUser);
-
-
-        setLoggedInUser(parsedUser);
-
+        const raw = localStorage.getItem('user');
+        if (!raw) return null;
+        return JSON.parse(raw);
       } catch (error) {
-
-        console.error(
-          'BUYER LAYOUT USER ERROR:',
-          error
-        );
-
-        setLoggedInUser(null);
-
+        console.error('BUYER LAYOUT USER ERROR:', error);
+        return null;
       }
-
     };
 
+    const refreshUser = () => {
+      const storedUser = readStoredUser();
 
-    getStoredUser();
-
-
-    /*
-    Listen for localStorage changes.
-    */
-
-    const handleStorageChange = () => {
-
-      getStoredUser();
-
+      // localStorage contains the latest profile after an Account update.
+      // Merge it last so stale userProp photo fields cannot overwrite it.
+      if (userProp || storedUser) {
+        setLoggedInUser({
+          ...(userProp || {}),
+          ...(storedUser || {})
+        });
+      } else {
+        setLoggedInUser(null);
+      }
     };
 
+    const handleBuyerProfileUpdated = (event) => {
+      if (event?.detail?.user) {
+        setLoggedInUser({
+          ...(userProp || {}),
+          ...event.detail.user
+        });
+      } else {
+        refreshUser();
+      }
+    };
 
+    refreshUser();
+
+    window.addEventListener('storage', refreshUser);
     window.addEventListener(
-      'storage',
-      handleStorageChange
+      'buyer-profile-updated',
+      handleBuyerProfileUpdated
     );
 
-
     return () => {
-
+      window.removeEventListener('storage', refreshUser);
       window.removeEventListener(
-        'storage',
-        handleStorageChange
+        'buyer-profile-updated',
+        handleBuyerProfileUpdated
       );
-
     };
-
   }, [userProp]);
-
 
   // ==========================================================
   // OPEN MOBILE SIDEBAR

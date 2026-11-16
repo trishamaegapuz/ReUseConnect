@@ -1,13 +1,12 @@
 import React from 'react';
 
 import {
-  Bell,
-  Heart,
   ShoppingCart,
   Menu
 } from 'lucide-react';
 
 import {
+  useLocation,
   useNavigate
 } from 'react-router-dom';
 
@@ -20,6 +19,58 @@ const BuyerHeader = ({
 }) => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  /*
+  ============================================================
+  CURRENT PAGE TITLE
+  ============================================================
+  */
+
+  const getPageTitle = () => {
+    const path = location.pathname.replace(/\/+$/, '') || '/';
+
+    const pageTitles = {
+      '/buyer-dashboard': 'Buyer Dashboard',
+      '/buyer/marketplace': 'Marketplace',
+      '/buyer/transactions': 'Transactions',
+      '/buyer/community': 'Community',
+      '/buyer/reuse-tools': 'Reuse Tools',
+      '/buyer/account': 'Account',
+      '/buyer/notifications': 'Notifications',
+      '/buyer/favorites': 'Favorites',
+      '/buyer/cart': 'Shopping Cart',
+    };
+
+    if (pageTitles[path]) {
+      return pageTitles[path];
+    }
+
+    // Handle nested pages such as marketplace product details
+    // and transaction detail pages without leaving the title static.
+    if (path.startsWith('/buyer/marketplace/')) {
+      return 'Marketplace';
+    }
+
+    if (path.startsWith('/buyer/transactions/')) {
+      return 'Transactions';
+    }
+
+    if (path.startsWith('/buyer/community/')) {
+      return 'Community';
+    }
+
+    if (path.startsWith('/buyer/reuse-tools/')) {
+      return 'Reuse Tools';
+    }
+
+    if (path.startsWith('/buyer/account/')) {
+      return 'Account';
+    }
+
+    return 'Buyer Dashboard';
+  };
 
 
   /*
@@ -56,20 +107,6 @@ const BuyerHeader = ({
   NAVIGATION
   ============================================================
   */
-
-  const handleNotifications = () => {
-
-    navigate('/buyer/notifications');
-
-  };
-
-
-  const handleFavorites = () => {
-
-    navigate('/buyer/favorites');
-
-  };
-
 
   const handleCart = () => {
 
@@ -130,7 +167,7 @@ const BuyerHeader = ({
         {/* DESKTOP PAGE TITLE */}
 
         <h1 className="buyer-page-title">
-          Buyer Dashboard
+          {getPageTitle()}
         </h1>
 
       </div>
@@ -141,59 +178,6 @@ const BuyerHeader = ({
       ==================================================== */}
 
       <div className="buyer-header-right">
-
-
-        {/* ==================================================
-            NOTIFICATIONS
-        ================================================== */}
-
-        <button
-          type="button"
-          className="buyer-header-icon-button"
-          onClick={handleNotifications}
-          title="Notifications"
-          aria-label="Notifications"
-        >
-
-          <Bell
-            size={21}
-            strokeWidth={2}
-          />
-
-
-          {notificationCount > 0 && (
-
-            <span className="buyer-notification-badge">
-
-              {notificationCount > 99
-                ? '99+'
-                : notificationCount}
-
-            </span>
-
-          )}
-
-        </button>
-
-
-        {/* ==================================================
-            FAVORITES
-        ================================================== */}
-
-        <button
-          type="button"
-          className="buyer-header-icon-button"
-          onClick={handleFavorites}
-          title="Favorites"
-          aria-label="Favorites"
-        >
-
-          <Heart
-            size={21}
-            strokeWidth={2}
-          />
-
-        </button>
 
 
         {/* ==================================================

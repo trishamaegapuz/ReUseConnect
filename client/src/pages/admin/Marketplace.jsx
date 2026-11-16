@@ -16,7 +16,6 @@ import {
   PauseCircle,
   Plus,
   RefreshCw,
-  RotateCcw,
   Search,
   ShieldAlert,
   Tag,
@@ -421,15 +420,23 @@ const getListingSizes = (
   if (Array.isArray(raw)) {
 
     return raw
-      .map((item) =>
-        typeof item === 'object'
-          ? (
-              item?.size ??
-              item?.name ??
-              ''
-            )
-          : item
-      )
+      .map((item) => {
+        if (item && typeof item === 'object') {
+          const sizeName =
+            item?.size ?? item?.name ?? item?.label ?? '';
+
+          if (!sizeName) return '';
+
+          const quantity =
+            item?.quantity ?? item?.stock ?? item?.available_quantity;
+
+          return quantity !== undefined && quantity !== null
+            ? `${sizeName} (${quantity})`
+            : sizeName;
+        }
+
+        return item;
+      })
       .filter(Boolean)
       .join(', ');
 
@@ -440,7 +447,19 @@ const getListingSizes = (
     typeof raw === 'object'
   ) {
 
-    return Object.values(raw)
+    return Object.entries(raw)
+      .map(([key, value]) => {
+        if (value && typeof value === 'object') {
+          const quantity =
+            value?.quantity ?? value?.stock ?? value?.available_quantity;
+
+          return quantity !== undefined && quantity !== null
+            ? `${value?.size ?? key} (${quantity})`
+            : (value?.size ?? key);
+        }
+
+        return `${key} (${value})`;
+      })
       .filter(Boolean)
       .join(', ');
 
@@ -462,15 +481,23 @@ const getListingSizes = (
       if (Array.isArray(parsed)) {
 
         return parsed
-          .map((item) =>
-            typeof item === 'object'
-              ? (
-                  item?.size ??
-                  item?.name ??
-                  ''
-                )
-              : item
-          )
+          .map((item) => {
+            if (item && typeof item === 'object') {
+              const sizeName =
+                item?.size ?? item?.name ?? item?.label ?? '';
+
+              if (!sizeName) return '';
+
+              const quantity =
+                item?.quantity ?? item?.stock ?? item?.available_quantity;
+
+              return quantity !== undefined && quantity !== null
+                ? `${sizeName} (${quantity})`
+                : sizeName;
+            }
+
+            return item;
+          })
           .filter(Boolean)
           .join(', ');
 
@@ -481,7 +508,19 @@ const getListingSizes = (
         typeof parsed === 'object'
       ) {
 
-        return Object.values(parsed)
+        return Object.entries(parsed)
+          .map(([key, value]) => {
+            if (value && typeof value === 'object') {
+              const quantity =
+                value?.quantity ?? value?.stock ?? value?.available_quantity;
+
+              return quantity !== undefined && quantity !== null
+                ? `${value?.size ?? key} (${quantity})`
+                : (value?.size ?? key);
+            }
+
+            return `${key} (${value})`;
+          })
           .filter(Boolean)
           .join(', ');
 
@@ -685,6 +724,16 @@ const Marketplace = () => {
   const [
     savingCategory,
     setSavingCategory
+  ] = useState(false);
+
+  const [
+    categoryToDelete,
+    setCategoryToDelete
+  ] = useState(null);
+
+  const [
+    deletingCategory,
+    setDeletingCategory
   ] = useState(false);
 
 
@@ -987,7 +1036,8 @@ const Marketplace = () => {
 
       setStatusPrompt({
         listing,
-        newStatus
+        newStatus,
+        rejectionReason: ''
       });
 
     };
@@ -1017,6 +1067,26 @@ const Marketplace = () => {
         statusPrompt.newStatus;
 
 
+      const rejectionReason =
+        String(
+          statusPrompt.rejectionReason || ''
+        ).trim();
+
+
+      if (
+        normalizeStatus(newStatus) === 'REJECTED' &&
+        !rejectionReason
+      ) {
+
+        setError(
+          'Please provide a reason for rejecting this listing.'
+        );
+
+        return;
+
+      }
+
+
       const listingId =
         getListingId(listing);
 
@@ -1043,7 +1113,8 @@ const Marketplace = () => {
 
         await updateAdminListingStatus(
           listingId,
-          newStatus
+          newStatus,
+          rejectionReason
         );
 
 
@@ -1335,102 +1406,62 @@ const Marketplace = () => {
 
   // ==========================================================
   // CATEGORY DELETE
-  // ==========================================================
 
-  const handleDeleteCategory =
-    async (
-      category
-    ) => {
+  const handleDeleteCategory = (category) => {
+    const categoryId = getCategoryId(category);
 
-      const categoryId =
-        getCategoryId(
-          category
-        );
+    if (!categoryId) {
+      setError('Category ID was not found.');
+      return;
+    }
 
-
-      const categoryName =
-        getCategoryName(
-          category
-        );
+    setCategoryToDelete(category);
+  };
 
 
-      if (!categoryId) {
+  const closeDeleteCategoryModal = () => {
+    if (!deletingCategory) {
+      setCategoryToDelete(null);
+    }
+  };
 
-        setError(
-          'Category ID was not found.'
-        );
 
-        return;
+  const confirmDeleteCategory = async () => {
+    if (!categoryToDelete || deletingCategory) return;
 
+    const categoryId = getCategoryId(categoryToDelete);
+    const categoryName = getCategoryName(categoryToDelete);
+
+    if (!categoryId) {
+      setError('Category ID was not found.');
+      return;
+    }
+
+    try {
+      setDeletingCategory(true);
+      setError('');
+      setSuccess('');
+
+      await deleteMarketplaceCategory(categoryId);
+
+      if (String(categoryFilter) === String(categoryId)) {
+        setCategoryFilter('');
+        setPage(1);
       }
 
+      setCategoryToDelete(null);
+      setSuccess(`Category "${categoryName}" was deleted successfully.`);
+      await loadMarketplace(false);
 
-      const confirmed =
-        window.confirm(
-          `Delete category "${categoryName}"?\n\nThis action cannot be undone.`
-        );
-
-
-      if (!confirmed) {
-
-        return;
-
-      }
-
-
-      try {
-
-        setError('');
-
-        setSuccess('');
+    } catch (err) {
+      console.error('Delete category error:', err);
+      setError(err?.message || 'Unable to delete category.');
+    } finally {
+      setDeletingCategory(false);
+    }
+  };
 
 
-        await deleteMarketplaceCategory(
-          categoryId
-        );
-
-
-        if (
-          String(
-            categoryFilter
-          ) ===
-          String(categoryId)
-        ) {
-
-          setCategoryFilter('');
-
-          setPage(1);
-
-        }
-
-
-        setSuccess(
-          `Category "${categoryName}" was deleted successfully.`
-        );
-
-
-        await loadMarketplace(
-          false
-        );
-
-      } catch (err) {
-
-        console.error(
-          'Delete category error:',
-          err
-        );
-
-        setError(
-          err?.message ||
-          'Unable to delete category.'
-        );
-
-      }
-
-    };
-
-
-  // ==========================================================
   // PAGINATION
   // ==========================================================
 
@@ -1988,26 +2019,28 @@ const Marketplace = () => {
 
                 </select>
 
-
                 <button
                   type="button"
-                  className="marketplace-reset-button"
+                  className="marketplace-refresh-button"
                   onClick={
-                    resetFilters
+                    handleRefresh
+                  }
+                  disabled={
+                    refreshing
                   }
                 >
-
-                  <RotateCcw
+                  <RefreshCw
                     size={14}
+                    className={
+                      refreshing
+                        ? 'spinning'
+                        : ''
+                    }
                   />
-
-                  Reset
-
+                  Refresh
                 </button>
               </div>
 
-
-              {/* REFRESH */}
 
               <div className="marketplace-table-heading">
 
@@ -2023,30 +2056,6 @@ const Marketplace = () => {
 
                 </div>
 
-
-                <button
-                  type="button"
-                  className="marketplace-refresh-button"
-                  onClick={
-                    handleRefresh
-                  }
-                  disabled={
-                    refreshing
-                  }
-                >
-
-                  <RefreshCw
-                    size={14}
-                    className={
-                      refreshing
-                        ? 'spinning'
-                        : ''
-                    }
-                  />
-
-                  Refresh
-
-                </button>
 
               </div>
 
@@ -2315,7 +2324,7 @@ const Marketplace = () => {
 
                               <td>
 
-                                <span className="sizes-badge">
+                                <span className="sizes-badge sizes-badge-full">
 
                                   {
                                     displayListingSizes(
@@ -3192,7 +3201,7 @@ const Marketplace = () => {
             }}
           >
 
-            <div className="marketplace-modal">
+            <div className="marketplace-modal listing-view-modal">
 
               <div className="marketplace-modal-header">
 
@@ -3381,7 +3390,7 @@ const Marketplace = () => {
                       Sizes
                     </span>
 
-                    <strong>
+                    <strong className="sizes-detail-value">
                       {
                         displayListingSizes(
                           selectedListing
@@ -3869,6 +3878,76 @@ const Marketplace = () => {
 
       )}
 
+      {/* DELETE CATEGORY CONFIRMATION MODAL */}
+      {categoryToDelete && (
+        <div
+          className="marketplace-modal-backdrop category-delete-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget && !deletingCategory) {
+              closeDeleteCategoryModal();
+            }
+          }}
+        >
+          <div
+            className="marketplace-modal category-delete-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-category-title"
+          >
+            <div className="marketplace-modal-header">
+              <div>
+                <span>CATEGORY MANAGEMENT</span>
+                <h2 id="delete-category-title">Delete Category</h2>
+              </div>
+              <button
+                type="button"
+                aria-label="Close delete category dialog"
+                disabled={deletingCategory}
+                onClick={closeDeleteCategoryModal}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="category-delete-content">
+              <div className="category-delete-icon">
+                <Trash2 size={25} />
+              </div>
+              <h3>Are you sure you want to delete this category?</h3>
+              <p>
+                You are about to delete{' '}
+                <strong>{getCategoryName(categoryToDelete)}</strong>.
+                {' '}This action cannot be undone.
+              </p>
+              <div className="category-delete-info">
+                <span>Category ID</span>
+                <strong>{getCategoryId(categoryToDelete) ?? '—'}</strong>
+              </div>
+            </div>
+
+            <div className="marketplace-modal-footer category-delete-footer">
+              <button
+                type="button"
+                className="modal-cancel"
+                disabled={deletingCategory}
+                onClick={closeDeleteCategoryModal}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="category-delete-submit"
+                disabled={deletingCategory}
+                onClick={confirmDeleteCategory}
+              >
+                <Trash2 size={14} />
+                {deletingCategory ? 'Deleting...' : 'Delete Category'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ======================================================
           STATUS CONFIRMATION PROMPT
           ====================================================== */}
@@ -3891,7 +3970,15 @@ const Marketplace = () => {
           }}
         >
 
-          <div className="marketplace-modal status-confirm-modal">
+          <div
+            className={`marketplace-modal status-confirm-modal ${
+              normalizeStatus(statusPrompt?.newStatus) === 'REJECTED'
+                ? 'is-reject'
+                : normalizeStatus(statusPrompt?.newStatus) === 'INACTIVE'
+                  ? 'is-suspend'
+                  : 'is-approve'
+            }`}
+          >
 
             <div className="marketplace-modal-header">
 
@@ -3991,6 +4078,76 @@ const Marketplace = () => {
                     : 'The listing will be available for marketplace users again.'}
 
               </p>
+
+
+              {normalizeStatus(
+                statusPrompt?.newStatus
+              ) === 'REJECTED' && (
+
+                <div
+                  style={{
+                    marginTop: '16px',
+                    width: '100%'
+                  }}
+                >
+
+                  <label
+                    htmlFor="listing-rejection-reason"
+                    style={{
+                      display: 'block',
+                      marginBottom: '8px',
+                      fontWeight: 600
+                    }}
+                  >
+                    Reason for rejection *
+                  </label>
+
+                  <textarea
+                    id="listing-rejection-reason"
+                    value={
+                      statusPrompt?.rejectionReason || ''
+                    }
+                    onChange={(event) => {
+
+                      const value =
+                        event.target.value.slice(0, 1000);
+
+                      setStatusPrompt((current) => ({
+                        ...current,
+                        rejectionReason: value
+                      }));
+
+                    }}
+                    placeholder="Explain why this listing is being rejected..."
+                    rows={4}
+                    maxLength={1000}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      minHeight: '110px',
+                      padding: '12px',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '8px',
+                      resize: 'vertical',
+                      font: 'inherit',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+
+                  <small
+                    style={{
+                      display: 'block',
+                      marginTop: '5px',
+                      color: '#6b7280',
+                      textAlign: 'right'
+                    }}
+                  >
+                    {(statusPrompt?.rejectionReason || '').length}/1000
+                  </small>
+
+                </div>
+
+              )}
 
             </div>
 

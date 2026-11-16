@@ -9,16 +9,6 @@ const ENV_API_URL =
 // ============================================================
 // API BASE URL
 // ============================================================
-//
-// Server routes are mounted under:
-// http://localhost:5000/api
-//
-// Example:
-// /buyer/marketplace
-// becomes:
-// http://localhost:5000/api/buyer/marketplace
-//
-// ============================================================
 
 const API_BASE_URL = ENV_API_URL.endsWith('/api')
     ? ENV_API_URL
@@ -64,8 +54,7 @@ const request = async (
         ? endpoint
         : `/${endpoint}`;
 
-    const url =
-        `${API_BASE_URL}${cleanEndpoint}`;
+    const url = `${API_BASE_URL}${cleanEndpoint}`;
 
     console.log(
         '[Buyer Marketplace API]',
@@ -73,13 +62,10 @@ const request = async (
         url
     );
 
-    const response = await fetch(
-        url,
-        {
-            ...options,
-            headers
-        }
-    );
+    const response = await fetch(url, {
+        ...options,
+        headers
+    });
 
     let data = null;
 
@@ -90,7 +76,6 @@ const request = async (
     }
 
     if (!response.ok) {
-
         console.error(
             '[Buyer Marketplace API Error]',
             response.status,
@@ -104,30 +89,20 @@ const request = async (
             '';
 
         if (!message) {
-
             if (response.status === 401) {
-                message =
-                    'Authentication required.';
+                message = 'Authentication required.';
             } else if (response.status === 403) {
-                message =
-                    'You are not allowed to perform this action.';
+                message = 'You are not allowed to perform this action.';
             } else if (response.status === 404) {
-                message =
-                    'API route not found.';
+                message = 'API route not found.';
             } else {
-                message =
-                    `Request failed with status ${response.status}.`;
+                message = `Request failed with status ${response.status}.`;
             }
         }
 
-        const error =
-            new Error(message);
-
-        error.status =
-            response.status;
-
-        error.data =
-            data;
+        const error = new Error(message);
+        error.status = response.status;
+        error.data = data;
 
         throw error;
     }
@@ -138,296 +113,150 @@ const request = async (
 
 // ============================================================
 // MARKETPLACE ITEMS
-// ============================================================
-//
-// GET
-// /api/buyer/marketplace
-//
+// GET /api/buyer/marketplace
 // ============================================================
 
-export const getMarketplaceItems =
-    async (params = {}) => {
+export const getMarketplaceItems = async (params = {}) => {
+    const searchParams = new URLSearchParams();
 
-        const searchParams =
-            new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+        if (
+            value !== undefined &&
+            value !== null &&
+            value !== ''
+        ) {
+            searchParams.append(key, value);
+        }
+    });
 
-        Object.entries(params).forEach(
-            ([key, value]) => {
+    const queryString = searchParams.toString();
 
-                if (
-                    value !== undefined &&
-                    value !== null &&
-                    value !== ''
-                ) {
-                    searchParams.append(
-                        key,
-                        value
-                    );
-                }
-            }
-        );
-
-        const queryString =
-            searchParams.toString();
-
-        return request(
-            `/buyer/marketplace${
-                queryString
-                    ? `?${queryString}`
-                    : ''
-            }`
-        );
-    };
+    return request(
+        `/buyer/marketplace${queryString ? `?${queryString}` : ''}`
+    );
+};
 
 
 // ============================================================
 // MARKETPLACE CATEGORIES
 // ============================================================
-//
-// GET
-// /api/buyer/marketplace/categories
-//
-// ============================================================
 
-export const getMarketplaceCategories =
-    async () => {
-
-        return request(
-            '/buyer/marketplace/categories'
-        );
-    };
+export const getMarketplaceCategories = async () => {
+    return request('/buyer/marketplace/categories');
+};
 
 
 // ============================================================
 // WISHLIST / FAVORITES
 // ============================================================
-//
-// GET
-// /api/buyer/marketplace/favorites
-//
-// ============================================================
 
-export const getWishlist =
-    async () => {
+export const getWishlist = async () => {
+    return request('/buyer/marketplace/favorites');
+};
 
-        return request(
-            '/buyer/marketplace/favorites'
-        );
-    };
+export const addToWishlist = async (listingId) => {
+    return request('/buyer/marketplace/favorites', {
+        method: 'POST',
+        body: JSON.stringify({
+            listing_id: listingId
+        })
+    });
+};
 
-
-// ============================================================
-// ADD TO WISHLIST
-// ============================================================
-//
-// POST
-// /api/buyer/marketplace/favorites
-//
-// Body:
-// {
-//     listing_id: 123
-// }
-//
-// ============================================================
-
-export const addToWishlist =
-    async (listingId) => {
-
-        return request(
-            '/buyer/marketplace/favorites',
-            {
-                method: 'POST',
-
-                body: JSON.stringify({
-                    listing_id:
-                        listingId
-                })
-            }
-        );
-    };
-
-
-// ============================================================
-// REMOVE FROM WISHLIST
-// ============================================================
-//
-// DELETE
-// /api/buyer/marketplace/favorites/:listingId
-//
-// ============================================================
-
-export const removeFromWishlist =
-    async (listingId) => {
-
-        return request(
-            `/buyer/marketplace/favorites/${listingId}`,
-            {
-                method: 'DELETE'
-            }
-        );
-    };
+export const removeFromWishlist = async (listingId) => {
+    return request(`/buyer/marketplace/favorites/${listingId}`, {
+        method: 'DELETE'
+    });
+};
 
 
 // ============================================================
 // CART
 // ============================================================
-//
-// GET
-// /api/buyer/marketplace/cart
-//
-// ============================================================
 
-export const getCart =
-    async () => {
-
-        return request(
-            '/buyer/marketplace/cart'
-        );
-    };
+export const getCart = async () => {
+    return request('/buyer/marketplace/cart');
+};
 
 
 // ============================================================
 // ADD TO CART
-// ============================================================
+// POST /api/buyer/marketplace/cart
 //
-// POST
-// /api/buyer/marketplace/cart
-//
-// Body:
-// {
-//     listing_id: 123,
-//     quantity: 1
-// }
-//
+// size is optional for listings that do not use sizes.
+// For sized listings, pass the selected size, for example:
+// addToCart(listingId, 1, 'M')
 // ============================================================
 
-export const addToCart =
-    async (
-        listingId,
-        quantity = 1
-    ) => {
-
-        return request(
-            '/buyer/marketplace/cart',
-            {
-                method: 'POST',
-
-                body: JSON.stringify({
-                    listing_id:
-                        listingId,
-
-                    quantity:
-                        quantity
-                })
-            }
-        );
-    };
+export const addToCart = async (
+    listingId,
+    quantity = 1,
+    size = null
+) => {
+    return request('/buyer/marketplace/cart', {
+        method: 'POST',
+        body: JSON.stringify({
+            listing_id: listingId,
+            quantity,
+            size: size ? String(size).trim() : null
+        })
+    });
+};
 
 
 // ============================================================
 // UPDATE CART ITEM
-// ============================================================
+// PATCH /api/buyer/marketplace/cart/:cartItemId
 //
-// PATCH
-// /api/buyer/marketplace/cart/:listingId
-//
-// Body:
-// {
-//     quantity: 2
-// }
-//
+// IMPORTANT: Pass cart_item_id, not listing_id.
 // ============================================================
 
-export const updateCartItem =
-    async (
-        listingId,
-        quantity
-    ) => {
-
-        return request(
-            `/buyer/marketplace/cart/${listingId}`,
-            {
-                method: 'PATCH',
-
-                body: JSON.stringify({
-                    quantity:
-                        quantity
-                })
-            }
-        );
-    };
+export const updateCartItem = async (
+    cartItemId,
+    quantity
+) => {
+    return request(`/buyer/marketplace/cart/${cartItemId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            quantity
+        })
+    });
+};
 
 
 // ============================================================
-// REMOVE FROM CART
-// ============================================================
-//
-// DELETE
-// /api/buyer/marketplace/cart/:listingId
-//
+// REMOVE CART ITEM
+// DELETE /api/buyer/marketplace/cart/:cartItemId
 // ============================================================
 
-export const removeFromCart =
-    async (listingId) => {
-
-        return request(
-            `/buyer/marketplace/cart/${listingId}`,
-            {
-                method: 'DELETE'
-            }
-        );
-    };
-
+export const removeFromCart = async (cartItemId) => {
+    return request(`/buyer/marketplace/cart/${cartItemId}`, {
+        method: 'DELETE'
+    });
+};
 
 
 // ============================================================
 // ITEM REVIEWS
-// ============================================================
-//
-// GET
-// /api/buyer/marketplace/:listingId/reviews
-//
-// This is intentionally separate from seller reviews.
-// It returns reviews for the specific marketplace item/listing.
-//
+// GET /api/buyer/marketplace/:listingId/reviews
 // ============================================================
 
-export const getItemReviews =
-    async (listingId) => {
+export const getItemReviews = async (listingId) => {
+    return request(`/buyer/marketplace/${listingId}/reviews`);
+};
 
-        return request(
-            `/buyer/marketplace/${listingId}/reviews`
-        );
-    };
 
 // ============================================================
 // COMPATIBILITY ALIASES
 // ============================================================
-//
-// These aliases help prevent errors if the existing
-// BuyerMarketplace.jsx uses one of these names.
-// ============================================================
 
-export const getBuyerWishlist =
-    getWishlist;
-
-export const addFavorite =
-    addToWishlist;
-
-export const removeFavorite =
-    removeFromWishlist;
-
-export const getBuyerCart =
-    getCart;
-
-export const addCartItem =
-    addToCart;
-
-export const updateCart =
-    updateCartItem;
-
-export const removeCartItem =
-    removeFromCart;
+export const getBuyerWishlist = getWishlist;
+export const addFavorite = addToWishlist;
+export const removeFavorite = removeFromWishlist;
+export const getBuyerCart = getCart;
+export const addCartItem = addToCart;
+export const updateCart = updateCartItem;
+export const removeCartItem = removeFromCart;
 
 
 // ============================================================
@@ -435,25 +264,14 @@ export const removeCartItem =
 // ============================================================
 
 export default {
-
     getMarketplaceItems,
-
     getMarketplaceCategories,
-
     getWishlist,
-
     addToWishlist,
-
     removeFromWishlist,
-
     getCart,
-
     addToCart,
-
     updateCartItem,
-
     removeFromCart,
-
     getItemReviews
-
 };

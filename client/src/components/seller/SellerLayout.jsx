@@ -4,16 +4,13 @@ import React, {
 } from 'react';
 
 import {
-  Heart,
-  MessageSquare,
-  Bell,
-  ChevronDown,
   Menu
 } from 'lucide-react';
 
 import {
   Outlet,
-  useLocation
+  useLocation,
+  useNavigate
 } from 'react-router-dom';
 
 import SellerSidebar from './SellerSidebar';
@@ -25,30 +22,44 @@ import '../../styles/seller/SellerLayout.css';
 const SellerLayout = () => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-
-  // ==========================================================
-  // USER
-  // ==========================================================
-
-  const storedUser = (() => {
-
+  // Keep the header profile in sync with Account updates.
+  const [storedUser, setStoredUser] = useState(() => {
     try {
-
-      return JSON.parse(
-        localStorage.getItem('user') || '{}'
-      );
-
+      return JSON.parse(localStorage.getItem('user') || '{}');
     } catch {
-
       return {};
-
     }
+  });
 
-  })();
+  useEffect(() => {
+    const syncUser = () => {
+      try {
+        setStoredUser(
+          JSON.parse(localStorage.getItem('user') || '{}')
+        );
+      } catch {
+        setStoredUser({});
+      }
+    };
+
+    // Updates dispatched within this tab.
+    window.addEventListener('reuseconnect:user-updated', syncUser);
+
+    // Updates made by another tab/window.
+    window.addEventListener('storage', syncUser);
+
+    // Initial sync in case account info was changed before layout mounted.
+    syncUser();
+
+    return () => {
+      window.removeEventListener('reuseconnect:user-updated', syncUser);
+      window.removeEventListener('storage', syncUser);
+    };
+  }, []);
 
 
   const firstName =
@@ -206,59 +217,6 @@ const SellerLayout = () => {
 
           <div className="seller-header-right">
 
-            {/* FAVORITES */}
-
-            <button
-              type="button"
-              className="seller-header-icon-button"
-              aria-label="Favorites"
-            >
-
-              <Heart
-                size={21}
-                strokeWidth={1.8}
-              />
-
-            </button>
-
-
-            {/* MESSAGES */}
-
-            <button
-              type="button"
-              className="seller-header-icon-button"
-              aria-label="Messages"
-            >
-
-              <MessageSquare
-                size={21}
-                strokeWidth={1.8}
-              />
-
-            </button>
-
-
-            {/* NOTIFICATIONS */}
-
-            <button
-              type="button"
-              className="seller-header-icon-button"
-              aria-label="Notifications"
-            >
-
-              <Bell
-                size={21}
-                strokeWidth={1.8}
-              />
-
-            </button>
-
-
-            {/* DIVIDER */}
-
-            <div className="seller-header-divider" />
-
-
             {/* PROFILE */}
 
             <div className="seller-header-profile">
@@ -299,11 +257,6 @@ const SellerLayout = () => {
 
               </div>
 
-
-              <ChevronDown
-                size={17}
-                className="seller-profile-chevron"
-              />
 
             </div>
 

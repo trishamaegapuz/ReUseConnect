@@ -592,7 +592,7 @@ export default function BuyerTransactions() {
     setPagination
   ] = useState({
     page: 1,
-    limit: 7,
+    limit: 6,
     total: 0,
     totalPages: 0
   });
@@ -797,7 +797,7 @@ export default function BuyerTransactions() {
 
             setPagination({
               page: 1,
-              limit: 7,
+              limit: 6,
               total: 0,
               totalPages: 0
             });
@@ -813,7 +813,7 @@ export default function BuyerTransactions() {
               status:
                 effectiveStatus,
               page,
-              limit: 7
+              limit: 6
             });
 
           const payload =
@@ -847,7 +847,7 @@ export default function BuyerTransactions() {
           setPagination(
             apiPagination || {
               page,
-              limit: 7,
+              limit: 6,
               total: data.length,
               totalPages:
                 data.length

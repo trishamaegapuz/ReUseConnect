@@ -543,30 +543,50 @@ router.get(
           `
           SELECT *
           FROM (
+            -- Posts created by the current user
             SELECT
               cp.post_id AS activity_id,
-              'POST' AS activity_type,
+              cp.post_id AS post_id,
+              'POST'::text AS activity_type,
+              cp.title AS title,
               cp.title AS activity_title,
+              cp.body AS body,
               cp.body AS activity_body,
               cp.category,
+              NULL::text AS comment_text,
+              cp.created_at AS activity_date,
               cp.created_at
             FROM community_posts cp
             WHERE cp.user_id = $1
 
             UNION ALL
 
+            -- Comments made by the current user.
+            -- Keep the parent post details so the activity opens that post.
             SELECT
               c.comment_id AS activity_id,
-              'COMMENT' AS activity_type,
-              c.comment_text AS activity_title,
-              NULL AS activity_body,
-              NULL AS category,
+              cp.post_id AS post_id,
+              'COMMENT'::text AS activity_type,
+              cp.title AS title,
+              cp.title AS activity_title,
+              cp.body AS body,
+              cp.body AS activity_body,
+              cp.category,
+              c.comment_text AS comment_text,
+              c.created_at AS activity_date,
               c.created_at
             FROM community_post_comments c
-            WHERE c.user_id = $1
+            INNER JOIN community_posts cp
+              ON cp.post_id = c.post_id
+            WHERE
+              c.user_id = $1
+              AND (
+                c.status IS NULL
+                OR c.status = 'ACTIVE'
+              )
           ) activity
 
-          ORDER BY created_at DESC
+          ORDER BY activity_date DESC
 
           LIMIT $2
           OFFSET $3
@@ -587,7 +607,10 @@ router.get(
           page: currentPage,
           limit: currentLimit,
           total: result.rowCount,
-          totalPages: 1
+          totalPages: Math.max(
+            Math.ceil(result.rowCount / currentLimit),
+            1
+          )
         }
       });
 

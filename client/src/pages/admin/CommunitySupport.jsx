@@ -328,7 +328,7 @@ const CommunitySupport = () => {
             statusFilter,
           page:
             requestedPage,
-          limit: 8
+          limit: activeTab === 'community' ? 5 : 8
         });
 
       setPosts(
@@ -1413,12 +1413,12 @@ const CommunitySupport = () => {
                     (
                       pagination.page -
                       1
-                    ) * 8
+                    ) * (activeTab === 'community' ? 5 : 8)
                   ) + 1}
               {' '}to{' '}
               {Math.min(
                 pagination.page *
-                  8,
+                  (activeTab === 'community' ? 5 : 8),
                 pagination.total
               )}
               {' '}of{' '}
@@ -1540,115 +1540,6 @@ const CommunitySupport = () => {
             ================================================== */}
 
         <aside className="cs-side-column">
-
-          {/* ================================================
-              RECENT TICKETS
-              ================================================ */}
-
-          <div className="cs-side-card">
-
-            <div className="cs-side-heading">
-
-              <h3>
-                Recent Support Tickets
-              </h3>
-
-              <button
-                type="button"
-                onClick={() =>
-                  changeTab(
-                    'tickets'
-                  )
-                }
-              >
-                View All →
-              </button>
-
-            </div>
-
-
-            <div className="cs-ticket-list">
-
-              {recentTickets.length ===
-              0 ? (
-
-                <div className="cs-side-empty">
-                  No support tickets yet.
-                </div>
-
-              ) : (
-
-                recentTickets.map(
-                  ticket => (
-
-                    <div
-                      className="cs-ticket-item"
-                      key={
-                        ticket.ticket_id
-                      }
-                    >
-
-                      <div
-                        className={
-                          `cs-ticket-icon ${
-                            ticket.status
-                              .toLowerCase()
-                          }`
-                        }
-                      >
-                        <Headphones
-                          size={15}
-                        />
-                      </div>
-
-
-                      <div className="cs-ticket-info">
-
-                        <strong>
-                          #
-                          {ticket.ticket_id}
-                        </strong>
-
-                        <span>
-                          {ticket.subject}
-                        </span>
-
-                        <small>
-                          User:{' '}
-                          {ticket.user_name}
-                          {' • '}
-                          {formatDate(
-                            ticket.created_at
-                          )}
-                        </small>
-
-                      </div>
-
-
-                      <span
-                        className={
-                          `cs-mini-status ${
-                            ticket.status
-                              .toLowerCase()
-                          }`
-                        }
-                      >
-                        {statusLabel(
-                          ticket.status
-                        )}
-                      </span>
-
-                    </div>
-
-                  )
-                )
-
-              )}
-
-            </div>
-
-          </div>
-
 
           {/* ================================================
               QUICK ACTIONS

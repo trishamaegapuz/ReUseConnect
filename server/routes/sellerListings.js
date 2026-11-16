@@ -1,5 +1,4 @@
-const express = require('express');
-const multer = require('multer');
+const express = require('express'); const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -137,8 +136,7 @@ return id; }
 
 function normalizeStatus(status) {
 
-const value = String( status || '' ) .trim() .toUpperCase() .replace(
-/\s+/g, '_' );
+const value = String( status || '' ) .trim() .toUpperCase() .replace(/[\s-]+/g, '_' );
 
 const map = {
 
@@ -320,32 +318,26 @@ if (!value) { return null; }
 
 return value.slice( 0, 100 ); }
 
-function parseSizeInventory(value, legacySize = null, legacyQuantity = 0) {
-  let parsed = value;
-  if (typeof parsed === 'string') {
-    try { parsed = parsed.trim() ? JSON.parse(parsed) : []; } catch { parsed = []; }
-  }
-  const rows = Array.isArray(parsed) ? parsed : [];
-  const seen = new Set();
-  const normalized = [];
-  for (const row of rows) {
-    const size = normalizeSize(row?.size ?? row?.value ?? row);
-    const quantity = Math.floor(Number(row?.quantity ?? 0));
-    const key = String(size || '').toLowerCase();
-    if (!size || quantity <= 0 || seen.has(key)) continue;
-    seen.add(key);
-    normalized.push({ size, quantity });
-  }
-  if (!normalized.length) {
-    const size = normalizeSize(legacySize);
-    const quantity = Math.floor(Number(legacyQuantity || 0));
-    if (size && quantity > 0) normalized.push({ size, quantity });
-  }
-  return normalized;
-}
+function parseSizeInventory(value, legacySize = null, legacyQuantity =
+0) { let parsed = value; if (typeof parsed === 'string') { try { parsed
+= parsed.trim() ? JSON.parse(parsed) : []; } catch { parsed = []; } }
+const rows = Array.isArray(parsed) ? parsed : []; const seen = new
+Set(); const normalized = []; for (const row of rows) { const size =
+normalizeSize(row?.size ?? row?.value ?? row); const quantity =
+Math.floor(Number(row?.quantity ?? 0)); const key = String(size ||
+'').toLowerCase(); if (!size || !Number.isInteger(quantity) || quantity
+< 0 || seen.has(key)) continue; seen.add(key); normalized.push({ size,
+quantity }); } if (!normalized.length) { const size =
+normalizeSize(legacySize); const quantity =
+Math.floor(Number(legacyQuantity || 0)); if (size && quantity > 0)
+normalized.push({ size, quantity }); } return normalized; }
 
 async function replaceSizeInventory(client, listingId, inventory) {
-  await client.query('DELETE FROM listing_size_inventory WHERE listing_id = $1', [listingId]);
+  await client.query(
+    'DELETE FROM listing_size_inventory WHERE listing_id = $1',
+    [listingId]
+  );
+
   for (const entry of inventory) {
     await client.query(
       'INSERT INTO listing_size_inventory (listing_id, size, quantity) VALUES ($1, $2, $3)',
@@ -353,7 +345,6 @@ async function replaceSizeInventory(client, listingId, inventory) {
     );
   }
 }
-
 
 /* ============================================================ NUMBER
 ============================================================ */
@@ -371,10 +362,7 @@ function getImageUrl( req, filename ) {
 
 if (!filename) { return null; }
 
-return (
-  `${req.protocol}://${req.get('host')}` +
-  `/api/seller/listings/image/${encodeURIComponent(filename)}`
-); }
+return `${req.protocol}://${req.get('host')}/api/seller/listings/image/${encodeURIComponent(filename)}`; }
 
 /* ============================================================
 NORMALIZE STORED IMAGE URL
@@ -1321,6 +1309,14 @@ router.get( '/:listingId', async (req, res) => {
             listing.size
           ),
 
+        size_inventory:
+          Array.isArray(listing.size_inventory)
+            ? listing.size_inventory.map((entry) => ({
+                size: normalizeSize(entry.size),
+                quantity: Number(entry.quantity || 0)
+              }))
+            : [],
+
         listing_type:
           normalizeListingType(
             listing.listing_type
@@ -1418,8 +1414,7 @@ router.post( '/', upload.array( 'images', 10 ), async (req, res) => {
         location,
         size,
         size_inventory,
-        listing_type,
-        status
+        listing_type
       } = req.body;
 
 
@@ -1511,12 +1506,8 @@ router.post( '/', upload.array( 'images', 10 ), async (req, res) => {
         normalizeListingType(
           listing_type
         );
-
-
-      const normalizedStatus =
-        normalizeStatus(
-          status
-        );
+      // Seller-created listings always require admin approval.
+      const normalizedStatus = 'PENDING';
 
 
       const categoryValue =
@@ -1639,7 +1630,7 @@ router.post( '/', upload.array( 'images', 10 ), async (req, res) => {
 
             normalizedCondition,
 
-            parsedQuantity,
+            storedQuantity,
 
             location
               ? String(
@@ -1774,6 +1765,9 @@ router.post( '/', upload.array( 'images', 10 ), async (req, res) => {
             normalizeSize(
               listing.size
             ),
+
+          size_inventory:
+            normalizedSizeInventory,
 
           listing_type:
             normalizeListingType(
@@ -1967,8 +1961,7 @@ res) => {
         location,
         size,
         size_inventory,
-        listing_type,
-        status
+        listing_type
       } = req.body;
 
 
@@ -2066,16 +2059,6 @@ res) => {
             );
 
 
-      const normalizedStatus =
-        status
-          ? normalizeStatus(
-              status
-            )
-          : normalizeStatus(
-              existing.status
-            );
-
-
       const categoryValue =
         category_id ===
           undefined ||
@@ -2154,7 +2137,10 @@ res) => {
               $9,
 
             status =
-              $10,
+              'PENDING',
+
+            rejection_reason =
+              NULL,
 
             updated_at =
               CURRENT_TIMESTAMP
@@ -2162,10 +2148,10 @@ res) => {
           WHERE
 
             listing_id =
-              $11
+              $10
 
             AND seller_id =
-              $12
+              $11
 
           RETURNING *
           `,
@@ -2198,8 +2184,6 @@ res) => {
             normalizedSize,
 
             normalizedListingType,
-
-            normalizedStatus,
 
             listingId,
 
@@ -2463,7 +2447,7 @@ res) => {
 DEACTIVATE SELLER LISTING
 ============================================================ */
 
-router.patch( '/:listingId/deactivate', async (req, res) => {
+router.patch( `/:listingId/deactivate`, async (req, res) => {
 
     try {
 

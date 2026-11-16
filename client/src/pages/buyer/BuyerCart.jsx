@@ -186,8 +186,8 @@ export default function BuyerCart() {
       nextQuantity
     ) => {
 
-      const listingId =
-        getId(item);
+      const cartItemId =
+        item?.cart_item_id;
 
 
       const maxQuantity =
@@ -199,6 +199,7 @@ export default function BuyerCart() {
 
 
       if (
+        !cartItemId ||
         nextQuantity < 1 ||
         nextQuantity > maxQuantity
       ) {
@@ -209,7 +210,7 @@ export default function BuyerCart() {
       try {
 
         await updateCartItem(
-          listingId,
+          cartItemId,
           nextQuantity
         );
 
@@ -337,6 +338,21 @@ export default function BuyerCart() {
         return;
       }
 
+      const maxAvailable = Number(
+        selectedItem?.available_quantity ??
+        selectedItem?.quantity ??
+        0
+      );
+
+      if (
+        !Number.isInteger(Number(quantity)) ||
+        Number(quantity) < 1 ||
+        Number(quantity) > maxAvailable
+      ) {
+        setError('Please enter a valid quantity within the available stock.');
+        return;
+      }
+
 
       try {
 
@@ -345,7 +361,7 @@ export default function BuyerCart() {
 
         const response =
           await fetch(
-            'http://localhost:5000/api/buyer/orders',
+            `${(import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '').replace(/\/api$/, '')}/api/buyer/orders`,
             {
               method: 'POST',
 
@@ -382,6 +398,9 @@ export default function BuyerCart() {
                     Number(
                       quantity
                     ),
+
+                  size:
+                    selectedItem?.size || null,
 
                   shippingAddress:
                     shippingAddress.trim(),
@@ -613,7 +632,7 @@ export default function BuyerCart() {
                     className="buyer-cart-item"
                     key={
                       item?.cart_item_id ||
-                      id
+                      `${id}-${item?.size || 'no-size'}`
                     }
                   >
 
@@ -647,6 +666,12 @@ export default function BuyerCart() {
                         {item?.category_name ||
                           'Marketplace Item'}
                       </span>
+
+                      {item?.size && (
+                        <span className="buyer-cart-size">
+                          Size: <strong>{item.size}</strong>
+                        </span>
+                      )}
 
                       <strong>
                         {peso(
@@ -933,6 +958,12 @@ export default function BuyerCart() {
                     )}
                   </span>
 
+                  {selectedItem?.size && (
+                    <small className="buyer-cart-modal-size">
+                      Selected size: {selectedItem.size}
+                    </small>
+                  )}
+
                 </section>
 
               </div>
@@ -957,13 +988,26 @@ export default function BuyerCart() {
                   value={
                     quantity
                   }
-                  onChange={(event) =>
+                  onChange={(event) => {
+                    const nextValue = Number(event.target.value);
+                    const maxValue = Number(
+                      selectedItem?.available_quantity ??
+                      selectedItem?.quantity ??
+                      1
+                    );
+
+                    if (event.target.value === '') {
+                      setQuantity('');
+                      return;
+                    }
+
                     setQuantity(
-                      Number(
-                        event.target.value
+                      Math.min(
+                        maxValue,
+                        Math.max(1, nextValue)
                       )
-                    )
-                  }
+                    );
+                  }}
                   required
                 />
 

@@ -1695,62 +1695,7 @@ const UsersAccounts = () => {
             ==================================================== */}
 
         <aside className="users-info-column">
-
-          {/* QUICK ACTIONS */}
-
-          <section className="users-side-card">
-
-            <h3>
-              Quick Actions
-            </h3>
-
-
-            <button
-              type="button"
-              className="quick-action primary"
-              onClick={() =>
-                setShowAddUser(true)
-              }
-            >
-              <UserRound size={15} />
-              Add New User
-            </button>
-
-
-            <button
-              type="button"
-              className="quick-action"
-              disabled={
-                selectedUsers.length === 0 ||
-                actionLoading
-              }
-              onClick={() =>
-                handleBulkStatus(
-                  'ACTIVE'
-                )
-              }
-            >
-              <UserCheck size={15} />
-              Bulk Activate
-            </button>
-
-
-            <button
-              type="button"
-              className="quick-action"
-              onClick={handleExport}
-              disabled={
-                actionLoading
-              }
-            >
-              <Download size={15} />
-              Export Users
-            </button>
-
-          </section>
-
-
-          {/* USER STATUS */}
+{/* USER STATUS */}
 
           <section className="users-side-card">
 

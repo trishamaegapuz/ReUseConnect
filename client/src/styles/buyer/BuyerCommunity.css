@@ -3184,3 +3184,92 @@
     overflow: visible;
   }
 }
+
+
+
+/* ============================================================
+   BUYER COMMUNITY — POST DETAILS MODAL CLEANUP
+   Keep one close control and prevent comment attachment overflow.
+============================================================ */
+
+.community-post-modal {
+  width: min(680px, calc(100vw - 50px));
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.community-post-modal *,
+.community-post-modal *::before,
+.community-post-modal *::after {
+  box-sizing: border-box;
+}
+
+.community-post-modal .community-modal-header {
+  align-items: flex-start;
+}
+
+.community-post-modal .community-modal-header-actions {
+  flex: 0 0 auto;
+  margin-left: 12px;
+}
+
+.community-post-modal .community-modal-close {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+}
+
+.community-post-modal select#community-comment-item {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 34px 0 12px;
+  border: 1px solid #d8d2eb;
+  border-radius: 9px;
+  background-color: #fff;
+  color: #33266f;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.community-post-modal form,
+.community-post-modal form > *,
+.community-post-modal .community-comments {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.community-post-modal textarea,
+.community-post-modal input {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .community-post-modal {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .community-post-modal .community-modal-header {
+    padding: 13px 14px;
+  }
+
+  .community-post-modal .community-modal-header h2 {
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+
+  .community-post-modal select#community-comment-item {
+    font-size: 12px;
+  }
+}
+

@@ -4,8 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import AuthBrandPanel from '../components/AuthBrandPanel';
 
 import {
-  loginUser,
-  saveAuth
+  loginUser
 } from '../services/api';
 
 import '../styles/Auth.css';
@@ -67,6 +66,8 @@ const Login = () => {
 
     e.preventDefault();
 
+    if (loading) return;
+
     setError('');
 
 
@@ -104,14 +105,7 @@ const Login = () => {
 
         password:
           form.password
-      });
-
-
-      // ------------------------------------------------------
-      // SAVE AUTHENTICATION
-      // ------------------------------------------------------
-
-      saveAuth(data);
+      }, rememberMe);
 
 
       // ------------------------------------------------------
@@ -458,19 +452,43 @@ const Login = () => {
             <div className="login-options">
 
 
-              <label className="checkbox-label">
+              <label
+                className="checkbox-label"
+                htmlFor="remember-me"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  userSelect: 'none'
+                }}
+              >
 
                 <input
+                  id="remember-me"
+                  name="rememberMe"
                   type="checkbox"
                   checked={rememberMe}
-                  onChange={(e) =>
-                    setRememberMe(
-                      e.target.checked
-                    )
-                  }
+                  onChange={(e) => {
+                    setRememberMe(e.target.checked);
+                  }}
+                  style={{
+                    appearance: 'auto',
+                    WebkitAppearance: 'checkbox',
+                    display: 'inline-block',
+                    position: 'static',
+                    opacity: 1,
+                    visibility: 'visible',
+                    width: '16px',
+                    height: '16px',
+                    minWidth: '16px',
+                    margin: 0,
+                    padding: 0,
+                    accentColor: '#6234e8',
+                    cursor: 'pointer',
+                    flex: '0 0 16px'
+                  }}
                 />
-
-                <span className="custom-checkbox"></span>
 
                 <span>
                   Remember me

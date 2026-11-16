@@ -148,13 +148,18 @@ router.get(
         await pool.query(
           `
           SELECT
-            DATE(created_at) AS date,
-            COUNT(*)::int AS total
-          FROM users
-          WHERE DATE(created_at)
-            BETWEEN $1 AND $2
-          GROUP BY DATE(created_at)
-          ORDER BY DATE(created_at)
+            calendar.day::date AS date,
+            COUNT(users.created_at)::int AS total
+          FROM generate_series(
+            $1::date,
+            $2::date,
+            INTERVAL '1 day'
+          ) AS calendar(day)
+          LEFT JOIN users
+            ON users.created_at >= calendar.day
+           AND users.created_at < calendar.day + INTERVAL '1 day'
+          GROUP BY calendar.day
+          ORDER BY calendar.day
           `,
           [
             start,
@@ -283,7 +288,6 @@ router.get(
           ORDER BY
             orders DESC,
             earnings DESC
-          LIMIT 5
           `
         );
 
@@ -332,8 +336,6 @@ router.get(
           ) activity
 
           ORDER BY created_at DESC
-
-          LIMIT 6
           `
         );
 

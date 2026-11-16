@@ -19,7 +19,7 @@ Buyer Dashboard API
 All dashboard values are read from PostgreSQL.
 
 Paginated sections:
-  GET /api/buyer/dashboard?purchasesPage=1&purchasesLimit=10&activityPage=1&activityLimit=5
+  GET /api/buyer/dashboard?purchasesPage=1&purchasesLimit=5&activityPage=1&activityLimit=5
 
 Recent Purchases:
   orders + order_items + listings/categories when available.
@@ -872,6 +872,66 @@ ENVIRONMENTAL IMPACT
 */
 
 const getEnvironmentalImpact = async (userId) => {
+  /*
+   * The provided database backup has orders and order_items,
+   * but no environmental-impact ledger. Calculate only factual
+   * completed-order and reused-item counts from those tables.
+   */
+  let completedPurchaseCount = 0;
+  let completedItemsReused = 0;
+
+  if (
+    await tableExists('orders') &&
+    await tableExists('order_items')
+  ) {
+    const orderColumns = await getColumns('orders');
+    const itemColumns = await getColumns('order_items');
+
+    const orderId = pickColumn(orderColumns, [
+      'order_id', 'transaction_id', 'purchase_id', 'id'
+    ]);
+    const buyerColumn = pickColumn(orderColumns, [
+      'buyer_id', 'user_id', 'customer_id'
+    ]);
+    const statusColumn = pickColumn(orderColumns, [
+      'status', 'order_status', 'transaction_status'
+    ]);
+    const itemOrderId = pickColumn(itemColumns, ['order_id']);
+    const quantityColumn = pickColumn(itemColumns, ['quantity']);
+
+    if (orderId && buyerColumn && statusColumn && itemOrderId) {
+      const quantityExpression = quantityColumn
+        ? `COALESCE(SUM(oi.${quantityColumn}), 0)`
+        : `COUNT(oi.${itemOrderId})`;
+
+      const result = await pool.query(
+        `
+        SELECT
+          COUNT(DISTINCT o.${orderId})::int AS completed_orders,
+          ${quantityExpression}::numeric AS reused_items
+        FROM orders o
+        LEFT JOIN order_items oi
+          ON oi.${itemOrderId} = o.${orderId}
+        WHERE o.${buyerColumn} = $1
+          AND UPPER(COALESCE(o.${statusColumn}::text, ''))
+              IN ('COMPLETED', 'DELIVERED', 'SUCCESS')
+        `,
+        [userId]
+      );
+
+      completedPurchaseCount = safeNumber(
+        result.rows[0]?.completed_orders
+      );
+      completedItemsReused = safeNumber(
+        result.rows[0]?.reused_items
+      );
+    }
+  }
+
+  /*
+   * Prefer actual recorded impact values if the project has an
+   * environmental ledger. Otherwise, keep unsupported metrics at 0.
+   */
   const candidates = [
     'environmental_impacts',
     'environmental_impact',
@@ -888,108 +948,74 @@ const getEnvironmentalImpact = async (userId) => {
     }
   }
 
-  if (!tableName) {
-    return {
-      co2Saved: 0,
-      itemsReused: 0,
-      treesEquivalent: 0,
-      communitiesHelped: 0,
-      activities: {
-        purchases: 0,
-        donations: 0,
-        trades: 0,
-        other: 0
-      }
-    };
+  let recordedImpact = null;
+
+  if (tableName) {
+    const columns = await getColumns(tableName);
+    const userColumn = pickColumn(columns, [
+      'user_id', 'buyer_id', 'customer_id'
+    ]);
+
+    if (userColumn) {
+      const co2Column = pickColumn(columns, [
+        'co2_saved', 'co2_saved_kg',
+        'carbon_saved', 'carbon_saved_kg'
+      ]);
+      const itemsColumn = pickColumn(columns, [
+        'items_reused', 'items_count', 'reuse_count'
+      ]);
+      const treesColumn = pickColumn(columns, [
+        'trees_equivalent', 'tree_equivalent', 'trees_saved'
+      ]);
+      const communitiesColumn = pickColumn(columns, [
+        'communities_helped', 'community_count'
+      ]);
+
+      const fields = [
+        co2Column
+          ? `COALESCE(SUM(${co2Column}), 0) AS co2`
+          : `0 AS co2`,
+        itemsColumn
+          ? `COALESCE(SUM(${itemsColumn}), 0) AS items`
+          : `NULL AS items`,
+        treesColumn
+          ? `COALESCE(SUM(${treesColumn}), 0) AS trees`
+          : `0 AS trees`,
+        communitiesColumn
+          ? `COALESCE(SUM(${communitiesColumn}), 0) AS communities`
+          : `0 AS communities`
+      ];
+
+      const result = await pool.query(
+        `
+        SELECT ${fields.join(', ')}
+        FROM ${tableName}
+        WHERE ${userColumn} = $1
+        `,
+        [userId]
+      );
+
+      recordedImpact = result.rows[0] || null;
+    }
   }
-
-  const columns = await getColumns(tableName);
-
-  const userColumn = pickColumn(columns, [
-    'user_id',
-    'buyer_id',
-    'customer_id'
-  ]);
-
-  if (!userColumn) {
-    return {
-      co2Saved: 0,
-      itemsReused: 0,
-      treesEquivalent: 0,
-      communitiesHelped: 0,
-      activities: {
-        purchases: 0,
-        donations: 0,
-        trades: 0,
-        other: 0
-      }
-    };
-  }
-
-  const co2Column = pickColumn(columns, [
-    'co2_saved',
-    'co2_saved_kg',
-    'carbon_saved',
-    'carbon_saved_kg'
-  ]);
-
-  const itemsColumn = pickColumn(columns, [
-    'items_reused',
-    'items_count',
-    'reuse_count'
-  ]);
-
-  const treesColumn = pickColumn(columns, [
-    'trees_equivalent',
-    'tree_equivalent',
-    'trees_saved'
-  ]);
-
-  const communitiesColumn = pickColumn(columns, [
-    'communities_helped',
-    'community_count'
-  ]);
-
-  const fields = [
-    co2Column
-      ? `COALESCE(SUM(${co2Column}), 0) AS co2`
-      : `0 AS co2`,
-    itemsColumn
-      ? `COALESCE(SUM(${itemsColumn}), 0) AS items`
-      : `0 AS items`,
-    treesColumn
-      ? `COALESCE(SUM(${treesColumn}), 0) AS trees`
-      : `0 AS trees`,
-    communitiesColumn
-      ? `COALESCE(SUM(${communitiesColumn}), 0) AS communities`
-      : `0 AS communities`
-  ];
-
-  const result = await pool.query(
-    `
-    SELECT ${fields.join(', ')}
-    FROM ${tableName}
-    WHERE ${userColumn} = $1
-    `,
-    [userId]
-  );
-
-  const row = result.rows[0] || {};
 
   return {
-    co2Saved: safeNumber(row.co2),
-    itemsReused: safeNumber(row.items),
-    treesEquivalent: safeNumber(row.trees),
-    communitiesHelped: safeNumber(row.communities),
+    co2Saved: safeNumber(recordedImpact?.co2),
+    itemsReused:
+      recordedImpact?.items !== null &&
+      recordedImpact?.items !== undefined
+        ? safeNumber(recordedImpact.items)
+        : completedItemsReused,
+    treesEquivalent: safeNumber(recordedImpact?.trees),
+    communitiesHelped: safeNumber(recordedImpact?.communities),
     activities: {
-      purchases: 0,
+      purchases: completedPurchaseCount,
       donations: 0,
       trades: 0,
       other: 0
     }
   };
 };
-
 
 /*
 ============================================================
@@ -1276,9 +1302,9 @@ router.get('/', async (req, res) => {
 
     const purchasesLimit =
       parseLimit(
-        req.query.purchasesLimit,
-        10,
-        10
+        req.query.purchasesLimit || req.query.limit,
+        5,
+        5
       );
 
     const activityLimit =

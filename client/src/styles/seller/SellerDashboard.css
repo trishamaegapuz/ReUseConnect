@@ -2685,3 +2685,72 @@
   }
 
 }
+
+/* ============================================================
+   SELLER DASHBOARD PAGINATION
+   ============================================================ */
+
+.seller-dashboard-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #eeeaf5;
+}
+
+.seller-dashboard-pagination-info {
+  color: #77718b;
+  font-size: 12px;
+}
+
+.seller-dashboard-pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.seller-dashboard-page-button {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #ded8ed;
+  border-radius: 7px;
+  background: #fff;
+  color: #38206f;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.seller-dashboard-page-button:hover:not(:disabled) {
+  border-color: #6734d5;
+  background: #f5f0ff;
+}
+
+.seller-dashboard-page-button.active {
+  border-color: #6734d5;
+  background: #6734d5;
+  color: #fff;
+}
+
+.seller-dashboard-page-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .seller-dashboard-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .seller-dashboard-pagination-controls {
+    justify-content: flex-start;
+  }
+}

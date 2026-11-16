@@ -259,7 +259,7 @@ const PaginationControls = ({
   onNext
 }) => {
 
-  if (Number(total || 0) <= 10) {
+  if (Number(total || 0) <= 5) {
     return null;
   }
 
@@ -370,7 +370,7 @@ const BuyerDashboard = () => {
 
   const [activityPage, setActivityPage] = useState(1);
 
-  const PURCHASES_PAGE_SIZE = 10;
+  const PURCHASES_PAGE_SIZE = 5;
   const ACTIVITY_PAGE_SIZE = 5;
 
 
@@ -408,7 +408,9 @@ const BuyerDashboard = () => {
 
         getBuyerDashboard({
           purchasesPage: nextPurchasesPage,
+          purchasesLimit: PURCHASES_PAGE_SIZE,
           activityPage: nextActivityPage,
+          activityLimit: ACTIVITY_PAGE_SIZE,
           limit: PURCHASES_PAGE_SIZE
         }),
 
@@ -763,7 +765,7 @@ const BuyerDashboard = () => {
     dashboard?.recentPurchasesPagination ||
     {
       page: purchasesPage,
-      limit: 10,
+      limit: 5,
       total: recentOrders.length,
       totalPages: 1
     };
@@ -1243,7 +1245,17 @@ const BuyerDashboard = () => {
 
                       <div className="buyer-purchase-image">
 
-                        <Package size={24} />
+                        {order.imageUrl || order.image_url ? (
+                          <img
+                            src={order.imageUrl || order.image_url}
+                            alt={itemName}
+                            onError={(event) => {
+                              event.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <Package size={24} />
+                        )}
 
                       </div>
 

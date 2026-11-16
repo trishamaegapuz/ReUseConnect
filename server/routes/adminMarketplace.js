@@ -1191,7 +1191,13 @@ router.get(
 
             img.image_url,
 
-            ${getListingSizeExpression()}
+            COALESCE(
+              size_inventory.sizes,
+              to_jsonb(l)->'sizes',
+              to_jsonb(l)->'size',
+              to_jsonb(l)->'available_sizes',
+              '[]'::jsonb
+            ) AS sizes
 
           FROM listings l
 
@@ -1218,6 +1224,19 @@ router.get(
             LIMIT 1
 
           ) img ON TRUE
+
+          LEFT JOIN LATERAL (
+            SELECT
+              jsonb_agg(
+                jsonb_build_object(
+                  'size', lsi.size,
+                  'quantity', lsi.quantity
+                )
+                ORDER BY lsi.size
+              ) AS sizes
+            FROM listing_size_inventory lsi
+            WHERE lsi.listing_id = l.listing_id
+          ) size_inventory ON TRUE
 
           ${whereClause}
 
@@ -1336,6 +1355,53 @@ router.patch(
       }
 
 
+      // A rejection must include a reason so the seller
+      // understands why the listing was not approved.
+      const rejectionReason =
+        String(
+          req.body?.rejection_reason || ''
+        ).trim();
+
+
+      if (
+        dbStatus === 'REJECTED' &&
+        !rejectionReason
+      ) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            'Please provide a reason for rejecting this listing.',
+
+        });
+
+      }
+
+
+      if (
+        rejectionReason.length > 1000
+      ) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            'Rejection reason must not exceed 1000 characters.',
+
+        });
+
+      }
+
+
+      const savedRejectionReason =
+        dbStatus === 'REJECTED'
+          ? rejectionReason
+          : null;
+
+
       const result =
         await pool.query(
           `
@@ -1343,17 +1409,20 @@ router.patch(
 
           SET
             status = $1,
+            rejection_reason = $2,
             updated_at = CURRENT_TIMESTAMP
 
-          WHERE listing_id = $2
+          WHERE listing_id = $3
 
           RETURNING
             listing_id,
             status,
+            rejection_reason,
             updated_at
           `,
           [
             dbStatus,
+            savedRejectionReason,
             listingId
           ]
         );
@@ -1407,7 +1476,6 @@ router.patch(
 
   }
 );
-
 
 // ============================================================
 // CREATE LISTING

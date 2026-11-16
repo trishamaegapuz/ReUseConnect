@@ -251,7 +251,8 @@ export const registerUser = async (
 
 
 export const loginUser = async (
-  payload
+  payload,
+  rememberMe = false
 ) => {
 
   const response = await request(
@@ -262,15 +263,8 @@ export const loginUser = async (
     }
   );
 
-  /*
-   * Automatically save authentication data
-   * when login succeeds.
-   *
-   * This keeps Admin, Seller and Buyer
-   * modules synchronized.
-   */
-
-  saveAuth(response);
+  // Persist the session according to the Remember Me choice.
+  saveAuth(response, rememberMe);
 
   return response;
 
@@ -303,7 +297,7 @@ const getStoredToken = () => {
   ) {
 
     const value =
-      localStorage.getItem(key);
+      localStorage.getItem(key) || sessionStorage.getItem(key);
 
 
     if (
@@ -347,7 +341,7 @@ const getStoredUser = () => {
   ) {
 
     const raw =
-      localStorage.getItem(key);
+      localStorage.getItem(key) || sessionStorage.getItem(key);
 
 
     if (!raw) {
@@ -531,7 +525,8 @@ const extractUser = (
 // ============================================================
 
 export const saveAuth = (
-  data
+  data,
+  rememberMe = true
 ) => {
 
   if (!data) {
@@ -544,6 +539,20 @@ export const saveAuth = (
 
   }
 
+
+  // Clear stale authentication from both storage locations first.
+  const authKeys = [
+    'reuseconnect_token', 'token', 'authToken', 'accessToken',
+    'access_token', 'reuseconnect_user', 'user', 'currentUser',
+    'authUser', 'user_id', 'userId'
+  ];
+
+  authKeys.forEach((key) => {
+    localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
+  });
+
+  const authStorage = rememberMe ? localStorage : sessionStorage;
 
   // ----------------------------------------------------------
   // TOKEN
@@ -559,7 +568,7 @@ export const saveAuth = (
      * Main ReUseConnect token
      */
 
-    localStorage.setItem(
+    authStorage.setItem(
       'reuseconnect_token',
       token
     );
@@ -569,7 +578,7 @@ export const saveAuth = (
      * Existing modules
      */
 
-    localStorage.setItem(
+    authStorage.setItem(
       'token',
       token
     );
@@ -579,19 +588,19 @@ export const saveAuth = (
      * Backward-compatible token names
      */
 
-    localStorage.setItem(
+    authStorage.setItem(
       'authToken',
       token
     );
 
 
-    localStorage.setItem(
+    authStorage.setItem(
       'accessToken',
       token
     );
 
 
-    localStorage.setItem(
+    authStorage.setItem(
       'access_token',
       token
     );
@@ -617,7 +626,7 @@ export const saveAuth = (
      * Main ReUseConnect user
      */
 
-    localStorage.setItem(
+    authStorage.setItem(
       'reuseconnect_user',
       serializedUser
     );
@@ -627,7 +636,7 @@ export const saveAuth = (
      * Existing modules
      */
 
-    localStorage.setItem(
+    authStorage.setItem(
       'user',
       serializedUser
     );
@@ -637,13 +646,13 @@ export const saveAuth = (
      * Backward-compatible user keys
      */
 
-    localStorage.setItem(
+    authStorage.setItem(
       'currentUser',
       serializedUser
     );
 
 
-    localStorage.setItem(
+    authStorage.setItem(
       'authUser',
       serializedUser
     );
@@ -668,13 +677,13 @@ export const saveAuth = (
       userId !== ''
     ) {
 
-      localStorage.setItem(
+      authStorage.setItem(
         'user_id',
         String(userId)
       );
 
 
-      localStorage.setItem(
+      authStorage.setItem(
         'userId',
         String(userId)
       );
@@ -790,9 +799,8 @@ export const logout = () => {
   keys.forEach(
     (key) => {
 
-      localStorage.removeItem(
-        key
-      );
+      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
 
     }
   );
@@ -1591,7 +1599,8 @@ export const getAdminMarketplaceReports =
 export const updateAdminListingStatus =
   async (
     listingId,
-    status
+    status,
+    rejectionReason = ''
   ) => {
 
     return authenticatedRequest(
@@ -1601,7 +1610,8 @@ export const updateAdminListingStatus =
 
         body:
           JSON.stringify({
-            status
+            status,
+            rejection_reason: rejectionReason
           })
       }
     );

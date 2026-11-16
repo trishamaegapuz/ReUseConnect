@@ -46,43 +46,13 @@
       price: '',
       condition: 'GOOD',
       size: '',
+      size_inventory: [],
       quantity: 1,
       location: '',
       category_id: '',
-      listing_type: 'SALE',
-      status: 'PENDING'
+      listing_type: 'SALE'
     };
 
-    const STATUS_OPTIONS = [
-      {
-        value: '',
-        label: 'All Status'
-      },
-      {
-        value: 'AVAILABLE',
-        label: 'Active'
-      },
-      {
-        value: 'PENDING',
-        label: 'Pending'
-      },
-      {
-        value: 'HIDDEN',
-        label: 'Inactive'
-      },
-      {
-        value: 'RESERVED',
-        label: 'Reserved'
-      },
-      {
-        value: 'SOLD',
-        label: 'Sold'
-      },
-      {
-        value: 'REJECTED',
-        label: 'Rejected'
-      }
-    ];
 
     const CONDITION_OPTIONS = [
       {
@@ -131,60 +101,48 @@
     |
     */
 
-    const SIZE_OPTIONS = [
-      {
-        value: '',
-        label: 'Select size'
-      },
-      {
-        value: 'XS',
-        label: 'XS'
-      },
-      {
-        value: 'S',
-        label: 'S'
-      },
-      {
-        value: 'M',
-        label: 'M'
-      },
-      {
-        value: 'L',
-        label: 'L'
-      },
-      {
-        value: 'XL',
-        label: 'XL'
-      },
-      {
-        value: 'XXL',
-        label: 'XXL'
-      },
-      {
-        value: 'XXXL',
-        label: 'XXXL'
-      },
-      {
-        value: 'Free Size',
-        label: 'Free Size'
-      },
-      {
-        value: 'Small',
-        label: 'Small'
-      },
-      {
-        value: 'Medium',
-        label: 'Medium'
-      },
-      {
-        value: 'Large',
-        label: 'Large'
-      },
-      {
-        value: 'Not Applicable',
-        label: 'Not Applicable'
+    const APPAREL_SIZE_OPTIONS = ['S', 'M', 'L', 'XL', 'XXL'].map((size) => ({
+      value: size,
+      label: size
+    }));
+
+    const FOOTWEAR_SIZE_OPTIONS = Array.from({ length: 5 }, (_, index) => {
+      const size = String(36 + index);
+      return { value: size, label: size };
+    });
+
+    const KIDS_SHOE_SIZE_OPTIONS = Array.from({ length: 14 }, (_, index) => {
+      const size = String(21 + index);
+      return { value: size, label: size };
+    });
+
+    const TODDLER_SIZE_OPTIONS = ['S', 'M', 'L', 'XL'].map((size) => ({
+      value: size,
+      label: size
+    }));
+
+    const getCategorySizeOptions = (categoryName = '') => {
+      const name = String(categoryName).toLowerCase();
+
+      if (/kids?\\s*(shoe|footwear)|children.?s?\\s*(shoe|footwear)|kids? shoe/.test(name)) {
+        return KIDS_SHOE_SIZE_OPTIONS;
       }
-    ];
+
+      if (/toddler|toddlers|baby|babies/.test(name)) {
+        return TODDLER_SIZE_OPTIONS;
+      }
+
+      if (/shoe|slipper|footwear|sandal/.test(name)) {
+        return FOOTWEAR_SIZE_OPTIONS;
+      }
+
+      if (/t-?shirt|shirt|blouse|clothing|apparel|dress|top/.test(name)) {
+        return APPAREL_SIZE_OPTIONS;
+      }
+
+      // Default to clothing sizes for categories that use garment sizing.
+      return APPAREL_SIZE_OPTIONS;
+    };
 
     /*
     |--------------------------------------------------------------------------
@@ -517,11 +475,11 @@
           .replace(/\s+/g, '_');
 
       const map = {
-        ACTIVE: 'AVAILABLE',
         AVAILABLE: 'AVAILABLE',
+        ACTIVE: 'ACTIVE',
         PENDING: 'PENDING',
-        INACTIVE: 'HIDDEN',
         HIDDEN: 'HIDDEN',
+        INACTIVE: 'INACTIVE',
         RESERVED: 'RESERVED',
         SOLD: 'SOLD',
         REJECTED: 'REJECTED'
@@ -703,7 +661,7 @@
       const [
         itemsPerPage,
         setItemsPerPage
-      ] = useState(10);
+      ] = useState(7);
 
       const [
         showForm,
@@ -719,6 +677,16 @@
         viewingListing,
         setViewingListing
       ] = useState(null);
+
+      const [
+        deactivatingListing,
+        setDeactivatingListing
+      ] = useState(null);
+
+      const [
+        deactivating,
+        setDeactivating
+      ] = useState(false);
 
       const [
         form,
@@ -1248,13 +1216,44 @@
           value
         } = event.target;
 
-        setForm(
-          (previous) => ({
-            ...previous,
-            [name]: value
-          })
-        );
+        setForm((previous) => ({
+          ...previous,
+          [name]: value,
+          ...(name === 'category_id' ? { size: '', size_inventory: [] } : {})
+        }));
       };
+
+      const handleSizeToggle = (size, checked) => {
+        setForm((previous) => {
+          const current = Array.isArray(previous.size_inventory) ? previous.size_inventory : [];
+          if (checked) {
+            if (current.some((entry) => entry.size === size)) return previous;
+            return { ...previous, size_inventory: [...current, { size, quantity: 1 }] };
+          }
+          return { ...previous, size_inventory: current.filter((entry) => entry.size !== size) };
+        });
+      };
+
+      const handleSizeQuantityChange = (size, value) => {
+        const quantity = value === '' ? '' : Math.max(0, Math.floor(Number(value) || 0));
+        setForm((previous) => ({
+          ...previous,
+          size_inventory: (previous.size_inventory || []).map((entry) =>
+            entry.size === size ? { ...entry, quantity } : entry
+          )
+        }));
+      };
+
+      const selectedCategory = categories.find(
+        (category) => String(category.category_id) === String(form.category_id)
+      );
+      const availableSizeOptions = getCategorySizeOptions(
+        selectedCategory?.category_name || selectedCategory?.name || selectedCategory?.category || ''
+      );
+
+      const selectedSizeTotal = (form.size_inventory || []).reduce(
+        (total, entry) => total + (Number(entry.quantity) || 0), 0
+      );
 
       /*
       |--------------------------------------------------------------------------
@@ -1320,6 +1319,10 @@
                 listing.size ||
                 '',
 
+              size_inventory: Array.isArray(listing.size_inventory)
+                ? listing.size_inventory.map((entry) => ({ size: entry.size, quantity: Number(entry.quantity || 0) }))
+                : [],
+
               quantity:
                 listing.quantity ??
                 1,
@@ -1338,12 +1341,7 @@
                   'SALE'
                 )
                   .trim()
-                  .toUpperCase(),
-
-              status:
-                normalizeStatusForApi(
-                  listing.status
-                )
+                  .toUpperCase()
             });
 
             let fullListing =
@@ -1389,7 +1387,11 @@
                 size:
                   fullListing.size ||
                   previous.size ||
-                  ''
+                  '',
+
+                size_inventory: Array.isArray(fullListing.size_inventory)
+                  ? fullListing.size_inventory.map((entry) => ({ size: entry.size, quantity: Number(entry.quantity || 0) }))
+                  : previous.size_inventory
               })
             );
 
@@ -1662,20 +1664,14 @@
                 form.price
               );
 
-            const quantity =
-              Number(
-                form.quantity
-              );
-
-            /*
-             * Size is optional because some items may not
-             * have a size.
-             */
-            const size =
-              String(
-                form.size ||
-                ''
-              ).trim();
+            const selectedInventory = (form.size_inventory || [])
+              .map((entry) => ({ size: String(entry.size || '').trim(), quantity: Number(entry.quantity) }))
+              .filter((entry) => entry.size);
+            const hasSizeInventory = selectedInventory.length > 0;
+            const quantity = hasSizeInventory
+              ? selectedInventory.reduce((total, entry) => total + entry.quantity, 0)
+              : Number(form.quantity);
+            const size = hasSizeInventory ? selectedInventory[0].size : String(form.size || '').trim();
 
             if (
               !title
@@ -1696,15 +1692,16 @@
               );
             }
 
-            if (
-              !Number.isInteger(
-                quantity
-              ) ||
-              quantity <= 0
-            ) {
-              throw new Error(
-                'Quantity must be greater than 0.'
-              );
+            if (!Number.isInteger(quantity) || quantity <= 0) {
+              throw new Error(hasSizeInventory
+                ? 'The total stock across selected sizes must be greater than 0.'
+                : 'Quantity must be greater than 0.');
+            }
+
+            if (hasSizeInventory && selectedInventory.some((entry) =>
+              !Number.isInteger(entry.quantity) || entry.quantity < 0
+            )) {
+              throw new Error('Each size stock must be a whole number and cannot be negative.');
             }
 
             const payload = {
@@ -1722,6 +1719,8 @@
               size:
                 size ||
                 null,
+
+              size_inventory: hasSizeInventory ? selectedInventory : [],
 
               quantity,
 
@@ -1741,12 +1740,7 @@
                   'SALE'
                 )
                   .trim()
-                  .toUpperCase(),
-
-              status:
-                normalizeStatusForApi(
-                  form.status
-                )
+                  .toUpperCase()
             };
 
             /*
@@ -1813,57 +1807,43 @@
       */
 
       const handleDeactivate =
-        async (listing) => {
-          const listingId =
-            getListingId(
-              listing
-            );
+        (listing) => {
+          const listingId = getListingId(listing);
 
-          if (
-            !listingId
-          ) {
-            return;
-          }
+          if (!listingId) return;
 
-          const confirmed =
-            window.confirm(
-              `Deactivate "${listing.title}"?`
-            );
+          setError('');
+          setSuccessMessage('');
+          setDeactivatingListing(listing);
+        };
 
-          if (
-            !confirmed
-          ) {
-            return;
-          }
+      const confirmDeactivate =
+        async () => {
+          if (!deactivatingListing || deactivating) return;
+
+          const listingId = getListingId(deactivatingListing);
+          if (!listingId) return;
 
           try {
+            setDeactivating(true);
             setError('');
             setSuccessMessage('');
 
-            await deactivateSellerListing(
-              listingId
-            );
+            await deactivateSellerListing(listingId);
 
-            setSuccessMessage(
-              'Listing deactivated successfully.'
-            );
+            setSuccessMessage('Listing deactivated successfully.');
+            setDeactivatingListing(null);
 
-            await Promise.all([
-              loadListings(),
-              loadStats()
-            ]);
-          } catch (
-            err
-          ) {
-            console.error(
-              err
-            );
-
+            await Promise.all([loadListings(), loadStats()]);
+          } catch (err) {
+            console.error(err);
             setError(
               err?.response?.data?.message ||
               err?.message ||
               'Failed to deactivate listing.'
             );
+          } finally {
+            setDeactivating(false);
           }
         };
 
@@ -2059,19 +2039,6 @@
                   </span>
                 </button>
 
-                <button
-                  type="button"
-                  className="add-listing-button"
-                  onClick={
-                    openCreateForm
-                  }
-                >
-                  <Plus size={18} />
-
-                  <span>
-                    Add New Listing
-                  </span>
-                </button>
 
               </div>
 
@@ -3104,52 +3071,35 @@
                         SIZE DROPDOWN
                     ====================================================== */}
 
-                    <div className="seller-form-field">
-
-                      <label htmlFor="size">
-                        Size
-                      </label>
-
-                      <div className="seller-form-select">
-
-                        <select
-                          id="size"
-                          name="size"
-                          value={
-                            form.size
-                          }
-                          onChange={
-                            handleFormChange
-                          }
-                        >
-
-                          {SIZE_OPTIONS.map(
-                            (option) => (
-
-                              <option
-                                key={
-                                  option.value
-                                }
-                                value={
-                                  option.value
-                                }
-                              >
-                                {
-                                  option.label
-                                }
-                              </option>
-
-                            )
-                          )}
-
-                        </select>
-
-                        <ChevronDown
-                          size={16}
-                        />
-
+                    <div className="seller-form-field full">
+                      <label>Available Sizes and Stock</label>
+                      <p className="image-upload-note">
+                        Select all sizes available for this item, then enter the stock quantity for each size.
+                      </p>
+                      <div className="seller-size-inventory-grid">
+                        {availableSizeOptions.map((option) => {
+                          const selected = (form.size_inventory || []).find((entry) => entry.size === option.value);
+                          return (
+                            <div className="seller-size-inventory-row" key={option.value}>
+                              <label className="seller-size-checkbox">
+                                <input type="checkbox" checked={Boolean(selected)}
+                                  onChange={(event) => handleSizeToggle(option.value, event.target.checked)} />
+                                <span>{option.label}</span>
+                              </label>
+                              {selected && (
+                                <input type="number" min="0" step="1" value={selected.quantity}
+                                  onChange={(event) => handleSizeQuantityChange(option.value, event.target.value)}
+                                  aria-label={`${option.label} stock quantity`} className="seller-size-stock-input" />
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-
+                      {(form.size_inventory || []).length > 0 ? (
+                        <div className="seller-size-total">Total stock: <strong>{selectedSizeTotal}</strong></div>
+                      ) : (
+                        <small className="seller-size-hint">No size selected. Use the general quantity field below for items without sizes.</small>
+                      )}
                     </div>
 
                     <div className="seller-form-field">
@@ -3184,6 +3134,7 @@
 
                     </div>
 
+                    {(form.size_inventory || []).length === 0 && (
                     <div className="seller-form-field">
 
                       <label htmlFor="quantity">
@@ -3269,6 +3220,8 @@
 
                     </div>
 
+                                        )}
+
                     <div className="seller-form-field full">
 
                       <label htmlFor="location">
@@ -3308,62 +3261,6 @@
                         }
                         placeholder="Describe your item..."
                       />
-
-                    </div>
-
-                    <div className="seller-form-field full">
-
-                      <label>
-                        Listing Status
-                      </label>
-
-                      <div className="seller-form-select">
-
-                        <select
-                          name="status"
-                          value={
-                            form.status
-                          }
-                          onChange={
-                            handleFormChange
-                          }
-                        >
-
-                          {STATUS_OPTIONS
-                            .filter(
-                              (
-                                option
-                              ) =>
-                                option.value
-                            )
-                            .map(
-                              (
-                                option
-                              ) => (
-
-                                <option
-                                  key={
-                                    option.value
-                                  }
-                                  value={
-                                    option.value
-                                  }
-                                >
-                                  {
-                                    option.label
-                                  }
-                                </option>
-
-                              )
-                            )}
-
-                        </select>
-
-                        <ChevronDown
-                          size={16}
-                        />
-
-                      </div>
 
                     </div>
 
@@ -3825,8 +3722,9 @@
 
                         <strong>
                           {
-                            viewingListing.size ||
-                            '—'
+                            Array.isArray(viewingListing.size_inventory) && viewingListing.size_inventory.length
+                              ? viewingListing.size_inventory.map((entry) => `${entry.size} (${entry.quantity})`).join(', ')
+                              : viewingListing.size || '—'
                           }
                         </strong>
 
@@ -3930,6 +3828,85 @@
 
             </div>
 
+          )}
+
+
+          {/* ==========================================================
+              DEACTIVATE CONFIRMATION MODAL
+          ========================================================== */}
+          {deactivatingListing && (
+            <div
+              className="seller-listing-modal-backdrop seller-deactivate-backdrop"
+              onMouseDown={(event) => {
+                if (event.target === event.currentTarget && !deactivating) {
+                  setDeactivatingListing(null);
+                }
+              }}
+            >
+              <div
+                className="seller-deactivate-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="seller-deactivate-title"
+              >
+                <div className="seller-deactivate-header">
+                  <div>
+                    <span className="seller-deactivate-eyebrow">LISTING MANAGEMENT</span>
+                    <h3 id="seller-deactivate-title">Confirm Deactivation</h3>
+                  </div>
+                  <button
+                    type="button"
+                    className="modal-close-button"
+                    aria-label="Close"
+                    disabled={deactivating}
+                    onClick={() => setDeactivatingListing(null)}
+                  >
+                    <X size={19} />
+                  </button>
+                </div>
+
+                <div className="seller-deactivate-body">
+                  <div className="seller-deactivate-icon">
+                    <Trash2 size={25} />
+                  </div>
+                  <h4>Deactivate this listing?</h4>
+                  <strong>{deactivatingListing.title || 'Untitled Listing'}</strong>
+                  <p>
+                    This listing will no longer be visible as an active item.
+                    You can manage its status from your listings.
+                  </p>
+                </div>
+
+                <div className="seller-deactivate-footer">
+                  <button
+                    type="button"
+                    className="cancel-listing-button"
+                    disabled={deactivating}
+                    onClick={() => setDeactivatingListing(null)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className="seller-deactivate-confirm"
+                    disabled={deactivating}
+                    onClick={confirmDeactivate}
+                  >
+                    {deactivating ? (
+                      <>
+                        <span className="button-spinner" />
+                        Deactivating...
+                      </>
+                    ) : (
+                      <>
+                        <Trash2 size={16} />
+                        Deactivate Listing
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
 
         </main>

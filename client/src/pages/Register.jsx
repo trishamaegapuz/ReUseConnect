@@ -101,6 +101,8 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (loading) return;
+
     setError('');
     setSuccess('');
 
@@ -145,7 +147,7 @@ const Register = () => {
       const data = await registerUser({
         first_name: form.first_name.trim(),
         last_name: form.last_name.trim(),
-        email: form.email.trim(),
+        email: form.email.trim().toLowerCase(),
         password: form.password,
         phone: form.phone.trim(),
         address: form.address.trim(),

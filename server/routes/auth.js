@@ -197,6 +197,10 @@ router.post('/register', async (req, res) => {
 
     const user = result.rows[0];
 
+    // Send notification emails in the background so registration
+    // responds immediately after the account has been created.
+    setImmediate(async () => {
+      try {
     /*
     ========================================================
     EMAIL #1
@@ -424,6 +428,11 @@ ReUse Connect Administration
     DO NOT CREATE JWT FOR PENDING USER
     ========================================================
     */
+
+      } catch (emailError) {
+        console.error('REGISTRATION EMAIL ERROR:', emailError);
+      }
+    });
 
     return res.status(201).json({
       success: true,

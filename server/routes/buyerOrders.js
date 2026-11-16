@@ -524,6 +524,7 @@ router.post(
         listingId,
         quantity,
         size,
+        selectedSize,
         shippingAddress,
         paymentMethod,
         referenceNumber,
@@ -674,9 +675,13 @@ router.post(
           : null;
 
 
+      // Accept both `size` (current frontend contract) and
+      // `selectedSize` (compatibility with older checkout callers).
+      const rawSize = size ?? selectedSize;
+
       const cleanSize =
-        typeof size === 'string'
-          ? size.trim()
+        typeof rawSize === 'string'
+          ? rawSize.trim()
           : '';
 
 

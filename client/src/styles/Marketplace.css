@@ -321,8 +321,7 @@
     145px
     125px
     135px
-    78px
-    130px;
+    110px;
 
   gap: 8px;
 
@@ -792,11 +791,9 @@
 }
 
 .sizes-badge {
-  display: inline-flex;
+  display: inline-block;
 
-  align-items: center;
-
-  max-width: 105px;
+  max-width: 100%;
 
   padding: 6px 8px;
 
@@ -810,11 +807,40 @@
 
   font-weight: 650;
 
-  white-space: nowrap;
+  line-height: 1.6;
 
-  overflow: hidden;
+  white-space: normal;
 
-  text-overflow: ellipsis;
+  overflow: visible;
+
+  overflow-wrap: anywhere;
+
+  word-break: normal;
+
+  text-overflow: clip;
+
+  box-sizing: border-box;
+}
+
+/* Show every size in the marketplace table instead of clipping after 105px. */
+.marketplace-table td:nth-child(7) {
+  min-width: 150px;
+  white-space: normal;
+}
+
+.sizes-badge-full {
+  width: fit-content;
+}
+
+/* Keep long size lists readable inside the listing details modal. */
+.sizes-detail-value {
+  display: block;
+  max-width: 100%;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.65;
 }
 
 .condition-badge {
@@ -3094,4 +3120,1510 @@
     padding: 9px;
   }
 
+}
+
+
+/* ============================================================
+   MARKETPLACE MODAL DESIGN REFINEMENTS
+============================================================ */
+.listing-view-modal {
+  width: min(820px, 100%);
+  border: 1px solid rgba(226, 220, 242, .9);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.listing-view-modal .marketplace-modal-header,
+.suspend-confirm-modal .marketplace-modal-header,
+.category-modal .marketplace-modal-header,
+.category-delete-modal .marketplace-modal-header {
+  padding: 22px 26px;
+  background: linear-gradient(135deg, #fbfaff 0%, #f3efff 100%);
+}
+
+.listing-view-modal .marketplace-modal-header h2,
+.suspend-confirm-modal .marketplace-modal-header h2,
+.category-modal .marketplace-modal-header h2,
+.category-delete-modal .marketplace-modal-header h2 {
+  color: #30205f;
+  font-size: 21px;
+  letter-spacing: -.02em;
+}
+
+.listing-view-modal .marketplace-modal-body {
+  gap: 25px;
+  padding: 26px;
+  background: #fff;
+}
+
+.listing-view-modal .modal-image-section {
+  align-items: flex-start;
+}
+
+.listing-view-modal .modal-listing-image,
+.listing-view-modal .modal-listing-image-placeholder {
+  width: 100%;
+  max-width: 235px;
+  height: 235px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(40, 24, 83, .08);
+}
+
+.listing-view-modal .modal-listing-details {
+  gap: 12px;
+}
+
+.listing-view-modal .modal-listing-details > div:not(.modal-description) {
+  padding: 11px 13px;
+  border: 1px solid #eeeaf7;
+  border-radius: 10px;
+  background: #fcfbff;
+}
+
+.listing-view-modal .modal-listing-details > div > span {
+  color: #837b9c;
+  font-size: 11px;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.listing-view-modal .modal-listing-details > div > strong {
+  color: #33265e;
+  font-size: 13px;
+}
+
+.listing-view-modal .modal-description {
+  padding: 13px;
+  border: 1px solid #eeeaf7;
+  border-radius: 10px;
+  background: #fcfbff;
+}
+
+.listing-view-modal .marketplace-modal-footer,
+.suspend-confirm-modal .marketplace-modal-footer,
+.category-delete-modal .marketplace-modal-footer {
+  padding: 15px 26px;
+  background: #fcfbff;
+}
+
+.suspend-confirm-modal {
+  width: min(510px, 100%);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.suspend-confirm-modal .status-confirm-icon {
+  background: #fff3df;
+  color: #bd781d;
+  box-shadow: 0 0 0 7px #fff9ef;
+}
+
+.suspend-confirm-modal .status-confirm-body {
+  padding: 34px 30px 28px;
+}
+
+.suspend-confirm-modal .status-confirm-body h3 {
+  color: #30205f;
+  font-size: 21px;
+}
+
+.suspend-confirm-modal .status-confirm-body p {
+  color: #716b83;
+  line-height: 1.7;
+}
+
+.suspend-confirm-modal .warning-submit {
+  border-radius: 9px;
+}
+
+.category-modal {
+  width: min(530px, 100%);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.category-modal .add-listing-form {
+  padding: 25px 27px;
+}
+
+.category-modal .add-listing-form > label {
+  color: #403568;
+  font-size: 13px;
+}
+
+.category-modal .add-listing-form input {
+  margin-top: 9px;
+  min-height: 44px;
+  border: 1px solid #ddd6ee;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.category-modal .add-listing-form input:focus {
+  outline: none;
+  border-color: #7042d3;
+  box-shadow: 0 0 0 3px rgba(112, 66, 211, .12);
+}
+
+.category-modal .form-footer {
+  margin: 20px -27px -25px;
+  padding: 16px 27px;
+  background: #fcfbff;
+}
+
+.category-delete-modal {
+  width: min(480px, 100%);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.category-delete-body {
+  padding: 30px 28px 24px;
+  text-align: center;
+}
+
+.category-delete-icon {
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 17px;
+  border-radius: 20px;
+  background: #fff0f0;
+  color: #cf3e4b;
+}
+
+.category-delete-body h3 {
+  margin: 0;
+  color: #30205f;
+  font-size: 18px;
+}
+
+.category-delete-body p {
+  max-width: 360px;
+  margin: 11px auto 0;
+  color: #777188;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.category-delete-body p strong {
+  color: #43316f;
+}
+
+.category-delete-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+  padding: 12px 14px;
+  border: 1px solid #eeeaf7;
+  border-radius: 10px;
+  background: #fbfaff;
+  color: #837b9c;
+  font-size: 12px;
+}
+
+.category-delete-meta strong {
+  color: #403568;
+}
+
+.category-delete-modal .danger-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 9px;
+}
+
+.toolbar-refresh-button {
+  flex: 0 0 auto;
+  min-height: 38px;
+}
+
+@media (max-width: 700px) {
+  .listing-view-modal .marketplace-modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-view-modal .modal-image-section {
+    justify-content: center;
+  }
+
+  .listing-view-modal .modal-listing-image,
+  .listing-view-modal .modal-listing-image-placeholder {
+    max-width: 190px;
+    height: 190px;
+  }
+
+  .listing-view-modal .modal-listing-details {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .category-delete-modal .marketplace-modal-footer,
+  .suspend-confirm-modal .marketplace-modal-footer {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+/* ============================================================
+   FINAL MODAL LAYOUT FIX
+   Overrides older responsive/modal rules that caused the
+   header and footer to sit in a narrow left-hand column.
+============================================================ */
+
+.marketplace-modal-backdrop {
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background: rgba(24, 15, 55, 0.58);
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+}
+
+.marketplace-modal.listing-view-modal,
+.marketplace-modal.status-confirm-modal,
+.marketplace-modal.suspend-confirm-modal {
+  display: block !important;
+  float: none !important;
+  position: relative;
+  flex: 0 1 auto;
+  width: min(900px, calc(100vw - 48px)) !important;
+  max-width: 900px !important;
+  max-height: min(88vh, 820px);
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e8e2f3;
+  border-radius: 20px;
+  box-shadow: 0 28px 90px rgba(24, 13, 57, 0.30);
+  box-sizing: border-box;
+}
+
+/* View Listing: full-width title bar, then image + details. */
+.marketplace-modal.listing-view-modal {
+  width: min(900px, calc(100vw - 48px)) !important;
+}
+
+.listing-view-modal > .marketplace-modal-header {
+  display: flex !important;
+  width: 100%;
+  min-height: 82px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 26px;
+  border: 0;
+  border-bottom: 1px solid #eeeaf6;
+  background: linear-gradient(115deg, #faf8ff 0%, #f1ebff 100%);
+  box-sizing: border-box;
+}
+
+.listing-view-modal .marketplace-modal-header span,
+.suspend-confirm-modal .marketplace-modal-header span {
+  display: block;
+  color: #81749e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.listing-view-modal .marketplace-modal-header h2,
+.suspend-confirm-modal .marketplace-modal-header h2 {
+  margin: 5px 0 0;
+  color: #2e1b5b;
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.listing-view-modal .marketplace-modal-header > button,
+.suspend-confirm-modal .marketplace-modal-header > button {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border: 1px solid #e4ddef;
+  border-radius: 11px;
+  background: #ffffff;
+  color: #5d4b82;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.listing-view-modal .marketplace-modal-header > button:hover,
+.suspend-confirm-modal .marketplace-modal-header > button:hover {
+  background: #eee7ff;
+  transform: rotate(90deg);
+}
+
+.listing-view-modal > .marketplace-modal-body {
+  display: grid !important;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr) !important;
+  align-items: start;
+  gap: 26px;
+  width: 100%;
+  max-height: calc(88vh - 160px);
+  padding: 26px;
+  overflow-y: auto;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-image-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.listing-view-modal .modal-listing-image,
+.listing-view-modal .modal-listing-image-placeholder {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  height: 280px;
+  min-height: 220px;
+  object-fit: contain;
+  border: 1px solid #e9e4f2;
+  border-radius: 16px;
+  background: #f8f6fc;
+  box-shadow: 0 10px 28px rgba(48, 31, 91, .08);
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-listing-image-placeholder {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #7555bd;
+}
+
+.listing-view-modal .modal-listing-details {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-content: start;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.listing-view-modal .modal-listing-details > div:not(.modal-description) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 62px;
+  padding: 11px 13px;
+  border: 1px solid #ece7f5;
+  border-radius: 12px;
+  background: #fcfbff;
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-listing-details > div > span {
+  color: #8b829e;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.listing-view-modal .modal-listing-details > div > strong {
+  margin-top: 6px;
+  color: #33245f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.listing-view-modal .modal-listing-details .modal-description {
+  grid-column: 1 / -1;
+  display: block;
+  min-height: auto;
+  padding: 14px;
+  border: 1px solid #ece7f5;
+  border-radius: 12px;
+  background: #fcfbff;
+}
+
+.listing-view-modal .modal-description p {
+  margin: 8px 0 0;
+  padding: 0;
+  background: transparent;
+  color: #625b73;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.listing-view-modal > .marketplace-modal-footer {
+  display: flex !important;
+  width: 100%;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 26px;
+  border-top: 1px solid #eeeaf6;
+  background: #fbfaff;
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-current-status {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.listing-view-modal .modal-current-status > span:first-child {
+  color: #8b829e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.listing-view-modal .modal-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+/* Suspend / moderation confirmation: centered compact dialog,
+   not a split two-column panel. */
+.marketplace-modal.suspend-confirm-modal {
+  width: min(500px, calc(100vw - 40px)) !important;
+  max-width: 500px !important;
+  max-height: 88vh;
+}
+
+.suspend-confirm-modal > .marketplace-modal-header {
+  display: flex !important;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border: 0;
+  border-bottom: 1px solid #eeeaf6;
+  background: linear-gradient(115deg, #faf8ff 0%, #f1ebff 100%);
+  box-sizing: border-box;
+}
+
+.suspend-confirm-modal > .status-confirm-body {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 30px 34px 26px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.suspend-confirm-modal .status-confirm-icon {
+  display: flex;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border: 8px solid #fff8eb;
+  border-radius: 50%;
+  background: #fff0d5;
+  color: #c47a12;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.suspend-confirm-modal .status-confirm-body h3 {
+  margin: 0;
+  color: #30205f;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.suspend-confirm-modal .status-confirm-body p {
+  margin: 12px 0 0;
+  max-width: 390px;
+  color: #746d83;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.suspend-confirm-modal .status-confirm-body p strong {
+  display: inline-block;
+  margin-bottom: 4px;
+  color: #3b2b68;
+  font-size: 15px;
+}
+
+.suspend-confirm-modal > .marketplace-modal-footer {
+  display: flex !important;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #eeeaf6;
+  background: #fbfaff;
+  box-sizing: border-box;
+}
+
+.suspend-confirm-modal .modal-cancel,
+.suspend-confirm-modal .modal-submit {
+  min-height: 40px;
+  padding: 0 17px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.suspend-confirm-modal .warning-submit {
+  border-color: #c47a12;
+  background: #c47a12;
+  color: #ffffff;
+}
+
+.suspend-confirm-modal .warning-submit:hover {
+  background: #a9650c;
+}
+
+/* Tablet and phone layout */
+@media (max-width: 760px) {
+  .marketplace-modal-backdrop {
+    align-items: center;
+    padding: 12px;
+  }
+
+  .marketplace-modal.listing-view-modal {
+    width: min(560px, calc(100vw - 24px)) !important;
+    max-height: 92vh;
+  }
+
+  .listing-view-modal > .marketplace-modal-body {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px;
+    max-height: calc(92vh - 155px);
+    padding: 18px;
+  }
+
+  .listing-view-modal .modal-listing-image,
+  .listing-view-modal .modal-listing-image-placeholder {
+    width: min(100%, 230px);
+    height: 210px;
+    min-height: 180px;
+  }
+
+  .listing-view-modal .modal-listing-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .listing-view-modal > .marketplace-modal-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 18px;
+  }
+
+  .listing-view-modal .modal-status-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .listing-view-modal .modal-status-actions button {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 440px) {
+  .listing-view-modal .modal-listing-details {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .suspend-confirm-modal > .status-confirm-body {
+    padding: 25px 20px 22px;
+  }
+
+  .suspend-confirm-modal > .marketplace-modal-footer {
+    padding: 13px 16px;
+  }
+}
+
+
+/* ============================================================
+   CATEGORY TABLE PAGINATION + MODAL REDESIGN
+============================================================ */
+
+.category-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 13px 15px;
+  border: 1px solid #ebe6f4;
+  border-radius: 12px;
+  background: #fbfaff;
+}
+
+.category-pagination-info {
+  color: #77718b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.category-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.category-page-number,
+.category-page-arrow {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3dcef;
+  border-radius: 9px;
+  background: #fff;
+  color: #514273;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.category-page-number:hover:not(:disabled),
+.category-page-arrow:hover:not(:disabled) {
+  border-color: #6b35d5;
+  background: #f3edff;
+  color: #5c2bc3;
+}
+
+.category-page-number.active {
+  border-color: #6532d1;
+  background: #6532d1;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(101, 50, 209, .2);
+}
+
+.category-page-number:disabled,
+.category-page-arrow:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.category-table-wrapper {
+  border: 1px solid #e8e2f1;
+  border-radius: 13px;
+  box-shadow: 0 5px 18px rgba(45, 28, 88, .035);
+}
+
+.category-table th {
+  height: 46px;
+  background: #f7f4fc;
+  color: #665b83;
+  letter-spacing: .045em;
+}
+
+.category-table td {
+  height: 58px;
+  border-top-color: #f0edf5;
+}
+
+.category-table tbody tr:nth-child(even) {
+  background: #fdfcff;
+}
+
+.category-table tbody tr:hover {
+  background: #f7f3ff;
+}
+
+/* Category add/view/edit: one-column modal, not split-panel. */
+.marketplace-modal.category-modal {
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(540px, calc(100vw - 32px)) !important;
+  max-width: 540px !important;
+  max-height: min(86vh, 620px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e8e1f1;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 26px 80px rgba(25, 14, 55, .28);
+  box-sizing: border-box;
+}
+
+.category-modal > .marketplace-modal-header {
+  display: flex !important;
+  width: 100%;
+  min-height: 88px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+  border: 0;
+  border-bottom: 1px solid #eee9f5;
+  background: linear-gradient(120deg, #fbfaff 0%, #f2edff 100%);
+  box-sizing: border-box;
+}
+
+.category-modal .marketplace-modal-header span {
+  display: block;
+  color: #85799f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.category-modal .marketplace-modal-header h2 {
+  margin: 6px 0 0;
+  color: #30205f;
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.category-modal .marketplace-modal-header > button {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border: 1px solid #e5deef;
+  border-radius: 10px;
+  background: #fff;
+  color: #5f527b;
+  cursor: pointer;
+}
+
+.category-modal .add-listing-form {
+  display: flex !important;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  margin: 0;
+  padding: 25px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.category-modal .add-listing-form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+  color: #433568;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.category-modal .add-listing-form input {
+  width: 100%;
+  min-height: 46px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid #ded6ed;
+  border-radius: 11px;
+  background: #fff;
+  color: #35265f;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.category-modal .add-listing-form input:disabled {
+  background: #f8f6fb;
+  color: #665c7c;
+  opacity: 1;
+}
+
+.category-modal .add-listing-form input:focus {
+  outline: none;
+  border-color: #7042d3;
+  box-shadow: 0 0 0 3px rgba(112, 66, 211, .12);
+}
+
+.category-modal .form-footer {
+  display: flex !important;
+  width: calc(100% + 50px);
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 7px -25px -25px;
+  padding: 16px 25px;
+  border-top: 1px solid #eee9f5;
+  background: #fbfaff;
+  box-sizing: border-box;
+}
+
+.category-modal .modal-cancel,
+.category-modal .modal-submit {
+  min-height: 40px;
+  padding: 0 17px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Category delete confirmation: centered single-column dialog. */
+.marketplace-modal.category-delete-modal {
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(490px, calc(100vw - 32px)) !important;
+  max-width: 490px !important;
+  max-height: 86vh;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e8e1f1;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 26px 80px rgba(25, 14, 55, .28);
+  box-sizing: border-box;
+}
+
+.category-delete-modal > .marketplace-modal-header {
+  display: flex !important;
+  width: 100%;
+  min-height: 82px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 24px;
+  border: 0;
+  border-bottom: 1px solid #eee9f5;
+  background: linear-gradient(120deg, #fffafa 0%, #fff1f1 100%);
+  box-sizing: border-box;
+}
+
+.category-delete-modal .category-delete-body {
+  width: 100%;
+  padding: 28px 30px 24px;
+  box-sizing: border-box;
+}
+
+.category-delete-modal > .marketplace-modal-footer {
+  display: flex !important;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 24px;
+  border-top: 1px solid #eee9f5;
+  background: #fbfaff;
+  box-sizing: border-box;
+}
+
+@media (max-width: 560px) {
+  .category-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .category-pagination-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .category-modal .add-listing-form {
+    padding: 20px;
+  }
+
+  .category-modal .form-footer {
+    width: calc(100% + 40px);
+    margin: 5px -20px -20px;
+    padding: 14px 20px;
+  }
+
+  .category-delete-modal .category-delete-body {
+    padding: 23px 20px;
+  }
+}
+
+
+
+/* ============================================================
+   ADMIN LISTING MODALS — FINAL CONSISTENT DESIGN
+   Applies only to the listing details and moderation dialogs.
+============================================================ */
+
+.marketplace-modal.listing-view-modal,
+.marketplace-modal.status-confirm-modal {
+  display: flex !important;
+  flex-direction: column;
+  position: relative;
+  flex: 0 1 auto;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e9e3f3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 24px 75px rgba(31, 18, 67, .28);
+  box-sizing: border-box;
+}
+
+.marketplace-modal.listing-view-modal {
+  width: min(900px, calc(100vw - 40px)) !important;
+  max-width: 900px !important;
+  max-height: min(88vh, 820px);
+}
+
+.listing-view-modal > .marketplace-modal-header,
+.status-confirm-modal > .marketplace-modal-header {
+  display: flex !important;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 25px;
+  border: 0;
+  border-bottom: 1px solid #eee9f6;
+  background: linear-gradient(120deg, #fbf9ff 0%, #f2edff 100%);
+  box-sizing: border-box;
+}
+
+.listing-view-modal .marketplace-modal-header span,
+.status-confirm-modal .marketplace-modal-header span {
+  display: block;
+  color: #82769b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.listing-view-modal .marketplace-modal-header h2,
+.status-confirm-modal .marketplace-modal-header h2 {
+  margin: 5px 0 0;
+  color: #2f1b60;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.listing-view-modal .marketplace-modal-header > button,
+.status-confirm-modal .marketplace-modal-header > button {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3dcef;
+  border-radius: 10px;
+  background: #fff;
+  color: #62547e;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.listing-view-modal .marketplace-modal-header > button:hover,
+.status-confirm-modal .marketplace-modal-header > button:hover {
+  background: #eee8fb;
+  color: #5f2bd6;
+  transform: rotate(90deg);
+}
+
+.listing-view-modal > .marketplace-modal-body {
+  display: grid !important;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(220px, 290px) minmax(0, 1fr) !important;
+  align-items: start;
+  gap: 24px;
+  width: 100%;
+  min-height: 0;
+  max-height: calc(min(88vh, 820px) - 150px);
+  padding: 24px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-image-section {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.listing-view-modal .modal-listing-image,
+.listing-view-modal .modal-listing-image-placeholder {
+  display: flex;
+  width: 100%;
+  max-width: 290px;
+  height: 280px;
+  min-height: 220px;
+  object-fit: contain;
+  border: 1px solid #e9e3f1;
+  border-radius: 15px;
+  background: #f8f6fc;
+  box-shadow: 0 8px 24px rgba(48, 31, 91, .07);
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-listing-image-placeholder {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #7555bd;
+}
+
+.listing-view-modal .modal-listing-details {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-content: start;
+  gap: 11px;
+  width: 100%;
+  min-width: 0;
+}
+
+.listing-view-modal .modal-listing-details > div:not(.modal-description) {
+  display: flex;
+  min-width: 0;
+  min-height: 62px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 12px;
+  border: 1px solid #ece7f4;
+  border-radius: 11px;
+  background: #fcfbff;
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-listing-details > div > span {
+  color: #8b829e;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.listing-view-modal .modal-listing-details > div > strong {
+  margin-top: 5px;
+  color: #33245f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.listing-view-modal .modal-listing-details .sizes-detail-value {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.listing-view-modal .modal-listing-details .modal-description {
+  display: block;
+  grid-column: 1 / -1;
+  min-height: auto;
+  padding: 13px;
+  border: 1px solid #ece7f4;
+  border-radius: 11px;
+  background: #fcfbff;
+}
+
+.listing-view-modal .modal-description p {
+  margin: 7px 0 0;
+  padding: 0;
+  background: transparent;
+  color: #625b73;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.listing-view-modal > .marketplace-modal-footer {
+  display: flex !important;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 24px;
+  border-top: 1px solid #eee9f6;
+  background: #fbfaff;
+  box-sizing: border-box;
+}
+
+.listing-view-modal .modal-current-status {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.listing-view-modal .modal-current-status > span:first-child {
+  color: #8b829e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.listing-view-modal .modal-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+/* Approve, reject and suspend share one centered dialog structure. */
+.marketplace-modal.status-confirm-modal {
+  width: min(540px, calc(100vw - 36px)) !important;
+  max-width: 540px !important;
+  max-height: min(88vh, 700px);
+}
+
+.status-confirm-modal > .status-confirm-body {
+  display: flex !important;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  padding: 28px 32px 25px;
+  overflow-y: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.status-confirm-modal .status-confirm-icon {
+  display: flex;
+  width: 66px;
+  height: 66px;
+  flex: 0 0 66px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  border: 7px solid #f2ecff;
+  border-radius: 50%;
+  background: #eee7ff;
+  color: #6530d7;
+  box-sizing: border-box;
+}
+
+.status-confirm-modal.is-approve .status-confirm-icon {
+  border-color: #e8f8f0;
+  background: #dcf5e9;
+  color: #15945e;
+}
+
+.status-confirm-modal.is-suspend .status-confirm-icon {
+  border-color: #fff3df;
+  background: #ffefd2;
+  color: #c47a12;
+}
+
+.status-confirm-modal.is-reject .status-confirm-icon {
+  border-color: #ffeded;
+  background: #ffe5e5;
+  color: #d33a3a;
+}
+
+.status-confirm-modal .status-confirm-body h3 {
+  margin: 0;
+  color: #30205f;
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.status-confirm-modal .status-confirm-body p {
+  max-width: 420px;
+  margin: 10px 0 0;
+  color: #746d83;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.status-confirm-modal .status-confirm-body p strong {
+  display: inline-block;
+  margin-bottom: 3px;
+  color: #3b2b68;
+  font-size: 15px;
+}
+
+.status-confirm-modal .status-confirm-body > div {
+  text-align: left;
+}
+
+.status-confirm-modal .status-confirm-body label {
+  color: #40345f;
+  font-size: 12px;
+}
+
+.status-confirm-modal .status-confirm-body textarea {
+  width: 100%;
+  min-height: 112px;
+  padding: 12px 13px;
+  border: 1px solid #ded7eb;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  color: #382c58;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.status-confirm-modal .status-confirm-body textarea:focus {
+  border-color: #7138df;
+  box-shadow: 0 0 0 3px rgba(113, 56, 223, .12);
+}
+
+.status-confirm-modal > .marketplace-modal-footer {
+  display: flex !important;
+  flex: 0 0 auto;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 22px;
+  border-top: 1px solid #eee9f6;
+  background: #fbfaff;
+  box-sizing: border-box;
+}
+
+.status-confirm-modal .modal-cancel,
+.status-confirm-modal .modal-submit {
+  min-height: 40px;
+  padding: 0 17px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-confirm-modal .modal-submit:not(.danger-submit):not(.warning-submit) {
+  border-color: #6330d3;
+  background: #6330d3;
+  color: #fff;
+}
+
+.status-confirm-modal .modal-submit:not(.danger-submit):not(.warning-submit):hover {
+  background: #5124b7;
+}
+
+.status-confirm-modal .danger-submit {
+  border-color: #d43b3b;
+  background: #d43b3b;
+  color: #fff;
+}
+
+.status-confirm-modal .danger-submit:hover {
+  background: #b92e2e;
+}
+
+.status-confirm-modal .warning-submit {
+  border-color: #c47a12;
+  background: #c47a12;
+  color: #fff;
+}
+
+.status-confirm-modal .warning-submit:hover {
+  background: #a9650c;
+}
+
+@media (max-width: 700px) {
+  .marketplace-modal.listing-view-modal {
+    width: min(560px, calc(100vw - 24px)) !important;
+    max-height: 92vh;
+  }
+
+  .listing-view-modal > .marketplace-modal-body {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 17px;
+    max-height: calc(92vh - 145px);
+    padding: 17px;
+  }
+
+  .listing-view-modal .modal-listing-image,
+  .listing-view-modal .modal-listing-image-placeholder {
+    width: min(100%, 230px);
+    height: 210px;
+    min-height: 180px;
+  }
+
+  .listing-view-modal .modal-listing-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .listing-view-modal > .marketplace-modal-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 13px 17px;
+  }
+
+  .listing-view-modal .modal-status-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .listing-view-modal .modal-status-actions button {
+    flex: 1 1 auto;
+  }
+
+  .status-confirm-modal > .status-confirm-body {
+    padding: 24px 20px 22px;
+  }
+}
+
+@media (max-width: 440px) {
+  .listing-view-modal .modal-listing-details {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .status-confirm-modal > .marketplace-modal-footer {
+    padding: 12px 15px;
+  }
+}
+
+
+
+/* CATEGORY DELETE CONFIRMATION MODAL */
+.category-delete-backdrop {
+  z-index: 1100;
+}
+
+.category-delete-modal {
+  width: min(560px, 100%);
+  border: 1px solid #eee9f7;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 28px 80px rgba(30, 18, 75, .30);
+  animation: category-delete-enter .18s ease-out;
+}
+
+.category-delete-modal .marketplace-modal-header {
+  padding: 21px 25px;
+  background: linear-gradient(135deg, #fbfaff 0%, #f3efff 100%);
+}
+
+.category-delete-modal .marketplace-modal-header h2 {
+  color: #30205f;
+  font-size: 20px;
+}
+
+.category-delete-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 32px 26px;
+  text-align: center;
+}
+
+.category-delete-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  color: #dc3545;
+  background: #fff0f1;
+}
+
+.category-delete-content h3 {
+  margin: 0 0 10px;
+  color: #30205f;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.category-delete-content p {
+  max-width: 420px;
+  margin: 0;
+  color: #777187;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.category-delete-content p strong {
+  color: #3b2b68;
+}
+
+.category-delete-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 23px;
+  padding: 12px 14px;
+  border: 1px solid #ece7f6;
+  border-radius: 10px;
+  background: #fcfbff;
+  box-sizing: border-box;
+  color: #817a94;
+  font-size: 12px;
+}
+
+.category-delete-info strong {
+  color: #35265f;
+  font-size: 13px;
+}
+
+.category-delete-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 25px;
+  border-top: 1px solid #eeeaf5;
+  background: #fcfbff;
+}
+
+.category-delete-submit {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 17px;
+  border: 1px solid #cf303b;
+  border-radius: 9px;
+  background: #d93643;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.category-delete-submit:hover:not(:disabled) {
+  background: #bd2633;
+  transform: translateY(-1px);
+}
+
+.category-delete-submit:disabled,
+.category-delete-footer .modal-cancel:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+@keyframes category-delete-enter {
+  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 560px) {
+  .category-delete-modal {
+    width: 100%;
+    border-radius: 14px;
+  }
+  .category-delete-content {
+    padding: 25px 20px 22px;
+  }
+  .category-delete-footer {
+    padding: 13px 18px;
+  }
+  .category-delete-submit {
+    padding: 0 12px;
+  }
 }

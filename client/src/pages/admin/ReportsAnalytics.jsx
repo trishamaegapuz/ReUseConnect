@@ -104,6 +104,45 @@ const getDefaultDates = () => {
 
 
 /* =========================================================
+   PAGINATION
+========================================================= */
+
+const ReportsPagination = ({ page, totalItems, pageSize, onPageChange }) => {
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  if (totalItems <= pageSize) return null;
+
+  return (
+    <div className="reports-pagination">
+      <span>
+        Showing {((page - 1) * pageSize) + 1}
+        {' '}to{' '}
+        {Math.min(page * pageSize, totalItems)}
+        {' '}of {totalItems}
+      </span>
+      <div className="reports-pagination-controls">
+        <button type="button" disabled={page <= 1} onClick={() => onPageChange(page - 1)} aria-label="Previous page">
+          ‹
+        </button>
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map(pageNumber => (
+          <button
+            type="button"
+            key={pageNumber}
+            className={pageNumber === page ? 'active' : ''}
+            onClick={() => onPageChange(pageNumber)}
+          >
+            {pageNumber}
+          </button>
+        ))}
+        <button type="button" disabled={page >= totalPages} onClick={() => onPageChange(page + 1)} aria-label="Next page">
+          ›
+        </button>
+      </div>
+    </div>
+  );
+};
+
+
+/* =========================================================
    COMPONENT
 ========================================================= */
 
@@ -169,6 +208,19 @@ const ReportsAnalytics = () => {
     exportLoading,
     setExportLoading
   ] = useState('');
+
+
+  const [categoryPage, setCategoryPage] = useState(1);
+  const [orderStatusPage, setOrderStatusPage] = useState(1);
+  const [topItemsPage, setTopItemsPage] = useState(1);
+  const [activityPage, setActivityPage] = useState(1);
+  const [exportsPage, setExportsPage] = useState(1);
+
+  const categoryPageSize = 4;
+  const orderStatusPageSize = 4;
+  const topItemsPageSize = 5;
+  const activityPageSize = 5;
+  const exportsPageSize = 5;
 
 
   /* -------------------------------------------------------
@@ -255,6 +307,27 @@ const ReportsAnalytics = () => {
 
   const activity =
     data?.activity || [];
+
+
+  const paginatedCategories = listingsByCategory.slice(
+    (categoryPage - 1) * categoryPageSize,
+    categoryPage * categoryPageSize
+  );
+
+  const paginatedOrderStatus = orderStatus.slice(
+    (orderStatusPage - 1) * orderStatusPageSize,
+    orderStatusPage * orderStatusPageSize
+  );
+
+  const paginatedTopSellingItems = topSellingItems.slice(
+    (topItemsPage - 1) * topItemsPageSize,
+    topItemsPage * topItemsPageSize
+  );
+
+  const paginatedActivity = activity.slice(
+    (activityPage - 1) * activityPageSize,
+    activityPage * activityPageSize
+  );
 
 
   /* -------------------------------------------------------
@@ -1090,11 +1163,7 @@ const ReportsAnalytics = () => {
 
             ) : (
 
-              listingsByCategory
-                .slice(
-                  0,
-                  6
-                )
+              paginatedCategories
                 .map(
                   (
                     item,
@@ -1192,6 +1261,13 @@ const ReportsAnalytics = () => {
 
           </div>
 
+          <ReportsPagination
+            page={categoryPage}
+            totalItems={listingsByCategory.length}
+            pageSize={categoryPageSize}
+            onPageChange={setCategoryPage}
+          />
+
         </div>
 
 
@@ -1240,7 +1316,7 @@ const ReportsAnalytics = () => {
 
             ) : (
 
-              orderStatus.map(
+              paginatedOrderStatus.map(
                 (
                   item,
                   index
@@ -1302,6 +1378,13 @@ const ReportsAnalytics = () => {
             )}
 
           </div>
+
+          <ReportsPagination
+            page={orderStatusPage}
+            totalItems={orderStatus.length}
+            pageSize={orderStatusPageSize}
+            onPageChange={setOrderStatusPage}
+          />
 
         </div>
 
@@ -1391,7 +1474,7 @@ const ReportsAnalytics = () => {
 
                 <tbody>
 
-                  {topSellingItems.map(
+                  {paginatedTopSellingItems.map(
                     (
                       item,
                       index
@@ -1482,6 +1565,13 @@ const ReportsAnalytics = () => {
 
           )}
 
+          <ReportsPagination
+            page={topItemsPage}
+            totalItems={topSellingItems.length}
+            pageSize={topItemsPageSize}
+            onPageChange={setTopItemsPage}
+          />
+
         </div>
 
 
@@ -1526,7 +1616,7 @@ const ReportsAnalytics = () => {
 
             <div className="reports-activity-list">
 
-              {activity.map(
+              {paginatedActivity.map(
                 (
                   item,
                   index
@@ -1605,6 +1695,13 @@ const ReportsAnalytics = () => {
 
           )}
 
+          <ReportsPagination
+            page={activityPage}
+            totalItems={activity.length}
+            pageSize={activityPageSize}
+            onPageChange={setActivityPage}
+          />
+
         </div>
 
 
@@ -1636,230 +1733,44 @@ const ReportsAnalytics = () => {
 
 
           <div className="reports-export-list">
-
-
-            {/* SALES */}
-
-            <button
-              type="button"
-              onClick={() =>
-                handleExport(
-                  'sales'
-                )
-              }
-              disabled={
-                Boolean(
-                  exportLoading
-                )
-              }
-            >
-
-              <div className="reports-export-icon">
-
-                <BarChart3
-                  size={18}
-                />
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  Sales Report
-                </strong>
-
-                <span>
-                  Orders and sales data
-                </span>
-
-              </div>
-
-
-              <Download
-                size={15}
-              />
-
-            </button>
-
-
-            {/* USERS */}
-
-            <button
-              type="button"
-              onClick={() =>
-                handleExport(
-                  'users'
-                )
-              }
-              disabled={
-                Boolean(
-                  exportLoading
-                )
-              }
-            >
-
-              <div className="reports-export-icon">
-
-                <UserRound
-                  size={18}
-                />
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  User Report
-                </strong>
-
-                <span>
-                  User accounts and roles
-                </span>
-
-              </div>
-
-
-              <Download
-                size={15}
-              />
-
-            </button>
-
-
-            {/* LISTINGS */}
-
-            <button
-              type="button"
-              onClick={() =>
-                handleExport(
-                  'listings'
-                )
-              }
-              disabled={
-                Boolean(
-                  exportLoading
-                )
-              }
-            >
-
-              <div className="reports-export-icon">
-
-                <Tag
-                  size={18}
-                />
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  Listing Report
-                </strong>
-
-                <span>
-                  Marketplace listing data
-                </span>
-
-              </div>
-
-
-              <Download
-                size={15}
-              />
-
-            </button>
-
-
-            {/* FINANCIAL */}
-
-            <button
-              type="button"
-              onClick={() =>
-                handleExport(
-                  'financial'
-                )
-              }
-              disabled={
-                Boolean(
-                  exportLoading
-                )
-              }
-            >
-
-              <div className="reports-export-icon">
-
-                <WalletCards
-                  size={18}
-                />
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  Financial Report
-                </strong>
-
-                <span>
-                  Completed sales and earnings
-                </span>
-
-              </div>
-
-
-              <Download
-                size={15}
-              />
-
-            </button>
-
-
-            {/* CUSTOM */}
-
-            <button
-              type="button"
-              className="reports-custom-button"
-              onClick={() =>
-                setActiveReport({
-                  type:
-                    'custom'
-                })
-              }
-            >
-
-              <div className="reports-export-icon">
-
-                <FileText
-                  size={18}
-                />
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  Custom Report
-                </strong>
-
-                <span>
-                  Review current analytics
-                </span>
-
-              </div>
-
-
-              <Eye
-                size={15}
-              />
-
-            </button>
-
+            {[
+              { type: 'sales', title: 'Sales Report', description: 'Orders and sales data', Icon: BarChart3 },
+              { type: 'users', title: 'User Report', description: 'User accounts and roles', Icon: UserRound },
+              { type: 'listings', title: 'Listing Report', description: 'Marketplace listing data', Icon: Tag },
+              { type: 'financial', title: 'Financial Report', description: 'Completed sales and earnings', Icon: WalletCards },
+              { type: 'custom', title: 'Custom Report', description: 'Review current analytics', Icon: FileText }
+            ].slice(
+              (exportsPage - 1) * exportsPageSize,
+              exportsPage * exportsPageSize
+            ).map(report => {
+              const Icon = report.Icon;
+              return (
+                <button
+                  type="button"
+                  key={report.type}
+                  className={report.type === 'custom' ? 'reports-custom-button' : ''}
+                  onClick={() => report.type === 'custom'
+                    ? setActiveReport({ type: 'custom' })
+                    : handleExport(report.type)}
+                  disabled={report.type !== 'custom' && Boolean(exportLoading)}
+                >
+                  <div className="reports-export-icon"><Icon size={18} /></div>
+                  <div>
+                    <strong>{report.title}</strong>
+                    <span>{report.description}</span>
+                  </div>
+                  {report.type === 'custom' ? <Eye size={15} /> : <Download size={15} />}
+                </button>
+              );
+            })}
           </div>
+
+          <ReportsPagination
+            page={exportsPage}
+            totalItems={5}
+            pageSize={exportsPageSize}
+            onPageChange={setExportsPage}
+          />
 
         </div>
 

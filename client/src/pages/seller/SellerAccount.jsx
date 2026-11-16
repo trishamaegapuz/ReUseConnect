@@ -16,6 +16,7 @@ import {
   Settings,
   Shield,
   Tag,
+  Trash2,
   User,
   X
 } from 'lucide-react';
@@ -68,6 +69,61 @@ const getProfileImage = (
 
   return String(image);
 
+};
+
+
+// Keep the signed-in seller profile in sync with the application header.
+// The custom event updates React headers in the same tab without requiring logout.
+const syncSellerHeader = (accountData = {}) => {
+
+  const userKeys = [
+    'reuseconnect_user',
+    'user',
+    'currentUser',
+    'authUser'
+  ];
+
+  let storedUser = null;
+  let existingKey = 'reuseconnect_user';
+
+  for (const key of userKeys) {
+    const raw = localStorage.getItem(key);
+    if (!raw) continue;
+
+    try {
+      storedUser = JSON.parse(raw);
+      existingKey = key;
+      if (storedUser) break;
+    } catch (error) {
+      console.warn(`Unable to read ${key} while syncing seller profile.`);
+    }
+  }
+
+  const updatedUser = {
+    ...(storedUser || {}),
+    first_name: accountData.first_name ?? storedUser?.first_name ?? '',
+    last_name: accountData.last_name ?? storedUser?.last_name ?? '',
+    firstName: accountData.first_name ?? storedUser?.firstName ?? '',
+    lastName: accountData.last_name ?? storedUser?.lastName ?? '',
+    email: accountData.email ?? storedUser?.email ?? '',
+    profile_image: accountData.profile_image || '',
+    profileImage: accountData.profile_image || ''
+  };
+
+  const serialized = JSON.stringify(updatedUser);
+
+  // Update every supported auth-user key because older modules may read different keys.
+  userKeys.forEach(key => localStorage.setItem(key, serialized));
+
+  // Notify same-tab React components (the browser storage event alone won't do this).
+  window.dispatchEvent(new CustomEvent('reuseconnect:user-updated', {
+    detail: { user: updatedUser, source: 'seller-account' }
+  }));
+
+  // Also notify any legacy listeners that explicitly subscribe to this event.
+  window.dispatchEvent(new Event('reuseconnect:profile-updated'));
+
+  return updatedUser;
 };
 
 
@@ -170,6 +226,17 @@ export default function SellerAccount() {
 
 
   const [
+    removePhotoModal,
+    setRemovePhotoModal
+  ] = useState(false);
+
+  const [
+    removingPhoto,
+    setRemovingPhoto
+  ] = useState(false);
+
+
+  const [
     passwordForm,
     setPasswordForm
   ] = useState({
@@ -199,17 +266,18 @@ export default function SellerAccount() {
       const response =
         await getSellerAccount();
 
-      setAccount(
-        response?.account || {
-          first_name: '',
-          last_name: '',
-          email: '',
-          phone: '',
-          location: '',
-          bio: '',
-          profile_image: ''
-        }
-      );
+      const loadedAccount = response?.account || {
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        location: '',
+        bio: '',
+        profile_image: ''
+      };
+
+      setAccount(loadedAccount);
+      syncSellerHeader(loadedAccount);
 
 
       setPreferences(
@@ -278,28 +346,17 @@ export default function SellerAccount() {
         setSuccess('');
 
         await updateSellerProfile({
-          firstName:
-            account.first_name,
-
-          lastName:
-            account.last_name,
-
-          email:
-            account.email,
-
-          phone:
-            account.phone,
-
-          location:
-            account.location,
-
-          bio:
-            account.bio,
-
-          profileImage:
-            account.profile_image
+          firstName: account.first_name,
+          lastName: account.last_name,
+          email: account.email,
+          phone: account.phone,
+          location: account.location,
+          bio: account.bio,
+          profileImage: account.profile_image
         });
 
+        // Update the header immediately after the profile save succeeds.
+        syncSellerHeader(account);
 
         setSuccess(
           'Your profile has been saved successfully.'
@@ -404,6 +461,60 @@ export default function SellerAccount() {
       reader.readAsDataURL(file);
 
     };
+
+
+  // ==========================================================
+  // REMOVE PROFILE PHOTO
+  // ==========================================================
+
+  const handleRemovePhoto = async () => {
+
+    try {
+
+      setRemovingPhoto(true);
+      setError('');
+      setSuccess('');
+
+      await updateSellerProfile({
+        firstName: account.first_name,
+        lastName: account.last_name,
+        email: account.email,
+        phone: account.phone,
+        location: account.location,
+        bio: account.bio,
+        profileImage: ''
+      });
+
+      const updatedAccount = {
+        ...account,
+        profile_image: ''
+      };
+
+      setAccount(updatedAccount);
+      syncSellerHeader(updatedAccount);
+
+      setRemovePhotoModal(false);
+
+      setSuccess(
+        'Your profile photo has been removed successfully.'
+      );
+
+      await loadAccount();
+
+    } catch (err) {
+
+      setError(
+        err?.message ||
+        'Unable to remove your profile photo.'
+      );
+
+    } finally {
+
+      setRemovingPhoto(false);
+
+    }
+
+  };
 
 
   // ==========================================================
@@ -811,6 +922,18 @@ export default function SellerAccount() {
                       : 'Change Photo'}
 
                   </label>
+
+                  {getProfileImage(account.profile_image) && (
+                    <button
+                      type="button"
+                      className="remove-photo-button"
+                      onClick={() => setRemovePhotoModal(true)}
+                      disabled={photoLoading || removingPhoto}
+                    >
+                      <Trash2 size={14} />
+                      Remove Photo
+                    </button>
+                  )}
 
                 </div>
 
@@ -1723,6 +1846,82 @@ export default function SellerAccount() {
       {/* ======================================================
           LOGIN ACTIVITY MODAL
       ====================================================== */}
+
+      {removePhotoModal && (
+
+        <div
+          className="account-modal-overlay"
+          onClick={(event) => {
+            if (event.target === event.currentTarget && !removingPhoto) {
+              setRemovePhotoModal(false);
+            }
+          }}
+        >
+
+          <div className="account-modal small remove-photo-modal">
+
+            <div className="modal-header">
+
+              <div>
+                <h3>Remove Profile Photo</h3>
+                <p>Profile photo settings</p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setRemovePhotoModal(false)}
+                disabled={removingPhoto}
+                aria-label="Close"
+              >
+                <X size={18} />
+              </button>
+
+            </div>
+
+            <div className="remove-photo-content">
+
+              <div className="remove-photo-icon">
+                <Trash2 size={24} />
+              </div>
+
+              <h3>Remove your profile photo?</h3>
+
+              <p>
+                Your profile will return to showing your initials.
+                You can upload a new photo anytime.
+              </p>
+
+            </div>
+
+            <div className="modal-footer">
+
+              <button
+                type="button"
+                className="modal-cancel"
+                onClick={() => setRemovePhotoModal(false)}
+                disabled={removingPhoto}
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                className="remove-photo-confirm"
+                onClick={handleRemovePhoto}
+                disabled={removingPhoto}
+              >
+                <Trash2 size={15} />
+                {removingPhoto ? 'Removing...' : 'Remove Photo'}
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
 
       {loginModal && (
 

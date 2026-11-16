@@ -535,3 +535,66 @@
   }
 
 }
+
+/* ============================================================
+   SIZE DISPLAY - MULTIPLE SIZE CART SUPPORT
+============================================================ */
+
+.buyer-cart-size {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  margin-top: 2px;
+  padding: 4px 8px;
+  border: 1px solid #e4dcfa;
+  border-radius: 6px;
+  background: #f6f2ff;
+  color: #6651a8 !important;
+  font-size: 10px !important;
+  font-weight: 600;
+}
+
+.buyer-cart-size strong {
+  color: #49319d;
+  font-size: 10px;
+}
+
+.buyer-cart-modal-size {
+  color: #6651a8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.buyer-cart-item-info {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 650px) {
+  .buyer-cart-item {
+    grid-template-columns: 65px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .buyer-cart-item-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .buyer-cart-buy {
+    min-height: 34px;
+  }
+
+  .buyer-cart-modal {
+    width: min(500px, 100%);
+  }
+
+  .buyer-cart-modal-actions {
+    flex-wrap: wrap;
+  }
+
+  .buyer-cart-modal-actions button {
+    flex: 1;
+  }
+}

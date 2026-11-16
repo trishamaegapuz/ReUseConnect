@@ -75,12 +75,12 @@ router.get('/', async (req, res) => {
       search = '',
       status = 'all',
       page = 1,
-      limit = 10
+      limit = 6
     } = req.query;
 
     const safePage = Math.max(parseInt(page, 10) || 1, 1);
     const safeLimit = Math.min(
-      Math.max(parseInt(limit, 10) || 10, 1),
+      Math.max(parseInt(limit, 10) || 6, 1),
       100
     );
     const offset = (safePage - 1) * safeLimit;

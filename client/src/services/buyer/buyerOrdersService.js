@@ -37,6 +37,7 @@ PLACE ORDER
 export const createBuyerOrder = async ({
   listingId,
   quantity,
+  size,
   shippingAddress,
   paymentMethod,
   referenceNumber,
@@ -57,6 +58,11 @@ export const createBuyerOrder = async ({
         listingId,
 
         quantity,
+
+        // Preserve the exact size selected in the Buy Now checkout.
+        size: typeof size === 'string' && size.trim()
+          ? size.trim()
+          : null,
 
         shippingAddress,
 

@@ -25,12 +25,17 @@ const AdminDashboard = () => {
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [chartPeriod, setChartPeriod] = useState(7);
+  const [activityPage, setActivityPage] = useState(1);
+  const [categoryPage, setCategoryPage] = useState(1);
+
+  const PAGE_SIZE = 5;
 
   // ==========================================================
   // LOAD DASHBOARD
   // ==========================================================
 
-  const loadDashboard = async () => {
+  const loadDashboard = async (days = chartPeriod) => {
     try {
       setLoading(true);
       setError('');
@@ -41,7 +46,7 @@ const AdminDashboard = () => {
         throw new Error('Admin authentication is required.');
       }
 
-      const response = await getAdminDashboard();
+      const response = await getAdminDashboard(days);
 
       setDashboard(
         response?.data ||
@@ -146,7 +151,9 @@ const AdminDashboard = () => {
     dashboard?.platformActivity,
     dashboard?.platform_activity,
     dashboard?.chartData,
-    dashboard?.chart_data
+    dashboard?.chart_data,
+    dashboard?.platformOverview,
+    dashboard?.platform_overview
   );
 
   const recentActivity = getArray(
@@ -240,6 +247,31 @@ const AdminDashboard = () => {
     dashboard?.top_categories
   );
 
+  const activityPageCount = Math.max(
+    1,
+    Math.ceil(recentActivity.length / PAGE_SIZE)
+  );
+
+  const visibleActivity = useMemo(() => {
+    const start = (activityPage - 1) * PAGE_SIZE;
+    return recentActivity.slice(start, start + PAGE_SIZE);
+  }, [recentActivity, activityPage]);
+
+  const categoryPageCount = Math.max(
+    1,
+    Math.ceil(categories.length / PAGE_SIZE)
+  );
+
+  const visibleCategories = useMemo(() => {
+    const start = (categoryPage - 1) * PAGE_SIZE;
+    return categories.slice(start, start + PAGE_SIZE);
+  }, [categories, categoryPage]);
+
+  useEffect(() => {
+    setActivityPage(1);
+    setCategoryPage(1);
+  }, [recentActivity.length, categories.length]);
+
   // ==========================================================
   // PLATFORM CHART
   // ==========================================================
@@ -267,43 +299,32 @@ const AdminDashboard = () => {
     );
   };
 
+  const chartMaxValue = Math.max(
+    1,
+    ...activity.flatMap((item) => [
+      getChartValue(item, 'users'),
+      getChartValue(item, 'listings'),
+      getChartValue(item, 'orders')
+    ])
+  );
+
   const buildPoints = (key) => {
-    if (!activity.length) {
-      return '';
-    }
+    if (!activity.length) return '';
 
-    const values = activity.map(
-      (item) =>
-        getChartValue(item, key)
-    );
-
-    const maxValue = Math.max(
-      ...values,
-      1
-    );
-
-    return values
-      .map((value, index) => {
+    return activity
+      .map((item, index) => {
         const x =
           activity.length === 1
             ? (chartLeft + chartRight) / 2
             : chartLeft +
-              (
-                index /
-                (activity.length - 1)
-              ) *
-                (
-                  chartRight -
-                  chartLeft
-                );
+              (index / (activity.length - 1)) *
+                (chartRight - chartLeft);
 
+        const value = getChartValue(item, key);
         const y =
           chartBottom -
-          (value / maxValue) *
-            (
-              chartBottom -
-              chartTop
-            );
+          (value / chartMaxValue) *
+            (chartBottom - chartTop);
 
         return `${x},${y}`;
       })
@@ -319,17 +340,33 @@ const AdminDashboard = () => {
   const ordersPoints =
     buildPoints('orders');
 
-  const getActivityLabel = (
-    item,
-    index
-  ) => {
-    return (
+  const getActivityLabel = (item, index) => {
+    const rawDate =
+      item?.activity_date ||
       item?.date ||
       item?.label ||
       item?.day ||
-      item?.created_at ||
-      `Day ${index + 1}`
-    );
+      item?.created_at;
+
+    if (!rawDate) return `Day ${index + 1}`;
+
+    const parsedDate = new Date(rawDate);
+    if (Number.isNaN(parsedDate.getTime())) {
+      return String(rawDate);
+    }
+
+    return parsedDate.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric'
+    });
+  };
+
+  const shouldShowChartLabel = (index) => {
+    if (activity.length <= 7) return true;
+    const interval = Math.ceil((activity.length - 1) / 6);
+    return index === 0 ||
+      index === activity.length - 1 ||
+      index % interval === 0;
   };
 
   // ==========================================================
@@ -602,20 +639,19 @@ const AdminDashboard = () => {
             {activity.length > 0 && (
               <div className="period-buttons">
 
-                <button
-                  type="button"
-                  className="active"
-                >
-                  7 Days
-                </button>
-
-                <button type="button">
-                  30 Days
-                </button>
-
-                <button type="button">
-                  90 Days
-                </button>
+                {[7, 30, 90].map((days) => (
+                  <button
+                    key={days}
+                    type="button"
+                    className={chartPeriod === days ? 'active' : ''}
+                    onClick={() => {
+                      setChartPeriod(days);
+                      loadDashboard(days);
+                    }}
+                  >
+                    {days} Days
+                  </button>
+                ))}
 
               </div>
             )}
@@ -778,27 +814,7 @@ const AdminDashboard = () => {
                         'orders'
                       );
 
-                    const maxValue =
-                      Math.max(
-                        ...activity.map(
-                          (activityItem) =>
-                            Math.max(
-                              getChartValue(
-                                activityItem,
-                                'users'
-                              ),
-                              getChartValue(
-                                activityItem,
-                                'listings'
-                              ),
-                              getChartValue(
-                                activityItem,
-                                'orders'
-                              )
-                            )
-                        ),
-                        1
-                      );
+                    const maxValue = chartMaxValue;
 
                     const userY =
                       chartBottom -
@@ -859,17 +875,16 @@ const AdminDashboard = () => {
                           className="orders-point"
                         />
 
-                        <text
-                          x={x}
-                          y="210"
-                          textAnchor="middle"
-                          className="chart-date-text"
-                        >
-                          {getActivityLabel(
-                            item,
-                            index
-                          )}
-                        </text>
+                        {shouldShowChartLabel(index) && (
+                          <text
+                            x={x}
+                            y="210"
+                            textAnchor="middle"
+                            className="chart-date-text"
+                          >
+                            {getActivityLabel(item, index)}
+                          </text>
+                        )}
 
                       </React.Fragment>
                     );
@@ -1045,15 +1060,6 @@ const AdminDashboard = () => {
 
             </div>
 
-            {recentActivity.length > 0 && (
-              <button
-                type="button"
-                className="view-all-button"
-              >
-                View All
-                <span>→</span>
-              </button>
-            )}
 
           </div>
 
@@ -1108,7 +1114,7 @@ const AdminDashboard = () => {
 
               {/* TABLE ROWS */}
 
-              {recentActivity.map(
+              {visibleActivity.map(
                 (item, index) => {
 
                   const status =
@@ -1241,8 +1247,13 @@ const AdminDashboard = () => {
                         <span>
                           {item?.date ||
                             item?.datetime ||
-                            item?.created_at ||
-                            '—'}
+                            item?.created_at
+                              ? new Date(
+                                  item?.date ||
+                                  item?.datetime ||
+                                  item?.created_at
+                                ).toLocaleString()
+                              : '—'}
                         </span>
 
                       </div>
@@ -1311,6 +1322,30 @@ const AdminDashboard = () => {
 
           )}
 
+          {recentActivity.length > PAGE_SIZE && (
+            <div className="dashboard-pagination">
+              <span>
+                {`Page ${activityPage} of ${activityPageCount}`}
+              </span>
+              <div className="pagination-actions">
+                  <button
+                    type="button"
+                    disabled={activityPage <= 1}
+                    onClick={() => setActivityPage((page) => Math.max(1, page - 1))}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    disabled={activityPage >= activityPageCount}
+                    onClick={() => setActivityPage((page) => Math.min(activityPageCount, page + 1))}
+                  >
+                    Next
+                  </button>
+              </div>
+            </div>
+          )}
+
         </section>
 
 
@@ -1358,7 +1393,7 @@ const AdminDashboard = () => {
 
             <div className="category-list">
 
-              {categories.map(
+              {visibleCategories.map(
                 (item, index) => {
 
                   const name =
@@ -1443,6 +1478,30 @@ const AdminDashboard = () => {
 
             </div>
 
+          )}
+
+          {categories.length > PAGE_SIZE && (
+            <div className="dashboard-pagination">
+              <span>
+                Page {categoryPage} of {categoryPageCount}
+              </span>
+              <div className="pagination-actions">
+                <button
+                  type="button"
+                  disabled={categoryPage <= 1}
+                  onClick={() => setCategoryPage((page) => Math.max(1, page - 1))}
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  disabled={categoryPage >= categoryPageCount}
+                  onClick={() => setCategoryPage((page) => Math.min(categoryPageCount, page + 1))}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
           )}
 
         </section>

@@ -1096,64 +1096,6 @@
 
 
 /* ============================================================
-   QUICK ACTIONS
-   ============================================================ */
-
-.quick-action {
-  width: 100%;
-
-  min-height: 38px;
-
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-
-  margin-bottom: 8px;
-
-  padding: 0 11px;
-
-  border: 1px solid #e2deef;
-
-  border-radius: 6px;
-
-  background: #ffffff;
-
-  color: #4e496e;
-
-  font-size: 13px;
-
-  cursor: pointer;
-
-  box-sizing: border-box;
-}
-
-.quick-action:last-child {
-  margin-bottom: 0;
-}
-
-.quick-action:hover {
-  background: #f7f4ff;
-
-  color: #5d30ca;
-}
-
-.quick-action.primary {
-  background: #6330d3;
-
-  border-color: #6330d3;
-
-  color: #ffffff;
-}
-
-.quick-action:disabled {
-  opacity: 0.45;
-
-  cursor: not-allowed;
-}
-
-
-/* ============================================================
    STATUS CHART
    ============================================================ */
 
